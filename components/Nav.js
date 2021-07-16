@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Flex } from "@chakra-ui/react";
+//import { Flex } from "@chakra-ui/react";
 
 const Nav = () => {
 	return (
