@@ -1,13 +1,11 @@
 import Head from "next/head";
-import Image from "next/image";
-
+import Hero from "../components/Hero";
 /* Components */
-import ButtonUi from "../UI/Button";
 
 export default function Home(props) {
 	return (
 		<div>
-			<h1>Home</h1>
+			<Hero />
 			{/* Hero image */}
 			{/* Other albums */}
 			{/* Video */}
