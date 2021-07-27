@@ -5,7 +5,6 @@ import Link from "next/link";
 const Nav = () => {
 	return (
 		<Stack
-			border="1px solid white"
 			position="absolute"
 			zIndex={3}
 			direction={["column", "row"]}
