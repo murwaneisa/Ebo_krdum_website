@@ -1,5 +1,4 @@
 import { Box, Text } from "@chakra-ui/layout";
-import { Flex } from "@chakra-ui/react";
 import Image from "next/image";
 import Button from "../UI/Button";
 
@@ -9,8 +8,8 @@ const Hero = () => {
 			border="1px solid red"
 			position="relative"
 			zIndex="1"
-			height="70vh"
-			width="100vm"
+			height="auto"
+			width="auto"
 		>
 			{/* <Box
 				border="2px solid blue"
@@ -26,7 +25,7 @@ const Hero = () => {
 					<Button>View Album</Button>
 				</Box>
 	</Box> */}
-			<Box border="1px solid blue" position="absolute">
+			<Box border="1px solid blue" height="80vh" width="100vm">
 				<Image
 					src="/images/hero.jpg"
 					objectFit="cover"

@@ -8,8 +8,15 @@
 - https://compressjpeg.com/
 - https://photoshop.adobe.com/compress?promoid=KZ6STYYX&mv=other
 
+2. fix next js image layout :
+
+- check the link: https://github.com/vercel/next.js/discussions/18739#discussioncomment-780223
+
 ## Components
 
-1. Navigation
-
 - Check border bottom why it is there
+- fix the album card and section layout and style
+
+## locale
+
+- add spotify links

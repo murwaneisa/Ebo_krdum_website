@@ -9,14 +9,15 @@ const Section = (props) => {
 	const { pt, pr, pb, pl, bg } = props;
 	return (
 		<Flex
-			justify="center"
+			justify="space-around"
+			align="center"
 			pt={pt}
 			pr={pr}
 			pl={pl}
 			pb={pb}
 			w="100%"
 			h={["20rem", "35rem", "43.375rem"]}
-			direction={["column", "row"]}
+			direction={["column", "column", "row"]}
 			bg={bg}
 		>
 			{props.children}
