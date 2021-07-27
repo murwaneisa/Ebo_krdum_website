@@ -16,9 +16,9 @@ export const LinkGrid = (props) => (
     <Box minW="130px">
       <FooterHeading mb="4">Albums</FooterHeading>
       <Stack>
-        <Link>Salam</Link>
         <Link>Anasna</Link>
-        <Link>Orre Tog in Dogola</Link>
+        <Link>Salam</Link>
+        <Link>Diversity</Link>
       </Stack>
     </Box>
   </SimpleGrid>

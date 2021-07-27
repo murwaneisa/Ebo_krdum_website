@@ -1,17 +1,16 @@
-import { Box, Text } from "@chakra-ui/layout";
+import { Box } from "@chakra-ui/layout";
 import Image from "next/image";
-import Button from "../UI/Button";
 
 const Hero = () => {
-	return (
-		<Box
-			border="1px solid red"
-			position="relative"
-			zIndex="1"
-			height="auto"
-			width="auto"
-		>
-			{/* <Box
+  return (
+    <Box
+      border="1px solid red"
+      position="relative"
+      zIndex="1"
+      height="auto"
+      width="auto"
+    >
+      {/* <Box
 				border="2px solid blue"
 				position="absolute"
 				right="0"
@@ -25,16 +24,16 @@ const Hero = () => {
 					<Button>View Album</Button>
 				</Box>
 	</Box> */}
-			<Box border="1px solid blue" height="80vh" width="100vm">
-				<Image
-					src="/images/hero.jpg"
-					objectFit="cover"
-					layout="fill"
-					quality={100}
-				/>
-			</Box>
-		</Box>
-	);
+      <Box border="1px solid blue" height="80vh" width="100vm">
+        <Image
+          src="/images/hero-min.jpg"
+          objectFit="cover"
+          layout="fill"
+          quality={100}
+        />
+      </Box>
+    </Box>
+  );
 };
 
 export default Hero;
