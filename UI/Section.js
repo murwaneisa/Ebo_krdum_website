@@ -5,22 +5,15 @@ import { Flex } from "@chakra-ui/react";
  *https://chakra-ui.com/docs/features/style-props
  */
 
-const Section = (props) => {
-	const { h, w, pt, py, px, p, bg } = props;
+const Section = ({ children, ...rest }) => {
 	return (
 		<Flex
 			justify="space-around"
 			align="center"
-			px={px}
-			py={py}
-			pt={pt}
-			p={p}
-			w={w}
-			h={h}
+			{...rest}
 			direction={["column", "column", "row"]}
-			bg={bg}
 		>
-			{props.children}
+			{children}
 		</Flex>
 	);
 };
