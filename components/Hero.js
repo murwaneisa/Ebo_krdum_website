@@ -1,39 +1,26 @@
 import { Box } from "@chakra-ui/layout";
-import Image from "next/image";
+/* Component */
+import Image from "../ui/Image";
+import Section from "../UI/Section";
 
 const Hero = () => {
-  return (
-    <Box
-      border="1px solid red"
-      position="relative"
-      zIndex="1"
-      height="auto"
-      width="auto"
-    >
-      {/* <Box
-				border="2px solid blue"
-				position="absolute"
-				right="0"
-				top="5"
-				zIndex={2}
-			>
-				<Box mb={[2, 4, 80]}>
-					<Text>Orre Tora Tasds</Text>
-				</Box>
-				<Box>
-					<Button>View Album</Button>
-				</Box>
-	</Box> */}
-      <Box border="1px solid blue" height="80vh" width="100vm">
-        <Image
-          src="/images/hero-min.jpg"
-          objectFit="cover"
-          layout="fill"
-          quality={100}
-        />
-      </Box>
-    </Box>
-  );
+	return (
+		<Section
+			w="100%"
+			h="auto"
+			pt="100px"
+			bg="linear-gradient(180deg, #C2B552 0%, #795806 100%)"
+		>
+			<Box w={["100%", "50%"]}>
+				<Image
+					src="/images/ebo-transparent.png"
+					layout="fill"
+					width="100%"
+					objectFit="contain"
+				/>
+			</Box>
+		</Section>
+	);
 };
 
 export default Hero;

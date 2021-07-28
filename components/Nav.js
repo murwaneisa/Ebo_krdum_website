@@ -11,6 +11,7 @@ const Nav = () => {
 			justify={["center", "space-between"]}
 			align="center"
 			m="0 auto"
+			mb="20px"
 			minWidth="100vw"
 			p="2"
 		>

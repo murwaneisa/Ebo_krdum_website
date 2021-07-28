@@ -1,5 +1,5 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
-import Image from "next/image";
+import Image from "../UI/Image";
 
 const Card = (props) => {
 	const { title, year, image } = props;
@@ -8,8 +8,8 @@ const Card = (props) => {
 			<Box w="100%" h="70%">
 				<Image
 					src={`/images${image}`}
-					width={450}
-					height={450}
+					layout="fill"
+					width="100%"
 					objectFit="cover"
 				/>
 			</Box>

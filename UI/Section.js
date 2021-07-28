@@ -6,16 +6,17 @@ import { Flex } from "@chakra-ui/react";
  */
 
 const Section = (props) => {
-	const { py, px, p, bg } = props;
+	const { h, w, pt, py, px, p, bg } = props;
 	return (
 		<Flex
 			justify="space-around"
 			align="center"
 			px={px}
 			py={py}
+			pt={pt}
 			p={p}
-			w="100%"
-			h="auto"
+			w={w}
+			h={h}
 			direction={["column", "column", "row"]}
 			bg={bg}
 		>
