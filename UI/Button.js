@@ -12,8 +12,9 @@ const ButtonUi = (props) => {
 				colorScheme="primary"
 				variant="solid"
 				borderRadius="178"
-				fontSize={["sm", "md", "lg"]}
-				px={["10px", "14px", "18px"]}
+				fontSize={["xs", "sm", "md", "lg"]}
+				px={["0.8rem", "0.7rem", "0.8rem", "1.2rem"]}
+				py={["0.4rem", "0.7rem", "0.8rem", "1.2rem"]}
 			>
 				{props.children}
 			</Button>

@@ -1,5 +1,6 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
 import Image from "../UI/Image";
+import Button from "../UI/Button";
 
 /*
  * the array of percentage({["10%", "40%"]}) represent the  breakpoint for the element start from mobile to lager screen
@@ -19,9 +20,16 @@ const Card = (props) => {
 					objectFit="cover"
 				/>
 			</Box>
-			<Flex direction="column" p="1rem">
-				<Text>{`Title:${title}`}</Text>
-				<Text>{`Date:${year}`}</Text>
+			<Flex justify="space-between" align="center" py="1rem">
+				<Flex direction="column">
+					{" "}
+					<Text>{`Title:${title}`}</Text>
+					<Text>{`Date:${year}`}</Text>
+				</Flex>
+
+				<Box>
+					<Button>View Album</Button>
+				</Box>
 			</Flex>
 		</Box>
 	);
