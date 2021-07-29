@@ -1,10 +1,16 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
 import Image from "../UI/Image";
 
+/*
+ * the array of percentage({["10%", "40%"]}) represent the  breakpoint for the element start from mobile to lager screen
+ * check the link for more details:
+ *https://chakra-ui.com/docs/features/responsive-styles
+ */
+
 const Card = (props) => {
 	const { title, year, image } = props;
 	return (
-		<Box w={["100%", "50%", "31%"]}>
+		<Box w={["100%", "80%", "40%", "31%"]}>
 			<Box w="100%" h="70%">
 				<Image
 					src={`/images${image}`}
@@ -13,7 +19,7 @@ const Card = (props) => {
 					objectFit="cover"
 				/>
 			</Box>
-			<Flex>
+			<Flex direction="column" p="1rem">
 				<Text>{`Title:${title}`}</Text>
 				<Text>{`Date:${year}`}</Text>
 			</Flex>
