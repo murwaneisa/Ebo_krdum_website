@@ -1,4 +1,9 @@
 import { Box, Button } from "@chakra-ui/react";
+/*
+ * the array of percentage({["10%", "40%"]}) represent the  breakpoint for the element start from mobile to lager screen
+ * check the link for more details:
+ *https://chakra-ui.com/docs/features/responsive-styles
+ */
 
 const ButtonUi = (props) => {
 	return (

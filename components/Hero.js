@@ -3,6 +3,11 @@ import { Box, Text, Flex } from "@chakra-ui/layout";
 import Image from "../ui/Image";
 import Section from "../UI/Section";
 import Button from "../UI/Button";
+/*
+ * the array of percentage({["10%", "40%"]}) represent the  breakpoint for the element start from mobile to lager screen
+ * check the link for more details:
+ *https://chakra-ui.com/docs/features/responsive-styles
+ */
 
 const Hero = () => {
 	return (

@@ -21,7 +21,12 @@ const Card = (props) => {
 				/>
 			</Box>
 			<Flex justify="space-between" align="center" py="1rem">
-				<Flex direction="column">
+				<Flex
+					color="yellow"
+					direction="column"
+					fontSize="2rem"
+					fontFamily="Brush Script MT"
+				>
 					{" "}
 					<Text>{`Title:${title}`}</Text>
 					<Text>{`Date:${year}`}</Text>
