@@ -17,6 +17,7 @@
 - Check border bottom why it is there
 - fix the album card and section layout and style
 - add padding top to the nav
+- fix the album image size for the pig screen
 
 ## locale
 
