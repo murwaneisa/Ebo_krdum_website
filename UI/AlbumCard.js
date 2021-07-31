@@ -12,7 +12,7 @@ const Card = (props) => {
 	const { title, year, image } = props;
 	return (
 		<Box w={["100%", "80%", "40%", "31%"]}>
-			<Box w="100%" h="70%">
+			<Box w="100%">
 				<Image
 					src={`/images${image}`}
 					layout="fill"
@@ -21,12 +21,7 @@ const Card = (props) => {
 				/>
 			</Box>
 			<Flex justify="space-between" align="center" py="1rem">
-				<Flex
-					color="yellow"
-					direction="column"
-					fontSize="2rem"
-					fontFamily="Brush Script MT"
-				>
+				<Flex direction="column" fontSize="1rem">
 					{" "}
 					<Text>{`Title:${title}`}</Text>
 					<Text>{`Date:${year}`}</Text>

@@ -1,7 +1,7 @@
 import { Box, Text, Flex } from "@chakra-ui/layout";
 /* Component */
 import Image from "../ui/Image";
-import Section from "../UI/Section";
+//import Section from "../UI/Section";
 import Button from "../UI/Button";
 /*
  * the array of percentage({["10%", "40%"]}) represent the  breakpoint for the element start from mobile to lager screen
@@ -11,12 +11,13 @@ import Button from "../UI/Button";
 
 const Hero = () => {
 	return (
-		<Section
+		<Box
 			w="100%"
 			h="auto"
 			pt={["4.6rem", "6.2rem"]}
 			pb={["1.2rem", "0rem"]}
 			bg="linear-gradient(180deg, #C2B552 0%, #795806 100%)"
+			align="center"
 		>
 			<Flex direction={["column", "row"]} w={["100%", "96%", "90%", "80%"]}>
 				<Image
@@ -46,7 +47,7 @@ const Hero = () => {
 					</Box>
 				</Flex>
 			</Flex>
-		</Section>
+		</Box>
 	);
 };
 
