@@ -6,7 +6,7 @@ import Heading from "../UI/Heading";
  *https://chakra-ui.com/docs/features/style-props
  */
 
-const Section = ({ flexProps, heading, children, ...rest }) => {
+const Section = ({ heading, children, ...rest }) => {
 	return (
 		<>
 			<Flex justify="space-around" align="center" {...rest} direction="column">
