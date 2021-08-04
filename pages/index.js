@@ -1,12 +1,14 @@
 /* Components */
 
-import { AspectRatio, Box, HStack, Link } from "@chakra-ui/react";
+import { AspectRatio, Box, HStack, Link, Stack } from "@chakra-ui/react";
 import { FaExternalLinkAlt } from "react-icons/fa";
+/* Components */
 import Hero from "../components/Hero";
 import NextShow from "../components/NextShow";
 import data from "../public/locale/en/albums.js";
 import AlbumCard from "../UI/AlbumCard";
 import Section from "../UI/Section";
+import HomePageReview from "../components/HomePageReview";
 
 export default function Home(props) {
 	return (
@@ -67,12 +69,15 @@ export default function Home(props) {
 			</Section>
 
 			{/*  Next Show */}
-			<Section bg="brown" title="Next Show" w="auto">
+			<Section bg="brown" title="Next Show">
 				<NextShow />
 			</Section>
 			{/* Review */}
 			<Section bg="yellow" py="10%" px="5%" title="Reviews">
-				{<div></div>}
+				<Stack direction={["column", "row"]} spacing={["1rem", "2rem", "4rem"]}>
+					<HomePageReview />
+					<HomePageReview />
+				</Stack>
 			</Section>
 		</div>
 	);
