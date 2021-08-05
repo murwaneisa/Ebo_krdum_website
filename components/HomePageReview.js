@@ -1,7 +1,8 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text, Flex, VStack, Link } from "@chakra-ui/react";
+import { ImQuotesLeft, ImQuotesRight } from "react-icons/im";
 import Image from "../UI/Image";
 
-const ReviewHome = () => {
+const ReviewHome = ({ image, text, name, logoWidth }) => {
 	return (
 		<Box
 			borderWidth="1px"
@@ -19,16 +20,25 @@ const ReviewHome = () => {
 			pt="12"
 			pb="16"
 		>
-			<Image
-				src="/images/review/svt.png"
-				layout="fill"
-				width={45}
-				height={46}
-			/>
-			<Text fontSize={{ base: "xl", md: "2xl" }} fontWeight="medium" mt="6">
-				&ldquo;Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
-				expedita voluptas culpa sapiente alias molestiae. Numquam corrupti in
-				laborum sed rerum et corporis.&rdquo;
+			<VStack>
+				<Box w="15%">
+					<Image src={"/images/review/" + image} layout="fill" />
+				</Box>
+
+				<Text as="cite" fontStyle="normal" fontWeight="bold">
+					{name}
+				</Text>
+			</VStack>
+
+			<Text
+				//display="inline-flex"
+				fontSize={{ base: "xl", md: "2xl" }}
+				fontWeight="medium"
+				mt="6"
+			>
+				<ImQuotesLeft />
+				{text}
+				<ImQuotesRight />
 			</Text>
 		</Box>
 	);

@@ -73,11 +73,41 @@ export default function Home(props) {
 				<NextShow />
 			</Section>
 			{/* Review */}
-			<Section bg="yellow" py="10%" px="5%" title="Reviews">
-				<Stack direction={["column", "row"]} spacing={["1rem", "2rem", "4rem"]}>
-					<HomePageReview />
-					<HomePageReview />
-				</Stack>
+			<Section
+				shildDrection="column"
+				bg="yellow"
+				py="10%"
+				px="5%"
+				title="Reviews"
+			>
+				<Box align="center">
+					<Stack
+						direction={["column", "row"]}
+						spacing={["1rem", "2rem", "4rem"]}
+					>
+						<HomePageReview
+							logoWidth="20%"
+							image="svt.png"
+							name="Svt nyheter"
+							text=" För tio år sedan flydde artisten Ebo Krdum från kriget i sudanesiska Darfur till Sverige. Här föll han pladask för både fiol och cello och nu är han aktuell med en blandning av afrikansk blues, afro beat och skandinavisk folkmusik."
+						/>
+						<HomePageReview
+							logoWidth="70%"
+							image="sverigesRadio4.png"
+							name="Sveriges Radio"
+							text="Avsnittet inleds dock med nya singeln Revolution Call med Ebo Krdum som flydde från Darfur i västra Sudan och nu är bosatt i Sverige. (En intervju med Ebo Krdum kommer senare i vår)."
+						/>
+					</Stack>
+					<Box mt="4rem">
+						<Link
+							href="https://www.youtube.com/channel/UCtQCeThNAGW_5MSRdFYX2bQ"
+							isExternal
+							color="brown"
+						>
+							See all Reviews
+						</Link>
+					</Box>
+				</Box>
 			</Section>
 		</div>
 	);
