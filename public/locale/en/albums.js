@@ -34,19 +34,34 @@ export default [
     photographer: "Simon Sahara",
     songs: [
       {
-        name: "Anasna",
-        time: "5:58",
-        spotify: "",
+        name: "Home for All",
+        time: "4:46",
+        spotify:
+          "https://open.spotify.com/track/2LHzMrUPwp9ocwq0evuJbE?si=206030c703b641ba",
       },
       {
-        name: "Bong Farang",
-        time: "7:09",
-        spotify: "",
+        name: "Back in the Days",
+        time: "8:07",
+        spotify:
+          "https://open.spotify.com/track/07j0RpRs9JgPaTDnqTEh1A?si=1a60585585424c67",
       },
       {
-        name: "Afe Kamounga",
-        time: "6:23",
-        spotify: "",
+        name: "Cry Alone",
+        time: "3:57",
+        spotify:
+          "https://open.spotify.com/track/0q30UUMbTW96FSxiD7CpQY?si=103feef1fb4547a4",
+      },
+      {
+        name: "Peace for IDPs",
+        time: "5:22",
+        spotify:
+          "https://open.spotify.com/track/71hm5pfZ1AP8X6rPlPAYxa?si=b166188640634568",
+      },
+      {
+        name: "Akheeda",
+        time: "6:34",
+        spotify:
+          "https://open.spotify.com/track/0p5531cLYHHGK89P8AD6z1?si=c69bc2ebc0524b88",
       },
     ],
   },

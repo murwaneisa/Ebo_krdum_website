@@ -1,6 +1,6 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import AlbumInfoSection from "../../components/album/AlbumInfoSection";
-import Section from "../../UI/Section";
+import SongsListSection from "../../components/album/SongsListSection";
 
 const AlbumItems = () => {
   return (
@@ -8,21 +8,7 @@ const AlbumItems = () => {
       <AlbumInfoSection />
 
       {/* Album's Songs */}
-      <Section bg="yellow" title="Album Songs" pt="1rem">
-        <Box w={["100vw", "100vw", "50vw"]}>
-          <Text>
-            Lorem sadasdasd adsa ddasd asd asd ad asd asd adfgsfdgdfsg dfg dfg
-            dfg Lorem sadasdasd adsa ddasd asd asd ad asd asd adfgsfdgdfsg dfg
-            dfg dfgLorem sadasdasd adsa ddasd asd asd ad asd asd adfgsfdgdfsg
-            dfg dfg dfgLorem sadasdasd adsa ddasd asd asd ad asd asd
-            adfgsfdgdfsg dfg dfg dfgLorem sadasdasd adsa ddasd asd asd ad asd
-            asd adfgsfdgdfsg dfg dfg dfgLorem sadasdasd adsa ddasd asd asd ad
-            asd asd adfgsfdgdfsg dfg dfg dfgLorem sadasdasd adsa ddasd asd asd
-            ad asd asd adfgsfdgdfsg dfg dfg dfgLorem sadasdasd adsa ddasd asd
-            asd ad asd asd adfgsfdgdfsg dfg dfg dfg
-          </Text>
-        </Box>
-      </Section>
+      <SongsListSection />
     </Box>
   );
 };

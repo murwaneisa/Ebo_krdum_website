@@ -37,7 +37,7 @@ const AlbumInfoSection = () => {
           </Flex>
         </Box>
         {/* Description Box */}
-        <Box>
+        <Box px="1rem">
           <Heading>Description</Heading>
           <Text>
             The album Salam contains 5 songs that were released at the same time
