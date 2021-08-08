@@ -2,10 +2,19 @@ import { Box, Flex, Heading, Stack, Text } from "@chakra-ui/react";
 import ButtonUi from "../../UI/Button";
 import CustomImage from "../../UI/CustomImage";
 import Section from "../../UI/Section";
-const AlbumInfoSection = () => {
+const AlbumInfoSection = ({
+  title,
+  description,
+  year,
+  image,
+  photographer,
+  albumSpotify,
+}) => {
+  console.log("Title is: ", title);
   return (
-    <Section title="Salam" bg="brown" pt="5rem" pb="2rem">
-      {/* Album Iamge, date, button */}
+    <Section title={title} bg="brown" pt="5rem" pb="2rem">
+      console.log(title)
+      {/* Album Image, date, button */}
       <Stack
         w={["100vw", "80vw", "60vw", "60vw", "55vw"]}
         direction={["column", "column", "column", "row", "row"]}
@@ -16,8 +25,8 @@ const AlbumInfoSection = () => {
           {/* Image Box */}
           <Box w={["100vw", "80vw", "60vw", "32vw", "25vw"]}>
             <CustomImage
-              src="/images/salam.jpg"
-              alt="Ebo album Image"
+              src={`/images${image}`}
+              alt={`This is Ebo album ${title} image. Photo by: ${photographer}`}
               layout="fill"
             />
           </Box>
@@ -35,24 +44,19 @@ const AlbumInfoSection = () => {
               fontWeight="bold"
               mb={["1rem", "1rem", "0rem", "0rem", "0rem"]}
             >
-              Release Year: 2019
+              Release Year: {year}
             </Text>
-            <ButtonUi>Listen on Spotify</ButtonUi>
+            {albumSpotify ? (
+              <ButtonUi src={albumSpotify}>Listen on Spotify</ButtonUi>
+            ) : (
+              <p>Coming Soon on Spotify</p>
+            )}
           </Flex>
         </Box>
         {/* Description Box */}
         <Box px="1rem">
           <Heading>Description</Heading>
-          <Text>
-            The album Salam contains 5 songs that were released at the same time
-            (2019) and one more song ‘Devastation’ which was released via the
-            label company Supertraditional in 2020. But all the 6 songs were
-            recorded as part of the same project (Memory of War). It was
-            recorded in Stockholm, by Ebo’s co-player & producer John Runefelt.
-            They were written in (Sudan-Arabi, Juba-Arabi & Daju) with some mix
-            of Swedish, French & English, in some songs. All music & Lyrics by :
-            Ebo Krdum.
-          </Text>
+          <Text>{description}</Text>
         </Box>
       </Stack>
     </Section>
