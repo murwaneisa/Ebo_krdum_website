@@ -36,7 +36,14 @@ const Footer = () => {
 				>
 					<Box flex="1">
 						<Link href="/">
-							<Image src="/images/logo_white.png" height="20" width="100" />
+							<a>
+								<Image
+									src="/images/logo_white.png"
+									alt="Ebo krdum logo"
+									height="20"
+									width="100"
+								/>
+							</a>
 						</Link>
 					</Box>
 					<Stack
