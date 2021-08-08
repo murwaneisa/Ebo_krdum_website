@@ -31,6 +31,7 @@ export default function Home(props) {
             {data.map((album) => (
               <AlbumCard
                 key={album.id}
+                id={album.id}
                 year={album.year}
                 image={album.image}
                 title={album.title}

@@ -35,4 +35,4 @@
 ## Album page
 
 - Make if condition if there is no spotify link, add alternative coming soon component
-- Fix error handling in case of writing invalid query and make loading state
+- Fix error handling in case of writing invalid query and make loading state with Chakra spinner

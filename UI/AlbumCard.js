@@ -1,4 +1,5 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
+import Link from "next/link";
 import Button from "../UI/Button";
 import CustomImage from "../UI/CustomImage";
 
@@ -9,7 +10,8 @@ import CustomImage from "../UI/CustomImage";
  */
 
 const Card = (props) => {
-  const { title, year, image } = props;
+  const { title, year, image, id } = props;
+
   return (
     <Box w={["100%", "80%", "40%", "40%"]}>
       <Box w="100%">
@@ -28,7 +30,11 @@ const Card = (props) => {
         </Flex>
 
         <Box>
-          <Button>View Album</Button>
+          <Link href={`/album/${id}`}>
+            <a>
+              <Button>View Album</Button>
+            </a>
+          </Link>
         </Box>
       </Flex>
     </Box>

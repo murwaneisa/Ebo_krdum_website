@@ -1,4 +1,5 @@
 import { Box, Flex, Text } from "@chakra-ui/layout";
+import Link from "next/link";
 //import Section from "../UI/Section";
 import Button from "../UI/Button";
 /* Component */
@@ -44,7 +45,11 @@ const Hero = () => {
             </Text>
           </Box>
           <Box>
-            <Button>View latest Album</Button>
+            <Link href="/album/diversity">
+              <a>
+                <Button>View latest Album</Button>
+              </a>
+            </Link>
           </Box>
         </Flex>
       </Flex>

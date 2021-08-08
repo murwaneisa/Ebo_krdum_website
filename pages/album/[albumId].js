@@ -35,7 +35,7 @@ const AlbumItems = () => {
 
       {/* Album Songs section */}
       {/* Pass through album songs as props */}
-      <SongsListSection />
+      <SongsListSection songs={album.songs} />
     </Box>
   );
 };

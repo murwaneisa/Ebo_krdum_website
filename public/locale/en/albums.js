@@ -7,7 +7,8 @@ export default [
     year: "2018",
     image: "/anasna.jpg",
     photographer: "Victoria Moralez",
-    albumSpotify: "",
+    albumSpotify:
+      "https://open.spotify.com/album/6f8AGFEj10Ey6v2HbZ2gak?si=IDwYVtvdTDSKEa1nn08rFQ&dl_branch=1",
     songs: [
       {
         name: "Anasna",
@@ -94,7 +95,7 @@ export default [
     description:
       "'Diversity' is not just a musical and cultural melting pot, the lyrics that tell both Ebo´s life story and political topics such as equality, diversity and freedom, are sung in no less than eight different languages. [Fulani, Beri (Zaghawa), Fur, Sudan Arabic, Massara (Masaleet), Beja, Daju and English]. The album Diversity is a collaboration with the Scandinavian record label Supertraditional, from which a couple of Swedish leading folk music innovators, like Ale Möller, Sara Parkman and Anna Möller, also participated on the album. Anna Möller in the role of producer and composer of the string arrangements. Ebo Krdum's songs and voice are in focus, performed by an ensemble consisting of calebass, balafon, bass and a folk music string quartet with viola dámore, viola d’gamba, octave violin and violin. The album Diversity is from Ebo’s project named : The Sub-Saharan Jigs.",
     year: "2021",
-    image: "/diversity.jpg",
+    image: "/diversity.jpeg",
     photographer:
       "Album photos by : Olof Grind All cover designs by : Karin Linderoth",
     albumSpotify: "",
