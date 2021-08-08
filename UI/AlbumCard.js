@@ -1,6 +1,6 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
 import Button from "../UI/Button";
-import Image from "../UI/Image";
+import CustomImage from "../UI/CustomImage";
 
 /*
  * the array of percentage({["10%", "40%"]}) represent the  breakpoint for the element start from mobile to lager screen
@@ -13,7 +13,7 @@ const Card = (props) => {
   return (
     <Box w={["100%", "80%", "40%", "40%"]}>
       <Box w="100%">
-        <Image
+        <CustomImage
           src={`/images${image}`}
           layout="fill"
           width="100%"

@@ -2,7 +2,7 @@ import { Box, Flex, Text } from "@chakra-ui/layout";
 //import Section from "../UI/Section";
 import Button from "../UI/Button";
 /* Component */
-import Image from "../ui/Image";
+import CustomImage from "../UI/CustomImage.js";
 /*
  * the array of percentage({["10%", "40%"]}) represent the  breakpoint for the element start from mobile to lager screen
  * check the link for more details:
@@ -20,7 +20,7 @@ const Hero = () => {
       align="center"
     >
       <Flex direction={["column", "row"]} w={["100%", "96%", "90%", "80%"]}>
-        <Image
+        <CustomImage
           src="/images/ebo-transparent.png"
           alt="This is the main hero image of Ebo Krdums website"
           layout="fill"
