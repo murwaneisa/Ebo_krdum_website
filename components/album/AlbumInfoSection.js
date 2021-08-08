@@ -13,7 +13,6 @@ const AlbumInfoSection = ({
   console.log("Title is: ", title);
   return (
     <Section title={title} bg="brown" pt="5rem" pb="2rem">
-      console.log(title)
       {/* Album Image, date, button */}
       <Stack
         w={["100vw", "80vw", "60vw", "60vw", "55vw"]}
