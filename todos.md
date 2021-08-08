@@ -8,6 +8,8 @@
 - https://compressjpeg.com/
 - https://photoshop.adobe.com/compress?promoid=KZ6STYYX&mv=other
 
+2. adding a proper images alt
+
 ## Components
 
 - add padding top to the nav

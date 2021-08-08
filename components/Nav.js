@@ -18,7 +18,12 @@ const Nav = () => {
 			<Box pl={["0", "4", "10"]}>
 				<Link href="/">
 					<a>
-						<Image src="/images/logo_white.png" height="20" width="100" />
+						<Image
+							src="/images/logo_white.png"
+							alt="Ebo Krdum logo"
+							height="20"
+							width="100"
+						/>
 					</a>
 				</Link>
 			</Box>

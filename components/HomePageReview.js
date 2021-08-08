@@ -22,7 +22,11 @@ const ReviewHome = ({ image, text, name, logoWidth }) => {
 		>
 			<VStack>
 				<Box w="15%">
-					<Image src={"/images/review/" + image} layout="fill" />
+					<Image
+						src={"/images/review/" + image}
+						alt="Ebo reviews and testimonial"
+						layout="fill"
+					/>
 				</Box>
 
 				<Text as="cite" fontStyle="normal" fontWeight="bold">
@@ -30,12 +34,7 @@ const ReviewHome = ({ image, text, name, logoWidth }) => {
 				</Text>
 			</VStack>
 
-			<Text
-				//display="inline-flex"
-				fontSize={{ base: "xl", md: "2xl" }}
-				fontWeight="medium"
-				mt="6"
-			>
+			<Text fontSize={{ base: "xl", md: "2xl" }} fontWeight="medium" mt="6">
 				<ImQuotesLeft />
 				{text}
 				<ImQuotesRight />
