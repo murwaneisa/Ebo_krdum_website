@@ -36,3 +36,7 @@
 
 - Make if condition if there is no spotify link, add alternative coming soon component
 - Fix error handling in case of writing invalid query and make loading state with Chakra spinner
+
+## Links
+
+- fix the blue border in spotify links icon
