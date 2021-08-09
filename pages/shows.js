@@ -1,5 +1,6 @@
 import { Box } from "@chakra-ui/react";
-import ShowsList from "../components/shows/showsList";
+import ShowsList from "../components/shows/ShowsList";
+import { formerShows, uppComingShows } from "../public/locale/en/shows";
 import Section from "../UI/Section";
 
 const Shows = () => {
@@ -8,13 +9,13 @@ const Shows = () => {
       {/* upcoming shows*/}
       <Section title="Upcoming Shows" pt="5rem" pb="2rem" bg="brown">
         <Box>
-          <ShowsList />
+          <ShowsList shows={uppComingShows} />
         </Box>
       </Section>
       {/* Former shows */}
       <Section title="Former Shows" pt="2rem" pb="2rem" bg="yellow">
         <Box>
-          <ShowsList />
+          <ShowsList shows={formerShows} />
         </Box>
       </Section>
     </Box>
