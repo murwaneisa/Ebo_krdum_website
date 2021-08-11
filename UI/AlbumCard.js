@@ -10,35 +10,39 @@ import CustomImage from "../UI/CustomImage";
  */
 
 const Card = (props) => {
-  const { title, year, image, id } = props;
+	const { title, year, image, id } = props;
 
-  return (
-    <Box w={["100%", "80%", "40%", "40%"]}>
-      <Box w="100%">
-        <CustomImage
-          src={`/images${image}`}
-          layout="fill"
-          width="100%"
-          objectFit="cover"
-        />
-      </Box>
-      <Flex justify="space-between" align="center" py="1rem">
-        <Flex direction="column" fontSize="1rem">
-          {" "}
-          <Text>{`Title:${title}`}</Text>
-          <Text>{`Date:${year}`}</Text>
-        </Flex>
+	return (
+		<Box w={["100%", "80%", "40%", "40%"]}>
+			<Box w="100%">
+				<CustomImage
+					src={`/images${image}`}
+					layout="fill"
+					width="100%"
+					objectFit="cover"
+				/>
+			</Box>
+			<Flex justify="space-between" align="center" py="1rem">
+				<Flex direction="column" fontSize="1rem">
+					{" "}
+					<Text
+						fontSize={["sm", "md", "sm", "sm", "2xl"]}
+					>{`Title: ${title}`}</Text>
+					<Text
+						fontSize={["sm", "sm", "sm", "sm", "2xl"]}
+					>{`Released: ${year}`}</Text>
+				</Flex>
 
-        <Box>
-          <Link href={`/album/${id}`}>
-            <a>
-              <Button>View Album</Button>
-            </a>
-          </Link>
-        </Box>
-      </Flex>
-    </Box>
-  );
+				<Box>
+					<Link href={`/album/${id}`}>
+						<a>
+							<Button>View Album</Button>
+						</a>
+					</Link>
+				</Box>
+			</Flex>
+		</Box>
+	);
 };
 
 export default Card;
