@@ -1,5 +1,4 @@
 import { Box, Stack, Heading, HStack, Flex, Link } from "@chakra-ui/react";
-import { FaExternalLinkAlt } from "react-icons/fa";
 import { BiTimeFive, BiCalendarCheck, BiLocationPlus } from "react-icons/bi";
 import ButtonUi from "../UI/Button";
 
@@ -27,12 +26,12 @@ const NextShow = () => {
 						justify={["center", "center"]}
 					>
 						<BiCalendarCheck />
-						<Box pl="0.4rem">2021-Aug-25</Box>
+						<Box pl="0.4rem">2021-SPE-30</Box>
 					</Flex>
 
 					<Flex fontSize={["1rem", "1.2rem"]} align="center" justify="center">
 						<BiTimeFive />
-						<Box pl="0.4rem">18:00 - 21:00</Box>
+						<Box pl="0.4rem">20:00</Box>
 					</Flex>
 				</Stack>
 				<Flex
@@ -41,7 +40,8 @@ const NextShow = () => {
 					justify={["center", "center"]}
 				>
 					<BiLocationPlus />
-					<Box pl="0.4rem">2021-Aug-25</Box>
+
+					<Box pl={["0rem", "0.4rem", "0.4rem"]}>Kungsgatan 63 , Stockholm</Box>
 				</Flex>
 				<ButtonUi>Book tickets</ButtonUi>
 				<HStack spacing="0.4rem" justify="center" align="center">
@@ -58,9 +58,7 @@ const NextShow = () => {
 						href="https://www.youtube.com/channel/UCtQCeThNAGW_5MSRdFYX2bQ"
 						isExternal
 						color="brown"
-					>
-						<FaExternalLinkAlt fontSize="1rem" />
-					</Link>
+					></Link>
 				</HStack>
 			</Stack>
 		</Box>
