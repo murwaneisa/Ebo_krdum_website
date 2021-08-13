@@ -40,9 +40,9 @@ const ShowsItem = (props) => {
   const year = date.getFullYear();
   const dayNr = date.getDate();
   const dayName = dayNames[date.getDay()];
-  console.log(dayNr);
+
   return (
-    <Box py="1rem" w="100vw" px={["1rem", "3rem"]}>
+    <Box py="1rem" w="100vw" px={["1%", "5%", "8%", "10%", "20%"]}>
       <Divider mb="2rem" />
       <Flex direction="row" justify="space-between" align="center">
         <VStack w="20%" align="flex-start" spacing="-0.4rem">
@@ -65,11 +65,13 @@ const ShowsItem = (props) => {
             {showInfo.location}
           </Text>
         </Box>
-        <Link href={showInfo.link} w="20%" align="end">
-          {!isLargerThan800 || !isUpcoming ? (
+        <Link href={showInfo.link} w="20%" align="end" isExternal>
+          {!isLargerThan800 ? (
             <ButtonUi>&#8594;</ButtonUi>
-          ) : (
+          ) : isUpcoming ? (
             <ButtonUi>Buy Ticket</ButtonUi>
+          ) : (
+            <a>Discover</a>
           )}
         </Link>
       </Flex>

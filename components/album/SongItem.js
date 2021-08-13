@@ -27,7 +27,7 @@ const SongItem = (props) => {
           <Text>{name}</Text>
         </HStack>
         {/* Linked Stack box of Spotify, following guidelines of Spotify to write "Play on" the the image. Se https://developer.spotify.com/documentation/general/design-and-branding/#using-our-logo */}
-        <Link href={spotify}>
+        <Link href={spotify} isExternal>
           <Stack width="9rem" align="flex-end" spacing="-1">
             <Box width="40%">
               <Text fontSize="sm" fontWeight="bold">
