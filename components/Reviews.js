@@ -1,8 +1,14 @@
+import Section from "../UI/Section";
+import ReviewCard from "../UI/ReviewCard";
+import data from "../public/locale/reviews";
+
 const Reviews = () => {
 	return (
-		<div>
-			<h1>Reviews</h1>
-		</div>
+		<Section bg="yellow">
+			{data.map((review) => (
+				<ReviewCard name={review.name} text={review.tet} />
+			))}
+		</Section>
 	);
 };
 

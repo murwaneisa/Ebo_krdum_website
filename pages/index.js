@@ -4,7 +4,7 @@ import { AspectRatio, Box, HStack, Link, Stack } from "@chakra-ui/react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 /* Components */
 import Hero from "../components/Hero";
-import HomePageReview from "../components/HomePageReview";
+import ReviewCard from "../UI/ReviewCard";
 import NextShow from "../components/NextShow";
 import data from "../public/locale/en/albums.js";
 import AlbumCard from "../UI/AlbumCard";
@@ -90,28 +90,22 @@ export default function Home(props) {
 			<Section bg="yellow" py="2rem" px="5%" title="Reviews">
 				<Box align="center">
 					<Stack
-						direction={["column", "row"]}
+						direction={["column", "column", "row"]}
 						spacing={["1rem", "2rem", "4rem"]}
 					>
-						<HomePageReview
-							logoWidth="20%"
+						<ReviewCard
 							image="svt.png"
 							name="Svt nyheter"
 							text=" För tio år sedan flydde artisten Ebo Krdum från kriget i sudanesiska Darfur till Sverige. Här föll han pladask för både fiol och cello och nu är han aktuell med en blandning av afrikansk blues, afro beat och skandinavisk folkmusik."
 						/>
-						<HomePageReview
-							logoWidth="70%"
+						<ReviewCard
 							image="sverigesRadio4.png"
 							name="Sveriges Radio"
 							text="Avsnittet inleds dock med nya singeln Revolution Call med Ebo Krdum som flydde från Darfur i västra Sudan och nu är bosatt i Sverige. (En intervju med Ebo Krdum kommer senare i vår)."
 						/>
 					</Stack>
 					<Box mt="4rem">
-						<Link
-							href="https://www.youtube.com/channel/UCtQCeThNAGW_5MSRdFYX2bQ"
-							isExternal
-							color="brown"
-						>
+						<Link href="" isExternal color="brown">
 							See all Reviews
 						</Link>
 					</Box>
