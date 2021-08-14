@@ -18,9 +18,8 @@ const Reviews = () => {
 			transitionTime={400}
 		>
 			{data.map((review) => (
-				<div>
+				<div key={review.name}>
 					<ReviewCard
-						key={review.name}
 						name={review.name}
 						text={review.text}
 						logo={review.logo}
