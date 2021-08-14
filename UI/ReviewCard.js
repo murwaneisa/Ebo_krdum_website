@@ -2,7 +2,7 @@ import { Box, Text, VStack } from "@chakra-ui/react";
 import { ImQuotesLeft, ImQuotesRight } from "react-icons/im";
 import Image from "next/image";
 
-const ReviewCard = ({ image, text, name, logoWidth }) => {
+const ReviewCard = ({ logo, text, name }) => {
 	return (
 		<Box
 			borderWidth="1px"
@@ -20,13 +20,13 @@ const ReviewCard = ({ image, text, name, logoWidth }) => {
 		>
 			<Box
 				w="100%"
-				h="12vh"
+				h={["18vh", "12vh"]}
 				//border="solid 2px blue"
 			>
 				<VStack>
 					<Box w={["100px", "200px"]}>
 						<Image
-							src={"/images/review/" + image}
+							src={"/images/review/" + logo}
 							alt="Ebo reviews and testimonial"
 							width={100}
 							height={100}

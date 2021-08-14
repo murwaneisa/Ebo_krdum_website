@@ -9,6 +9,7 @@ import NextShow from "../components/NextShow";
 import data from "../public/locale/en/albums.js";
 import AlbumCard from "../UI/AlbumCard";
 import Section from "../UI/Section";
+import Reviews from "../components/Reviews";
 
 export default function Home(props) {
 	return (
@@ -87,28 +88,9 @@ export default function Home(props) {
 				<NextShow />
 			</Section>
 			{/* Review */}
-			<Section bg="yellow" py="2rem" px="5%" title="Reviews">
+			<Section bg="yellow" py="2rem" px="0%" title="Reviews">
 				<Box align="center">
-					<Stack
-						direction={["column", "column", "row"]}
-						spacing={["1rem", "2rem", "4rem"]}
-					>
-						<ReviewCard
-							image="svt.png"
-							name="Svt nyheter"
-							text=" För tio år sedan flydde artisten Ebo Krdum från kriget i sudanesiska Darfur till Sverige. Här föll han pladask för både fiol och cello och nu är han aktuell med en blandning av afrikansk blues, afro beat och skandinavisk folkmusik."
-						/>
-						<ReviewCard
-							image="sverigesRadio4.png"
-							name="Sveriges Radio"
-							text="Avsnittet inleds dock med nya singeln Revolution Call med Ebo Krdum som flydde från Darfur i västra Sudan och nu är bosatt i Sverige. (En intervju med Ebo Krdum kommer senare i vår)."
-						/>
-					</Stack>
-					<Box mt="4rem">
-						<Link href="" isExternal color="brown">
-							See all Reviews
-						</Link>
-					</Box>
+					<Reviews />
 				</Box>
 			</Section>
 		</div>
