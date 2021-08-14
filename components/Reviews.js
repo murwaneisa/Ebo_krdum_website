@@ -20,6 +20,7 @@ const Reviews = () => {
 			{data.map((review) => (
 				<div>
 					<ReviewCard
+						key={review.name}
 						name={review.name}
 						text={review.text}
 						logo={review.logo}
