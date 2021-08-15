@@ -1,9 +1,9 @@
 import { Box, Flex, Text } from "@chakra-ui/layout";
 import Link from "next/link";
 //import Section from "../UI/Section";
-import Button from "../UI/Button";
+import Button from "./UI/Button";
 /* Component */
-import CustomImage from "../UI/CustomImage.js";
+import CustomImage from "./UI/CustomImage";
 /*
  * the array of percentage({["10%", "40%"]}) represent the  breakpoint for the element start from mobile to lager screen
  * check the link for more details:

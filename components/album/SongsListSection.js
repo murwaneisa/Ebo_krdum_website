@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import Section from "../../UI/Section";
+import Section from "../UI/Section";
 import SongItem from "./SongItem";
 
 const SongsListSection = ({ songs }) => {

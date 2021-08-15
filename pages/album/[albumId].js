@@ -2,15 +2,13 @@ import { Box } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import AlbumInfoSection from "../../components/album/AlbumInfoSection";
 import SongsListSection from "../../components/album/SongsListSection";
+import Section from "../../components/UI/Section";
 import data from "../../public/locale/en/albums";
-import Section from "../../UI/Section";
 
 const AlbumItems = () => {
-  console.log("This is data:     ", data);
   // useRouter from Next
   const router = useRouter();
   const albumQuery = router.query.albumId;
-  console.log("Query is: ", albumQuery);
 
   // get album by id
   const album = data.find((item) => item.id === albumQuery);

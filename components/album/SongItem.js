@@ -8,7 +8,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { FiPlayCircle } from "react-icons/fi";
-import CustomImage from "../../UI/CustomImage";
+import CustomImage from "../UI/CustomImage";
 
 const SongItem = (props) => {
   const { name, spotify } = props;
@@ -36,7 +36,7 @@ const SongItem = (props) => {
             </Box>
             <Box width="60%">
               <CustomImage
-                src="/images/spotify-icons-logos/logos/01_RGB/02_PNG/Spotify_Logo_RGB_White.png"
+                src="/images/spotify-logos/Spotify_Logo_RGB_White.png"
                 layout="fill"
               />
             </Box>

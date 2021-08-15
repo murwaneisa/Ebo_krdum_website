@@ -1,7 +1,7 @@
 import { Box, Flex, Heading, Stack, Text } from "@chakra-ui/react";
-import ButtonUi from "../../UI/Button";
-import CustomImage from "../../UI/CustomImage";
-import Section from "../../UI/Section";
+import ButtonUi from "../UI/Button";
+import CustomImage from "../UI/CustomImage";
+import Section from "../UI/Section";
 const AlbumInfoSection = ({
   title,
   description,
@@ -10,7 +10,6 @@ const AlbumInfoSection = ({
   photographer,
   albumSpotify,
 }) => {
-  console.log("Title is: ", title);
   return (
     <Section title={title} bg="brown" pt="5rem" pb="2rem">
       {/* Album Image, date, button */}

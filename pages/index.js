@@ -6,9 +6,9 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 import Hero from "../components/Hero";
 import NextShow from "../components/NextShow";
 import Reviews from "../components/Reviews";
+import AlbumCard from "../components/UI/AlbumCard";
+import Section from "../components/UI/Section";
 import data from "../public/locale/en/albums.js";
-import AlbumCard from "../UI/AlbumCard";
-import Section from "../UI/Section";
 
 export default function Home(props) {
   return (
@@ -58,7 +58,7 @@ export default function Home(props) {
             >
               <iframe
                 title="Ebo and Genuine Mezziga"
-                src="https://www.youtube.com/embed/STMH9IAcvaU"
+                src="https://www.youtube.com/embed/6tif0ns8jwI"
                 allowFullScreen
               />
             </AspectRatio>
@@ -88,7 +88,7 @@ export default function Home(props) {
       </Section>
 
       {/* Review */}
-      <Section bg="yellow" pt="2rem" pb="5rem" px="0%" title="Reviews">
+      <Section bg="yellow" pt="2rem" pb="5rem" title="Reviews" w="100vw">
         <Box align="center">
           <Reviews />
         </Box>

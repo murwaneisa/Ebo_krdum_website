@@ -1,7 +1,8 @@
+import { Box, Link } from "@chakra-ui/react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import data from "../public/locale/reviews";
-import ReviewCard from "../UI/ReviewCard";
+import data from "../public/locale/en/reviews";
+import ReviewCard from "./UI/ReviewCard";
 
 const Reviews = () => {
   // const arrowStyles = {
@@ -14,39 +15,43 @@ const Reviews = () => {
   //   zIndex: 2,
   // };
   return (
-    <Carousel
-      width="70vw"
-      showThumbs={false}
-      infiniteLoop
-      autoPlay
-      showStatus={false}
-      showArrows={false}
-      useKeyboardArrows
-      transitionTime={800}
-      // renderArrowPrev={(onClickHandler, hasPrev, label) => (
-      //   <button
-      //     type="button"
-      //     onClick={onClickHandler}
-      //     title={label}
-      //     style={{
-      //       ...arrowStyles,
-      //       right: "4.3em",
-      //     }}
-      //   >
-      //     <IoMdArrowDropleft fontSize="30px" />
-      //   </button>
-      // )}
-    >
-      {data.map((review) => (
-        <div key={review.name}>
-          <ReviewCard
-            name={review.name}
-            text={review.text}
-            logo={review.logo}
-          />
-        </div>
-      ))}
-    </Carousel>
+    <Box w={["90vw", "80vw", "80vw", "80vw", "50vw"]}>
+      <Carousel
+        width="100%"
+        showThumbs={false}
+        infiniteLoop
+        autoPlay
+        showStatus={false}
+        showArrows={false}
+        useKeyboardArrows
+        transitionTime={800}
+        // renderArrowPrev={(onClickHandler, hasPrev, label) => (
+        //   <button
+        //     type="button"
+        //     onClick={onClickHandler}
+        //     title={label}
+        //     style={{
+        //       ...arrowStyles,
+        //       right: "4.3em",
+        //     }}
+        //   >
+        //     <IoMdArrowDropleft fontSize="30px" />
+        //   </button>
+        // )}
+      >
+        {data.map((review) => (
+          <Link href={review.link} isExternal>
+            <div key={review.name}>
+              <ReviewCard
+                name={review.name}
+                text={review.text}
+                logo={review.logo}
+              />
+            </div>
+          </Link>
+        ))}
+      </Carousel>
+    </Box>
   );
 };
 

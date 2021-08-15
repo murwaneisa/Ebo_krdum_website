@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import ShowsList from "../components/shows/ShowsList";
+import Section from "../components/UI/Section";
 import { formerShows, uppComingShows } from "../public/locale/en/shows";
-import Section from "../UI/Section";
 
 const Shows = () => {
   return (
