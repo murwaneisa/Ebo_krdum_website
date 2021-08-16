@@ -1,4 +1,10 @@
-import { Box, Flex, Heading, Stack } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Heading,
+  Link as ChakraLink,
+  Stack,
+} from "@chakra-ui/react";
 import Link from "next/link";
 import { BiCalendarCheck, BiLocationPlus, BiTimeFive } from "react-icons/bi";
 import ButtonUi from "./UI/Button";
@@ -44,7 +50,12 @@ const NextShow = () => {
 
           <Box pl={["0rem", "0.4rem", "0.4rem"]}>Kungsgatan 63 , Stockholm</Box>
         </Flex>
-        <ButtonUi>Book tickets</ButtonUi>
+        <ChakraLink
+          href="https://www.fasching.se/ebo-krdum/#2021-09-30T20-00"
+          isExternal
+        >
+          <ButtonUi>Book tickets</ButtonUi>
+        </ChakraLink>
         <Box justify="center" align="center">
           <Link
             /* change the link */

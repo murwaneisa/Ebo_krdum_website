@@ -5,7 +5,7 @@ export const uppComingShows = [
     date: "2021-09-30",
     time: "20:00",
     location: "Stockholm, Sweden",
-    link: " https://www.fasching.se/ebo-krdum/#2021-09-30T20-00",
+    link: "https://www.fasching.se/ebo-krdum/#2021-09-30T20-00",
   },
   {
     id: "c2",

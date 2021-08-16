@@ -12,8 +12,6 @@
 
 3. add loader while images load
 
-4. Add new Diversity album cover image
-
 ## Components
 
 - add padding top to the nav
@@ -24,19 +22,20 @@
 
 ## Theme
 
-- add global style for links (color brown and size) depending on size of screen
-- make fontSize bigger for larger screens.
+- download font for Hero title
 
-## index page / album section
+## index page / Next Shows card
 
-- Put space between Title and album title, and Date and year
-- Change Date to Year.
+- make better design with image.
+
+- make dynamic data for NextShow component
 
 ## Album page
 
-- Make if condition if there is no spotify link, add alternative coming soon component
 - Fix error handling in case of writing invalid query and make loading state with Chakra spinner
 
 ## Links
 
-- fix the blue border in spotify links icon
+## Header
+
+- Add Next Header for all pages.
