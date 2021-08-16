@@ -5,7 +5,7 @@ import { Box, Button } from "@chakra-ui/react";
  *https://chakra-ui.com/docs/features/responsive-styles
  */
 
-const ButtonUi = (props) => {
+const ButtonUi = ({ marginRight, children, ...rest }) => {
   return (
     <Box>
       <Button
@@ -20,8 +20,9 @@ const ButtonUi = (props) => {
         fontSize={["xs", "sm", "md", "md"]}
         px={["0.8rem", "0.7rem", "0.8rem", "1.2rem"]}
         py={["0.4rem", "0.7rem", "0.8rem", "1.2rem"]}
+        mr={marginRight}
       >
-        {props.children}
+        {children}
       </Button>
     </Box>
   );

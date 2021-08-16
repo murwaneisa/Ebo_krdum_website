@@ -1,40 +1,51 @@
 import {
-	Modal,
-	ModalOverlay,
-	ModalContent,
-	ModalHeader,
-	ModalFooter,
-	ModalBody,
-	ModalCloseButton,
-	Button,
+  Link,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Text,
 } from "@chakra-ui/react";
-import { useDisclosure } from "@chakra-ui/react";
+import ButtonUi from "../UI/Button";
 
 const SongsModal = (props) => {
-	const { isOpen, onOpen, onClose } = useDisclosure();
-	return (
-		<>
-			<Modal isOpen={props.isOpen} onClose={onClose}>
-				<ModalOverlay />
-				<ModalContent>
-					<ModalHeader>Modal Title</ModalHeader>
-					<ModalCloseButton />
-					<ModalBody>
-						<p>Hello</p>
-					</ModalBody>
+  const { isOpen, onOpen, onClose, name, spotify, trialSong } = props;
+  return (
+    <>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent color="black">
+          <ModalHeader>
+            {name}
+            <Text fontSize="sm" fontStyle="italic" color="gray.600">
+              Play demo
+            </Text>
+          </ModalHeader>
+          <ModalCloseButton />
+          <ModalBody alignSelf="center">
+            <audio controls autoPlay>
+              <source src={trialSong} type="audio/mpeg" />
+              Your browser does not support the audio element.
+            </audio>
+          </ModalBody>
 
-					<ModalFooter>
-						<Button colorScheme="blue" mr={3} onClick={onClose}>
-							Close
-						</Button>
-						<Button variant="ghost">
-							<p>Secondary Action</p>
-						</Button>
-					</ModalFooter>
-				</ModalContent>
-			</Modal>
-		</>
-	);
+          <ModalFooter>
+            {spotify && (
+              <Link href={spotify} isExternal>
+                <ButtonUi marginRight={3}>Play on Spotify</ButtonUi>
+              </Link>
+            )}
+            {/* <Button variant="ghost" onClick={onClose}>
+              <p>Close</p>
+            </Button> */}
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
+  );
 };
 
 export default SongsModal;

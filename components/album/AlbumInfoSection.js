@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Stack, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, Link, Stack, Text } from "@chakra-ui/react";
 import ButtonUi from "../UI/Button";
 import CustomImage from "../UI/CustomImage";
 import Section from "../UI/Section";
@@ -45,7 +45,9 @@ const AlbumInfoSection = ({
               Release Year: {year}
             </Text>
             {albumSpotify ? (
-              <ButtonUi src={albumSpotify}>Listen on Spotify</ButtonUi>
+              <Link href={albumSpotify} isExternal>
+                <ButtonUi>Listen on Spotify</ButtonUi>
+              </Link>
             ) : (
               <p>Coming Soon on Spotify</p>
             )}
