@@ -7,7 +7,7 @@ const Shows = () => {
   return (
     <Box>
       {/* upcoming shows*/}
-      <Section title="Upcoming Shows" pt="5rem" pb="2rem" bg="brown">
+      <Section title="Upcoming Shows" pt="6rem" pb="2rem" bg="brown">
         <Box>
           <ShowsList shows={uppComingShows} />
         </Box>
