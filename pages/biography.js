@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import Beginning from "../components/bio/Beginning";
-import Brief from "../components/bio/brief";
+import Brief from "../components/bio/Brief";
 import Last from "../components/bio/Last";
 import MusicIdeology from "../components/bio/MusicIdeology";
 import Section from "../components/UI/Section";
