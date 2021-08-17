@@ -44,10 +44,11 @@ const Brief = () => {
         singles forms. They were all from Ebo’s project (Memory of War).
       </Text>
       <Text>
-        In September 2021 Ebo will release his first solo album 'Diversity' on
-        Sweden’s most interesting label 'Supertraditional'. The album Diversity
-        is from Ebo’s project named The Sub-Saharan Jigs. He will also start a
-        new collaboration soon with the well-known music organization Selam.
+        In September 2021 Ebo will release his first solo album
+        &quot;Diversity&quot; on Sweden’s most interesting label
+        &quot;Supertraditional&quot;. The album Diversity is from Ebo’s project
+        named The Sub-Saharan Jigs. He will also start a new collaboration soon
+        with the well-known music organization Selam.
       </Text>
     </TextSectionStack>
   );
