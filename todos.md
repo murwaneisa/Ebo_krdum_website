@@ -39,3 +39,14 @@
 ## Header
 
 - Add Next Header for all pages.
+
+## Ebo feedback
+
+- make the hero album name clear and add " last album" before the diversity
+- add the booking agency contact.
+- add "The" to beginning in bio component.
+- inspirational word, instead of the last word in the last section of bio
+- add "coming out soon "instead of empty songs in song items components.
+- center the Spotify button in song modal.
+- fix the text description size in song item.
+- IMPORTANT - " REMOVE DOWNLOAD ICON FROM THE SONGS PLAYER".
