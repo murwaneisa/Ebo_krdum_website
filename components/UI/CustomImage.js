@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Styles from "../../styles/image.module.css";
 
-const CustomImage = ({ height, maxHeight, width, maxWidth, ...rest }) => {
+const CustomImage = ({ width, maxWidth, ...rest }) => {
 	let widths = {};
 	width ? (widths["width"] = width) : "100%";
 	maxWidth ? (widths["maxWidth"] = maxWidth) : "100%";

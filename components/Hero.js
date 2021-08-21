@@ -11,50 +11,50 @@ import CustomImage from "./UI/CustomImage";
  */
 
 const Hero = () => {
-  return (
-    <Box
-      w="100%"
-      h="auto"
-      pt={["4.6rem", "6.2rem"]}
-      pb={["1.2rem", "0rem"]}
-      bg="linear-gradient(180deg, #C2B552 0%, #795806 100%)"
-      align="center"
-    >
-      <Flex direction={["column", "row"]} w={["100%", "96%", "90%", "80%"]}>
-        <CustomImage
-          src="/images/ebo-transparent.png"
-          alt="This is the main hero image of Ebo Krdums website"
-          layout="fill"
-          width="100%"
-          objectFit="contain"
-        />
-        <Flex
-          direction="column"
-          justify={["flex-start", "center"]}
-          align="center"
-        >
-          <Box>
-            <Text
-              color="brown"
-              fontWeight="bold"
-              fontStyle="italic"
-              fontSize={["3.8rem", "4.4rem", "6.4rem", "7rem", "8.4rem"]}
-              fontFamily="Brush Script MT"
-            >
-              Diversity
-            </Text>
-          </Box>
-          <Box>
-            <Link href="/album/diversity">
-              <a>
-                <Button>View latest Album</Button>
-              </a>
-            </Link>
-          </Box>
-        </Flex>
-      </Flex>
-    </Box>
-  );
+	return (
+		<Box
+			w="100vw"
+			h="auto"
+			pt={["4.6rem", "6.2rem"]}
+			pb={["1.2rem", "0rem"]}
+			bg="linear-gradient(180deg, #C2B552 0%, #795806 100%)"
+			align="center"
+		>
+			<Flex direction={["column", "row"]} w={["100%", "96%", "90%", "80%"]}>
+				<CustomImage
+					src="/images/ebo-transparent.png"
+					alt="This is the main hero image of Ebo Krdums website"
+					layout="fill"
+					width="100%"
+					objectFit="contain"
+				/>
+				<Flex
+					direction="column"
+					justify={["flex-start", "center"]}
+					align="center"
+				>
+					<Box>
+						<Text
+							color="brown"
+							fontWeight="bold"
+							fontStyle="italic"
+							fontSize={["3.8rem", "4.4rem", "6.4rem", "7rem", "8.4rem"]}
+							fontFamily="Brush Script MT"
+						>
+							Diversity
+						</Text>
+					</Box>
+					<Box>
+						<Link href="/album/diversity">
+							<a>
+								<Button>View latest Album</Button>
+							</a>
+						</Link>
+					</Box>
+				</Flex>
+			</Flex>
+		</Box>
+	);
 };
 
 export default Hero;

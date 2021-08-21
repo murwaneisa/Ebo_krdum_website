@@ -9,7 +9,13 @@ import Title from "../UI/Title";
 const Section = ({ title, children, ...rest }) => {
 	return (
 		<>
-			<Flex justify="space-around" align="center" {...rest} direction="column">
+			<Flex
+				justify="space-around"
+				align="center"
+				{...rest}
+				direction="column"
+				w="100vw"
+			>
 				<Title>{title}</Title>
 				{/* this flex is not reusable due to the props. need to fex */}
 				<Flex

@@ -88,7 +88,7 @@ export default function Home(props) {
 			</Section>
 
 			{/* Review */}
-			<Section bg="yellow" pt="2rem" pb="5rem" title="Reviews" w="100vw">
+			<Section bg="yellow" pt="2rem" pb="5rem" title="Reviews">
 				<Box align="center">
 					<Reviews />
 				</Box>
