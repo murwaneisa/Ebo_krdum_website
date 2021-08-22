@@ -12,15 +12,10 @@
 
 3. add loader while images load
 
-## Components
-
-## locale
-
--
-
 ## Theme
 
-- download font for Hero title
+- download font for Hero - Diversity title
+  https://fonts.google.com/specimen/Dancing+Script?query=script&preview.text=Diversity&preview.text_type=custom
 
 ## index page / Next Shows card
 
@@ -29,8 +24,6 @@
 ## Album page
 
 - Fix error handling in case of writing invalid query and make loading state with Chakra spinner
-
-## Links
 
 ## Header
 
@@ -46,3 +39,4 @@
 - center the Spotify button in song modal. - DONE
 - fix the text description size in song item. - DONE
 - IMPORTANT - " REMOVE DOWNLOAD ICON FROM THE SONGS PLAYER". - DONE
+- Change description of Salam album - DONE

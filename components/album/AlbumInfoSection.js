@@ -22,8 +22,9 @@ const AlbumInfoSection = ({
 }) => {
   const [show, setShow] = useState(false);
   const handleToggle = () => setShow(!show);
-  let number = 293;
-  console.log(description.length);
+  // This is variabel for the length of the description text which is used to show read more button in case the text is longer than the descriptionTextLength value
+  let descriptionTextLength = 530;
+  //console.log(description.length);
   return (
     <Section title={title} bg="brown" pt="6rem" pb="2rem">
       {/* Album Image, date, button */}
@@ -71,11 +72,11 @@ const AlbumInfoSection = ({
         <Box px="1rem">
           <Heading>Description</Heading>
 
-          <Collapse startingHeight={number} in={show}>
+          <Collapse startingHeight={293} in={show}>
             {description}
           </Collapse>
           {/* Check if the description length is more than 477 characters then show collapse button */}
-          {description.length >= 477 ? (
+          {description.length >= descriptionTextLength ? (
             <Button
               variant="link"
               size="sm"

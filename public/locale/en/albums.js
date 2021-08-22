@@ -37,7 +37,7 @@ export default [
     id: "salam",
     title: "Salam",
     description:
-      "The album Salam contains 5 songs that were released at the same time (2019) and one more song ‘Devastation’ which was released via the label company Supertraditional in 2020. But all the 6 songs were recorded as part of the same project (Memory of War). It was recorded in Stockholm, by Ebo’s co-player & producer John Runefelt. They were written in (Sudan-Arabi, Juba-Arabi & Daju) with some mix of Swedish, French & English, in some songs. All music & Lyrics by : Ebo Krdum.",
+      "The album Salam contains 5 songs that were released at the same time (2019) and one more song ‘Devastation’ which was released via the label company Supertraditional in 2020. But all the 6 songs were recorded as part of the same project (Memory of War). It was recorded with Ebo Krdum’s-band “Genuine Mezziga” in Stockholm, by Ebo’s co-player & producer John Runefelt. The songs were written in (Sudan-Arabi, Juba-Arabi & Daju) with some mix of Swedish, French & English, in some songs. All music & Lyrics by : Ebo Krdum.",
     year: "2019",
     image: "/salam.jpg",
     photographer: "Simon Sahara & cover-design by : Khalid Faroq",
