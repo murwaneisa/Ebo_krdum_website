@@ -22,7 +22,7 @@ const AlbumInfoSection = ({
 }) => {
   const [show, setShow] = useState(false);
   const handleToggle = () => setShow(!show);
-  let number = 300;
+  let number = 293;
   console.log(description.length);
   return (
     <Section title={title} bg="brown" pt="6rem" pb="2rem">

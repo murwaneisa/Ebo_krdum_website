@@ -35,14 +35,14 @@ export const SocialMediaLinks = (props) => (
       as="a"
       href="https://www.youtube.com/channel/UCtQCeThNAGW_5MSRdFYX2bQ"
       aria-label="YouTube"
-      color="red"
+      color="#FF0000"
       icon={<FaYoutube fontSize="20px" />}
     />
     <IconButton
       as="a"
       href="https://artists.spotify.com/c/artist/5tp0MlkqeohanVULV0V08d/profile/overview"
       aria-label="Spotify"
-      color="green"
+      color="#1ED760"
       icon={<FaSpotify fontSize="20px" />}
     />
   </ButtonGroup>
