@@ -1,0 +1,10 @@
+.image {
+  border-radius: 50%;
+  width: 20rem;
+  height: 20rem;
+
+  overflow: hidden;
+
+  border: 5px solid white;
+  margin-bottom: 1rem;
+}
