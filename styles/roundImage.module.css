@@ -1,10 +1,43 @@
 .image {
-  border-radius: 50%;
-  width: 20rem;
-  height: 20rem;
+	border-radius: 50%;
+	width: 24rem;
+	height: 24rem;
 
-  overflow: hidden;
+	overflow: hidden;
 
-  border: 5px solid white;
-  margin-bottom: 1rem;
+	border: 5px solid white;
+	margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 1470px) {
+	.image {
+		width: 20rem;
+		height: 18.5rem;
+	}
+}
+
+@media screen and (max-width: 992px) {
+	.image {
+		width: 20rem;
+		height: 19rem;
+	}
+}
+
+@media screen and (max-width: 377px) {
+	.image {
+		width: 18rem;
+		height: 18rem;
+	}
+}
+@media screen and (max-width: 310px) {
+	.image {
+		width: 12rem;
+		height: 12rem;
+	}
+}
+@media screen and (max-width: 223px) {
+	.image {
+		width: 10rem;
+		height: 10rem;
+	}
 }

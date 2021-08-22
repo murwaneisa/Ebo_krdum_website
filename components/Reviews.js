@@ -15,7 +15,15 @@ const Reviews = () => {
 	//   zIndex: 2,
 	// };
 	return (
-		<Box w={["90vw", "80vw", "80vw", "80vw", "50vw"]}>
+		<Box
+			w={[
+				"90vw",
+				"80vw",
+				"80vw",
+				"80vw",
+				"50vw",
+			]} /* fix layout foe the next show and video and reviews  */
+		>
 			<Carousel
 				width="100%"
 				showThumbs={false}
