@@ -1,4 +1,14 @@
-import { Box, Flex, Heading, Link, Stack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Collapse,
+  Flex,
+  Heading,
+  Link,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
+import { useState } from "react";
 import ButtonUi from "../UI/Button";
 import CustomImage from "../UI/CustomImage";
 import Section from "../UI/Section";
@@ -10,6 +20,10 @@ const AlbumInfoSection = ({
   photographer,
   albumSpotify,
 }) => {
+  const [show, setShow] = useState(false);
+  const handleToggle = () => setShow(!show);
+  let number = 300;
+  console.log(description.length);
   return (
     <Section title={title} bg="brown" pt="6rem" pb="2rem">
       {/* Album Image, date, button */}
@@ -56,7 +70,21 @@ const AlbumInfoSection = ({
         {/* Description Box */}
         <Box px="1rem">
           <Heading>Description</Heading>
-          <Text>{description}</Text>
+
+          <Collapse startingHeight={number} in={show}>
+            {description}
+          </Collapse>
+          {/* Check if the description length is more than 477 characters then show collapse button */}
+          {description.length >= 477 ? (
+            <Button
+              variant="link"
+              size="sm"
+              onClick={handleToggle}
+              color="white"
+            >
+              Read {show ? "Less" : "More"}
+            </Button>
+          ) : null}
         </Box>
       </Stack>
     </Section>

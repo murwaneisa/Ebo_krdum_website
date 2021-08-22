@@ -13,7 +13,7 @@ const Biography = () => {
         <Brief />
       </Section>
       {/* beginning  */}
-      <Section title="Beginning" pt="2rem" pb="2rem" bg="yellow">
+      <Section title="The Beginning" pt="2rem" pb="2rem" bg="yellow">
         <Beginning />
       </Section>
       {/* Musical ideology  */}
@@ -21,7 +21,7 @@ const Biography = () => {
         <MusicIdeology />
       </Section>
       {/* Last  */}
-      <Section title="Last words" pt="2rem" pb="2rem" bg="yellow">
+      <Section title="Inspirational Words" pt="2rem" pb="2rem" bg="yellow">
         <Last />
       </Section>
     </Box>

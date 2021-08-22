@@ -14,8 +14,6 @@
 
 ## Components
 
-- add padding top to the nav
-
 ## locale
 
 -
@@ -25,8 +23,6 @@
 - download font for Hero title
 
 ## index page / Next Shows card
-
-- make better design with image.
 
 - make dynamic data for NextShow component
 
@@ -42,11 +38,11 @@
 
 ## Ebo feedback
 
-- make the hero album name clear and add " last album" before the diversity
+- make the hero album name clear and add " Latest album" before the diversity - DONE
 - add the booking agency contact.
-- add "The" to beginning in bio component.
-- inspirational word, instead of the last word in the last section of bio
-- add "coming out soon "instead of empty songs in song items components.
-- center the Spotify button in song modal.
-- fix the text description size in song item.
-- IMPORTANT - " REMOVE DOWNLOAD ICON FROM THE SONGS PLAYER".
+- add "The" to beginning in bio component. - DONE
+- inspirational word, instead of the last word in the last section of bio - DONE
+- add "coming out soon "instead of empty songs in song items components.- DONE
+- center the Spotify button in song modal. - DONE
+- fix the text description size in song item. - DONE
+- IMPORTANT - " REMOVE DOWNLOAD ICON FROM THE SONGS PLAYER". - DONE
