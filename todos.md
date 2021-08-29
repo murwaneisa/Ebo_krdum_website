@@ -27,12 +27,12 @@
 
 ## Header
 
-- Add Next Header for all pages.
+- Add Next Header for all pages. (Done only \_app.js)
 
 ## Ebo feedback
 
 - make the hero album name clear and add " Latest album" before the diversity - DONE
-- add the booking agency contact.
+- add the booking agency contact. DONE
 - add "The" to beginning in bio component. - DONE
 - inspirational word, instead of the last word in the last section of bio - DONE
 - add "coming out soon "instead of empty songs in song items components.- DONE
