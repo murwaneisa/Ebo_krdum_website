@@ -20,6 +20,7 @@ const Card = (props) => {
 					layout="fill"
 					width="100%"
 					objectFit="cover"
+					quality="20"
 				/>
 			</Box>
 			<Flex justify="space-between" align="center" py="1rem">

@@ -1,6 +1,8 @@
 import { Box, Flex, Text } from "@chakra-ui/layout";
 import { VStack } from "@chakra-ui/react";
 import Link from "next/link";
+import Image from "next/image";
+import hero from "../public/images/ebo-transparent.png";
 //import Section from "../UI/Section";
 import Button from "./UI/Button";
 /* Component */
@@ -9,6 +11,7 @@ import CustomImage from "./UI/CustomImage";
  * the array of percentage({["10%", "40%"]}) represent the  breakpoint for the element start from mobile to lager screen
  * check the link for more details:
  *https://chakra-ui.com/docs/features/responsive-styles
+ * add blur from Next js check ou :https://github.com/vercel/next.js/blob/canary/examples/image-component/pages/placeholder.js
  */
 
 const Hero = () => {
@@ -22,13 +25,20 @@ const Hero = () => {
 			align="center"
 		>
 			<Flex direction={["column", "row"]} w={["100%", "96%", "90%", "80%"]}>
-				<CustomImage
-					src="/images/ebo-transparent.png"
-					alt="This is the main hero image of Ebo Krdums website"
-					layout="fill"
-					width="100%"
-					objectFit="contain"
-				/>
+				<Box
+					position="relative"
+					w="100vw"
+					h={["40vh", "45vh", "43vh", "35vh", "80vh"]}
+				>
+					<Image
+						src={hero}
+						alt="This is the main hero image of Ebo Krdums website"
+						layout="fill"
+						placeholder="blur"
+						//width="100%"
+						objectFit="contain"
+					/>
+				</Box>
 				<VStack
 					//direction="column"
 					justify={["flex-start", "flex-end"]}

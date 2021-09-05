@@ -10,6 +10,7 @@ import Link from "next/link";
 import { BiCalendarCheck, BiLocationPlus, BiTimeFive } from "react-icons/bi";
 import classes from "../styles/roundImage.module.css";
 import ButtonUi from "./UI/Button";
+import showImage from "../public/images/ebo-next-show.jpg";
 
 const NextShow = () => {
 	return (
@@ -34,8 +35,10 @@ const NextShow = () => {
 				// border="1px white solid"
 				className={classes.image}
 			>
+				{/* palceholder blur requre the src has imported image */}
 				<Image
-					src="/images/ebo-next-show.jpg"
+					src={showImage}
+					placeholder="blur"
 					alt="Event image"
 					width={400}
 					height={400}
