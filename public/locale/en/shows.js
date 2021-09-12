@@ -36,7 +36,7 @@ export const formerShows = [
   {
     id: "f2",
     sponsor: "Sommarscen Malmö",
-    date: "2021-7-03",
+    date: "2021-07-03",
     location: "Malmö, Sweden",
     link: "https://b-m.facebook.com/stallbergs.gruva/photos/a.682793688464344/4024386317638381/?type=3&source=48",
   },
