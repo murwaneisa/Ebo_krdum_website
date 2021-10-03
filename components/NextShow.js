@@ -60,23 +60,23 @@ const NextShow = () => {
 				align="center"
 			>
 				<Heading as="h3" size="xl" pb="1rem">
-					FASCHING
+					Folkteatern
 				</Heading>
 				{/* End of the section */}
 				{/* date,time place section */}
 				<Stack direction="column" pb="1rem" justify="center">
 					<Flex fontSize={["1rem", "1.2rem"]} align="center">
 						<BiCalendarCheck />
-						<Box pl="0.4rem">2021-09-30</Box>
+						<Box pl="0.4rem">2021-10-09</Box>
 					</Flex>
 
 					<Flex fontSize={["1rem", "1.2rem"]} align="center">
 						<BiTimeFive />
-						<Box pl="0.4rem">20:00</Box>
+						<Box pl="0.4rem">21:00</Box>
 					</Flex>
 					<Flex fontSize={["1rem", "1.2rem"]} align="center">
 						<BiLocationPlus />
-						<Box pl="0.4rem">Kungsgatan 34, Stockholm</Box>
+						<Box pl="0.4rem">Gothenburg, Sweden</Box>
 					</Flex>
 				</Stack>
 				{/* End of the section */}
@@ -84,7 +84,7 @@ const NextShow = () => {
 				<Stack direction={["column", "row"]}>
 					<Box align="center">
 						<ChakraLink
-							href="https://www.fasching.se/ebo-krdum/#2021-09-30T20-00"
+							href="https://stayhappening.com/e/konsert-ebo-krdum-E2ISTRVLB16"
 							isExternal
 						>
 							<ButtonUi>Book tickets</ButtonUi>

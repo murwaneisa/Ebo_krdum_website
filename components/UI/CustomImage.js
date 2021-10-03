@@ -36,7 +36,6 @@ const CustomImage = ({ width, maxWidth, ...rest }) => {
 				blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
 				{...rest}
 				alt="this the custom image "
-				quality="20"
 			/>
 		</div>
 	);
