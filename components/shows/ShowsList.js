@@ -6,19 +6,11 @@ const ShowsList = (props) => {
   return (
     <Box>
       {props.shows.map((show) => {
-        const todaysDate = new Date();
-        {
-          /* console.log("todays date is: ", todaysDate); */
-        }
         const showDate = new Date(show.date);
-        {
-          /* console.log("show date is: ", showDate);
-        console.log(todaysDate > showDate); */
-        }
 
         // check if upcoming show and render accordingly
         // render upcoming
-        if (showDate > todaysDate) {
+        if (!props.isFormerShows) {
           return (
             <ShowsItem
               key={show.id}
@@ -29,14 +21,7 @@ const ShowsList = (props) => {
           );
         } else {
           //render former
-          return (
-            <ShowsItem
-              key={show.id}
-              isUpcoming={false}
-              showInfo={show}
-              date={showDate}
-            />
-          );
+          return <ShowsItem key={show.id} showInfo={show} date={showDate} />;
         }
       })}
     </Box>
