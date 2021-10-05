@@ -9,12 +9,26 @@ function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
       <Head>
-        <title>Ebo</title>
+        <title>Ebo Krdum</title>
         <meta
           name="description"
           content="This is the official website of Ebo Krdum"
         />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        {/* Open Graph */}
+        <meta property="og:url" content="www.ebokrdum.com" key="ogurl" />
+        <meta property="og:image" content="/images/ebo-og.jpg" key="ogimage" />
+        <meta
+          property="og:site_name"
+          content="Ebo Krdum Official Webpage"
+          key="ogsitename"
+        />
+        <meta property="og:title" content="Ebo Krdum" key="ogtitle" />
+        <meta
+          property="og:description"
+          content="This is the official website of Ebo Krdum"
+          key="ogdesc"
+        />
       </Head>
       <Layout>
         <CSSReset />
