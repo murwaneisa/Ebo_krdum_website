@@ -15,10 +15,10 @@ const SongsListSection = ({ songs }) => {
         </VStack>
         {songs.map((song) => (
           <SongItem
-            key={song.name}
-            name={song.name}
-            spotify={song.spotify}
-            trialSong={song.trialSong}
+            key={song._key}
+            name={song.songName}
+            spotify={song.spotifyUrl}
+            trialSong={song.demoFile}
           />
         ))}
       </Box>
