@@ -15,6 +15,14 @@ import SongModal from "./SongModal";
 
 const SongItem = (props) => {
   const { name, spotify, trialSong } = props;
+  const { _ref: ref } = trialSong.asset;
+
+  const assetRefParts = ref.split("-"); // ["file", "ff7...", "m4a"]
+  const id = assetRefParts[1]; // "ff7..."
+
+  const format = assetRefParts[2]; // "mp3"
+  const assetUrl = `https://cdn.sanity.io/files/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/${process.env.NEXT_PUBLIC_SANITY_DATASET}/${id}.${format}`;
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box p="1rem">
@@ -44,7 +52,7 @@ const SongItem = (props) => {
             onOpen={onOpen}
             name={name}
             spotify={spotify}
-            trialSong={trialSong}
+            trialSong={assetUrl}
           />
           <Text>{name}</Text>
         </HStack>

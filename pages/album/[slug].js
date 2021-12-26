@@ -7,6 +7,7 @@ import sanityClient from "../../lib/sanityClient";
 const AlbumItems = (props) => {
   // get album
   const { album } = props;
+  console.log(album.albumSong);
 
   if (!album) {
     return (
