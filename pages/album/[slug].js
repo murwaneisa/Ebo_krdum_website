@@ -35,7 +35,8 @@ const AlbumItems = (props) => {
   const format = assetRefParts[3]; // "jpg"
   const imageUrl = `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/${process.env.NEXT_PUBLIC_SANITY_DATASET}/${id}-${size}.${format}`;
 
-  const albumYear = albumDate;
+  // Get year only from date. albumDate is string 2020-10-23
+  const albumYear = albumDate.split("-")[0];
 
   return (
     <Box>
