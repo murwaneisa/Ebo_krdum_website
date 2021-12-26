@@ -81,8 +81,6 @@ export async function getStaticProps(context) {
     { slug }
   );
 
-  console.log("album in getStaticProps: ", album);
-
   return {
     props: {
       album,
