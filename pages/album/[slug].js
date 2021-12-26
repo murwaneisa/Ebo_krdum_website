@@ -7,7 +7,6 @@ import sanityClient from "../../lib/sanityClient";
 const AlbumItems = (props) => {
   // get album
   const { album } = props;
-  console.log(album.albumSong);
 
   if (!album) {
     return (
@@ -27,7 +26,17 @@ const AlbumItems = (props) => {
     albumSpotifyLink,
     albumSong,
   } = album;
+
+  // Get image url from Sanity
+  const { _ref: ref } = albumImage.itemImage.asset;
+  const assetRefParts = ref.split("-"); // ["file", "ff7...", "m4a"]
+  const id = assetRefParts[1]; // "ff7..."
+  const size = assetRefParts[2]; // 1400 x 1400
+  const format = assetRefParts[3]; // "jpg"
+  const imageUrl = `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/${process.env.NEXT_PUBLIC_SANITY_DATASET}/${id}-${size}.${format}`;
+
   const albumYear = albumDate;
+
   return (
     <Box>
       {/* album info section */}
@@ -36,7 +45,7 @@ const AlbumItems = (props) => {
         title={albumTitle}
         description={albumDescription}
         year={albumYear}
-        image="/salam.jpg"
+        image={imageUrl}
         photographer={albumImage.photoTakenBy}
         albumSpotify={albumSpotifyLink}
       />
