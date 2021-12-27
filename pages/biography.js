@@ -1,31 +1,30 @@
 import { Box } from "@chakra-ui/react";
 import Beginning from "../components/bio/Beginning";
-import Brief from "../components/bio/Brief";
+import RenderedText from "../components/bio/RenderdText";
 import Last from "../components/bio/Last";
 import MusicIdeology from "../components/bio/MusicIdeology";
 import Section from "../components/UI/Section";
+import { blockContentConverter } from "../lib/blockContentConverter";
 import sanityClient from "../lib/sanityClient";
+import { useState } from "react";
+import { Fragment } from "react/cjs/react.production.min";
 
-const Biography = ({ bio }) => {
-	console.log(bio[0].bioSectionTitle);
+const Biography = ({ bios }) => {
 	return (
 		<Box>
-			{/* Brief  */}
-			<Section title="Biography" pt="6rem" pb="2rem" bg="brown">
-				<Brief />
-			</Section>
-			{/* beginning  */}
-			<Section title="The Beginning" pt="2rem" pb="2rem" bg="yellow">
-				<Beginning />
-			</Section>
-			{/* Musical ideology  */}
-			<Section title="Musical Ideology" pt="2rem" pb="2rem" bg="brown">
-				<MusicIdeology />
-			</Section>
-			{/* Last  */}
-			<Section title="Inspirational Words" pt="2rem" pb="2rem" bg="yellow">
-				<Last />
-			</Section>
+			{bios.map((bio, i) => {
+				return (
+					<Section
+						key={bio._id}
+						title={bio.bioSectionTitle}
+						pt={i == 0 ? "6rem" : "2rem"}
+						pb="2rem"
+						bg={i % 2 == 0 ? "brown" : "yellow"}
+					>
+						<RenderedText text={blockContentConverter(bio.bioSectionText)} />
+					</Section>
+				);
+			})}
 		</Box>
 	);
 };
@@ -38,7 +37,21 @@ export async function getStaticProps() {
   `);
 	return {
 		props: {
-			bio: res,
+			bios: res,
 		},
 	};
 }
+
+/* 	
+<Section title="The Beginning" pt="2rem" pb="2rem" bg="yellow">
+<Beginning />
+</Section>
+
+<Section title="Musical Ideology" pt="2rem" pb="2rem" bg="brown">
+<MusicIdeology />
+</Section>
+
+<Section title="Inspirational Words" pt="2rem" pb="2rem" bg="yellow">
+<Last />
+</Section>
+ */
