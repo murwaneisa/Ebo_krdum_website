@@ -2,6 +2,7 @@ import { Box } from "@chakra-ui/react";
 import ShowsList from "../components/shows/ShowsList";
 import Section from "../components/UI/Section";
 import { shows } from "../public/locale/en/shows";
+import sanityClient from "../lib/sanityClient";
 
 const Shows = () => {
 	const todaysDate = new Date();
@@ -35,3 +36,15 @@ const Shows = () => {
 };
 
 export default Shows;
+
+export async function getStaticProps() {
+	const res = await sanityClient.fetch(`
+*[_type == "show"]
+`);
+
+	return {
+		props: {
+			shows: res,
+		},
+	};
+}
