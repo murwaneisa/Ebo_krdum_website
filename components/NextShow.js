@@ -13,18 +13,26 @@ import showImage from "../public/images/ebo-next-show.jpg";
 import { shows } from "../public/locale/en/shows";
 import classes from "../styles/roundImage.module.css";
 import ButtonUi from "./UI/Button";
-import { dayFormat, getFullYear, timeFormat } from "../lib/timeFormate";
+import { sortByDate, getFullYear, timeFormat } from "../lib/timeFormate";
 
 const NextShow = ({ shows }) => {
 	const todaysDate = new Date();
 	if (!shows) {
+		//retrun this if there is no show or server error
 		return <div>Oppps! internal server Error we will fix it soon </div>;
 	}
-	// Prepare upcomingshows from data and reverse array for latest
-	const nextShow = shows.find((show) => new Date(show.showDate) > todaysDate);
-	console.log("nextshow", nextShow);
-	const formattedTime = timeFormat(nextShow.showDate);
-	const formattedDate = getFullYear(nextShow.showDate);
+
+	const nextShow = shows.filter((show) => new Date(show.showDate) > todaysDate);
+	const sortByDate = (nextShow) => {
+		//sorting the upcoming show to render the nearest date first
+		const sorter = (a, b) => {
+			return new Date(a.showDate).getTime() - new Date(b.showDate).getTime();
+		};
+		nextShow.sort(sorter);
+	};
+	sortByDate(nextShow);
+	const formattedTime = timeFormat(nextShow[0].showDate);
+	const formattedDate = getFullYear(nextShow[0].showDate);
 
 	return (
 		<Flex
@@ -74,7 +82,7 @@ const NextShow = ({ shows }) => {
 					align="center"
 				>
 					<Heading as="h3" size="xl" pb="1rem">
-						{nextShow.showTitle}
+						{nextShow[0].showTitle}
 					</Heading>
 					{/* End of the section */}
 					{/* date,time place section */}
@@ -90,7 +98,7 @@ const NextShow = ({ shows }) => {
 						</Flex>
 						<Flex fontSize={["1rem", "1.2rem"]} align="center">
 							<BiLocationPlus />
-							<Box pl="0.4rem">{`${nextShow.showCity}, ${nextShow.showCountry}`}</Box>
+							<Box pl="0.4rem">{`${nextShow[0].showCity}, ${nextShow[0].showCountry}`}</Box>
 						</Flex>
 					</Stack>
 

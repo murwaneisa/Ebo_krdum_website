@@ -75,7 +75,6 @@ export async function getStaticProps() {
 	const res = await sanityClient.fetch(`
 *[_type == "show"]
 `);
-	console.log("res", res);
 
 	return {
 		props: {
