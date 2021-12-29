@@ -4,17 +4,17 @@ import Section from "../components/UI/Section";
 import { shows } from "../public/locale/en/shows";
 import sanityClient from "../lib/sanityClient";
 
-const Shows = () => {
+const Shows = ({ shows }) => {
 	const todaysDate = new Date();
 
 	// Prepare upcomingShows from data and reverse array for latest first
 	const upcomingShows = shows.filter(
-		(show) => new Date(show.date) > todaysDate
+		(show) => new Date(show.showDate) > todaysDate
 	);
 
 	// Prepare former shows from data and reverse array
 	const formerShows = shows
-		.filter((show) => new Date(show.date) < todaysDate)
+		.filter((show) => new Date(show.showDate) < todaysDate)
 		.reverse();
 
 	return (
