@@ -5,6 +5,7 @@ export const shows = [
 		date: "2029-04-13",
 		location: "Birmingham, United Kingdom",
 		link: "https://www.facebook.com/events/the-edge/ebo-krdum-hassan-salih-nour/1107746976096800/",
+		time: "20:00",
 	},
 	{
 		id: "s2",

@@ -9,12 +9,12 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import ButtonUi from "../UI/Button";
-import { TimeFormat, dayFormat } from "../../lib/timeFormate";
+import { timeFormat, dayFormat } from "../../lib/timeFormate";
 
 const ShowsItem = (props) => {
 	const [isLargerThan800] = useMediaQuery("(min-width:800px)");
 	const { showInfo, date, isUpcoming } = props;
-	const formattedTime = TimeFormat(showInfo.showDate);
+	const formattedTime = timeFormat(showInfo.showDate);
 	var dayNames = [
 		"Sunday",
 		"Monday",

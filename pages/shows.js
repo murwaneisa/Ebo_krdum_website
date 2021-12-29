@@ -12,6 +12,14 @@ const Shows = ({ shows }) => {
 		(show) => new Date(show.showDate) > todaysDate
 	);
 
+	const sortByDate = (upcomingShows) => {
+		//sorting the upcoming show to render the nearest date first
+		const sorter = (a, b) => {
+			return new Date(a.showDate).getTime() - new Date(b.showDate).getTime();
+		};
+		upcomingShows.sort(sorter);
+	};
+	sortByDate(upcomingShows);
 	// Prepare former shows from data and reverse array
 	const formerShows = shows
 		.filter((show) => new Date(show.showDate) < todaysDate)

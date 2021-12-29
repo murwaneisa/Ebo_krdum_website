@@ -13,6 +13,7 @@ import showImage from "../public/images/ebo-next-show.jpg";
 import { shows } from "../public/locale/en/shows";
 import classes from "../styles/roundImage.module.css";
 import ButtonUi from "./UI/Button";
+import { dayFormat, getFullYear, timeFormat } from "../lib/timeFormate";
 
 const NextShow = ({ shows }) => {
 	const todaysDate = new Date();
@@ -20,7 +21,10 @@ const NextShow = ({ shows }) => {
 		return <div>Oppps! internal server Error we will fix it soon </div>;
 	}
 	// Prepare upcomingshows from data and reverse array for latest
-	const nextShow = shows.find((show) => new Date(show.date) > todaysDate);
+	const nextShow = shows.find((show) => new Date(show.showDate) > todaysDate);
+	console.log("nextshow", nextShow);
+	const formattedTime = timeFormat(nextShow.showDate);
+	const formattedDate = getFullYear(nextShow.showDate);
 
 	return (
 		<Flex
@@ -70,23 +74,23 @@ const NextShow = ({ shows }) => {
 					align="center"
 				>
 					<Heading as="h3" size="xl" pb="1rem">
-						{nextShow.sponsor}
+						{nextShow.showTitle}
 					</Heading>
 					{/* End of the section */}
 					{/* date,time place section */}
 					<Stack direction="column" pb="1rem" justify="center">
 						<Flex fontSize={["1rem", "1.2rem"]} align="center">
 							<BiCalendarCheck />
-							<Box pl="0.4rem">{nextShow.date}</Box>
+							<Box pl="0.4rem">{formattedDate}</Box>
 						</Flex>
 
 						<Flex fontSize={["1rem", "1.2rem"]} align="center">
 							<BiTimeFive />
-							<Box pl="0.4rem">{nextShow.time}</Box>
+							<Box pl="0.4rem">{formattedTime}</Box>
 						</Flex>
 						<Flex fontSize={["1rem", "1.2rem"]} align="center">
 							<BiLocationPlus />
-							<Box pl="0.4rem">{nextShow.location}</Box>
+							<Box pl="0.4rem">{`${nextShow.showCity}, ${nextShow.showCountry}`}</Box>
 						</Flex>
 					</Stack>
 
@@ -94,7 +98,7 @@ const NextShow = ({ shows }) => {
 					{/* button and link section */}
 					<Stack direction={["column", "row"]}>
 						<Box align="center">
-							<ChakraLink href={nextShow.link} isExternal>
+							<ChakraLink href={nextShow.showBookingLink} isExternal>
 								<ButtonUi>Book tickets</ButtonUi>
 							</ChakraLink>
 						</Box>
