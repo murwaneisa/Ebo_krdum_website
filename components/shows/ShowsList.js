@@ -3,7 +3,6 @@ import React from "react";
 import ShowsItem from "./ShowsItem";
 
 const ShowsList = (props) => {
-	console.log(props);
 	return (
 		<Box>
 			{props.shows.map((show) => {
@@ -18,7 +17,6 @@ const ShowsList = (props) => {
 							isUpcoming={true}
 							showInfo={show}
 							date={showDate}
-							time="19:00"
 						/>
 					);
 				} else {

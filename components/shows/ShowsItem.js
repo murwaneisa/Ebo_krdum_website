@@ -64,7 +64,7 @@ const ShowsItem = (props) => {
 						{showInfo.showTitle}
 					</Text>
 					<Text fontSize={["xs", "sm", "md", "lg"]} noOfLines={2} isTruncated>
-						{`${showInfo.showCity}, ${showInfo.showCountry}`}
+						{`${showInfo.showCity},${showInfo.showCountry}`}
 					</Text>
 				</Box>
 				<Link href={showInfo.showBookingLink} w="20%" align="end" isExternal>

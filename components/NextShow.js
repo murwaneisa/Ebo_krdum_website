@@ -6,6 +6,7 @@ import {
 	Stack,
 	Text,
 } from "@chakra-ui/react";
+import sanityClient from "../lib/sanityClient";
 import Image from "next/image";
 import Link from "next/link";
 import { BiCalendarCheck, BiLocationPlus, BiTimeFive } from "react-icons/bi";
@@ -14,10 +15,12 @@ import { shows } from "../public/locale/en/shows";
 import classes from "../styles/roundImage.module.css";
 import ButtonUi from "./UI/Button";
 
-const NextShow = () => {
+const NextShow = ({ shows }) => {
 	const todaysDate = new Date();
-
+	console.log(" shows", shows);
 	// Prepare upcomingshows from data and reverse array for latest first
+	try {
+	} catch (error) {}
 	const nextShow = shows.find((show) => new Date(show.date) > todaysDate);
 
 	return (
@@ -123,3 +126,16 @@ const NextShow = () => {
 };
 
 export default NextShow;
+
+export async function getStaticProps() {
+	const res = await sanityClient.fetch(`
+*[_type == "show"]
+`);
+	console.log("res", res);
+
+	return {
+		props: {
+			shows: res,
+		},
+	};
+}
