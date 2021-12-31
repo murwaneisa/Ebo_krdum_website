@@ -76,7 +76,7 @@ export async function getStaticProps(context) {
 
 	const album = await sanityClient.fetch(
 		`
-    *[_type == "albums" && albumSlug.current == $slug][0]
+    *[_type == "album" && albumSlug.current == $slug][0]
   `,
 		{ slug }
 	);

@@ -80,8 +80,7 @@ export async function getStaticProps() {
 	const review = await sanityClient.fetch(`
 *[_type == "review"]
 `);
-	//console.log("res", res);
-	console.log("review", review);
+
 	return {
 		props: {
 			shows: res,
