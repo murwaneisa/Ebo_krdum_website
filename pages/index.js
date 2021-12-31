@@ -11,6 +11,7 @@ import AlbumCard from "../components/UI/AlbumCard";
 import Section from "../components/UI/Section";
 import Video from "../components/Video";
 import data from "../public/locale/en/albums.js";
+import reviews from "../public/locale/en/reviews";
 
 export default function Home(props) {
 	return (
@@ -64,7 +65,7 @@ export default function Home(props) {
 			{/* Review */}
 			<Section bg="yellow" pt="2rem" pb="5rem" title="Reviews">
 				<Box align="center">
-					<Reviews />
+					<Reviews reviews={props.review} />
 				</Box>
 			</Section>
 		</div>
@@ -76,9 +77,14 @@ export async function getStaticProps() {
 *[_type == "show"]
 `);
 
+	const review = await sanityClient.fetch(`
+*[_type == "review"]
+`);
+
 	return {
 		props: {
 			shows: res,
+			review: review,
 		},
 	};
 }
