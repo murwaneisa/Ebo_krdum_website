@@ -65,7 +65,7 @@ export default function Home(props) {
 			{/* Review */}
 			<Section bg="yellow" pt="2rem" pb="5rem" title="Reviews">
 				<Box align="center">
-					<Reviews />
+					<Reviews reviews={props.review} />
 				</Box>
 			</Section>
 		</div>
@@ -77,15 +77,15 @@ export async function getStaticProps() {
 *[_type == "show"]
 `);
 
-	const reviews = await sanityClient.fetch(`
+	const review = await sanityClient.fetch(`
 *[_type == "review"]
 `);
-	console.log("res", res);
-	console.log("review", reviews);
+	//console.log("res", res);
+	console.log("review", review);
 	return {
 		props: {
 			shows: res,
-			reviews: reviews,
+			review: review,
 		},
 	};
 }
