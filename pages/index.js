@@ -11,6 +11,7 @@ import AlbumCard from "../components/UI/AlbumCard";
 import Section from "../components/UI/Section";
 import Video from "../components/Video";
 import data from "../public/locale/en/albums.js";
+import reviews from "../public/locale/en/reviews";
 
 export default function Home(props) {
 	return (
@@ -76,9 +77,15 @@ export async function getStaticProps() {
 *[_type == "show"]
 `);
 
+	const reviews = await sanityClient.fetch(`
+*[_type == "review"]
+`);
+	console.log("res", res);
+	console.log("review", reviews);
 	return {
 		props: {
 			shows: res,
+			reviews: reviews,
 		},
 	};
 }
