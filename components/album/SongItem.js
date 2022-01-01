@@ -68,6 +68,7 @@ const SongItem = (props) => {
               <Box width="60%">
                 <CustomImage
                   src="/images/spotify-logos/Spotify_Logo_RGB_White.png"
+                  alt="Spotify"
                   layout="fill"
                 />
               </Box>
