@@ -9,9 +9,16 @@ import Reviews from "../components/Reviews";
 import AlbumCard from "../components/UI/AlbumCard";
 import Section from "../components/UI/Section";
 import Video from "../components/Video";
-import data from "../public/locale/en/albums.js";
+import sanityClient from "../lib/sanityClient";
+// import { sortByDate } from "../lib/timeFormate";
 
 export default function Home(props) {
+  // Note: Latest album for Hero
+  const latestAlbum = props.albums.find(
+    (album) => album.albumTitle == "Diversity"
+  );
+  // console.log("props show: ", props.shows);
+
   return (
     <div>
       <Head>
@@ -23,7 +30,7 @@ export default function Home(props) {
         />
       </Head>
       {/* Hero image */}
-      <Hero />
+      <Hero slug={latestAlbum.albumSlug.current} />
       {/* Other albums */}
       <Section
         bg="brown"
@@ -37,13 +44,13 @@ export default function Home(props) {
             spacing={["5%", "1%", "1%", "3%"]}
             align="center"
           >
-            {data.map((album) => (
+            {props.albums.map((album) => (
               <AlbumCard
-                key={album.id}
-                id={album.id}
-                year={album.year}
-                image={album.image}
-                title={album.title}
+                key={album._id}
+                slug={album.albumSlug.current}
+                year={album.albumDate.split("-")[0]}
+                image={album.albumImage}
+                title={album.albumTitle}
               />
             ))}
           </Stack>
@@ -57,15 +64,38 @@ export default function Home(props) {
 
       {/*  Next Show */}
       <Section bg="brown" title="Next Show" py="2rem">
-        <NextShow />
+        <NextShow shows={props.shows} />
       </Section>
 
       {/* Review */}
       <Section bg="yellow" pt="2rem" pb="5rem" title="Reviews">
         <Box align="center">
-          <Reviews />
+          <Reviews reviews={props.review} />
         </Box>
       </Section>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const shows = await sanityClient.fetch(`
+*[_type == "show"]
+`);
+  console.log("getStatProps shows: ", shows);
+
+  const review = await sanityClient.fetch(`
+*[_type == "review"]
+`);
+
+  const albums = await sanityClient.fetch(`
+*[_type == "album"]
+`);
+
+  return {
+    props: {
+      shows,
+      review,
+      albums,
+    },
+  };
 }

@@ -38,7 +38,7 @@ const AlbumInfoSection = ({
           {/* Image Box */}
           <Box w={["100vw", "80vw", "60vw", "32vw", "25vw"]}>
             <CustomImage
-              src={`/images${image}`}
+              src={image}
               alt={`This is Ebo album ${title} image. Photo by: ${photographer}`}
               layout="fill"
             />

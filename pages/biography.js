@@ -1,31 +1,55 @@
 import { Box } from "@chakra-ui/react";
-import Beginning from "../components/bio/Beginning";
-import Brief from "../components/bio/Brief";
-import Last from "../components/bio/Last";
-import MusicIdeology from "../components/bio/MusicIdeology";
+import PortableText from "react-portable-text";
+import CustomH4 from "../components/UI/CustomH4";
 import Section from "../components/UI/Section";
+import TextSectionStack from "../components/UI/TextSectionStack";
+import sanityClient from "../lib/sanityClient";
 
-const Biography = () => {
+const Biography = ({ bios }) => {
+  const numberOfBioSections = bios.length;
+
   return (
     <Box>
-      {/* Brief  */}
-      <Section title="Biography" pt="6rem" pb="2rem" bg="brown">
-        <Brief />
-      </Section>
-      {/* beginning  */}
-      <Section title="The Beginning" pt="2rem" pb="2rem" bg="yellow">
-        <Beginning />
-      </Section>
-      {/* Musical ideology  */}
-      <Section title="Musical Ideology" pt="2rem" pb="2rem" bg="brown">
-        <MusicIdeology />
-      </Section>
-      {/* Last  */}
-      <Section title="Inspirational Words" pt="2rem" pb="2rem" bg="yellow">
-        <Last />
-      </Section>
+      {bios.map((bio, index) => {
+        return (
+          <Section
+            key={bio._id}
+            title={bio.bioSectionTitle}
+            pt={index == 0 ? "8rem" : "2rem"}
+            pb="2rem"
+            bg={index % 2 == 0 ? "brown" : "yellow"}
+            borderBottom={
+              index == numberOfBioSections - 1 && numberOfBioSections % 2 == 1
+                ? "solid 0.5px white"
+                : ""
+            }
+          >
+            <TextSectionStack>
+              <PortableText // https://www.npmjs.com/package/react-portable-text
+                content={bio.bioSectionText}
+                serializers={{
+                  h3: function h3fn(props) {
+                    return <CustomH4 {...props} />;
+                  },
+                }}
+              />
+            </TextSectionStack>
+          </Section>
+        );
+      })}
     </Box>
   );
 };
 
 export default Biography;
+
+export async function getStaticProps() {
+  const res = await sanityClient.fetch(`
+  *[_type == "biography"] | order(order asc)
+  `);
+  return {
+    props: {
+      bios: res,
+    },
+  };
+}

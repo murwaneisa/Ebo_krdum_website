@@ -8,11 +8,13 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import React from "react";
+import { dayFormat, timeFormat } from "../../lib/timeFormate";
 import ButtonUi from "../UI/Button";
 
 const ShowsItem = (props) => {
   const [isLargerThan800] = useMediaQuery("(min-width:800px)");
   const { showInfo, date, isUpcoming } = props;
+  const formattedTime = timeFormat(showInfo.showDate);
   var dayNames = [
     "Sunday",
     "Monday",
@@ -38,7 +40,7 @@ const ShowsItem = (props) => {
   ];
   const month = monthNames[date.getMonth()];
   const year = date.getFullYear();
-  const dayNr = date.getDate();
+  const dayNr = dayFormat(date);
   const dayName = dayNames[date.getDay()];
 
   return (
@@ -56,16 +58,16 @@ const ShowsItem = (props) => {
         </VStack>
         <Box w="60%" align="center">
           <Text fontSize={["sm", "md", "lg", "xl"]}>
-            {isUpcoming ? dayName + " at " + showInfo.time : dayName}
+            {isUpcoming ? dayName + " at " + formattedTime : dayName}
           </Text>
           <Text fontSize={["sm", "md", "lg", "xl"]} fontWeight="bold">
-            {showInfo.sponsor}
+            {showInfo.showTitle}
           </Text>
           <Text fontSize={["xs", "sm", "md", "lg"]} noOfLines={2} isTruncated>
-            {showInfo.location}
+            {`${showInfo.showCity}, ${showInfo.showCountry}`}
           </Text>
         </Box>
-        <Link href={showInfo.link} w="20%" align="end" isExternal>
+        <Link href={showInfo.showBookingLink} w="20%" align="end" isExternal>
           {!isLargerThan800 ? (
             <ButtonUi>&#8594;</ButtonUi>
           ) : isUpcoming ? (

@@ -1,8 +1,10 @@
 import { Box, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import { ImQuotesLeft, ImQuotesRight } from "react-icons/im";
+import { imageCDN } from "../../lib/imageCdnFn";
 
-const ReviewCard = ({ logo, text, name }) => {
+const ReviewCard = ({ logo, text, name, language }) => {
+	const CDN_logo = imageCDN(logo);
 	return (
 		<Box
 			bg="brown"
@@ -16,13 +18,9 @@ const ReviewCard = ({ logo, text, name }) => {
 				md: "8",
 			}}
 		>
-			<Box
-				w="100%"
-
-				//border="solid 2px blue"
-			>
+			<Box w="100%">
 				<Image
-					src={"/images/review/" + logo}
+					src={CDN_logo}
 					alt="Ebo reviews and testimonial"
 					width={100}
 					height={100}
@@ -31,10 +29,7 @@ const ReviewCard = ({ logo, text, name }) => {
 			</Box>
 
 			{/* description box */}
-			<Box
-				//border="solid 2px black"
-				h="auto"
-			>
+			<Box h="auto">
 				<Text
 					fontSize={{ base: "sm", sm: "md", md: "lg", lg: "xl" }}
 					fontWeight="medium"
@@ -46,7 +41,7 @@ const ReviewCard = ({ logo, text, name }) => {
 			</Box>
 			<Box pt={["1rem"]}>
 				<Text as="cite" fontStyle="normal" fontWeight="bold">
-					{name}
+					Review by {name}, written in {language}
 				</Text>
 			</Box>
 		</Box>

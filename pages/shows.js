@@ -1,19 +1,27 @@
 import { Box } from "@chakra-ui/react";
 import ShowsList from "../components/shows/ShowsList";
 import Section from "../components/UI/Section";
-import { shows } from "../public/locale/en/shows";
+import sanityClient from "../lib/sanityClient";
 
-const Shows = () => {
+const Shows = ({ shows }) => {
   const todaysDate = new Date();
 
-  // Prepare upcomingshows from data and reverse array for latest first
-  const upcomingShows = shows.filter(
-    (show) => new Date(show.date) > todaysDate
-  );
+  const sortByDate = (shows) => {
+    //sorting the upcoming show to render the nearest date first
+    const sorter = (a, b) => {
+      return new Date(a.showDate).getTime() - new Date(b.showDate).getTime();
+    };
+    shows.sort(sorter);
+  };
+  sortByDate(shows);
 
+  // Prepare upcomingShows from data and reverse array for latest first
+  const upcomingShows = shows.filter(
+    (show) => new Date(show.showDate) > todaysDate
+  );
   // Prepare former shows from data and reverse array
   const formerShows = shows
-    .filter((show) => new Date(show.date) < todaysDate)
+    .filter((show) => new Date(show.showDate) < todaysDate)
     .reverse();
 
   return (
@@ -35,3 +43,15 @@ const Shows = () => {
 };
 
 export default Shows;
+
+export async function getStaticProps() {
+  const res = await sanityClient.fetch(`
+*[_type == "show"]
+`);
+
+  return {
+    props: {
+      shows: res,
+    },
+  };
+}

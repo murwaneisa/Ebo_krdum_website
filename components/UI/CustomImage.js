@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Styles from "../../styles/image.module.css";
 
-const CustomImage = ({ src, width, maxWidth, ...rest }) => {
+const CustomImage = ({ src, alt, width, maxWidth, ...rest }) => {
   let widths = {};
   width ? (widths["width"] = width) : "100%";
   maxWidth ? (widths["maxWidth"] = maxWidth) : "100%";
@@ -10,11 +10,11 @@ const CustomImage = ({ src, width, maxWidth, ...rest }) => {
     <div className={Styles.imageContainer} style={widths}>
       <Image
         src={src}
+        alt={alt}
         className={Styles.image}
         placeholder="blur"
         blurDataURL={src}
         {...rest}
-        alt="this the custom image "
       />
     </div>
   );
