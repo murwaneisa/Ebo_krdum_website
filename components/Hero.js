@@ -11,7 +11,7 @@ import Button from "./UI/Button";
  * add blur from Next js check ou :https://github.com/vercel/next.js/blob/canary/examples/image-component/pages/placeholder.js
  */
 
-const Hero = () => {
+const Hero = ({ slug }) => {
   return (
     <Box
       w="100vw"
@@ -61,7 +61,7 @@ const Hero = () => {
             </Text>
           </Box>
           <Box>
-            <Link href="/album/diversity">
+            <Link href={`/album/${slug}`}>
               <a>
                 <Button>View Album</Button>
               </a>

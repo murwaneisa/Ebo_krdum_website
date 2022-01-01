@@ -10,8 +10,14 @@ import AlbumCard from "../components/UI/AlbumCard";
 import Section from "../components/UI/Section";
 import Video from "../components/Video";
 import sanityClient from "../lib/sanityClient";
+// import { sortByDate } from "../lib/timeFormate";
 
 export default function Home(props) {
+  // Note: Latest album for Hero
+  const latestAlbum = props.albums.find(
+    (album) => album.albumTitle == "Diversity"
+  );
+
   return (
     <div>
       <Head>
@@ -23,7 +29,7 @@ export default function Home(props) {
         />
       </Head>
       {/* Hero image */}
-      <Hero />
+      <Hero slug={latestAlbum.albumSlug.current} />
       {/* Other albums */}
       <Section
         bg="brown"
