@@ -1,4 +1,4 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import PortableText from "react-portable-text";
 import CustomH4 from "../components/UI/CustomH4";
 import Section from "../components/UI/Section";
@@ -29,7 +29,6 @@ const Biography = ({ bios }) => {
                 content={bio.bioSectionText}
                 serializers={{
                   h3: (props) => <CustomH4 {...props} />,
-                  normal: (props) => <Text {...props} />,
                 }}
               />
             </TextSectionStack>
