@@ -52,17 +52,3 @@ export async function getStaticProps() {
     },
   };
 }
-
-/* 	
-<Section title="The Beginning" pt="2rem" pb="2rem" bg="yellow">
-<Beginning />
-</Section>
-
-<Section title="Musical Ideology" pt="2rem" pb="2rem" bg="brown">
-<MusicIdeology />
-</Section>
-
-<Section title="Inspirational Words" pt="2rem" pb="2rem" bg="yellow">
-<Last />
-</Section>
- */
