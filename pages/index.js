@@ -96,5 +96,6 @@ export async function getStaticProps() {
       review,
       albums,
     },
+    revalidate: 60,
   };
 }

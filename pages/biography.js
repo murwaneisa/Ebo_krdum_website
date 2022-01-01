@@ -51,5 +51,6 @@ export async function getStaticProps() {
     props: {
       bios: res,
     },
+    revalidate: 24 * 60 * 60,
   };
 }
