@@ -6,19 +6,19 @@ import sanityClient from "../lib/sanityClient";
 const Shows = ({ shows }) => {
   const todaysDate = new Date();
 
-  // Prepare upcomingShows from data and reverse array for latest first
-  const upcomingShows = shows.filter(
-    (show) => new Date(show.showDate) > todaysDate
-  );
-
-  const sortByDate = (upcomingShows) => {
+  const sortByDate = (shows) => {
     //sorting the upcoming show to render the nearest date first
     const sorter = (a, b) => {
       return new Date(a.showDate).getTime() - new Date(b.showDate).getTime();
     };
-    upcomingShows.sort(sorter);
+    shows.sort(sorter);
   };
-  sortByDate(upcomingShows);
+  sortByDate(shows);
+
+  // Prepare upcomingShows from data and reverse array for latest first
+  const upcomingShows = shows.filter(
+    (show) => new Date(show.showDate) > todaysDate
+  );
   // Prepare former shows from data and reverse array
   const formerShows = shows
     .filter((show) => new Date(show.showDate) < todaysDate)

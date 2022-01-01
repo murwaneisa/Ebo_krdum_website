@@ -17,6 +17,7 @@ export default function Home(props) {
   const latestAlbum = props.albums.find(
     (album) => album.albumTitle == "Diversity"
   );
+  // console.log("props show: ", props.shows);
 
   return (
     <div>
@@ -80,6 +81,7 @@ export async function getStaticProps() {
   const shows = await sanityClient.fetch(`
 *[_type == "show"]
 `);
+  console.log("getStatProps shows: ", shows);
 
   const review = await sanityClient.fetch(`
 *[_type == "review"]
