@@ -6,17 +6,23 @@ import TextSectionStack from "../components/UI/TextSectionStack";
 import sanityClient from "../lib/sanityClient";
 
 const Biography = ({ bios }) => {
+  const numberOfBioSections = bios.length;
+
   return (
     <Box>
-      {bios.map((bio, i) => {
-        console.log(bio.bioSectionText);
+      {bios.map((bio, index) => {
         return (
           <Section
             key={bio._id}
             title={bio.bioSectionTitle}
-            pt={i == 0 ? "6rem" : "2rem"}
+            pt={index == 0 ? "8rem" : "2rem"}
             pb="2rem"
-            bg={i % 2 == 0 ? "brown" : "yellow"}
+            bg={index % 2 == 0 ? "brown" : "yellow"}
+            borderBottom={
+              index == numberOfBioSections - 1 && numberOfBioSections % 2 == 1
+                ? "solid 0.5px white"
+                : ""
+            }
           >
             <TextSectionStack>
               <PortableText // https://www.npmjs.com/package/react-portable-text
