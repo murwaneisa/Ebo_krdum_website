@@ -1,13 +1,15 @@
-import { Box } from "@chakra-ui/react";
-import RenderedText from "../components/bio/RenderdText";
+import { Box, Text } from "@chakra-ui/react";
+import PortableText from "react-portable-text";
+import CustomH4 from "../components/UI/CustomH4";
 import Section from "../components/UI/Section";
-import { blockContentConverter } from "../lib/blockContentConverter";
+import TextSectionStack from "../components/UI/TextSectionStack";
 import sanityClient from "../lib/sanityClient";
 
 const Biography = ({ bios }) => {
   return (
     <Box>
       {bios.map((bio, i) => {
+        console.log(bio.bioSectionText);
         return (
           <Section
             key={bio._id}
@@ -16,7 +18,15 @@ const Biography = ({ bios }) => {
             pb="2rem"
             bg={i % 2 == 0 ? "brown" : "yellow"}
           >
-            <RenderedText text={blockContentConverter(bio.bioSectionText)} />
+            <TextSectionStack>
+              <PortableText // https://www.npmjs.com/package/react-portable-text
+                content={bio.bioSectionText}
+                serializers={{
+                  h3: (props) => <CustomH4 {...props} />,
+                  normal: (props) => <Text {...props} />,
+                }}
+              />
+            </TextSectionStack>
           </Section>
         );
       })}
