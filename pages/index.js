@@ -81,7 +81,6 @@ export async function getStaticProps() {
   const shows = await sanityClient.fetch(`
 *[_type == "show"]
 `);
-  console.log("getStatProps shows: ", shows);
 
   const review = await sanityClient.fetch(`
 *[_type == "review"]
