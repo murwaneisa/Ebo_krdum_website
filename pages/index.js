@@ -40,7 +40,7 @@ export default function Home(props) {
             {props.albums.map((album) => (
               <AlbumCard
                 key={album._id}
-                id={album.albumSlug.current}
+                slug={album.albumSlug.current}
                 year={album.albumDate.split("-")[0]}
                 image={album.albumImage}
                 title={album.albumTitle}

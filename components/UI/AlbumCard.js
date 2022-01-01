@@ -11,7 +11,7 @@ import CustomImage from "../UI/CustomImage";
  */
 
 const Card = (props) => {
-  const { title, year, image, id } = props;
+  const { title, year, image, slug } = props;
   const imageFromSanity = imageCDN(image.itemImage);
   return (
     <Box w={["100%", "80%", "40%", "40%"]}>
@@ -37,7 +37,7 @@ const Card = (props) => {
         </Flex>
 
         <Box>
-          <Link href={`/album/${id}`}>
+          <Link href={`/album/${slug}`}>
             <a>
               <Button>View Album</Button>
             </a>
