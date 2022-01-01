@@ -28,7 +28,9 @@ const Biography = ({ bios }) => {
               <PortableText // https://www.npmjs.com/package/react-portable-text
                 content={bio.bioSectionText}
                 serializers={{
-                  h3: (props) => <CustomH4 {...props} />,
+                  h3: function h3fn(props) {
+                    return <CustomH4 {...props} />;
+                  },
                 }}
               />
             </TextSectionStack>
