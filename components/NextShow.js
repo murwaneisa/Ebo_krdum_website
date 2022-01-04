@@ -63,7 +63,6 @@ const NextShow = ({ shows }) => {
 					width={400}
 					height={400}
 					objectFit="cover"
-					// layout="fill"
 				/>
 			</Box>
 			{/* End of the section */}
@@ -76,8 +75,6 @@ const NextShow = ({ shows }) => {
 					direction="column"
 					ml={["0%", "0%", "5%"]}
 					mt={["2%", "2%", "0%"]}
-					//border="1px solid blue"
-					// w="80%"
 					align="center"
 				>
 					<Heading as="h3" size="xl" pb="1rem">
