@@ -3,6 +3,7 @@ import { Flex } from "@chakra-ui/react";
 const NavbarContainer = ({ children, ...props }) => {
 	return (
 		<Flex
+			position="absolute"
 			zIndex={3}
 			as="nav"
 			align="center"
@@ -10,8 +11,8 @@ const NavbarContainer = ({ children, ...props }) => {
 			wrap="wrap"
 			w="100%"
 			p={8}
-			//bg={["primary.500", "primary.500", "red", "transparent"]}
-			color={["white", "white", "primary.700", "primary.700"]}
+			bg={["brown", "transparent", "transparent"]}
+			color="white"
 			{...props}
 		>
 			{children}
