@@ -17,7 +17,7 @@ const MenuItemContainer = ({ isOpen }) => {
 			>
 				<MenuItem to="/albums">Albums</MenuItem>
 				<MenuItem to="/shows">Shows</MenuItem>
-				<MenuItem to="/Gallery">Gallery</MenuItem>
+				<MenuItem to="/gallery">Gallery</MenuItem>
 				<MenuItem to="/biography">Biography</MenuItem>
 				<MenuItem to="/blog">blog</MenuItem>
 				<MenuItem to="/contacts">Contacts</MenuItem>
