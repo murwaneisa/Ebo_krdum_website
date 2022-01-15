@@ -1,16 +1,10 @@
 import React from "react";
+import GalleryHero from "../components/gallery/galleryHero";
 
 const Gallery = () => {
 	return (
 		<div>
-			<h1 style={{ color: "red" }}>Hellow world</h1>
-			<h1 style={{ color: "red" }}>Hellow world</h1>
-			<h1 style={{ color: "red" }}>Hellow world</h1>
-			<h1 style={{ color: "red" }}>Hellow world</h1>
-			<h1 style={{ color: "red" }}>Hellow world</h1>
-			<h1 style={{ color: "red" }}>Hellow world</h1>
-			<h1 style={{ color: "red" }}>Hellow world</h1>
-			<h1 style={{ color: "red" }}>Hellow world</h1>
+			<GalleryHero />
 		</div>
 	);
 };
