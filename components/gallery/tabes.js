@@ -14,15 +14,16 @@ import {
 import { HiOutlinePhotograph } from "react-icons/hi";
 import { FiVideo } from "react-icons/fi";
 import { IconContext } from "react-icons";
+import ImageList from "./imageList";
 
-const tabes = () => {
-	const colors = useColorModeValue(
+const tabes = ({ gallery }) => {
+	/* 	const colors = useColorModeValue(
 		["brown", "yellow", "brown"],
 		["blue", "teal.900", "brown"]
-	);
-	const [tabIndex, setTabIndex] = useState(1);
-	const bg = colors[tabIndex];
-	const style = { color: "white", fontSize: "2.5em" };
+	); */
+	//const [tabIndex, setTabIndex] = useState(1);
+	//const bg = colors[tabIndex];
+	const style = { color: "white", fontSize: "2em" };
 	return (
 		<Tabs
 			px={["1%", "5%", "10%"]}
@@ -30,13 +31,14 @@ const tabes = () => {
 			isFitted
 			isLazy
 			align="center"
-			onChange={(index) => setTabIndex(index)}
-			bg={bg}
+			//onChange={(index) => setTabIndex(index)}
+			bg="brown"
+			colorScheme="white"
 		>
 			<TabList>
 				<Tab>
-					<Stack direction="row" justify="center" align="center">
-						<Text>Images</Text>
+					<Stack direction="row" justify="center" align="center" spacing={1}>
+						<Text fontWeight="bold">Images</Text>
 						<Box>
 							<HiOutlinePhotograph style={style} />
 						</Box>
@@ -44,7 +46,7 @@ const tabes = () => {
 				</Tab>
 				<Tab>
 					<Stack direction="row" justify="center" align="center">
-						<Text>Videos</Text>
+						<Text fontWeight="bold">Videos</Text>
 						<Box>
 							<FiVideo style={style} />
 						</Box>
@@ -52,8 +54,8 @@ const tabes = () => {
 				</Tab>
 			</TabList>
 			<TabPanels>
-				<TabPanel>The Primary Colors</TabPanel>
-				<TabPanel>Are 1, 2, 3</TabPanel>
+				<TabPanel bg="brown">The Primary Colors</TabPanel>
+				<TabPanel bg="yellow">Are 1, 2, 3</TabPanel>
 			</TabPanels>
 		</Tabs>
 	);
