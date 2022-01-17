@@ -54,7 +54,9 @@ const tabes = ({ gallery }) => {
 				</Tab>
 			</TabList>
 			<TabPanels>
-				<TabPanel bg="brown">The Primary Colors</TabPanel>
+				<TabPanel bg="brown">
+					<ImageList gallery={gallery} />
+				</TabPanel>
 				<TabPanel bg="yellow">Are 1, 2, 3</TabPanel>
 			</TabPanels>
 		</Tabs>
