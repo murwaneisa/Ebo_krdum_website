@@ -15,6 +15,7 @@ import { HiOutlinePhotograph } from "react-icons/hi";
 import { FiVideo } from "react-icons/fi";
 import { IconContext } from "react-icons";
 import ImageList from "./imageList";
+import ImageItem from "./imageItem";
 
 const tabes = ({ gallery }) => {
 	/* 	const colors = useColorModeValue(

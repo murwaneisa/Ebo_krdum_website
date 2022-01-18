@@ -1,5 +1,6 @@
 import React from "react";
 import GalleryHero from "../components/gallery/galleryHero";
+import ImageList from "../components/gallery/imageList";
 import Tabes from "../components/gallery/tabes";
 import sanityClient from "../lib/sanityClient";
 
@@ -18,7 +19,6 @@ export async function getStaticProps() {
 	const res = await sanityClient.fetch(`
   *[_type == "gallery"] | order(order asc)
   `);
-	console.log("object", res);
 	return {
 		props: {
 			gallery: res,
