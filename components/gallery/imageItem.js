@@ -32,7 +32,9 @@ const ImageItem = ({ mainImage, date, title }) => {
 				textAlign="center"
 				spacing={["2rem", "1rem"]}
 			>
-				<Text fontSize={["sm", "md", "lg"]}>{title}</Text>
+				<Box>
+					<Text fontSize={["sm", "md", "lg"]}>{title}</Text>
+				</Box>
 				<Text>{date}</Text>
 			</Stack>
 		</Stack>
