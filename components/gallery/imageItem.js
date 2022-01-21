@@ -1,25 +1,41 @@
-import { Box, Flex, WrapItem } from "@chakra-ui/react";
+import { Box, Flex, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 import Image from "next/image";
 
 const ImageItem = ({ mainImage, date, title }) => {
 	return (
-		<Flex position="relative" direction="row">
+		<Stack
+			direction="column"
+			//border="solid 2px blue"
+			//position="relative"
+		>
 			<Box
-				position="relative"
 				opacity="0.8"
 				_hover={{ opacity: 1 }}
-				border="solid 2px blue"
-				h="auto"
-				w="auto "
+				h={["15rem", "18rem", "20rem"]}
+				w={["15rem", "18rem", "20rem"]}
+				position="relative"
 			>
-				<Image src={mainImage} height={600} width={400} objectFit="contain" />
+				<Image
+					src={mainImage}
+					layout="fill"
+					objectFit="cover"
+					objectPosition="center"
+				/>
 			</Box>
-			<Flex zIndex={1} position="absolute" top="0" color="#fff">
-				<Box>{title}</Box>
-				<Box>{date}</Box>
-			</Flex>
-		</Flex>
+			<Stack
+				direction={["column", "row", "row"]}
+				py="1rem"
+				w="100%"
+				h="10%"
+				justifyContent="center"
+				textAlign="center"
+				spacing={["2rem", "1rem"]}
+			>
+				<Text fontSize={["sm", "md", "lg"]}>{title}</Text>
+				<Text>{date}</Text>
+			</Stack>
+		</Stack>
 	);
 };
 

@@ -6,21 +6,22 @@ import ImageItem from "./imageItem";
 const ImageList = ({ gallery }) => {
 	//console.log("gallery", gallery);
 	return (
-		<Wrap px="1rem" spacing={4} justify="center">
+		<Wrap spacing={8} justify="center" py="2%">
 			{/* class raw */}
 			{gallery.map((album) => (
 				<WrapItem
-					border="solid red 2px"
+					position="relative"
+					//border="solid red 2px"
 					boxShadow="base"
-					rounded="20px"
-					overflow="hidden"
+					//rounded="2rem"
+					//overflow="hidden"
 					lineHeight="0"
+					w="auto"
+					h="auto"
 					_hover={{ boxShadow: "dark-lg", cursor: "pointer", opacity: 2 }}
-					h="300X"
-					w="300px"
+					key={album._id}
 				>
 					<ImageItem
-						key={album._id}
 						mainImage={imageCDN(album.photoGalleryCover)} // imageCDN convert the sanity assets file to url
 						date={album.photosDate}
 						title={album.photoGalleryTitle}

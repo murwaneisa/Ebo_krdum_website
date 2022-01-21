@@ -27,7 +27,7 @@ const tabes = ({ gallery }) => {
 	const style = { color: "white", fontSize: "2em" };
 	return (
 		<Tabs
-			px={["1%", "5%", "10%"]}
+			px={["1%", "5%", "1%", "10%"]}
 			variant="enclosed"
 			isFitted
 			isLazy
