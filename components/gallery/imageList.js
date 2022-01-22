@@ -18,7 +18,11 @@ const ImageList = ({ gallery }) => {
 					lineHeight="0"
 					w="auto"
 					h="auto"
-					_hover={{ boxShadow: "dark-lg", cursor: "pointer", opacity: 2 }}
+					_hover={{
+						boxShadow: "dark-lg",
+						cursor: "pointer",
+						opacity: 2,
+					}}
 					key={album._id}
 				>
 					<ImageItem
