@@ -4,17 +4,13 @@ import { imageCDN } from "../../lib/imageCdnFn";
 import ImageItem from "./imageItem";
 
 const ImageList = ({ gallery }) => {
-	//console.log("gallery", gallery);
 	return (
 		<Wrap spacing={8} justify="center" py="2%">
 			{/* class raw */}
 			{gallery.map((album) => (
 				<WrapItem
 					position="relative"
-					//border="solid red 2px"
 					boxShadow="base"
-					//rounded="2rem"
-					//overflow="hidden"
 					lineHeight="0"
 					w="auto"
 					h="auto"

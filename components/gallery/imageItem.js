@@ -29,8 +29,6 @@ const ImageItem = ({ mainImage, date, title }) => {
 			<Stack
 				direction={["column", "row", "row"]}
 				py="0.5rem"
-				w="100%"
-				h="10%"
 				justifyContent="center"
 				textAlign="center"
 				spacing={["1rem", "1rem"]}
@@ -39,7 +37,7 @@ const ImageItem = ({ mainImage, date, title }) => {
 					borderWidth="2px"
 					borderRadius="md"
 					boxShadow="md"
-					px={5}
+					px={3}
 					py={3}
 					//bg={color}
 					borderColor={color}
