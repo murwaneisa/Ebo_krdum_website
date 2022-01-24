@@ -14,7 +14,7 @@ import {
 const GalleyModel = (props) => {
 	const { isOpen, onOpen, onClose } = props;
 	return (
-		<Modal isOpen={isOpen} onClose={onClose}>
+		<Modal isOpen={isOpen} onClose={onClose} isCentered>
 			<ModalOverlay />
 			<ModalContent color="black">
 				<ModalHeader>

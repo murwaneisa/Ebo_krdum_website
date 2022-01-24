@@ -19,6 +19,7 @@ export async function getStaticProps() {
 	const res = await sanityClient.fetch(`
   *[_type == "gallery"] | order(order asc)
   `);
+	console.log(res);
 	return {
 		props: {
 			gallery: res,

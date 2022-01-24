@@ -1,7 +1,7 @@
-import { extendTheme, theme as chakraTheme } from "@chakra-ui/react";
+import { extendTheme, theme as chairsTheme } from "@chakra-ui/react";
 
 const theme = extendTheme({
-	...chakraTheme,
+	...chairsTheme,
 	//unable the default box shadow in the button comp
 	//check out:https://github.com/chakra-ui/chakra-ui/issues/708#issuecomment-774478731
 	components: {
@@ -19,7 +19,6 @@ const theme = extendTheme({
 			},
 		},
 	},
-
 	styles: {
 		// global styles
 		global: {
@@ -32,7 +31,7 @@ const theme = extendTheme({
 	},
 	// Website color scheme
 	colors: {
-		...chakraTheme.colors,
+		...chairsTheme.colors,
 		//the numbers identify the color scheme from lighter to darker. the main primary is 500
 		primary: { 500: "#3BA87E", 600: "#33918a", 700: "#2d7a5c" },
 		brown: "#6D2100",
@@ -42,8 +41,8 @@ const theme = extendTheme({
 	},
 	// Global font family
 	fonts: {
-		...chakraTheme.fonts,
-		body: `Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"`,
+		...chairsTheme.fonts,
+		body: `Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segnos UI Emoji","Segnos UI Symbol"`,
 		heading: `Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"`,
 	},
 });
