@@ -1,7 +1,5 @@
 import React from "react";
 import {
-	Box,
-	Link,
 	Modal,
 	ModalBody,
 	ModalCloseButton,
@@ -11,19 +9,23 @@ import {
 	ModalOverlay,
 	Text,
 } from "@chakra-ui/react";
+import ImageSlider from "./imageSlider";
 const GalleyModel = (props) => {
-	const { isOpen, onOpen, onClose } = props;
+	const { isOpen, onClose, title } = props;
+	console.log("images", title);
 	return (
 		<Modal isOpen={isOpen} onClose={onClose} isCentered>
 			<ModalOverlay />
 			<ModalContent color="black">
 				<ModalHeader>
 					<Text fontSize="sm" fontStyle="italic" color="gray.600">
-						Play demo
+						{title}
 					</Text>
 				</ModalHeader>
 				<ModalCloseButton />
-				<ModalBody alignSelf="center">Contant</ModalBody>
+				<ModalBody alignSelf="center">
+					<ImageSlider />
+				</ModalBody>
 
 				<ModalFooter></ModalFooter>
 			</ModalContent>

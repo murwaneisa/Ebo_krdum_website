@@ -1,11 +1,9 @@
-import { Box, useDisclosure, Wrap, WrapItem } from "@chakra-ui/react";
+import { Wrap, WrapItem } from "@chakra-ui/react";
 import React from "react";
 import { imageCDN } from "../../lib/imageCdnFn";
 import ImageItem from "./imageItem";
-import GalleyModel from "./galleyModel";
 
 const ImageList = ({ gallery }) => {
-	const { isOpen, onOpen, onClose } = useDisclosure();
 	return (
 		<Wrap spacing={8} justify="center" py="2%">
 			{/* class raw */}
@@ -22,9 +20,7 @@ const ImageList = ({ gallery }) => {
 						opacity: 2,
 					}}
 					key={album._id}
-					onClick={onOpen}
 				>
-					<GalleyModel isOpen={isOpen} onClose={onClose} />
 					<ImageItem
 						mainImage={imageCDN(album.photoGalleryCover)} // imageCDN convert the sanity assets file to url
 						date={album.photosDate}
