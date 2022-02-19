@@ -25,6 +25,7 @@ const ImageList = ({ gallery }) => {
 						mainImage={imageCDN(album.photoGalleryCover)} // imageCDN convert the sanity assets file to url
 						date={album.photosDate}
 						title={album.photoGalleryTitle}
+						images={album.photoGalleryImages}
 					/>
 				</WrapItem>
 			))}

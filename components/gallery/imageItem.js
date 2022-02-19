@@ -2,11 +2,12 @@ import { Box, Flex, Stack, Text, useDisclosure } from "@chakra-ui/react";
 import React from "react";
 import Image from "next/image";
 import GalleyModel from "./galleyModel";
+import ImageSlider from "./imageSlider";
 
-const ImageItem = ({ mainImage, date, title }) => {
+const ImageItem = ({ mainImage, date, title, images }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const color = "white";
-	const hoverColor = "#C6C6C6";
+	//const hoverColor = "#C6C6C6";
 	return (
 		<Stack
 			direction="column"
@@ -15,7 +16,12 @@ const ImageItem = ({ mainImage, date, title }) => {
 			//bg="#ffedd1"
 			onClick={onOpen}
 		>
-			<GalleyModel isOpen={isOpen} onClose={onClose} title={title} />
+			<GalleyModel
+				isOpen={isOpen}
+				onClose={onClose}
+				title={title}
+				images={images}
+			/>
 			<Box
 				opacity="0.8"
 				_hover={{ opacity: 1 }}

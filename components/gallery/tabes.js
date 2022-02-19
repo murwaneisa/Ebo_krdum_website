@@ -35,6 +35,7 @@ const tabes = ({ gallery }) => {
 			//onChange={(index) => setTabIndex(index)}
 			bg="brown"
 			colorScheme="white"
+			w="100vw"
 		>
 			<TabList>
 				<Tab>

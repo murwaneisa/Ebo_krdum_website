@@ -10,9 +10,9 @@ import {
 	Text,
 } from "@chakra-ui/react";
 import ImageSlider from "./imageSlider";
+
 const GalleyModel = (props) => {
-	const { isOpen, onClose, title } = props;
-	console.log("images", title);
+	const { isOpen, onClose, title, images } = props;
 	return (
 		<Modal isOpen={isOpen} onClose={onClose} isCentered>
 			<ModalOverlay />
@@ -23,10 +23,9 @@ const GalleyModel = (props) => {
 					</Text>
 				</ModalHeader>
 				<ModalCloseButton />
-				<ModalBody alignSelf="center">
-					<ImageSlider />
+				<ModalBody alignSelf="center" position="relative">
+					<ImageSlider images={images} />
 				</ModalBody>
-
 				<ModalFooter></ModalFooter>
 			</ModalContent>
 		</Modal>

@@ -1,6 +1,5 @@
 import React from "react";
 import GalleryHero from "../components/gallery/galleryHero";
-import ImageList from "../components/gallery/imageList";
 import Tabes from "../components/gallery/tabes";
 import sanityClient from "../lib/sanityClient";
 
