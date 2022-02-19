@@ -14,7 +14,7 @@ import ImageSlider from "./imageSlider";
 const GalleyModel = (props) => {
 	const { isOpen, onClose, title, images } = props;
 	return (
-		<Modal isOpen={isOpen} onClose={onClose} isCentered>
+		<Modal isOpen={isOpen} onClose={onClose} isCentered size="5xl">
 			<ModalOverlay />
 			<ModalContent color="black">
 				<ModalHeader>
@@ -23,7 +23,7 @@ const GalleyModel = (props) => {
 					</Text>
 				</ModalHeader>
 				<ModalCloseButton />
-				<ModalBody alignSelf="center" position="relative">
+				<ModalBody alignSelf="center">
 					<ImageSlider images={images} />
 				</ModalBody>
 				<ModalFooter></ModalFooter>
