@@ -9,13 +9,7 @@ const ImageItem = ({ mainImage, date, title, images }) => {
 	const color = "white";
 	//const hoverColor = "#C6C6C6";
 	return (
-		<Stack
-			direction="column"
-			//border="solid 2px blue"
-			//position="relative"
-			//bg="#ffedd1"
-			onClick={onOpen}
-		>
+		<Stack direction="column" onClick={onOpen}>
 			<GalleyModel
 				isOpen={isOpen}
 				onClose={onClose}

@@ -1,5 +1,4 @@
-import { Box, Text, Heading, Flex, Stack } from "@chakra-ui/react";
-import React from "react";
+import { Box, Text, Heading, Stack } from "@chakra-ui/react";
 
 const galleryHero = () => {
 	return (

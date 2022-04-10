@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import Image from "next/image";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -20,20 +20,26 @@ function ImageSlider({ images }) {
 			infiniteLoop
 			autoPlay
 			showStatus={false}
-			showArrows={false}
+			showArrows={true}
 			useKeyboardArrows
 			transitionTime={800}
 		>
 			{images.map((img) => (
-				<Box>
-					<Image
-						src={imageCDN(img.itemImage)}
-						width={600}
-						height={600}
-						objectFit="contain"
-					/>
+				<Flex
+					flexDirection="column"
+					justifyContent="space-between"
+					justifyItems="center"
+				>
+					<Box h="100%">
+						<Image
+							src={imageCDN(img.itemImage)}
+							width={800}
+							height={600}
+							objectFit="fill"
+						/>
+					</Box>
 					<Box>{img.photoCaption}</Box>
-				</Box>
+				</Flex>
 			))}
 		</Carousel>
 	);
