@@ -20,29 +20,32 @@ const GalleyModel = (props) => {
 	const { isOpen, onClose, title, images } = props;
 
 	const handleScreenSize = () => {
-		let globalSize;
+		// function to keep track of the screen size
+		let modalSize;
 		if (typeof window !== "undefined") {
 			const [size, setSize] = useState(window.innerWidth);
 			useEffect(() => {
 				const handleResize = () => {
 					setSize(window.innerWidth);
 				};
-				window.addEventListener("resize", handleResize);
+				window.addEventListener("resize", handleResize); // add event listener to listen to screen siz
+				return () => {
+					window.removeEventListener("resize", handleResize); // remove the event listener
+				};
 			}, []);
 
 			if (size <= 290) {
-				globalSize = "sm";
-				console.log("1-size is", globalSize, "windowS is", size);
+				modalSize = "sm";
 			} else if (290 < size && size <= 800) {
-				globalSize = "lg";
-				console.log("2-size is", globalSize, "windowS is", size);
+				modalSize = "lg";
+			} else if (801 <= size && size <= 1050) {
+				modalSize = "2xl";
 			} else {
-				globalSize = "3xl";
-				console.log("3-size is", globalSize, "windowS is", size);
+				modalSize = "3xl";
 			}
 		}
-		console.log("gloabalsize", globalSize);
-		return globalSize;
+
+		return modalSize;
 	};
 
 	return (
@@ -72,7 +75,7 @@ const GalleyModel = (props) => {
 						showThumbs={false}
 						infiniteLoop
 						autoPlay
-						showStatus={false}
+						showStatus={true}
 						showArrows={true}
 						useKeyboardArrows
 						transitionTime={800}
@@ -84,6 +87,7 @@ const GalleyModel = (props) => {
 								justifyItems="center"
 								key={img.photoCaption}
 								direction="row"
+								key={img._key}
 							>
 								<Image
 									src={imageCDN(img.itemImage)}
@@ -106,11 +110,3 @@ const GalleyModel = (props) => {
 };
 
 export default GalleyModel;
-
-/* height="100%"
-width="100%"
-position="relative"
-backgroundPosition="center"
-backgroundRepeat="no-repeat"
-backgroundSize={["contain", "cover", "full"]}
-backgroundImage={`url(${imageCDN(img.itemImage)})`} */
