@@ -12,9 +12,13 @@ import {
 	Box,
 } from "@chakra-ui/react";
 import { Carousel } from "react-responsive-carousel";
+import { GrNext, GrPrevious } from "react-icons/gr";
+import { HiArrowCircleRight, HiArrowCircleLeft } from "react-icons/hi";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { imageCDN } from "../../lib/imageCdnFn";
 import Image from "next/image";
+import { IconContext } from "react-icons";
+import { ClassNames } from "@emotion/react";
 
 const GalleyModel = (props) => {
 	const { isOpen, onClose, title, images } = props;
@@ -47,7 +51,11 @@ const GalleyModel = (props) => {
 
 		return modalSize;
 	};
-
+	const iconStyles = {
+		hover: {
+			size: "5rem",
+		},
+	};
 	return (
 		<Modal
 			isOpen={isOpen}
@@ -79,6 +87,68 @@ const GalleyModel = (props) => {
 						showArrows={true}
 						useKeyboardArrows
 						transitionTime={800}
+						renderArrowPrev={(
+							// custom slide left arrow
+							onClickHandler,
+							hasPrev,
+							label
+						) =>
+							hasPrev && (
+								<button
+									type="button"
+									onClick={onClickHandler}
+									title={label}
+									style={{
+										position: "absolute",
+										zIndex: 2,
+										top: "calc(50% - 15px)",
+										width: 30,
+										height: 30,
+										cursor: "pointer",
+										left: 15,
+									}}
+								>
+									<IconContext.Provider //custom react icon
+										value={{
+											color: "#9e4620",
+											size: "2rem",
+											className: `${iconStyles}`,
+										}}
+									>
+										<HiArrowCircleLeft />
+									</IconContext.Provider>
+								</button>
+							)
+						}
+						renderArrowNext={(
+							//custom slide right arrow
+							onClickHandler,
+							hasPrev,
+							label
+						) =>
+							hasPrev && (
+								<button
+									type="button"
+									onClick={onClickHandler}
+									title={label}
+									style={{
+										position: "absolute",
+										zIndex: 2,
+										top: "calc(50% - 15px)",
+										width: 30,
+										height: 30,
+										cursor: "pointer",
+										right: 15,
+									}}
+								>
+									<IconContext.Provider //custom react icon
+										value={{ color: "#9e4620", size: "2rem" }}
+									>
+										<HiArrowCircleRight size={30} />
+									</IconContext.Provider>
+								</button>
+							)
+						}
 					>
 						{images.map((img) => (
 							<Flex
