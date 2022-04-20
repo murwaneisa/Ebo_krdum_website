@@ -44,7 +44,7 @@ const GalleyModel = (props) => {
 				modalSize = "lg";
 			} else if (801 <= size && size <= 1050) {
 				modalSize = "2xl";
-			} else {
+			} else if() {
 				modalSize = "3xl";
 			}
 		}
@@ -144,7 +144,7 @@ const GalleyModel = (props) => {
 									<IconContext.Provider //custom react icon
 										value={{ color: "#9e4620", size: "2rem" }}
 									>
-										<HiArrowCircleRight size={30} />
+										<HiArrowCircleRight />
 									</IconContext.Provider>
 								</button>
 							)
@@ -166,14 +166,13 @@ const GalleyModel = (props) => {
 									width="800"
 									height="800"
 								/>
-								<Box pt="2%">
+								<Box pt="%">
 									<Text>{img.photoCaption}</Text>
 								</Box>
 							</Flex>
 						))}
 					</Carousel>
 				</ModalBody>
-				<ModalFooter></ModalFooter>
 			</ModalContent>
 		</Modal>
 	);
