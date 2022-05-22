@@ -1,10 +1,13 @@
 import React from "react";
 import Link from "next/link";
+import { Text } from "@chakra-ui/react";
 
 const MenuItem = ({ children, to }) => {
 	return (
 		<Link href={to}>
-			<a>{children}</a>
+			<Text fontWeight={600}>
+				<a>{children}</a>
+			</Text>
 		</Link>
 	);
 };
