@@ -5,9 +5,15 @@ import {
 	Stack,
 	Link,
 	useColorModeValue,
+	Popover,
+	PopoverTrigger,
+	Portal,
+	PopoverContent,
+	PopoverBody,
 } from "@chakra-ui/react";
 import React from "react";
 import MenuItem from "./MenuItem";
+import { Mobile_miniMenu, Desktop_miniMenu } from "./miniMenu";
 
 const MenuItemContainer = ({ isOpen }) => {
 	const [show, setShow] = React.useState(false);
@@ -23,25 +29,13 @@ const MenuItemContainer = ({ isOpen }) => {
 				justify={["center", "space-between", "flex-end", "flex-end"]}
 				direction={["column", "row", "row", "row"]}
 				pt={[4, 4, 0, 0]}
+				w={["100%", "80%"]}
 			>
-				<MenuItem to="/albums">Home</MenuItem>
-				<MenuItem to="/shows">Shows</MenuItem>
-				<Link onClick={handleToggle}>Press</Link>
-				<Collapse in={show} animateOpacity style={{ marginTop: "0!important" }}>
-					<Stack
-						mt={2}
-						pl={4}
-						borderLeft={1}
-						borderStyle={"solid"}
-						borderColor={useColorModeValue("gray.200", "gray.700")}
-						align={"start"}
-					>
-						<Link>Press</Link>
-						<Link>Press</Link>
-						<Link>Press</Link>
-					</Stack>
-				</Collapse>
-				<MenuItem to="/biography">Biography</MenuItem>
+				{!isOpen ? (
+					<Desktop_miniMenu handleToggle={handleToggle} />
+				) : (
+					<Mobile_miniMenu show={show} handleToggle={handleToggle} />
+				)}
 			</Stack>
 		</Box>
 	);
