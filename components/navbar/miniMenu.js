@@ -11,6 +11,9 @@ import {
 	PopoverTrigger,
 	Box,
 	Text,
+	Flex,
+	Spacer,
+	HStack,
 } from "@chakra-ui/react";
 import React from "react";
 import MenuItem from "./MenuItem";
@@ -34,15 +37,24 @@ export const Mobile_miniMenu = ({ show, handleToggle }) => {
 					align={"start"}
 				>
 					<a href="public/files/release_En.pdf" target="_blank" download>
-						Release <HiOutlineDocumentDownload />
+						<HStack spacing={"2.4em"} alignItems="center">
+							<Text>Release</Text>
+							<HiOutlineDocumentDownload />
+						</HStack>
 					</a>
 					<Link>
-						Stage Map
-						<HiOutlineDocumentDownload />
+						<HStack spacing={"1em"} alignItems="center">
+							<Text>Stage Map</Text>
+							<HiOutlineDocumentDownload />
+						</HStack>
 					</Link>
 					<Link>
-						Press
-						<HiOutlineDocumentDownload />
+						<HStack spacing={"3.4em"} alignItems="center">
+							<Text>Press</Text>
+							<Box margin-left="auto">
+								<HiOutlineDocumentDownload />
+							</Box>
+						</HStack>
 					</Link>
 				</Stack>
 			</Collapse>
