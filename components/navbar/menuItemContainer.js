@@ -1,16 +1,4 @@
-import {
-	Box,
-	Button,
-	Collapse,
-	Stack,
-	Link,
-	useColorModeValue,
-	Popover,
-	PopoverTrigger,
-	Portal,
-	PopoverContent,
-	PopoverBody,
-} from "@chakra-ui/react";
+import { Box, Stack } from "@chakra-ui/react";
 import React from "react";
 import MenuItem from "./MenuItem";
 import { Mobile_miniMenu, Desktop_miniMenu } from "./miniMenu";
