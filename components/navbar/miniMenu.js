@@ -22,6 +22,7 @@ export const Mobile_miniMenu = ({ show, handleToggle }) => {
 		<VStack>
 			<MenuItem to="/">Home</MenuItem>
 			<MenuItem to="/shows">Shows</MenuItem>
+			<MenuItem to="/biography">Biography</MenuItem>
 			<Link onClick={handleToggle}>
 				<Text fontWeight={600}>Press</Text>
 			</Link>
