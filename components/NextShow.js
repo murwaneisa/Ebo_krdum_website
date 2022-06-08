@@ -68,22 +68,13 @@ const NextShow = ({ shows }) => {
 			{/* End of the section */}
 
 			{/* info section */}
-<<<<<<< HEAD
 			{nextShow && formattedDate > todaysDate ? (
-=======
-			{nextShow ? (
->>>>>>> b76a7efaba2d16c35acf3037933a3b36c668804d
 				<Stack
 					alignItems="center"
 					spacing={["2%"]}
 					direction="column"
 					ml={["0%", "0%", "5%"]}
 					mt={["2%", "2%", "0%"]}
-<<<<<<< HEAD
-=======
-					//border="1px solid blue"
-					// w="80%"
->>>>>>> b76a7efaba2d16c35acf3037933a3b36c668804d
 					align="center"
 				>
 					<Heading as="h3" size="xl" pb="1rem">
