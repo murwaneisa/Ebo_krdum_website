@@ -35,7 +35,7 @@ export const Mobile_miniMenu = ({ show, handleToggle }) => {
 					align={"start"}
 				>
 					<a href="files/release_En.pdf" rel="noreferrer">
-						<HStack spacing={"2.6em"} alignItems="center" cursor="pointer">
+						<HStack spacing={"2.6em"} alignItems="center">
 							<Text>Release</Text>
 							<HiOutlineDocumentDownload />
 						</HStack>
@@ -49,7 +49,7 @@ export const Mobile_miniMenu = ({ show, handleToggle }) => {
 					<a href="files/press.pdf" rel="noreferrer">
 						<HStack spacing={"3.6em"} alignItems="center">
 							<Text>Press</Text>
-							<Box margin-left="auto">
+							<Box>
 								<HiOutlineDocumentDownload />
 							</Box>
 						</HStack>
