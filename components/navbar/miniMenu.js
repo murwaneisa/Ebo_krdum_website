@@ -1,6 +1,5 @@
 import {
 	Collapse,
-	PopoverArrow,
 	PopoverBody,
 	PopoverContent,
 	Portal,
@@ -12,6 +11,7 @@ import {
 	Text,
 	HStack,
 	Link,
+	VStack,
 } from "@chakra-ui/react";
 import React from "react";
 import MenuItem from "./MenuItem";
@@ -19,7 +19,7 @@ import { HiOutlineDocumentDownload } from "react-icons/hi";
 
 export const Mobile_miniMenu = ({ show, handleToggle }) => {
 	return (
-		<Box>
+		<VStack>
 			<MenuItem to="/">Home</MenuItem>
 			<MenuItem to="/shows">Shows</MenuItem>
 			<Link onClick={handleToggle}>
@@ -34,20 +34,20 @@ export const Mobile_miniMenu = ({ show, handleToggle }) => {
 					borderColor={useColorModeValue("gray.200", "gray.700")}
 					align={"start"}
 				>
-					<a href="files/release_En.pdf">
-						<HStack spacing={"2.4em"} alignItems="center" cursor="pointer">
+					<a href="files/release_En.pdf" rel="noreferrer">
+						<HStack spacing={"2.6em"} alignItems="center" cursor="pointer">
 							<Text>Release</Text>
 							<HiOutlineDocumentDownload />
 						</HStack>
 					</a>
-					<a href="images/stage_plot.jpg" target="_blank">
+					<a href="files/stage_plots.pdf" rel="noreferrer">
 						<HStack spacing={"1em"} alignItems="center">
-							<Text>Stage Map</Text>
+							<Text>Stage Plots</Text>
 							<HiOutlineDocumentDownload />
 						</HStack>
 					</a>
-					<a href="files/press.pdf" target="_blank">
-						<HStack spacing={"3.4em"} alignItems="center">
+					<a href="files/press.pdf" rel="noreferrer">
+						<HStack spacing={"3.6em"} alignItems="center">
 							<Text>Press</Text>
 							<Box margin-left="auto">
 								<HiOutlineDocumentDownload />
@@ -56,7 +56,7 @@ export const Mobile_miniMenu = ({ show, handleToggle }) => {
 					</a>
 				</Stack>
 			</Collapse>
-		</Box>
+		</VStack>
 	);
 };
 
@@ -65,16 +65,40 @@ export const Desktop_miniMenu = ({ handleToggle }) => {
 		<Popover>
 			<MenuItem to="/">Home</MenuItem>
 			<MenuItem to="/shows">Shows</MenuItem>
-			<Popover>
+			<Popover trigger={"hover"}>
 				<PopoverTrigger>
-					<Link onClick={handleToggle}>Press</Link>
+					<Link onClick={handleToggle}>
+						<Text fontWeight={600}>Press</Text>
+					</Link>
 				</PopoverTrigger>
 				<Portal>
-					<PopoverContent>
-						<PopoverBody color="red.100">
-							<Link>Release</Link>
-							<Link>Stage Map</Link>
-							<Link>Press</Link>
+					<PopoverContent bg="brown" border={0} boxShadow={"xl"}>
+						<PopoverBody color="white" justifyItems={"center"}>
+							<a href="files/release_En.pdf" rel="noreferrer" target="_blank">
+								<HStack
+									spacing={"3.8em"}
+									alignItems="center"
+									cursor="pointer"
+									pl="2rem"
+								>
+									<Text fontSize={"lg"}>Release</Text>
+									<HiOutlineDocumentDownload />
+								</HStack>
+							</a>
+							<a href="files/stage_plots.pdf" rel="noreferrer" target="_blank">
+								<HStack spacing={"2em"} alignItems="center" pl="2rem">
+									<Text fontSize={"lg"}>Stage Plots</Text>
+									<HiOutlineDocumentDownload />
+								</HStack>
+							</a>
+							<a href="files/press.pdf" rel="noreferrer" target="_blank">
+								<HStack spacing={"5em"} alignItems="center" pl="2rem">
+									<Text fontSize={"lg"}>Press</Text>
+									<Box margin-left="auto">
+										<HiOutlineDocumentDownload />
+									</Box>
+								</HStack>
+							</a>
 						</PopoverBody>
 					</PopoverContent>
 				</Portal>
