@@ -1,6 +1,5 @@
 import { Box, Stack } from "@chakra-ui/react";
 import React from "react";
-import MenuItem from "./MenuItem";
 import { Mobile_miniMenu, Desktop_miniMenu } from "./miniMenu";
 
 const MenuItemContainer = ({ isOpen }) => {
