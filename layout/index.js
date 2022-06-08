@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import Footer from "../components/footer/Footer";
-import Nav from "../components/Nav";
+import Nav from "../components/navbar";
 
 const Layout = (props) => {
 	return (
