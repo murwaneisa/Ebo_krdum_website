@@ -23,9 +23,9 @@ export const Mobile_miniMenu = ({ show, handleToggle }) => {
 			<MenuItem to="/">Home</MenuItem>
 			<MenuItem to="/shows">Shows</MenuItem>
 			<MenuItem to="/biography">Biography</MenuItem>
-			<Link onClick={handleToggle}>
+			<Box onClick={handleToggle} cursor="pointer">
 				<Text fontWeight={600}>Press</Text>
-			</Link>
+			</Box>
 			<Collapse in={show} animateOpacity style={{ marginTop: "0!important" }}>
 				<Stack
 					mt={2}
