@@ -8,6 +8,7 @@ import AlbumCard from "../components/UI/AlbumCard";
 import Section from "../components/UI/Section";
 import Video from "../components/Video";
 import sanityClient from "../lib/sanityClient";
+import { HeroSlider } from "../components/heroSlider.js";
 
 export default function Home(props) {
 	// Note: Latest album for Hero
@@ -26,7 +27,8 @@ export default function Home(props) {
 				/>
 			</Head>
 			{/* Hero image */}
-			<Hero slug={latestAlbum.albumSlug.current} />
+			<HeroSlider slug={latestAlbum.albumSlug.current} />
+			{/* <Hero slug={latestAlbum.albumSlug.current} /> */}
 			{/* Other albums */}
 			<Section
 				bg="brown"
