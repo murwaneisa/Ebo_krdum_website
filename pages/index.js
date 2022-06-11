@@ -1,7 +1,6 @@
 import { Box, Stack } from "@chakra-ui/react";
 import Head from "next/head";
 /* Components */
-import Hero from "../components/Hero";
 import NextShow from "../components/NextShow";
 import Reviews from "../components/Reviews";
 import AlbumCard from "../components/UI/AlbumCard";
