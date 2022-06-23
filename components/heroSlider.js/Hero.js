@@ -14,35 +14,52 @@ import Button from "../UI/Button";
 const Hero = ({ slug }) => {
 	return (
 		<Box
-			w="100vw"
-			h="100%"
-			pt={["6.6rem", "7.6rem", "6.2rem"]}
-			pb={["1.2rem", "0rem"]}
+			w="100%"
+			position="relative"
+			h={["90Vh", "65vh", "70vh", "88vh"]}
+			//pt={["1.6rem", "7.6rem", "6.2rem"]}
+			pt="1%"
+			//pb={["1.2rem", "0rem"]}
 			bg="linear-gradient(180deg, #C2B552 0%, #795806 100%)"
 			align="center"
 		>
-			<Flex direction={["column", "row"]} w={["100%", "96%", "90%", "80%"]}>
+			<Flex
+				border="solid 2px red"
+				direction={["column", "row"]}
+				w={["100%", "96%", "90%", "80%"]}
+				h="100%"
+				justifyContent={["flex-end"]}
+				align="center"
+			>
 				<Box
-					position="relative"
-					w="100vw"
-					h={["40vh", "45vh", "43vh", "35vh", "80vh"]}
+					w="100%"
+					position="absolute"
+					top="0"
+					bottom="0"
+					left="0"
+					right="0"
+					border="solid 2px blue"
+					bg="red"
 				>
 					<Image
 						src={hero}
 						alt="This is the main hero image of Ebo Krdums website"
 						layout="fill"
 						placeholder="blur"
-						//width="100%"
 						objectFit="contain"
 					/>
 				</Box>
 				<VStack
 					//direction="column"
-					justify={["flex-start", "flex-end"]}
 					spacing={-1}
 					align="center"
-					my="5%"
-					//border="1px blue solid"
+					//mt={["0%", "15%"]}
+					mb={["10%", "15%"]}
+					//ml={["20%", "0%"]}
+					//mr={["20%", "0%"]}
+					border="1px blue solid"
+					zIndex={1}
+					position="absolute"
 				>
 					<Box>
 						<Text color="brown" fontWeight="bold" fontStyle="italic">

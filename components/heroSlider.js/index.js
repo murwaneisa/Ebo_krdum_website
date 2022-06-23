@@ -9,19 +9,18 @@ export const HeroSlider = ({ slug }) => {
 	return (
 		<Box
 			w="100vw"
-			H="50vh"
+			h={["90Vh", "65vh", "70vh", "88vh"]}
 			overflow="hidden"
 			zIndex="1"
 			alignSelf="center"
-			//sborder="solid 2px red"
-			position={"relative"}
+			border="solid 2px yellow"
 		>
 			<Carousel
 				width="100%"
 				showArrows={false}
 				showThumbs={false}
 				infiniteLoop
-				autoPlay
+				//autoPlay
 				interval={6000}
 				showStatus={false}
 				useKeyboardArrows
