@@ -9,7 +9,6 @@ export const HeroSlider = ({ slug }) => {
 	return (
 		<Box
 			w="100vw"
-			h={["90Vh", "65vh", "70vh", "88vh"]}
 			overflow="hidden"
 			zIndex="1"
 			alignSelf="center"

@@ -11,8 +11,7 @@ const NavbarContainer = ({ children, ...props }) => {
 			wrap="wrap"
 			w="100%"
 			p={5}
-			//bg={["brown", "brown", "transparent", "transparent"]}
-			bg="transparent"
+			bg={["brown", "brown", "transparent", "transparent"]}
 			color="white"
 			{...props}
 		>
