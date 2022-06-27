@@ -16,16 +16,16 @@ const Hero = ({ slug }) => {
 		<Flex
 			w="100%"
 			position="relative"
-			h={["90vh", "85vh", "70vh", "88vh"]}
+			h={["90vh", "56vh", "50vh", "45vh", "40vh"]}
 			bg="linear-gradient(180deg, #C2B552 0%, #795806 100%)"
-			border="solid 2px red"
+			//border="solid 2px red"
 			direction={["column", "row"]}
 			justifyContent={["flex-end"]}
 			align="center"
-			pl={["0%", "0%", "5%", "10%"]}
-			pr={["0%", "0%", "5%"]}
-			pb="0%"
-			pt={["0%", "8%"]}
+			pl={["0%", "1.5%", "5%", "5%"]}
+			pr={["0%", "1.5%", "2%", "5%"]}
+			pb={["0%", "0%", "8%", "9%"]}
+			pt={["0%", "10%", "0%", "0%"]}
 		>
 			<Box
 				mt={["15%", "0%", "20%"]}
@@ -51,11 +51,11 @@ const Hero = ({ slug }) => {
 				//direction="column"
 				spacing={-1}
 				align="center"
-				mt={["0%", "44%", "35%"]}
+				mt={["0%", "55%", "60%", "48%"]}
 				mb={["10%", "15%"]}
 				//ml={["20%", "0%"]}
 				//mr={["20%", "0%"]}
-				border="1px blue solid"
+				//border="1px blue solid"
 				zIndex={1}
 				position={["relative", "absolute"]}
 			>

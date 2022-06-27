@@ -12,7 +12,7 @@ export const HeroSlider = ({ slug }) => {
 			overflow="hidden"
 			zIndex="1"
 			alignSelf="center"
-			border="solid 2px yellow"
+			//border="solid 2px yellow"
 		>
 			<Carousel
 				width="100%"
