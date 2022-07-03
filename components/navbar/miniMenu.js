@@ -69,7 +69,20 @@ export const Desktop_miniMenu = ({ handleToggle }) => {
 			<Popover trigger={"hover"}>
 				<PopoverTrigger>
 					<Link onClick={handleToggle}>
-						<Text fontWeight={600}>Press</Text>
+						<Text
+							fontSize={[
+								"1rem",
+								"1rem",
+								"1rem",
+								"1rem",
+								"1rem",
+								"2rem",
+								"3rem",
+							]}
+							fontWeight={600}
+						>
+							Press
+						</Text>
 					</Link>
 				</PopoverTrigger>
 				<Portal>

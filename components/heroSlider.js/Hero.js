@@ -16,15 +16,15 @@ const Hero = ({ slug }) => {
 		<Flex
 			w="100%"
 			position="relative"
-			h={["90vh", "56vh", "50vh", "45vh", "40vh"]}
+			h={["90vh", "56vh", "50vh", "70vh", "75vh", "80vh"]}
 			bg="linear-gradient(180deg, #C2B552 0%, #795806 100%)"
 			//border="solid 2px red"
 			direction={["column", "row"]}
 			justifyContent={["flex-end"]}
 			align="center"
-			pl={["0%", "1.5%", "5%", "5%"]}
-			pr={["0%", "1.5%", "2%", "5%"]}
-			pb={["0%", "0%", "8%", "9%"]}
+			pl={["0%", "1.5%", "5%", "5%", "5%", "15%"]}
+			pr={["0%", "1.5%", "2%", "5%", "5%", "15%"]}
+			pb={["0%", "0%", "8%", "9%", "6%"]}
 			pt={["0%", "10%", "0%", "0%"]}
 		>
 			<Box
@@ -51,8 +51,8 @@ const Hero = ({ slug }) => {
 				//direction="column"
 				spacing={-1}
 				align="center"
-				mt={["0%", "55%", "60%", "48%"]}
-				mb={["10%", "15%"]}
+				mt={["0%", "55%", "60%", "50%"]}
+				mb={["10%", "15%", "20%"]}
 				//ml={["20%", "0%"]}
 				//mr={["20%", "0%"]}
 				//border="1px blue solid"
@@ -60,7 +60,12 @@ const Hero = ({ slug }) => {
 				position={["relative", "absolute"]}
 			>
 				<Box>
-					<Text color="brown" fontWeight="bold" fontStyle="italic">
+					<Text
+						color="brown"
+						fontWeight="bold"
+						fontStyle="italic"
+						fontSize={["1rem", "1rem", "1rem", "1rem", "1rem", "2rem", "3rem"]}
+					>
 						Latest Album
 					</Text>
 				</Box>
@@ -69,7 +74,15 @@ const Hero = ({ slug }) => {
 						color="brown"
 						fontWeight="bold"
 						fontStyle="italic"
-						fontSize={["2.8rem", "2.8rem", "3.5rem", "5rem", "6rem"]}
+						fontSize={[
+							"2.8rem",
+							"2.8rem",
+							"3.5rem",
+							"5rem",
+							"6rem",
+							"8rem",
+							"15rem",
+						]}
 						fontFamily="Alex Brush, cursive"
 					>
 						Diversity

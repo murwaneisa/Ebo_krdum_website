@@ -12,6 +12,7 @@ export const HeroSlider = ({ slug }) => {
 			overflow="hidden"
 			zIndex="1"
 			alignSelf="center"
+			h={["90vh", "56vh", "50vh", "70vh", "75vh", "80vh"]}
 			//border="solid 2px yellow"
 		>
 			<Carousel
