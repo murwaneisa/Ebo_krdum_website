@@ -10,7 +10,7 @@ const NavbarContainer = ({ children, ...props }) => {
 			justify="space-between"
 			wrap="wrap"
 			w="100%"
-			p={[5, 5, 8, 10, 20, 12]}
+			p={[5, 5, 3, 5, 10, 10]}
 			bg={["brown", "brown", "transparent", "transparent"]}
 			color="white"
 			{...props}

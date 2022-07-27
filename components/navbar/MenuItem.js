@@ -8,7 +8,7 @@ const MenuItem = ({ children, to }) => {
 			<Text
 				cursor="pointer"
 				fontWeight={600}
-				fontSize={["1rem", "1rem", "1rem", "1rem", "1rem", "2rem", "3rem"]}
+				fontSize={["1rem", "1rem", "1rem", "1rem", "1rem", "1.5rem"]}
 			>
 				<a>{children}</a>
 			</Text>

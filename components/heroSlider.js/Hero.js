@@ -36,7 +36,7 @@ const Hero = ({ slug }) => {
 				bottom="0"
 				left="0"
 				right="0"
-				border="solid 2px blue"
+				//border="solid 2px blue"
 				//bg="red"
 			>
 				<Image

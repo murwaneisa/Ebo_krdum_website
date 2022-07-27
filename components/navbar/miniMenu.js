@@ -70,15 +70,7 @@ export const Desktop_miniMenu = ({ handleToggle }) => {
 				<PopoverTrigger>
 					<Link onClick={handleToggle}>
 						<Text
-							fontSize={[
-								"1rem",
-								"1rem",
-								"1rem",
-								"1rem",
-								"1rem",
-								"2rem",
-								"3rem",
-							]}
+							fontSize={["1rem", "1rem", "1rem", "1rem", "1rem", "1.5rem"]}
 							fontWeight={600}
 						>
 							Press
