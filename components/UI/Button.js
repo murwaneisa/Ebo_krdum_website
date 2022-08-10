@@ -1,4 +1,5 @@
 import { Box, Button } from "@chakra-ui/react";
+import React from "react";
 /*
  * the array of percentage({["10%", "40%"]}) represent the  breakpoint for the element start from mobile to lager screen
  * check the link for more details:

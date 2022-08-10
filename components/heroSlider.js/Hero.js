@@ -1,7 +1,9 @@
 import { Box, Flex, Text } from "@chakra-ui/layout";
-import { VStack } from "@chakra-ui/react";
+import { Stack } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
+// @ts-ignore
 import hero from "../../public/images/ebo-transparent.png";
 import Button from "../UI/Button";
 /*
@@ -16,7 +18,7 @@ const Hero = ({ slug }) => {
 		<Flex
 			w="100%"
 			position="relative"
-			h={["90vh", "56vh", "50vh", "70vh", "75vh", "80vh"]}
+			h={["92vh", "78vh", "80vh", "75vh", "75vh", "80vh"]}
 			bg="linear-gradient(180deg, #C2B552 0%, #795806 100%)"
 			//border="solid 2px red"
 			direction={["column", "row"]}
@@ -47,11 +49,11 @@ const Hero = ({ slug }) => {
 					objectFit="contain"
 				/>
 			</Box>
-			<VStack
-				//direction="column"
+			<Stack
+				direction="column"
 				spacing={-1}
 				align="center"
-				mt={["0%", "55%", "60%", "50%"]}
+				mt={["0%", "55%", "40%", "50%"]}
 				mb={["10%", "15%", "20%"]}
 				//ml={["20%", "0%"]}
 				//mr={["20%", "0%"]}
@@ -91,11 +93,11 @@ const Hero = ({ slug }) => {
 				<Box>
 					<Link href={`/album/${slug}`}>
 						<a>
-							<Button>View Album</Button>
+							<Button Button>View Album</Button>
 						</a>
 					</Link>
 				</Box>
-			</VStack>
+			</Stack>
 		</Flex>
 	);
 };

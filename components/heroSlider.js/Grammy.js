@@ -5,7 +5,7 @@ import Image from "next/image";
 export const Grammy = () => {
 	return (
 		<Flex
-			direction={["column", "row"]}
+			direction={["column", "column", "row"]}
 			w="100%"
 			h="100%"
 			position="absolute"
@@ -16,12 +16,12 @@ export const Grammy = () => {
 			justifyContent={"center"}
 			justifyItems="center"
 			alignitem="center"
-			border="solid 2px white"
+			//border="solid 2px white"
 		>
 			<Box
 				//border="solid 2px blue"
-				w={["100%", "50%"]}
-				h={["60%", "100%"]}
+				w={["100%", "100%", "50%"]}
+				h={["74%", "80%", "100%", "100%", "100%"]}
 				top={0}
 				bottom={0}
 				position="relative"
@@ -30,6 +30,7 @@ export const Grammy = () => {
 				<Box
 					position="absolute"
 					w="100%"
+					h="100%"
 					top={0}
 					bottom={0}
 					//border="solid 2px green"
@@ -41,7 +42,7 @@ export const Grammy = () => {
 			<VStack
 				zIndex={1}
 				//border="solid 2px red"
-				w={["100%", "50%"]}
+				w={["100%", "100%", "50%"]}
 				m="0px"
 				justifyContent="center"
 				//direction={["row"]}
@@ -51,19 +52,19 @@ export const Grammy = () => {
 					//fontFamily="Alex Brush, cursive"
 					fontStyle="italic"
 					//fontSize={["2rem", "2.8rem", "3.5rem", "5rem", "6rem"]}
-					fontSize={["xl", "3xl"]}
+					fontSize={["sm", "xl", "3xl"]}
 				>
-					Grammy winner 2022
+					Swedish Grammy winner 2022
 				</Text>
 
-				<Stack direction={["row", "column"]} alignItems="center">
+				<Stack direction={["row", "row", "column"]} alignItems="center">
 					<Image
 						src={"/images/gramis-logo.png"}
 						width={60}
 						height={50}
 						objectFit="contain"
 					/>
-					<Text fontSize={["sm", "xl"]}>Folk music of the year 2022</Text>
+					<Text fontSize={["sm", "md", "xl"]}>Folk music of the year 2022</Text>
 				</Stack>
 			</VStack>
 		</Flex>
