@@ -18,7 +18,7 @@ const Hero = ({ slug }) => {
 		<Flex
 			w="100%"
 			position="relative"
-			h={["92vh", "78vh", "80vh", "75vh", "75vh", "80vh"]}
+			h={["92vh", "78vh", "55vh", "70vh", "75vh", "72vh"]}
 			bg="linear-gradient(180deg, #C2B552 0%, #795806 100%)"
 			//border="solid 2px red"
 			direction={["column", "row"]}

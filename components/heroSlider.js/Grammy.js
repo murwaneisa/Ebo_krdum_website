@@ -10,10 +10,10 @@ export const Grammy = () => {
 			h="100%"
 			position="absolute"
 			//m="0"
-			//p={["0rem", "0rem", "7.6rem", "6.2rem"]}
+			p={["0%", "0%", "0%", "7.6%"]}
 			//pb={["0rem", "0rem"]}
 			bg={["linear-gradient(180deg, #5A879D 0%, #284140 100%)"]}
-			justifyContent={"center"}
+			justifyContent="center"
 			justifyItems="center"
 			alignitem="center"
 			//border="solid 2px white"
@@ -26,15 +26,14 @@ export const Grammy = () => {
 				bottom={0}
 				position="relative"
 				zIndex={20}
+				border={[
+					"0px solid white",
+					"0px solid white",
+					"0px solid white",
+					"2px solid white",
+				]}
 			>
-				<Box
-					position="absolute"
-					w="100%"
-					h="100%"
-					top={0}
-					bottom={0}
-					//border="solid 2px green"
-				>
+				<Box position="absolute" w="100%" h="100%" top={0} bottom={0}>
 					<Image src={"/images/grammy-22.jpg"} layout="fill" objectFit="fill" />
 				</Box>
 			</Box>
@@ -46,13 +45,14 @@ export const Grammy = () => {
 				m="0px"
 				justifyContent="center"
 				//direction={["row"]}
+				pl={["0%", "0%", "3%"]}
 			>
 				<Text
 					fontWeight="bold"
 					//fontFamily="Alex Brush, cursive"
 					fontStyle="italic"
 					//fontSize={["2rem", "2.8rem", "3.5rem", "5rem", "6rem"]}
-					fontSize={["sm", "xl", "3xl"]}
+					fontSize={["sm", "xl", "xl", "3xl"]}
 				>
 					Swedish Grammy winner 2022
 				</Text>
