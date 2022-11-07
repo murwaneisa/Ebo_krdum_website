@@ -10,7 +10,7 @@ export const ContactBox = (props) => {
         <Text>
           Booking & Management:
           <br />
-          <a href="mailto:booking@ebokrdum.com">management@ebokrdum.com</a>
+          <a href="mailto:management@ebokrdum.com">management@ebokrdum.com</a>
         </Text>
         <Text>
           Interviews and Shows:
