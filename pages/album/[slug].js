@@ -8,6 +8,7 @@ import sanityClient from "../../lib/sanityClient";
 const AlbumItems = (props) => {
   // get album
   const { album } = props;
+  console.log("the album is", album);
 
   if (!album) {
     return (
@@ -49,7 +50,7 @@ const AlbumItems = (props) => {
 
       {/* Album Songs section */}
       {/* Pass through album songs as props */}
-      <SongsListSection songs={albumSong} />
+      {albumSong ? <SongsListSection songs={albumSong} /> : null}
     </Box>
   );
 };
