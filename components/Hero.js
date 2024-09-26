@@ -2,8 +2,8 @@ import { Box, Flex, Text } from "@chakra-ui/layout";
 import { VStack } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
-import hero from "../public/images/ebo-transparent.png";
 import Button from "./UI/Button";
+import { imageCDN } from "../lib/imageCdnFn";
 /*
  * the array of percentage({["10%", "40%"]}) represent the  breakpoint for the element start from mobile to lager screen
  * check the link for more details:
@@ -11,66 +11,70 @@ import Button from "./UI/Button";
  * add blur from Next js check ou :https://github.com/vercel/next.js/blob/canary/examples/image-component/pages/placeholder.js
  */
 
-const Hero = ({ slug }) => {
-	return (
-		<Box
-			w="100vw"
-			h="auto"
-			pt={["6.6rem", "7.6rem", "6.2rem"]}
-			pb={["1.2rem", "0rem"]}
-			bg="linear-gradient(180deg, #C2B552 0%, #795806 100%)"
-			align="center"
-		>
-			<Flex direction={["column", "row"]} w={["100%", "96%", "90%", "80%"]}>
-				<Box
-					position="relative"
-					w="100vw"
-					h={["40vh", "45vh", "43vh", "35vh", "80vh"]}
-				>
-					<Image
-						src={hero}
-						alt="This is the main hero image of Ebo Krdums website"
-						layout="fill"
-						placeholder="blur"
-						//width="100%"
-						objectFit="contain"
-					/>
-				</Box>
-				<VStack
-					//direction="column"
-					justify={["flex-start", "flex-end"]}
-					spacing={-1}
-					align="center"
-					my="5%"
-					//border="1px blue solid"
-				>
-					<Box>
-						<Text color="brown" fontWeight="bold" fontStyle="italic">
-							Latest Album
-						</Text>
-					</Box>
-					<Box>
-						<Text
-							color="brown"
-							fontWeight="bold"
-							fontStyle="italic"
-							fontSize={["2.8rem", "2.8rem", "3.5rem", "5rem", "6rem"]}
-							fontFamily="Alex Brush, cursive"
-						>
-							Diversity
-						</Text>
-					</Box>
-					<Box>
-						<Link href={`/album/${slug}`}>
-							<a>
-								<Button>View Album</Button>
-							</a>
-						</Link>
-					</Box>
-				</VStack>
-			</Flex>
-		</Box>
-	);
+const Hero = ({ heroImage, album }) => {
+  const image = imageCDN(heroImage);
+  return (
+    <Box
+      w="100vw"
+      h={["78vh", "90vh"]}
+      bg="linear-gradient(180deg, #A53100 0%, #882900 100%)"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+    >
+      <Flex
+        direction={["column", "column", , "row", "row"]}
+        w={["100%", "96%", "90%", "80%"]}
+        align="center"
+      >
+        <Box
+          position="relative"
+          w={["100vw", "100vw", "100vw", "40vw", "40vw"]}
+          h={["40vh", "45vh", "43vh", "43vh", "70vh"]}
+          overflow="hidden"
+          mr={["0px", "0px", "0px", "20px", "30px"]}
+          mb={["40px", "40px", "40px", "0px"]}
+        >
+          <Image
+            src={image}
+            alt={image.alt}
+            layout="fill"
+            objectFit="contain"
+          />
+        </Box>
+        <VStack
+          justify="center"
+          spacing={-1}
+          align="center"
+          w={["100%", "100%", "100%", "50%"]}
+        >
+          <Box>
+            <Text color="yellow" fontWeight="bold" fontStyle="italic">
+              Latest Album
+            </Text>
+          </Box>
+          <Box>
+            <Text
+              color="yellow"
+              fontWeight="bold"
+              fontStyle="italic"
+              fontSize={["2.8rem", "2.8rem", "3.5rem", "4.6rem", "5.5rem"]}
+              fontFamily="Alex Brush, cursive"
+            >
+              {album.albumTitle}
+            </Text>
+          </Box>
+          <Box>
+            <Link href={`/album/${album.albumSlug.current}`}>
+              <a>
+                <Button>View Album</Button>
+              </a>
+            </Link>
+          </Box>
+        </VStack>
+      </Flex>
+    </Box>
+  );
 };
 
 export default Hero;

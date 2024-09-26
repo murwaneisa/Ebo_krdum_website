@@ -10,9 +10,10 @@ import Video from "../components/Video";
 import sanityClient from "../lib/sanityClient";
 
 export default function Home(props) {
-  // Note: Latest album for Hero
-  const latestAlbum = props.albums.find(
-    (album) => album.albumTitle == "Diversity"
+  const { hero, albums } = props;
+  // Note: Album for Hero
+  const heroAlbum = albums.find(
+    (album) => album._id === hero.albumReference._ref
   );
 
   return (
@@ -26,7 +27,7 @@ export default function Home(props) {
         />
       </Head>
       {/* Hero image */}
-      <Hero slug={latestAlbum.albumSlug.current} />
+      <Hero heroImage={hero.heroImage} album={heroAlbum} her />
       {/* Other albums */}
       <Section
         bg="brown"
@@ -86,11 +87,21 @@ export async function getStaticProps() {
 *[_type == "album"]
 `);
 
+  const hero = await sanityClient.fetch(`
+  *[_type == "hero"][0]{
+    _id,
+    title,
+    heroImage,
+    albumReference
+  }
+`);
+
   return {
     props: {
       shows,
       review,
       albums,
+      hero,
     },
     revalidate: 60,
   };
