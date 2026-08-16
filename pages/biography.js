@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import PortableText from "react-portable-text";
+import { PortableText } from "@portabletext/react";
 import CustomH4 from "../components/UI/CustomH4";
 import Section from "../components/UI/Section";
 import TextSectionStack from "../components/UI/TextSectionStack";
@@ -25,11 +25,13 @@ const Biography = ({ bios }) => {
             }
           >
             <TextSectionStack>
-              <PortableText // https://www.npmjs.com/package/react-portable-text
-                content={bio.bioSectionText}
-                serializers={{
-                  h3: function h3fn(props) {
-                    return <CustomH4 {...props} />;
+              <PortableText // https://www.npmjs.com/package/@portabletext/react
+                value={bio.bioSectionText}
+                components={{
+                  block: {
+                    h3: function h3fn({ children }) {
+                      return <CustomH4>{children}</CustomH4>;
+                    },
                   },
                 }}
               />

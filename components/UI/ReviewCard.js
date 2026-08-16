@@ -24,7 +24,7 @@ const ReviewCard = ({ logo, text, name, language }) => {
 					alt="Ebo reviews and testimonial"
 					width={100}
 					height={100}
-					objectFit="contain"
+					style={{ objectFit: "contain" }}
 				/>
 			</Box>
 

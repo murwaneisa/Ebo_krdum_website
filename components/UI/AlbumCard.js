@@ -3,7 +3,6 @@ import Link from "next/link";
 import { imageCDN } from "../../lib/imageCdnFn";
 import Button from "../UI/Button";
 import CustomImage from "../UI/CustomImage";
-import Image from "next/image";
 
 /*
  * the array of percentage({["10%", "40%"]}) represent the  breakpoint for the element start from mobile to lager screen
@@ -20,9 +19,9 @@ const Card = (props) => {
         <CustomImage
           src={imageFromSanity}
           alt={image.photoAlt}
-          layout="fill"
           objectFit="cover"
-          quality="20"
+          sizes="(max-width: 768px) 100vw, 40vw"
+          quality={20}
         />
       </Box>
       <Flex
@@ -50,9 +49,7 @@ const Card = (props) => {
 
         <Box>
           <Link href={`/album/${slug}`}>
-            <a>
-              <Button>View Album</Button>
-            </a>
+            <Button>View Album</Button>
           </Link>
         </Box>
       </Flex>

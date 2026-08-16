@@ -5,8 +5,8 @@ import { Text } from "@chakra-ui/react";
 const MenuItem = ({ children, to }) => {
 	return (
 		<Link href={to}>
-			<Text cursor="pointer" fontWeight={600}>
-				<a>{children}</a>
+			<Text as="span" cursor="pointer" fontWeight={600}>
+				{children}
 			</Text>
 		</Link>
 	);

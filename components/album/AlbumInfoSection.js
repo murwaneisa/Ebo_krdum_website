@@ -40,7 +40,7 @@ const AlbumInfoSection = ({
             <CustomImage
               src={image}
               alt={`This is Ebo album ${title} image. Photo by: ${photographer}`}
-              layout="fill"
+              sizes="(max-width: 768px) 100vw, 32vw"
             />
           </Box>
 

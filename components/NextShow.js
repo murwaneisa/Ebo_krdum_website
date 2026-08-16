@@ -70,7 +70,7 @@ const NextShow = ({ shows }) => {
           alt="Event image"
           width={400}
           height={400}
-          objectFit="cover"
+          style={{ objectFit: "cover" }}
         />
       </Box>
       {/* End of the section */}
@@ -115,9 +115,7 @@ const NextShow = ({ shows }) => {
               </ChakraLink>
             </Box>
             <Flex color="brown" justify="center" align="center">
-              <Link href="/shows">
-                <a>See all shows</a>
-              </Link>
+              <Link href="/shows">See all shows</Link>
             </Flex>
           </Stack>
           {/* End of the section */}
@@ -130,9 +128,7 @@ const NextShow = ({ shows }) => {
             shows click:
           </Text>
           <Text mt={["1rem", "2rem"]} color="brown">
-            <Link href="/shows">
-              <a>See all shows</a>
-            </Link>
+            <Link href="/shows">See all shows</Link>
           </Text>
         </Box>
       )}

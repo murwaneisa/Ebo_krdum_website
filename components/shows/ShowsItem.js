@@ -73,7 +73,7 @@ const ShowsItem = (props) => {
           ) : isUpcoming ? (
             <ButtonUi>Buy Ticket</ButtonUi>
           ) : (
-            <a>Discover</a>
+            <Text as="span">Discover</Text>
           )}
         </Link>
       </Flex>

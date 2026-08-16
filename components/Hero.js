@@ -37,9 +37,11 @@ const Hero = ({ heroImage, album }) => {
         >
           <Image
             src={image}
-            alt={image.alt}
-            layout="fill"
-            objectFit="contain"
+            alt={`Ebo Krdum - ${album.albumTitle}`}
+            fill
+            sizes="(max-width: 992px) 100vw, 40vw"
+            style={{ objectFit: "contain" }}
+            priority
           />
         </Box>
         <VStack
@@ -66,9 +68,7 @@ const Hero = ({ heroImage, album }) => {
           </Box>
           <Box>
             <Link href={`/album/${album.albumSlug.current}`}>
-              <a>
-                <Button>View Album</Button>
-              </a>
+              <Button>View Album</Button>
             </Link>
           </Box>
         </VStack>
