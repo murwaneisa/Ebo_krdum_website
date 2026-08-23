@@ -1,0 +1,17 @@
+/*
+ * Minimal reset shared by both design systems.
+ *
+ * Deliberately does NOT set font-family or colors on `body`: Chakra v3 emits its
+ * globalCss inside a CSS @layer, and unlayered rules here would win over it.
+ * Legacy (v1) pages get their fonts from styles/theme.js; new pages from
+ * styles/system.js.
+ */
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
