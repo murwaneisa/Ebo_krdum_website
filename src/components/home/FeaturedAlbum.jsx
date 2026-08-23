@@ -1,9 +1,9 @@
 import { Box, Flex, Grid, Heading, Text } from "@chakra-ui/react";
 import Eyebrow from "../common/Eyebrow";
 import MetaItem from "../common/MetaItem";
-import SpotifyEmbed from "./SpotifyEmbed";
+import AlbumPlayer from "./AlbumPlayer";
 
-export default function FeaturedAlbum({ album }) {
+export default function FeaturedAlbum({ album, description }) {
   if (!album) return null;
 
   return (
@@ -38,27 +38,30 @@ export default function FeaturedAlbum({ album }) {
             {album.year}
           </Box>
         </Heading>
-        <Text
-          mt="24px"
-          fontSize="17px"
-          lineHeight="1.7"
-          color="rgba(247,239,221,0.72)"
-          maxW="46ch"
-        >
-          Eight songs about migration, love and the long work of change — sung in
-          Fur, Arabic and English.
-        </Text>
+        {description && (
+          <Text
+            mt="24px"
+            fontSize="17px"
+            lineHeight="1.7"
+            color="rgba(247,239,221,0.72)"
+            maxW="46ch"
+          >
+            {description}
+          </Text>
+        )}
         <Flex gap="44px" mt="36px" wrap="wrap">
           <MetaItem label="Genre" value="Desert blues" />
           <MetaItem label="Released" value={album.year} />
-          <MetaItem label="Recorded" value="Sweden" />
+          {album.trackCount ? (
+            <MetaItem label="Tracks" value={String(album.trackCount)} />
+          ) : null}
         </Flex>
       </Box>
 
-      <SpotifyEmbed
-        type="album"
-        id={album.spotifyAlbumId}
-        title={`${album.title} on Spotify`}
+      <AlbumPlayer
+        spotifyAlbumId={album.spotifyAlbumId}
+        deezerAlbumId={album.deezerAlbumId}
+        title={album.title}
         height={440}
       />
     </Grid>

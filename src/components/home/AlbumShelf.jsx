@@ -6,7 +6,7 @@ import FilmStrip from "../common/FilmStrip";
 import { coverUrl } from "@/lib/albums";
 
 function AlbumCard({ album }) {
-  const src = album.remoteCover || coverUrl(album, 700);
+  const src = coverUrl(album, 700);
 
   return (
     <Link
@@ -60,6 +60,18 @@ function AlbumCard({ album }) {
               {album.title}
             </Box>
           </Flex>
+          {album.recordType && album.recordType !== "album" && (
+            <Box
+              mt="6px"
+              ml="30px"
+              fontSize="11px"
+              letterSpacing="0.2em"
+              textTransform="uppercase"
+              color="bronze"
+            >
+              {album.recordType}
+            </Box>
+          )}
         </Box>
       </NextLink>
     </Link>
@@ -75,7 +87,7 @@ export default function AlbumShelf({ albums = [] }) {
         <Box>
           <Eyebrow>02 — Discography</Eyebrow>
           <SectionHeading>
-            {albums.length} album{albums.length === 1 ? "" : "s"}
+            {albums.length} release{albums.length === 1 ? "" : "s"}
           </SectionHeading>
         </Box>
         <Box

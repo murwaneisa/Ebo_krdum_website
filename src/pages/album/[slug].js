@@ -5,13 +5,14 @@ import { withSiteLayout } from "@/components/layout/SiteLayout";
 import Eyebrow from "@/components/common/Eyebrow";
 import FilmStrip from "@/components/common/FilmStrip";
 import MetaItem from "@/components/common/MetaItem";
-import SpotifyEmbed from "@/components/home/SpotifyEmbed";
-import { cmsFetch } from "@/lib/cms";
-import { coverUrl, DISCOGRAPHY, mergeWithSpotify } from "@/lib/albums";
-import { getAlbumTracks, getArtistAlbums } from "@/lib/spotify";
-import { SPOTIFY_ARTIST_ID } from "@/data/site";
+import AlbumPlayer from "@/components/home/AlbumPlayer";
+import { getAlbumEditorial } from "@/lib/cms";
+import { buildDiscography, coverUrl } from "@/lib/albums";
+import { getAlbum, getAlbumTracks, getArtistAlbums } from "@/lib/deezer";
+import { DEEZER_ARTIST_ID } from "@/data/site";
 
 export default function AlbumPage({ album, tracks, others, description }) {
+  const isAlbum = album?.recordType === "album";
   if (!album) {
     return (
       <Box maxW="shell" mx="auto" py="clamp(80px,14vw,180px)" px="gutter">
@@ -25,7 +26,7 @@ export default function AlbumPage({ album, tracks, others, description }) {
     );
   }
 
-  const cover = album.remoteCover || coverUrl(album, 1100, 85);
+  const cover = coverUrl(album, 1100, 85);
 
   return (
     <>
@@ -69,7 +70,7 @@ export default function AlbumPage({ album, tracks, others, description }) {
 
           <Box>
             <Eyebrow tone="amber" mb="24px">
-              Album — full length
+              {isAlbum ? "Album — full length" : album.recordType === "ep" ? "EP" : "Single"}
             </Eyebrow>
             <Heading
               as="h1"
@@ -98,8 +99,8 @@ export default function AlbumPage({ album, tracks, others, description }) {
               </Text>
             )}
 
-            {album.spotifyAlbumId && (
-              <Flex wrap="wrap" gap="14px" mt="36px">
+            <Flex wrap="wrap" gap="14px" mt="36px">
+              {album.spotifyAlbumId && (
                 <Link
                   href={`https://open.spotify.com/album/${album.spotifyAlbumId}`}
                   target="_blank"
@@ -119,13 +120,40 @@ export default function AlbumPage({ album, tracks, others, description }) {
                 >
                   Listen on Spotify
                 </Link>
-              </Flex>
-            )}
+              )}
+              {album.deezerAlbumId && (
+                <Link
+                  href={`https://www.deezer.com/album/${album.deezerAlbumId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  display="inline-flex"
+                  alignItems="center"
+                  color="amber"
+                  border="1px solid"
+                  borderColor="rgba(232,169,58,0.6)"
+                  fontWeight="600"
+                  fontSize="14px"
+                  letterSpacing="0.08em"
+                  textTransform="uppercase"
+                  px="26px"
+                  py="16px"
+                  borderRadius="2px"
+                  _hover={{ bg: "amber", color: "ink" }}
+                >
+                  Listen on Deezer
+                </Link>
+              )}
+            </Flex>
 
             <Flex gap="44px" mt="44px" wrap="wrap">
               <MetaItem label="Released" value={album.year} />
-              <MetaItem label="Genre" value="Desert blues" />
-              <MetaItem label="Recorded" value="Sweden" />
+              <MetaItem label="Genre" value={album.genre || "Desert blues"} />
+              {album.trackCount ? (
+                <MetaItem
+                  label={album.trackCount === 1 ? "Track" : "Tracks"}
+                  value={String(album.trackCount)}
+                />
+              ) : null}
             </Flex>
           </Box>
         </Grid>
@@ -165,17 +193,17 @@ export default function AlbumPage({ album, tracks, others, description }) {
               </Box>
             ) : (
               <Text fontSize="16px" color="rgba(247,239,221,0.6)" maxW="42ch">
-                The tracklist loads from Spotify. Play the record with the player
-                alongside in the meantime.
+                The tracklist is temporarily unavailable. Play the record with the
+                player alongside in the meantime.
               </Text>
             )}
           </Box>
 
           <Box position="sticky" top="96px">
-            <SpotifyEmbed
-              type="album"
-              id={album.spotifyAlbumId}
-              title={`${album.title} on Spotify`}
+            <AlbumPlayer
+              spotifyAlbumId={album.spotifyAlbumId}
+              deezerAlbumId={album.deezerAlbumId}
+              title={album.title}
               height={520}
               bg="surface"
             />
@@ -210,7 +238,7 @@ export default function AlbumPage({ album, tracks, others, description }) {
             gap="24px"
           >
             {others.map((a) => {
-              const src = a.remoteCover || coverUrl(a, 600);
+              const src = coverUrl(a, 600);
               return (
                 <Link key={a.slug} asChild color="cream" _hover={{ color: "amberBright" }}>
                   <NextLink href={`/album/${a.slug}`}>
@@ -260,35 +288,45 @@ export default function AlbumPage({ album, tracks, others, description }) {
 AlbumPage.getLayout = withSiteLayout();
 
 export async function getStaticPaths() {
+  // Prerender whatever Deezer knows about at build time. Anything released
+  // afterwards is rendered on first request by the blocking fallback below, so
+  // a new album reaches the site without a deploy or a CMS entry.
+  const albums = buildDiscography(await getArtistAlbums(DEEZER_ARTIST_ID));
+
   return {
-    paths: DISCOGRAPHY.map((a) => ({ params: { slug: a.slug } })),
-    // New releases discovered from Spotify render on first request.
+    paths: albums.map((a) => ({ params: { slug: a.slug } })),
     fallback: "blocking",
   };
 }
 
 export async function getStaticProps({ params }) {
-  const albums = mergeWithSpotify(await getArtistAlbums(SPOTIFY_ARTIST_ID));
+  const albums = buildDiscography(await getArtistAlbums(DEEZER_ARTIST_ID));
   const album = albums.find((a) => a.slug === params.slug) || null;
 
   if (!album) return { notFound: true, revalidate: 60 * 60 };
 
-  const [tracks, sanityAlbum] = await Promise.all([
-    getAlbumTracks(album.spotifyAlbumId),
-    cmsFetch(
-      `*[_type == "album" && albumSlug.current == $slug][0]{ albumDescription }`,
-      { slug: params.slug },
-      null
-    ),
+  // Detail and tracklist come from Deezer; Sanity is an optional overlay that
+  // may add a blurb and override which Spotify album the player uses. Each of
+  // the three fails soft on its own, so the page renders even if all three do.
+  const [detail, tracks, editorial] = await Promise.all([
+    getAlbum(album.deezerAlbumId),
+    getAlbumTracks(album.deezerAlbumId),
+    getAlbumEditorial(album),
   ]);
 
   return {
     props: {
-      album,
+      album: {
+        ...album,
+        trackCount: detail?.nb_tracks ?? album.trackCount ?? tracks.length ?? null,
+        genre: detail?.genres?.data?.[0]?.name || null,
+        label: detail?.label || null,
+        spotifyAlbumId: editorial?.spotifyAlbumId || album.spotifyAlbumId || null,
+      },
       tracks,
-      description: sanityAlbum?.albumDescription || null,
+      description: editorial?.albumDescription || null,
       others: albums.filter((a) => a.slug !== album.slug).slice(0, 5),
     },
-    revalidate: 60 * 60 * 24,
+    revalidate: 60 * 60,
   };
 }

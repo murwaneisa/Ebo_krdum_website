@@ -1,6 +1,16 @@
 /* Static site-wide content taken from the Claude Design artboards. */
 
+/*
+ * Deezer is the source of truth for album and track metadata — its public API
+ * needs no key, so the discography syncs itself. Confirmed via
+ * https://api.deezer.com/search/artist?q=Ebo%20Krdum
+ */
+export const DEEZER_ARTIST_ID = "77304962";
+
+/* Used for the artist embed and the profile links below — not for the Web API. */
 export const SPOTIFY_ARTIST_ID = "5tp0MlkqeohanVULV0V08d";
+
+export const DEEZER_ARTIST_URL = `https://www.deezer.com/artist/${DEEZER_ARTIST_ID}`;
 
 export const CONTACT = {
   booking: "management@ebokrdum.com",
@@ -38,5 +48,5 @@ export const STREAMING = [
   { icon: "amazon", label: "Amazon Music", href: "https://music.amazon.com/search/ebo+krdum" },
   { icon: "youtube", label: "YouTube Music", href: "https://music.youtube.com/channel/UCtQCeThNAGW_5MSRdFYX2bQ" },
   { icon: "soundcloud", label: "SoundCloud", href: "https://soundcloud.com/ebokrdum" },
-  { icon: "deezer", label: "Deezer", href: "https://www.deezer.com/search/ebo%20krdum" },
+  { icon: "deezer", label: "Deezer", href: DEEZER_ARTIST_URL },
 ];
