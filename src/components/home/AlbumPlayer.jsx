@@ -1,45 +1,43 @@
 import { Box, Link, Text } from "@chakra-ui/react";
 
 /*
- * Playback for one release.
+ * Playback for one release — the Deezer widget, everywhere.
  *
- * Spotify is preferred when a Spotify album id is known — from Sanity, or from
- * the small map in lib/albums.js. Spotify ids have no automatic source (their
- * Web API needs a Premium developer account), so relying on them alone would
- * leave every new release without a player until someone filled in a field.
+ * Deezer plays every specific album because its album id arrives automatically
+ * with the metadata, so a release published today gets a working player with no
+ * admin at all. Spotify album ids have no automatic source (their Web API needs
+ * a Premium developer account), so preferring Spotify here would leave every
+ * new release player-less until someone filled in a field, and would mix two
+ * different-looking players across the site.
  *
- * The Deezer widget is the fallback: its id already arrives with the metadata,
- * so a release published today gets a working player with no admin at all.
- * Both are plain iframes and neither needs a key.
+ * The homepage Listen section is the deliberate exception: it embeds the
+ * Spotify *artist* player, whose id is one stable value in data/site.js.
+ *
+ * Spotify is still linked from every album page, so nothing here implies the
+ * music is Deezer-only.
  */
 export default function AlbumPlayer({
-  spotifyAlbumId,
   deezerAlbumId,
   title,
   height = 440,
   bg = "ink",
 }) {
-  const source = spotifyAlbumId
-    ? {
-        src: `https://open.spotify.com/embed/album/${spotifyAlbumId}?utm_source=generator&theme=0`,
-        label: `${title} on Spotify`,
-      }
-    : deezerAlbumId
-      ? {
-          src: `https://widget.deezer.com/widget/dark/album/${deezerAlbumId}?tracklist=true`,
-          label: `${title} on Deezer`,
-        }
-      : null;
-
-  // No id from either service — offer a search rather than an empty panel.
-  if (!source) {
+  // No Deezer id — offer a search rather than an empty panel.
+  if (!deezerAlbumId) {
     return (
-      <Box border="1px solid" borderColor="rgba(139,90,43,0.5)" p="24px" bg={bg}>
+      <Box
+        border="1px solid"
+        borderColor="rgba(139,90,43,0.5)"
+        p="24px"
+        bg={bg}
+      >
         <Text fontSize="15px" lineHeight="1.7" color="rgba(247,239,221,0.6)">
           This release is not streaming here yet.
         </Text>
         <Link
-          href={`https://open.spotify.com/search/${encodeURIComponent(title || "Ebo Krdum")}`}
+          href={`https://open.spotify.com/search/${encodeURIComponent(
+            `Ebo Krdum ${title || ""}`.trim(),
+          )}`}
           target="_blank"
           rel="noopener noreferrer"
           display="inline-block"
@@ -59,8 +57,8 @@ export default function AlbumPlayer({
     <Box border="1px solid" borderColor="rgba(139,90,43,0.5)" p="12px" bg={bg}>
       <Box
         as="iframe"
-        title={source.label}
-        src={source.src}
+        title={`${title} on Deezer`}
+        src={`https://widget.deezer.com/widget/dark/album/${deezerAlbumId}?tracklist=true`}
         width="100%"
         height={`${height}px`}
         loading="lazy"

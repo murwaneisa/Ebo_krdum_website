@@ -50,7 +50,6 @@ export default function FeaturedAlbum({ album }) {
       </Box>
 
       <AlbumPlayer
-        spotifyAlbumId={album.spotifyAlbumId}
         deezerAlbumId={album.deezerAlbumId}
         title={album.title}
         height={440}

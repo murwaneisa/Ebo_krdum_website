@@ -7,32 +7,31 @@ import FilmStrip from "@/components/common/FilmStrip";
 import MetaItem from "@/components/common/MetaItem";
 import AlbumPlayer from "@/components/home/AlbumPlayer";
 import Tracklist from "@/components/album/Tracklist";
-import AlbumPreviewPlayer from "@/components/album/AlbumPreviewPlayer";
 import { buildDiscography, coverUrl, genreOf } from "@/lib/albums";
 import { getAlbum, getAlbumTracks, getArtistAlbums } from "@/lib/deezer";
 import { DEEZER_ARTIST_ID } from "@/data/site";
 
-/*
- * Releases that get the custom, on-brand preview player in place of the
- * Spotify/Deezer embed. Deliberately a short list while the idea is being
- * judged -- emptying it reverts every page to the embed, adding a slug opts
- * that release in.
- *
- * The left-hand tracklist stays static for these, because the player carries
- * its own tracklist and two sets of play controls on one page would be noise.
- */
-const PREVIEW_PLAYER_SLUGS = ["soga-jamaile"];
-
 export default function AlbumPage({ album, tracks, others }) {
   const isAlbum = album?.recordType === "album";
-  const useCustomPlayer = PREVIEW_PLAYER_SLUGS.includes(album?.slug);
   if (!album) {
     return (
       <Box maxW="shell" mx="auto" py="clamp(80px,14vw,180px)" px="gutter">
-        <Heading fontFamily="display" fontSize="clamp(32px,4vw,56px)" fontWeight="500" color="cream">
+        <Heading
+          fontFamily="display"
+          fontSize="clamp(32px,4vw,56px)"
+          fontWeight="500"
+          color="cream"
+        >
           Album not found
         </Heading>
-        <Link asChild mt="24px" display="inline-block" fontSize="14px" letterSpacing="0.12em" textTransform="uppercase">
+        <Link
+          asChild
+          mt="24px"
+          display="inline-block"
+          fontSize="14px"
+          letterSpacing="0.12em"
+          textTransform="uppercase"
+        >
           <NextLink href="/#albums">Back to the discography →</NextLink>
         </Link>
       </Box>
@@ -43,7 +42,13 @@ export default function AlbumPage({ album, tracks, others }) {
 
   return (
     <>
-      <Box as="section" maxW="shell" mx="auto" pt="clamp(28px,4vw,44px)" px="gutter">
+      <Box
+        as="section"
+        maxW="shell"
+        mx="auto"
+        pt="clamp(28px,4vw,44px)"
+        px="gutter"
+      >
         {/* Breadcrumb */}
         <Flex
           align="center"
@@ -53,7 +58,11 @@ export default function AlbumPage({ album, tracks, others }) {
           textTransform="uppercase"
           color="rgba(247,239,221,0.45)"
         >
-          <Link asChild color="rgba(247,239,221,0.6)" _hover={{ color: "amberBright" }}>
+          <Link
+            asChild
+            color="rgba(247,239,221,0.6)"
+            _hover={{ color: "amberBright" }}
+          >
             <NextLink href="/#albums">Albums</NextLink>
           </Link>
           <Box as="span">/</Box>
@@ -68,7 +77,13 @@ export default function AlbumPage({ album, tracks, others }) {
           gap="clamp(32px,4vw,64px)"
           alignItems="end"
         >
-          <Box position="relative" border="1px solid" borderColor="rgba(139,90,43,0.6)" bg="surface" css={{ aspectRatio: "1" }}>
+          <Box
+            position="relative"
+            border="1px solid"
+            borderColor="rgba(139,90,43,0.6)"
+            bg="surface"
+            css={{ aspectRatio: "1" }}
+          >
             {cover && (
               <Image
                 src={cover}
@@ -83,7 +98,11 @@ export default function AlbumPage({ album, tracks, others }) {
 
           <Box>
             <Eyebrow tone="amber" mb="24px">
-              {isAlbum ? "Album — full length" : album.recordType === "ep" ? "EP" : "Single"}
+              {isAlbum
+                ? "Album — full length"
+                : album.recordType === "ep"
+                  ? "EP"
+                  : "Single"}
             </Eyebrow>
             <Heading
               as="h1"
@@ -99,29 +118,32 @@ export default function AlbumPage({ album, tracks, others }) {
               {album.title}
             </Heading>
 
-
             <Flex wrap="wrap" gap="14px" mt="36px">
-              {album.spotifyAlbumId && (
-                <Link
-                  href={`https://open.spotify.com/album/${album.spotifyAlbumId}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  display="inline-flex"
-                  alignItems="center"
-                  bg="amber"
-                  color="ink"
-                  fontWeight="600"
-                  fontSize="14px"
-                  letterSpacing="0.08em"
-                  textTransform="uppercase"
-                  px="28px"
-                  py="16px"
-                  borderRadius="2px"
-                  _hover={{ bg: "amberBright", color: "ink" }}
-                >
-                  Listen on Spotify
-                </Link>
-              )}
+              <Link
+                href={
+                  album.spotifyAlbumId
+                    ? `https://open.spotify.com/album/${album.spotifyAlbumId}`
+                    : `https://open.spotify.com/search/${encodeURIComponent(
+                        `Ebo Krdum ${album.title}`,
+                      )}`
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+                display="inline-flex"
+                alignItems="center"
+                bg="amber"
+                color="ink"
+                fontWeight="600"
+                fontSize="14px"
+                letterSpacing="0.08em"
+                textTransform="uppercase"
+                px="28px"
+                py="16px"
+                borderRadius="2px"
+                _hover={{ bg: "amberBright", color: "ink" }}
+              >
+                Listen on Spotify
+              </Link>
               {album.deezerAlbumId && (
                 <Link
                   href={`https://www.deezer.com/album/${album.deezerAlbumId}`}
@@ -163,29 +185,31 @@ export default function AlbumPage({ album, tracks, others }) {
       </Box>
 
       {/* Tracklist + player */}
-      <Box as="section" id="player" maxW="shell" mx="auto" pt="clamp(52px,7vw,80px)" px="gutter">
-        <Grid templateColumns="repeat(auto-fit,minmax(330px,1fr))" gap="clamp(32px,4vw,56px)" alignItems="start">
+      <Box
+        as="section"
+        id="player"
+        maxW="shell"
+        mx="auto"
+        pt="clamp(52px,7vw,80px)"
+        px="gutter"
+      >
+        <Grid
+          templateColumns="repeat(auto-fit,minmax(330px,1fr))"
+          gap="clamp(32px,4vw,56px)"
+          alignItems="start"
+        >
           <Box>
             <Eyebrow mb="22px">Tracklist</Eyebrow>
             <Tracklist tracks={tracks} deezerAlbumId={album.deezerAlbumId} />
           </Box>
 
           <Box position="sticky" top="96px">
-            {useCustomPlayer ? (
-              <AlbumPreviewPlayer
-                album={album}
-                tracks={tracks}
-                coverSrc={coverUrl(album, 300)}
-              />
-            ) : (
-              <AlbumPlayer
-                spotifyAlbumId={album.spotifyAlbumId}
-                deezerAlbumId={album.deezerAlbumId}
-                title={album.title}
-                height={520}
-                bg="surface"
-              />
-            )}
+            <AlbumPlayer
+              deezerAlbumId={album.deezerAlbumId}
+              title={album.title}
+              height={520}
+              bg="surface"
+            />
           </Box>
         </Grid>
       </Box>
@@ -193,7 +217,13 @@ export default function AlbumPage({ album, tracks, others }) {
       {/* Other releases */}
       {others.length > 0 && (
         <Box as="section" maxW="shell" mx="auto" pt="88px">
-          <Flex px="gutter" align="flex-end" justify="space-between" gap="32px" wrap="wrap">
+          <Flex
+            px="gutter"
+            align="flex-end"
+            justify="space-between"
+            gap="32px"
+            wrap="wrap"
+          >
             <Heading
               as="h2"
               fontFamily="display"
@@ -205,7 +235,13 @@ export default function AlbumPage({ album, tracks, others }) {
             >
               More albums
             </Heading>
-            <Link asChild fontSize="13px" letterSpacing="0.12em" textTransform="uppercase" fontWeight="600">
+            <Link
+              asChild
+              fontSize="13px"
+              letterSpacing="0.12em"
+              textTransform="uppercase"
+              fontWeight="600"
+            >
               <NextLink href="/#albums">All releases →</NextLink>
             </Link>
           </Flex>
@@ -219,7 +255,12 @@ export default function AlbumPage({ album, tracks, others }) {
             {others.map((a) => {
               const src = coverUrl(a, 600);
               return (
-                <Link key={a.slug} asChild color="cream" _hover={{ color: "amberBright" }}>
+                <Link
+                  key={a.slug}
+                  asChild
+                  color="cream"
+                  _hover={{ color: "amberBright" }}
+                >
                   <NextLink href={`/album/${a.slug}`}>
                     <Box>
                       <Box
@@ -241,10 +282,19 @@ export default function AlbumPage({ album, tracks, others }) {
                         )}
                       </Box>
                       <Flex align="baseline" gap="10px" mt="14px">
-                        <Box as="span" fontFamily="display" fontSize="20px" fontWeight="500">
+                        <Box
+                          as="span"
+                          fontFamily="display"
+                          fontSize="20px"
+                          fontWeight="500"
+                        >
                           {a.title}
                         </Box>
-                        <Box as="span" fontSize="13px" color="rgba(247,239,221,0.45)">
+                        <Box
+                          as="span"
+                          fontSize="13px"
+                          color="rgba(247,239,221,0.45)"
+                        >
                           {a.year}
                         </Box>
                       </Flex>
@@ -295,7 +345,8 @@ export async function getStaticProps({ params }) {
     props: {
       album: {
         ...album,
-        trackCount: detail?.nb_tracks ?? album.trackCount ?? tracks.length ?? null,
+        trackCount:
+          detail?.nb_tracks ?? album.trackCount ?? tracks.length ?? null,
         genre: genreOf(detail),
         label: detail?.label || null,
       },

@@ -5,7 +5,7 @@
  * This is the source of truth for album and track metadata (title, cover art,
  * release date, tracklist, duration). Playback stays on Spotify embeds where a
  * Spotify album id is known, because Spotify's Web API now requires a Premium
- * developer account; see components/home/AlbumPlayer.jsx.
+ * developer account. Playback is the Deezer widget; see AlbumPlayer.jsx.
  *
  * Every export fails soft. On a bad id, a network error or an API outage these
  * return [] / null and log a warning rather than throwing, so `next build`
@@ -24,18 +24,14 @@ const API = "https://api.deezer.com";
 /** Cache window for album metadata: one hour. */
 export const REVALIDATE_SECONDS = 3600;
 
-async function deezer(path, { fresh = false } = {}) {
+async function deezer(path) {
   try {
     const res = await fetch(`${API}${path}`, {
-      // `fresh` bypasses every cache. Required for preview URLs, which Deezer
-      // signs for only 15 minutes and then answers 403 — a cached copy would be
-      // dead most of the time. See getAlbumPreviews below.
-      cache: fresh ? "no-store" : undefined,
       // Read by the App Router's extended fetch. The Pages Router ignores this
       // field — there ISR comes from `revalidate` in getStaticProps, which the
       // callers set to the same window. Kept here so the intent travels with
       // the request if these pages ever move to the App Router.
-      next: fresh ? undefined : { revalidate: REVALIDATE_SECONDS },
+      next: { revalidate: REVALIDATE_SECONDS },
     });
 
     if (!res.ok) {
@@ -93,10 +89,9 @@ export async function getAlbum(deezerAlbumId) {
  * `/album/{id}` does carry `tracks.data` inline, but that copy is truncated for
  * long releases; this dedicated endpoint is the complete one.
  *
- * Deliberately omits `preview`. Those URLs are signed with a 15-minute expiry,
- * and this result is prerendered into page props — a preview baked in there
- * would be a 403 by the time anyone pressed play. Use getAlbumPreviews instead,
- * which is fetched on demand.
+ * Deliberately omits `preview`. Deezer signs those URLs with a 15-minute expiry
+ * and this result is prerendered into page props, so a preview baked in there
+ * would be a 403 by the time anyone pressed play.
  */
 export async function getAlbumTracks(deezerAlbumId) {
   if (!deezerAlbumId) return [];
@@ -119,28 +114,4 @@ function secondsToTime(total) {
   const m = Math.floor(total / 60);
   const s = total % 60;
   return `${m}:${String(s).padStart(2, "0")}`;
-}
-
-/**
- * Preview MP3s for one release, fetched fresh every time.
- *
- * Deezer signs these URLs with a 15-minute expiry (`hdnea=exp=…`) and answers
- * 403 once it lapses, so they must never be prerendered into a page or cached
- * beyond that window. The API route in pages/api/previews/[albumId].js serves
- * them on demand instead, at the moment a visitor presses play.
- *
- * `preview` is non-null here, unlike Spotify's preview_url under Client
- * Credentials, and the files carry Access-Control-Allow-Origin: * so the Web
- * Audio API can read them.
- */
-export async function getAlbumPreviews(deezerAlbumId) {
-  if (!deezerAlbumId) return [];
-
-  const json = await deezer(`/album/${deezerAlbumId}/tracks?limit=100`, { fresh: true });
-  const items = json?.data;
-  if (!Array.isArray(items)) return [];
-
-  return items
-    .filter((t) => t.preview)
-    .map((t) => ({ id: t.id, title: t.title, preview: t.preview }));
 }
