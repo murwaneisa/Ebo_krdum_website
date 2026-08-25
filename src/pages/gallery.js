@@ -130,7 +130,7 @@ export default function Gallery() {
                   aria-label={p.caption}
                   display="block"
                   w="100%"
-                  bg="surface2"
+                  bgColor="surface2"
                   css={{
                     aspectRatio: String(p.ratio),
                     backgroundImage: `url(${p.src})`,

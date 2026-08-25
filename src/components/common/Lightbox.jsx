@@ -79,7 +79,7 @@ export default function Lightbox({ items = [], index, onIndexChange, onClose, sh
                   mx="auto"
                   border="1px solid"
                   borderColor="rgba(139,90,43,0.5)"
-                  bg="surface"
+                  bgColor="surface"
                   css={{
                     aspectRatio: String(item.ratio || 1),
                     backgroundImage: item.src ? `url(${item.src})` : undefined,

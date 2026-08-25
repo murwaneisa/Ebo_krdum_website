@@ -152,7 +152,7 @@ export default function Press() {
                     cursor="pointer"
                     border="1px solid"
                     borderColor="rgba(139,90,43,0.6)"
-                    bg="ink"
+                    bgColor="ink"
                     css={{
                       aspectRatio: "4 / 5",
                       backgroundImage: `url(${p.src})`,
