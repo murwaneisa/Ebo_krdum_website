@@ -19,6 +19,7 @@ export default function Home({
   shows,
   reviews,
 }) {
+  console.log("Home.getStaticProps reviews", reviews);
   return (
     <>
       <Hero image={heroImage} alt={heroAlt} />
@@ -50,7 +51,6 @@ export async function getStaticProps() {
   // a new release. If it is unreachable, buildDiscography returns the local
   // fallback so the page still renders.
   const albums = buildDiscography(await getArtistAlbums(DEEZER_ARTIST_ID));
-  console.log("Home.getStaticProps albums", albums);
   const featured = pickFeatured(albums);
 
   // The artist listing omits nb_tracks and genres, so the featured release is
