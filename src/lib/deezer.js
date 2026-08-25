@@ -22,7 +22,7 @@
 const API = "https://api.deezer.com";
 
 /** Cache window for album metadata: one hour. */
-export const REVALIDATE_SECONDS = 3600;
+const REVALIDATE_SECONDS = 3600;
 
 async function deezer(path) {
   try {

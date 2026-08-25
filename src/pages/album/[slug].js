@@ -348,7 +348,6 @@ export async function getStaticProps({ params }) {
         trackCount:
           detail?.nb_tracks ?? album.trackCount ?? tracks.length ?? null,
         genre: genreOf(detail),
-        label: detail?.label || null,
       },
       tracks,
       others: albums.filter((a) => a.slug !== album.slug).slice(0, 5),

@@ -15,9 +15,13 @@ export default function ListenSection() {
       pt="clamp(52px,7vw,88px)"
       px="gutter"
     >
-      <Grid templateColumns="repeat(auto-fit,minmax(320px,1fr))" gap="clamp(32px,4vw,56px)" alignItems="start">
+      <Grid
+        templateColumns="repeat(auto-fit,minmax(320px,1fr))"
+        gap="clamp(32px,4vw,56px)"
+        alignItems="start"
+      >
         <Box>
-          <Eyebrow>01 — Listen</Eyebrow>
+          <Eyebrow>03 — Listen</Eyebrow>
           <SectionHeading>
             Top tracks,
             <br />
@@ -35,12 +39,22 @@ export default function ListenSection() {
             color="rgba(247,239,221,0.66)"
             maxW="38ch"
           >
-            Straight from his Spotify artist profile, so the running order follows
-            what people are actually playing this week.
+            Straight from his Spotify artist profile, so the running order
+            follows what people are actually playing this week.
           </Text>
 
-          <Box mt="clamp(28px,3.4vw,40px)" borderTop="1px solid" borderColor="rgba(139,90,43,0.45)" pt="22px">
-            <Box fontSize="11px" letterSpacing="0.24em" textTransform="uppercase" color="bronze">
+          <Box
+            mt="clamp(28px,3.4vw,40px)"
+            borderTop="1px solid"
+            borderColor="rgba(139,90,43,0.45)"
+            pt="22px"
+          >
+            <Box
+              fontSize="11px"
+              letterSpacing="0.24em"
+              textTransform="uppercase"
+              color="bronze"
+            >
               Also on
             </Box>
             <Flex wrap="wrap" gap="12px" mt="16px">

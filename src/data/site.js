@@ -10,7 +10,7 @@ export const DEEZER_ARTIST_ID = "77304962";
 /* Used for the artist embed and the profile links below — not for the Web API. */
 export const SPOTIFY_ARTIST_ID = "5tp0MlkqeohanVULV0V08d";
 
-export const DEEZER_ARTIST_URL = `https://www.deezer.com/artist/${DEEZER_ARTIST_ID}`;
+const DEEZER_ARTIST_URL = `https://www.deezer.com/artist/${DEEZER_ARTIST_ID}`;
 
 export const CONTACT = {
   booking: "management@ebokrdum.com",

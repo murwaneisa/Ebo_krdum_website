@@ -15,7 +15,7 @@
  * FALLBACK_ALBUMS is the last resort if Deezer is unreachable at build time.
  */
 
-export const DEEZER_IMAGE_HOST = "cdn-images.dzcdn.net";
+const DEEZER_IMAGE_HOST = "cdn-images.dzcdn.net";
 
 /**
  * Locally hosted cover art, used whenever Deezer has no cover for a release —
@@ -81,7 +81,7 @@ export function genreOf(detail) {
  * URL-safe slug from a release title.
  * "Love & Struggle" -> "love-and-struggle", "Soga Jamailé" -> "soga-jamaile".
  */
-export function slugify(title) {
+function slugify(title) {
   return String(title || "")
     .normalize("NFD")
     .replace(/[̀-ͯ]/g, "")
@@ -110,7 +110,7 @@ export function coverUrl(album, width = 700) {
 }
 
 /** Normalise one raw Deezer release into the shape the pages render. */
-export function toAlbum(release) {
+function toAlbum(release) {
   const override = RELEASE_OVERRIDES[release.id] || {};
   const slug = override.slug || slugify(release.title) || String(release.id);
   return {
@@ -163,7 +163,7 @@ function numbered(albums) {
  * Used only when Deezer cannot be reached during the build. Cover art for these
  * comes from LOCAL_COVERS above, so the fallback needs no network at all.
  */
-export const FALLBACK_ALBUMS = [
+const FALLBACK_ALBUMS = [
   {
     slug: "soga-jamaile",
     title: "Soga Jamailé",

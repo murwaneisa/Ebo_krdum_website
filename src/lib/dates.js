@@ -4,7 +4,7 @@ const MONTHS = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV
 const WEEKDAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
 /** Parse a Sanity show into the shape the listing components expect. */
-export function toShow(raw) {
+function toShow(raw) {
   if (!raw?.showDate) return null;
   const date = new Date(raw.showDate);
   if (Number.isNaN(date.getTime())) return null;

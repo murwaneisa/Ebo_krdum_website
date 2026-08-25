@@ -19,7 +19,7 @@ export default function FeaturedAlbum({ album }) {
       alignItems="center"
     >
       <Box>
-        <Eyebrow tone="amber">04 — Featured album</Eyebrow>
+        <Eyebrow tone="amber">01 — Featured album</Eyebrow>
         <Heading
           as="h2"
           fontFamily="display"

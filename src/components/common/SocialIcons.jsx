@@ -35,7 +35,7 @@ const PATHS = {
   ],
 };
 
-export function SocialIcon({ name, size = 19 }) {
+function SocialIcon({ name, size = 19 }) {
   const paths = PATHS[name];
   if (!paths) return null;
   return (

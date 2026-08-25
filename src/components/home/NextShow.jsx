@@ -3,11 +3,32 @@ import { Box, Flex, Link } from "@chakra-ui/react";
 import Eyebrow from "../common/Eyebrow";
 import SectionHeading from "../common/SectionHeading";
 
-const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-const DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const MONTHS = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+const DAYS = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
 
 /** Nearest show whose date is still in the future, else the most recent past one. */
-export function pickNextShow(shows = []) {
+function pickNextShow(shows = []) {
   const now = Date.now();
   const dated = shows
     .filter((s) => s?.showDate)
@@ -23,10 +44,17 @@ export default function NextShow({ shows = [] }) {
   const show = pickNextShow(shows);
 
   return (
-    <Box as="section" id="shows" maxW="shell" mx="auto" pt="clamp(52px,7vw,88px)" px="gutter">
+    <Box
+      as="section"
+      id="shows"
+      maxW="shell"
+      mx="auto"
+      pt="clamp(52px,7vw,88px)"
+      px="gutter"
+    >
       <Flex align="flex-end" justify="space-between" gap="24px" wrap="wrap">
         <Box>
-          <Eyebrow>03 — Upcoming shows</Eyebrow>
+          <Eyebrow>04 — Upcoming shows</Eyebrow>
           <SectionHeading>On the road</SectionHeading>
         </Box>
         <Link
@@ -50,7 +78,10 @@ export default function NextShow({ shows = [] }) {
 
 function ShowRow({ show }) {
   const date = new Date(show.showDate);
-  const time = date.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+  const time = date.toLocaleTimeString("en-GB", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
   const place = [show.showCity, show.showCountry].filter(Boolean).join(", ");
 
   return (
@@ -64,10 +95,22 @@ function ShowRow({ show }) {
       borderColor="rgba(139,90,43,0.3)"
     >
       <Flex flex="0 0 auto" align="baseline" gap="14px">
-        <Box fontFamily="display" fontSize="13px" letterSpacing="0.22em" textTransform="uppercase" color="amber">
+        <Box
+          fontFamily="display"
+          fontSize="13px"
+          letterSpacing="0.22em"
+          textTransform="uppercase"
+          color="amber"
+        >
           {MONTHS[date.getMonth()]}
         </Box>
-        <Box fontFamily="display" fontSize="clamp(48px,6vw,72px)" lineHeight="0.85" fontWeight="600" color="cream">
+        <Box
+          fontFamily="display"
+          fontSize="clamp(48px,6vw,72px)"
+          lineHeight="0.85"
+          fontWeight="600"
+          color="cream"
+        >
           {String(date.getDate()).padStart(2, "0")}
         </Box>
         <Box fontFamily="display" fontSize="15px" color="bronze">
@@ -76,7 +119,12 @@ function ShowRow({ show }) {
       </Flex>
 
       <Box flex="1 1 300px" minW="0">
-        <Box fontFamily="display" fontSize="clamp(24px,2.6vw,32px)" fontWeight="500" color="cream">
+        <Box
+          fontFamily="display"
+          fontSize="clamp(24px,2.6vw,32px)"
+          fontWeight="500"
+          color="cream"
+        >
           {show.showTitle}
         </Box>
         {place && (
@@ -86,7 +134,13 @@ function ShowRow({ show }) {
         )}
       </Box>
 
-      <Box flex="0 0 auto" fontFamily="mono" fontSize="13px" letterSpacing="0.06em" color="rgba(247,239,221,0.7)">
+      <Box
+        flex="0 0 auto"
+        fontFamily="mono"
+        fontSize="13px"
+        letterSpacing="0.06em"
+        color="rgba(247,239,221,0.7)"
+      >
         {DAYS[date.getDay()]} at {time}
       </Box>
     </Flex>

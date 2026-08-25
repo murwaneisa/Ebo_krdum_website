@@ -26,10 +26,6 @@ if (projectId) {
   );
 }
 
-export function isCmsConfigured() {
-  return client !== null;
-}
-
 /** Run a GROQ query, returning `fallback` instead of throwing on any failure. */
 export async function cmsFetch(query, params = {}, fallback = null) {
   if (!client) return fallback;
