@@ -3,6 +3,8 @@ import { Box, Flex, Grid, Link, Text } from "@chakra-ui/react";
 import Eyebrow from "../common/Eyebrow";
 import SectionHeading from "../common/SectionHeading";
 import FilmStrip from "../common/FilmStrip";
+import ReviewLogo from "../common/ReviewLogo";
+import { isFallback, textFor } from "@/lib/reviews";
 
 function LangButton({ active, children, onClick }) {
   return (
@@ -75,7 +77,11 @@ export default function PressStrip({ reviews = [] }) {
             color="cream"
             _hover={{ bg: "surface", color: "cream" }}
           >
-            <FilmStrip size={12} w="72px" />
+            {r.logo ? (
+              <ReviewLogo logo={r.logo} alt={r.outlet} height={24} />
+            ) : (
+              <FilmStrip size={12} w="72px" />
+            )}
             <Text
               fontFamily="display"
               fontSize="19px"
@@ -84,7 +90,7 @@ export default function PressStrip({ reviews = [] }) {
               color="rgba(247,239,221,0.92)"
               css={{ textWrap: "pretty" }}
             >
-              {lang === "en" ? r.en : r.sv}
+              {textFor(r, lang)}
             </Text>
             <Box
               mt="auto"
@@ -94,6 +100,11 @@ export default function PressStrip({ reviews = [] }) {
               color="amber"
             >
               {r.outlet}
+              {isFallback(r, lang) && (
+                <Box as="span" color="bronze" textTransform="none" letterSpacing="0" ml="8px">
+                  (in {lang === "sv" ? "English" : "Swedish"})
+                </Box>
+              )}
             </Box>
           </Link>
         ))}

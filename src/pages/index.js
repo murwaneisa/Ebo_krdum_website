@@ -9,7 +9,7 @@ import { cmsFetch, imageUrl } from "@/lib/cms";
 import { getAlbum, getArtistAlbums } from "@/lib/deezer";
 import { buildDiscography, genreOf, pickFeatured } from "@/lib/albums";
 import { DEEZER_ARTIST_ID } from "@/data/site";
-import { REVIEWS } from "@/data/reviews";
+import { getReviews } from "@/lib/reviews";
 
 export default function Home({
   heroImage,
@@ -54,10 +54,13 @@ export async function getStaticProps() {
   const featured = pickFeatured(albums);
 
   // The artist listing omits nb_tracks and genres, so the featured release is
-  // fetched in full to fill in its meta row.
-  const featuredDetail = featured
-    ? await getAlbum(featured.deezerAlbumId)
-    : null;
+  // fetched in full to fill in its meta row. Reviews are independent, so both
+  // go out together.
+  const [featuredDetail, reviews] = await Promise.all([
+    featured ? getAlbum(featured.deezerAlbumId) : null,
+    // Four most recently added reviews; /press shows the full set.
+    getReviews({ limit: 4 }),
+  ]);
 
   return {
     props: {
@@ -72,7 +75,7 @@ export async function getStaticProps() {
           }
         : null,
       shows: shows || [],
-      reviews: REVIEWS,
+      reviews,
     },
     revalidate: 60 * 60, // refresh the discography hourly
   };

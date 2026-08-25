@@ -4,7 +4,8 @@ import { withSiteLayout } from "@/components/layout/SiteLayout";
 import FilmStrip from "@/components/common/FilmStrip";
 import Lightbox from "@/components/common/Lightbox";
 import { CONTACT } from "@/data/site";
-import { REVIEWS } from "@/data/reviews";
+import ReviewLogo from "@/components/common/ReviewLogo";
+import { getReviews, isFallback, textFor } from "@/lib/reviews";
 import { PRESS_DOWNLOADS, PRESS_PHOTOS } from "@/data/photos";
 
 function LangButton({ active, children, onClick }) {
@@ -72,7 +73,7 @@ function DownloadCard({ kind, title, note, href, external = true }) {
   );
 }
 
-export default function Press() {
+export default function Press({ reviews = [] }) {
   const [lang, setLang] = useState("en");
   const [photo, setPhoto] = useState(null);
   const en = lang === "en";
@@ -214,7 +215,7 @@ export default function Press() {
         </Flex>
 
         <Grid templateColumns="repeat(auto-fit,minmax(330px,1fr))" gap="clamp(20px,2.4vw,32px)">
-          {REVIEWS.map((r) => (
+          {reviews.map((r) => (
             <Link
               key={r.id}
               href={r.url}
@@ -230,12 +231,22 @@ export default function Press() {
               color="cream"
               _hover={{ borderColor: "amber", color: "cream" }}
             >
-              <Flex wrap="wrap" align="baseline" gap="10px 16px">
-                <Box fontFamily="display" fontSize="clamp(20px,2vw,26px)" color="amber">
-                  {r.outlet}
-                </Box>
+              <Flex wrap="wrap" align="center" gap="12px 16px">
+                {r.logo ? (
+                  <ReviewLogo logo={r.logo} alt={r.outlet} height={28} />
+                ) : (
+                  <Box fontFamily="display" fontSize="clamp(20px,2vw,26px)" color="amber">
+                    {r.outlet}
+                  </Box>
+                )}
                 <Box fontSize="11px" letterSpacing="0.2em" textTransform="uppercase" color="bronze">
-                  {en ? "Translated from Swedish" : "Svensk original"}
+                  {isFallback(r, en ? "en" : "sv")
+                    ? en
+                      ? "Swedish original"
+                      : "English translation"
+                    : en
+                      ? "Translated from Swedish"
+                      : "Svensk original"}
                 </Box>
               </Flex>
               <Text
@@ -247,7 +258,7 @@ export default function Press() {
                 color="rgba(247,239,221,0.9)"
                 css={{ textWrap: "pretty" }}
               >
-                {en ? r.en : r.sv}
+                {textFor(r, en ? "en" : "sv")}
               </Text>
               <Box
                 mt="auto"
@@ -257,7 +268,7 @@ export default function Press() {
                 fontWeight="600"
                 color="amber"
               >
-                Read the article →
+                {r.outlet} — read the article →
               </Box>
             </Link>
           ))}
@@ -278,6 +289,13 @@ export default function Press() {
       />
     </>
   );
+}
+
+export async function getStaticProps() {
+  return {
+    props: { reviews: await getReviews() },
+    revalidate: 60 * 60,
+  };
 }
 
 Press.getLayout = withSiteLayout({
