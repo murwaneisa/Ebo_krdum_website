@@ -150,8 +150,8 @@ export function buildDiscography(releases) {
 
   return numbered(
     albums.sort((a, b) =>
-      String(b.releaseDate || "").localeCompare(String(a.releaseDate || ""))
-    )
+      String(b.releaseDate || "").localeCompare(String(a.releaseDate || "")),
+    ),
   );
 }
 
