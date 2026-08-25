@@ -11,7 +11,14 @@ import { buildDiscography, genreOf, pickFeatured } from "@/lib/albums";
 import { DEEZER_ARTIST_ID } from "@/data/site";
 import { REVIEWS } from "@/data/reviews";
 
-export default function Home({ heroImage, heroAlt, albums, featured, shows, reviews }) {
+export default function Home({
+  heroImage,
+  heroAlt,
+  albums,
+  featured,
+  shows,
+  reviews,
+}) {
   return (
     <>
       <Hero image={heroImage} alt={heroAlt} />
@@ -30,24 +37,27 @@ export async function getStaticProps() {
   const hero = await cmsFetch(
     `*[_type == "hero"][0]{ _id, title, heroImage }`,
     {},
-    null
+    null,
   );
 
   const shows = await cmsFetch(
     `*[_type == "show"]{ _id, showTitle, showDate, showCity, showCountry, showBookingLink }`,
     {},
-    []
+    [],
   );
 
   // Deezer is the source of truth for the discography — no CMS entry needed for
   // a new release. If it is unreachable, buildDiscography returns the local
   // fallback so the page still renders.
   const albums = buildDiscography(await getArtistAlbums(DEEZER_ARTIST_ID));
+  console.log("Home.getStaticProps albums", albums);
   const featured = pickFeatured(albums);
 
   // The artist listing omits nb_tracks and genres, so the featured release is
   // fetched in full to fill in its meta row.
-  const featuredDetail = featured ? await getAlbum(featured.deezerAlbumId) : null;
+  const featuredDetail = featured
+    ? await getAlbum(featured.deezerAlbumId)
+    : null;
 
   return {
     props: {

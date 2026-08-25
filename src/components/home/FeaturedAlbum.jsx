@@ -6,6 +6,8 @@ import AlbumPlayer from "./AlbumPlayer";
 export default function FeaturedAlbum({ album }) {
   if (!album) return null;
 
+  console.log("FeaturedAlbum", album);
+
   return (
     <Grid
       maxW="shell"

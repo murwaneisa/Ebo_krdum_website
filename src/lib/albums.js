@@ -1,23 +1,38 @@
 /*
- * Discography — assembled from Deezer, with Sanity as an optional overlay.
+ * Discography — assembled entirely from Deezer.
  *
- * Deezer owns the facts (title, cover, release date, tracklist). Nothing here
- * needs a CMS entry, so a new release appears on the site by itself. The two
- * maps below are the only hand-maintained values, and both are optional:
+ * Deezer owns every fact: title, cover, release date, tracklist. No CMS entry
+ * is involved, so a new release appears on the site by itself. The three maps
+ * below are the only hand-maintained values, and all are optional:
  *
- *   SLUG_OVERRIDES     keeps pre-existing URLs alive where Deezer's title
- *                      differs from the slug the site already published.
+ *   RELEASE_OVERRIDES  fixes a bad Deezer title, or pins a slug so a URL the
+ *                      site already published keeps working.
  *   SPOTIFY_ALBUM_IDS  lets a release use the Spotify player instead of the
  *                      Deezer one. Absent means the Deezer widget is used.
+ *   LOCAL_COVERS       cover art served from public/images/albums, used when
+ *                      Deezer has no cover for a release.
  *
  * FALLBACK_ALBUMS is the last resort if Deezer is unreachable at build time.
  */
 
-const SANITY_PROJECT = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "6y0e37tr";
-const SANITY_DATASET = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
-const SANITY_CDN = `https://cdn.sanity.io/images/${SANITY_PROJECT}/${SANITY_DATASET}/`;
-
 export const DEEZER_IMAGE_HOST = "cdn-images.dzcdn.net";
+
+/**
+ * Locally hosted cover art, used whenever Deezer has no cover for a release —
+ * either the API was unreachable and the fallback discography is being served,
+ * or a release came back without an md5_image.
+ *
+ * Keyed by slug, because the uploaded filenames do not all match it
+ * (soga-jamaile is stored as soga-gamale.jpg). All six are 1000x1000.
+ */
+const LOCAL_COVERS = {
+  "soga-jamaile": "/images/albums/soga-gamale.jpg",
+  "revolt-for-change": "/images/albums/revolt-for-change.png",
+  "love-and-struggle": "/images/albums/love-and-struggle.jpg",
+  diversity: "/images/albums/diversity.jpg",
+  salam: "/images/albums/salam.jpg",
+  anasna: "/images/albums/anasna.jpg",
+};
 
 /*
  * Deezer album id → corrections for that release.
@@ -34,7 +49,7 @@ const RELEASE_OVERRIDES = {
 /**
  * slug → Spotify album id, for releases that should use the Spotify player.
  * Anything missing here falls back to the Deezer widget, so this map is purely
- * an upgrade path and never a requirement. Sanity can supply ids too.
+ * an upgrade path and never a requirement.
  */
 const SPOTIFY_ALBUM_IDS = {
   "soga-jamaile": "0cuTRYEfi51fk7FjrcW6uY",
@@ -81,17 +96,17 @@ export function slugify(title) {
  * Cover art URL at an arbitrary square size.
  *
  * Deezer serves any dimension from the release's `md5_image`, so covers scale
- * with the layout rather than being pinned to the API's four preset sizes.
- * Falls back to the Sanity CDN for entries that only exist in FALLBACK_ALBUMS.
+ * with the layout rather than being pinned to the API's four preset sizes. The
+ * trailing `-80-` is the quality segment and is deliberately fixed: Deezer only
+ * accepts certain values and answers 302 to others, so it is not exposed here.
+ *
+ * With no Deezer cover, falls back to the locally hosted file for that slug.
  */
-export function coverUrl(album, width = 700, quality = 80) {
+export function coverUrl(album, width = 700) {
   if (album?.coverMd5) {
     return `https://${DEEZER_IMAGE_HOST}/images/cover/${album.coverMd5}/${width}x${width}-000000-80-0-0.jpg`;
   }
-  if (album?.sanityCover) {
-    return `${SANITY_CDN}${album.sanityCover}?w=${width}&q=${quality}`;
-  }
-  return null;
+  return LOCAL_COVERS[album?.slug] || null;
 }
 
 /** Normalise one raw Deezer release into the shape the pages render. */
@@ -108,7 +123,6 @@ export function toAlbum(release) {
     recordType: release.record_type || "album", // album | ep | single
     trackCount: release.nb_tracks ?? null,
     coverMd5: release.md5_image || null,
-    sanityCover: null,
   };
 }
 
@@ -146,8 +160,8 @@ function numbered(albums) {
 }
 
 /**
- * Used only when Deezer cannot be reached during the build. Covers come from
- * Sanity here because these entries predate the Deezer integration.
+ * Used only when Deezer cannot be reached during the build. Cover art for these
+ * comes from LOCAL_COVERS above, so the fallback needs no network at all.
  */
 export const FALLBACK_ALBUMS = [
   {
@@ -160,7 +174,6 @@ export const FALLBACK_ALBUMS = [
     spotifyAlbumId: SPOTIFY_ALBUM_IDS["soga-jamaile"],
     trackCount: 8,
     coverMd5: null,
-    sanityCover: "8972cbd4e4cbdac4c1c3892a25f14556e16a336c-3000x3000.jpg",
   },
   {
     slug: "revolt-for-change",
@@ -172,7 +185,6 @@ export const FALLBACK_ALBUMS = [
     spotifyAlbumId: null,
     trackCount: null,
     coverMd5: null,
-    sanityCover: "dbdc8fdfcb93fd4c4e0301380176093c1295ec03-3000x3000.png",
   },
   {
     slug: "love-and-struggle",
@@ -184,7 +196,6 @@ export const FALLBACK_ALBUMS = [
     spotifyAlbumId: null,
     trackCount: null,
     coverMd5: null,
-    sanityCover: "8f0d7e8b8c8eed8276b2e1b0e0b706d80dbbd2d8-1080x1080.jpg",
   },
   {
     slug: "diversity",
@@ -196,7 +207,6 @@ export const FALLBACK_ALBUMS = [
     spotifyAlbumId: null,
     trackCount: null,
     coverMd5: null,
-    sanityCover: "bf55c2004612bc959b6621207806d36caf6e4392-1400x1400.jpg",
   },
   {
     slug: "salam",
@@ -208,7 +218,6 @@ export const FALLBACK_ALBUMS = [
     spotifyAlbumId: null,
     trackCount: null,
     coverMd5: null,
-    sanityCover: "574e30717e3d18b342c3d6037207eeb1f86cc641-1400x1400.jpg",
   },
   {
     slug: "anasna",
@@ -220,6 +229,5 @@ export const FALLBACK_ALBUMS = [
     spotifyAlbumId: null,
     trackCount: null,
     coverMd5: null,
-    sanityCover: "cde6b1a8623a6a55e0d362e9956836a2ca4dd250-1400x1400.jpg",
   },
 ];

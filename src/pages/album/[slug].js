@@ -25,7 +25,7 @@ export default function AlbumPage({ album, tracks, others }) {
     );
   }
 
-  const cover = coverUrl(album, 1100, 85);
+  const cover = coverUrl(album, 1100);
 
   return (
     <>
