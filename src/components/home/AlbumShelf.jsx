@@ -35,6 +35,7 @@ const CARD_SIZES =
 
 function AlbumCard({ album }) {
   const src = coverUrl(album, 600);
+  console.log("AlbumCard src", src, "album", album);
 
   return (
     <Box flexShrink="0" w={CARD_W} css={{ scrollSnapAlign: "start" }}>
@@ -81,7 +82,12 @@ function AlbumCard({ album }) {
             </Box>
 
             <Flex align="baseline" gap="10px" mt="16px">
-              <Box as="span" fontFamily="display" fontSize="13px" color="bronze">
+              <Box
+                as="span"
+                fontFamily="display"
+                fontSize="13px"
+                color="bronze"
+              >
                 {album.num}
               </Box>
               <Box
@@ -119,7 +125,13 @@ export default function AlbumShelf({ albums = [] }) {
 
   return (
     <Box as="section" id="albums" maxW="shell" mx="auto" pt="96px">
-      <Flex px="gutter" align="flex-end" justify="space-between" gap="32px" wrap="wrap">
+      <Flex
+        px="gutter"
+        align="flex-end"
+        justify="space-between"
+        gap="32px"
+        wrap="wrap"
+      >
         <Box>
           <Eyebrow>02 — Discography</Eyebrow>
           <SectionHeading>

@@ -63,7 +63,9 @@ export default function NextShow({ shows = [] }) {
           letterSpacing="0.12em"
           textTransform="uppercase"
           fontWeight="600"
+          color="amber"
           pb="8px"
+          _hover={{ color: "amberBright" }}
         >
           <NextLink href="/shows">All dates →</NextLink>
         </Link>
@@ -143,6 +145,50 @@ function ShowRow({ show }) {
       >
         {DAYS[date.getDay()]} at {time}
       </Box>
+
+      {show.showBookingLink ? (
+        <Link
+          href={show.showBookingLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          flex="0 0 auto"
+          display="inline-flex"
+          alignItems="center"
+          fontSize="12px"
+          letterSpacing="0.14em"
+          textTransform="uppercase"
+          fontWeight="600"
+          color="ink"
+          bgColor="amber"
+          px="20px"
+          py="13px"
+          minH="46px"
+          textDecoration="none"
+          // Chakra's Link recipe underlines on hover, which reads wrong on a
+          // solid button, so it is turned off explicitly here.
+          _hover={{ bgColor: "amberBright", color: "ink", textDecoration: "none" }}
+        >
+          Tickets →
+        </Link>
+      ) : (
+        <Box
+          flex="0 0 auto"
+          fontSize="12px"
+          letterSpacing="0.14em"
+          textTransform="uppercase"
+          fontWeight="600"
+          color="bronze"
+          border="1px solid"
+          borderColor="rgba(139,90,43,0.6)"
+          px="20px"
+          py="13px"
+          minH="46px"
+          display="inline-flex"
+          alignItems="center"
+        >
+          Tickets soon
+        </Box>
+      )}
     </Flex>
   );
 }
