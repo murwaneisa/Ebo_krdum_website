@@ -40,8 +40,27 @@ const SPOTIFY_ALBUM_IDS = {
   "soga-jamaile": "0cuTRYEfi51fk7FjrcW6uY",
 };
 
-/** The release shown in the "Featured album" block, by slug. */
-export const FEATURED_SLUG = "soga-jamaile";
+/**
+ * The release shown in the "Featured album" block.
+ *
+ * Derived rather than pinned, so a new record takes the slot by itself. Singles
+ * and EPs are skipped because the block is specifically about albums; if there
+ * is no full-length at all, the newest release stands in.
+ */
+export function pickFeatured(albums) {
+  if (!Array.isArray(albums) || albums.length === 0) return null;
+  return albums.find((a) => a.recordType === "album") || albums[0];
+}
+
+/**
+ * Primary genre for a release, from Deezer's album detail.
+ *
+ * Deezer often returns an empty genre list for independent releases, so the
+ * caller supplies the fallback. Kept here so both pages agree.
+ */
+export function genreOf(detail) {
+  return detail?.genres?.data?.[0]?.name || null;
+}
 
 /**
  * URL-safe slug from a release title.

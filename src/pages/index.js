@@ -7,7 +7,7 @@ import NextShow from "@/components/home/NextShow";
 import PressStrip from "@/components/home/PressStrip";
 import { cmsFetch, getAlbumEditorial, imageUrl } from "@/lib/cms";
 import { getAlbum, getArtistAlbums } from "@/lib/deezer";
-import { buildDiscography, FEATURED_SLUG } from "@/lib/albums";
+import { buildDiscography, genreOf, pickFeatured } from "@/lib/albums";
 import { DEEZER_ARTIST_ID } from "@/data/site";
 import { REVIEWS } from "@/data/reviews";
 
@@ -43,7 +43,7 @@ export async function getStaticProps() {
   // a new release. If it is unreachable, buildDiscography returns the local
   // fallback so the page still renders.
   const albums = buildDiscography(await getArtistAlbums(DEEZER_ARTIST_ID));
-  const featured = albums.find((a) => a.slug === FEATURED_SLUG) || albums[0] || null;
+  const featured = pickFeatured(albums);
 
   // Sanity is optional here: it supplies only the blurb, which has no Deezer
   // equivalent. A missing entry renders the block without a paragraph.
@@ -59,7 +59,11 @@ export async function getStaticProps() {
       heroAlt: hero?.title || "Ebo Krdum",
       albums,
       featured: featured
-        ? { ...featured, trackCount: featuredDetail?.nb_tracks ?? featured.trackCount }
+        ? {
+            ...featured,
+            trackCount: featuredDetail?.nb_tracks ?? featured.trackCount,
+            genre: genreOf(featuredDetail),
+          }
         : null,
       featuredBlurb: editorial?.albumDescription || null,
       shows: shows || [],

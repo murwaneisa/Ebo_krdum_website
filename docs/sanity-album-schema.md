@@ -1,5 +1,11 @@
 # Sanity `album` schema — optional fields for the Deezer integration
 
+> **Rule for this project:** all album and music *data* comes from Deezer.
+> Spotify is used **only** for the embed player, never as a data source. The
+> artist must never have to enter music data in Sanity for a release to show up
+> correctly. New album/track fields belong in `src/lib/deezer.js`, not in a
+> Sanity schema.
+
 Album and track metadata now comes from the **Deezer public API**, so the site no
 longer needs a Sanity entry per release. A new album appears by itself, with the
 correct title, cover art, release date and tracklist.
@@ -33,7 +39,27 @@ hand.
 },
 ```
 
-`albumDescription` already exists and is still used, as the album blurb.
+`albumDescription` already exists and is still used, as the album blurb — the
+one thing Deezer has no field for.
+
+## What the artist no longer needs to maintain
+
+The site reads exactly two fields from the `album` type: `albumDescription` and
+`spotifyAlbumId`. Everything else Deezer supplies automatically, so these can be
+left empty on new releases (and ignored on old ones):
+
+| Was maintained by hand | Now from |
+|---|---|
+| Album title | Deezer |
+| Cover art | Deezer (any square size, from `md5_image`) |
+| Release date / year | Deezer |
+| Tracklist and durations | Deezer |
+| Track count | Deezer (`nb_tracks`) |
+| Genre | Deezer (`genres`), falling back to "Desert blues" |
+| Which album is featured | Derived — newest `record_type === "album"` |
+
+A brand-new release needs **no Sanity entry at all**. It appears on the homepage
+shelf and gets its own detail page within the hour.
 
 ## How the matching works
 

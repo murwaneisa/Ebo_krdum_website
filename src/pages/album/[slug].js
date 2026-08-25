@@ -7,7 +7,7 @@ import FilmStrip from "@/components/common/FilmStrip";
 import MetaItem from "@/components/common/MetaItem";
 import AlbumPlayer from "@/components/home/AlbumPlayer";
 import { getAlbumEditorial } from "@/lib/cms";
-import { buildDiscography, coverUrl } from "@/lib/albums";
+import { buildDiscography, coverUrl, genreOf } from "@/lib/albums";
 import { getAlbum, getAlbumTracks, getArtistAlbums } from "@/lib/deezer";
 import { DEEZER_ARTIST_ID } from "@/data/site";
 
@@ -319,7 +319,7 @@ export async function getStaticProps({ params }) {
       album: {
         ...album,
         trackCount: detail?.nb_tracks ?? album.trackCount ?? tracks.length ?? null,
-        genre: detail?.genres?.data?.[0]?.name || null,
+        genre: genreOf(detail),
         label: detail?.label || null,
         spotifyAlbumId: editorial?.spotifyAlbumId || album.spotifyAlbumId || null,
       },

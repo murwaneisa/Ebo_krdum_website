@@ -50,7 +50,7 @@ export default function FeaturedAlbum({ album, description }) {
           </Text>
         )}
         <Flex gap="44px" mt="36px" wrap="wrap">
-          <MetaItem label="Genre" value="Desert blues" />
+          <MetaItem label="Genre" value={album.genre || "Desert blues"} />
           <MetaItem label="Released" value={album.year} />
           {album.trackCount ? (
             <MetaItem label="Tracks" value={String(album.trackCount)} />
