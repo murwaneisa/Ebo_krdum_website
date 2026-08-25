@@ -5,17 +5,17 @@ import AlbumShelf from "@/components/home/AlbumShelf";
 import ListenSection from "@/components/home/ListenSection";
 import NextShow from "@/components/home/NextShow";
 import PressStrip from "@/components/home/PressStrip";
-import { cmsFetch, getAlbumEditorial, imageUrl } from "@/lib/cms";
+import { cmsFetch, imageUrl } from "@/lib/cms";
 import { getAlbum, getArtistAlbums } from "@/lib/deezer";
 import { buildDiscography, genreOf, pickFeatured } from "@/lib/albums";
 import { DEEZER_ARTIST_ID } from "@/data/site";
 import { REVIEWS } from "@/data/reviews";
 
-export default function Home({ heroImage, heroAlt, albums, featured, featuredBlurb, shows, reviews }) {
+export default function Home({ heroImage, heroAlt, albums, featured, shows, reviews }) {
   return (
     <>
       <Hero image={heroImage} alt={heroAlt} />
-      <FeaturedAlbum album={featured} description={featuredBlurb} />
+      <FeaturedAlbum album={featured} />
       <AlbumShelf albums={albums} />
       <ListenSection />
       <NextShow shows={shows} />
@@ -45,13 +45,9 @@ export async function getStaticProps() {
   const albums = buildDiscography(await getArtistAlbums(DEEZER_ARTIST_ID));
   const featured = pickFeatured(albums);
 
-  // Sanity is optional here: it supplies only the blurb, which has no Deezer
-  // equivalent. A missing entry renders the block without a paragraph.
-  // The artist listing omits nb_tracks, so the featured release is fetched in
-  // full to give its meta row a track count.
-  const [editorial, featuredDetail] = featured
-    ? await Promise.all([getAlbumEditorial(featured), getAlbum(featured.deezerAlbumId)])
-    : [null, null];
+  // The artist listing omits nb_tracks and genres, so the featured release is
+  // fetched in full to fill in its meta row.
+  const featuredDetail = featured ? await getAlbum(featured.deezerAlbumId) : null;
 
   return {
     props: {
@@ -65,7 +61,6 @@ export async function getStaticProps() {
             genre: genreOf(featuredDetail),
           }
         : null,
-      featuredBlurb: editorial?.albumDescription || null,
       shows: shows || [],
       reviews: REVIEWS,
     },

@@ -3,7 +3,7 @@ import Eyebrow from "../common/Eyebrow";
 import MetaItem from "../common/MetaItem";
 import AlbumPlayer from "./AlbumPlayer";
 
-export default function FeaturedAlbum({ album, description }) {
+export default function FeaturedAlbum({ album }) {
   if (!album) return null;
 
   return (
@@ -38,17 +38,6 @@ export default function FeaturedAlbum({ album, description }) {
             {album.year}
           </Box>
         </Heading>
-        {description && (
-          <Text
-            mt="24px"
-            fontSize="17px"
-            lineHeight="1.7"
-            color="rgba(247,239,221,0.72)"
-            maxW="46ch"
-          >
-            {description}
-          </Text>
-        )}
         <Flex gap="44px" mt="36px" wrap="wrap">
           <MetaItem label="Genre" value={album.genre || "Desert blues"} />
           <MetaItem label="Released" value={album.year} />

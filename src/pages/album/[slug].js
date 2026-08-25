@@ -6,12 +6,11 @@ import Eyebrow from "@/components/common/Eyebrow";
 import FilmStrip from "@/components/common/FilmStrip";
 import MetaItem from "@/components/common/MetaItem";
 import AlbumPlayer from "@/components/home/AlbumPlayer";
-import { getAlbumEditorial } from "@/lib/cms";
 import { buildDiscography, coverUrl, genreOf } from "@/lib/albums";
 import { getAlbum, getAlbumTracks, getArtistAlbums } from "@/lib/deezer";
 import { DEEZER_ARTIST_ID } from "@/data/site";
 
-export default function AlbumPage({ album, tracks, others, description }) {
+export default function AlbumPage({ album, tracks, others }) {
   const isAlbum = album?.recordType === "album";
   if (!album) {
     return (
@@ -86,18 +85,6 @@ export default function AlbumPage({ album, tracks, others, description }) {
               {album.title}
             </Heading>
 
-            {description && (
-              <Text
-                maxW="48ch"
-                mt="30px"
-                fontSize="17px"
-                lineHeight="1.7"
-                color="rgba(247,239,221,0.76)"
-                css={{ textWrap: "pretty" }}
-              >
-                {description}
-              </Text>
-            )}
 
             <Flex wrap="wrap" gap="14px" mt="36px">
               {album.spotifyAlbumId && (
@@ -305,13 +292,11 @@ export async function getStaticProps({ params }) {
 
   if (!album) return { notFound: true, revalidate: 60 * 60 };
 
-  // Detail and tracklist come from Deezer; Sanity is an optional overlay that
-  // may add a blurb and override which Spotify album the player uses. Each of
-  // the three fails soft on its own, so the page renders even if all three do.
-  const [detail, tracks, editorial] = await Promise.all([
+  // Detail and tracklist both come from Deezer, and each fails soft on its own,
+  // so the page renders even if both do.
+  const [detail, tracks] = await Promise.all([
     getAlbum(album.deezerAlbumId),
     getAlbumTracks(album.deezerAlbumId),
-    getAlbumEditorial(album),
   ]);
 
   return {
@@ -321,10 +306,8 @@ export async function getStaticProps({ params }) {
         trackCount: detail?.nb_tracks ?? album.trackCount ?? tracks.length ?? null,
         genre: genreOf(detail),
         label: detail?.label || null,
-        spotifyAlbumId: editorial?.spotifyAlbumId || album.spotifyAlbumId || null,
       },
       tracks,
-      description: editorial?.albumDescription || null,
       others: albums.filter((a) => a.slug !== album.slug).slice(0, 5),
     },
     revalidate: 60 * 60,

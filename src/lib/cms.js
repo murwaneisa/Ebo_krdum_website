@@ -53,27 +53,3 @@ export function imageUrl(imageObj, width = 1600, quality = 80) {
   if (!id || !size || !format) return null;
   return `https://cdn.sanity.io/images/${projectId}/${dataset}/${id}-${size}.${format}?w=${width}&q=${quality}`;
 }
-
-/**
- * Optional editorial overlay for one release.
- *
- * Everything factual about an album now comes from Deezer, so this is only for
- * content that does not exist there: a custom blurb, and an override for which
- * Spotify album the player should use.
- *
- * Matched on `deezerAlbumId` first, falling back to the existing
- * `albumSlug.current` so entries written before the Deezer integration still
- * resolve. Returns null when there is no entry, when the fields are missing
- * from the schema, or when Sanity is not configured at all — the album page
- * renders fine either way.
- */
-export async function getAlbumEditorial({ deezerAlbumId, slug }) {
-  return await cmsFetch(
-    `*[_type == "album" && (deezerAlbumId == $deezerAlbumId || albumSlug.current == $slug)][0]{
-      albumDescription,
-      spotifyAlbumId
-    }`,
-    { deezerAlbumId: deezerAlbumId ? String(deezerAlbumId) : null, slug: slug || null },
-    null
-  );
-}
