@@ -7,19 +7,25 @@ import FilmStrip from "@/components/common/FilmStrip";
 import MetaItem from "@/components/common/MetaItem";
 import AlbumPlayer from "@/components/home/AlbumPlayer";
 import Tracklist from "@/components/album/Tracklist";
+import AlbumPreviewPlayer from "@/components/album/AlbumPreviewPlayer";
 import { buildDiscography, coverUrl, genreOf } from "@/lib/albums";
 import { getAlbum, getAlbumTracks, getArtistAlbums } from "@/lib/deezer";
 import { DEEZER_ARTIST_ID } from "@/data/site";
 
 /*
- * Releases that get the custom, on-brand preview player instead of a plain
- * static tracklist. Deliberately a short list while the idea is being judged --
- * emptying it reverts every page, adding a slug opts that release in.
+ * Releases that get the custom, on-brand preview player in place of the
+ * Spotify/Deezer embed. Deliberately a short list while the idea is being
+ * judged -- emptying it reverts every page to the embed, adding a slug opts
+ * that release in.
+ *
+ * The left-hand tracklist stays static for these, because the player carries
+ * its own tracklist and two sets of play controls on one page would be noise.
  */
 const PREVIEW_PLAYER_SLUGS = ["soga-jamaile"];
 
 export default function AlbumPage({ album, tracks, others }) {
   const isAlbum = album?.recordType === "album";
+  const useCustomPlayer = PREVIEW_PLAYER_SLUGS.includes(album?.slug);
   if (!album) {
     return (
       <Box maxW="shell" mx="auto" py="clamp(80px,14vw,180px)" px="gutter">
@@ -161,21 +167,25 @@ export default function AlbumPage({ album, tracks, others }) {
         <Grid templateColumns="repeat(auto-fit,minmax(330px,1fr))" gap="clamp(32px,4vw,56px)" alignItems="start">
           <Box>
             <Eyebrow mb="22px">Tracklist</Eyebrow>
-            <Tracklist
-              tracks={tracks}
-              deezerAlbumId={album.deezerAlbumId}
-              interactive={PREVIEW_PLAYER_SLUGS.includes(album.slug)}
-            />
+            <Tracklist tracks={tracks} deezerAlbumId={album.deezerAlbumId} />
           </Box>
 
           <Box position="sticky" top="96px">
-            <AlbumPlayer
-              spotifyAlbumId={album.spotifyAlbumId}
-              deezerAlbumId={album.deezerAlbumId}
-              title={album.title}
-              height={520}
-              bg="surface"
-            />
+            {useCustomPlayer ? (
+              <AlbumPreviewPlayer
+                album={album}
+                tracks={tracks}
+                coverSrc={coverUrl(album, 300)}
+              />
+            ) : (
+              <AlbumPlayer
+                spotifyAlbumId={album.spotifyAlbumId}
+                deezerAlbumId={album.deezerAlbumId}
+                title={album.title}
+                height={520}
+                bg="surface"
+              />
+            )}
           </Box>
         </Grid>
       </Box>
