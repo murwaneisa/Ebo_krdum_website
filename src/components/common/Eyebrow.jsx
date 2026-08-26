@@ -7,11 +7,10 @@ import { Box } from "@chakra-ui/react";
 export default function Eyebrow({ children, tone = "bronze", ...rest }) {
   return (
     <Box
-      fontSize="11px"
+      textStyle="microLabel"
       letterSpacing="0.34em"
-      textTransform="uppercase"
       color={tone}
-      mb="18px"
+      mb="4.5"
       {...rest}
     >
       {children}

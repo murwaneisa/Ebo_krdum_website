@@ -28,8 +28,12 @@ import { coverUrl } from "@/lib/albums";
  * browser picks a sensibly sized file. The pixel values in `sizes` are Chakra's
  * own breakpoints minus 1: sm 30rem/480, md 48rem/768, lg 64rem/1024. Keep the
  * two in step if either changes.
+ *
+ * CARD_W is rem so a card grows with the reader's font size instead of clipping
+ * its title. `sizes` stays px: it is only a hint to the preload scanner, and at
+ * a non-default root size the worst case is a marginally different file.
  */
-const CARD_W = { base: "78vw", sm: "244px", md: "268px", lg: "300px" };
+const CARD_W = { base: "78vw", sm: "15.25rem", md: "16.75rem", lg: "18.75rem" };
 const CARD_SIZES =
   "(max-width: 479px) 78vw, (max-width: 767px) 244px, (max-width: 1023px) 268px, 300px";
 
@@ -72,20 +76,20 @@ function AlbumCard({ album }) {
                 bgColor="amber"
                 color="ink"
                 fontFamily="display"
-                fontSize={{ base: "13px", md: "15px" }}
+                fontSize="sm"
                 fontWeight="700"
-                px={{ base: "10px", md: "12px" }}
-                py="6px"
+                px={{ base: "2.5", md: "3" }}
+                py="1.5"
               >
                 {album.year}
               </Box>
             </Box>
 
-            <Flex align="baseline" gap="10px" mt="16px">
+            <Flex align="baseline" gap="2.5" mt="4">
               <Box
                 as="span"
                 fontFamily="display"
-                fontSize="13px"
+                fontSize="sm"
                 color="bronze"
               >
                 {album.num}
@@ -93,7 +97,7 @@ function AlbumCard({ album }) {
               <Box
                 as="span"
                 fontFamily="display"
-                fontSize={{ base: "19px", md: "22px", lg: "24px" }}
+                fontSize="xl"
                 fontWeight="500"
                 css={{ textWrap: "balance" }}
               >
@@ -103,11 +107,9 @@ function AlbumCard({ album }) {
 
             {album.recordType && album.recordType !== "album" && (
               <Box
-                mt="6px"
-                ml="30px"
-                fontSize="11px"
-                letterSpacing="0.2em"
-                textTransform="uppercase"
+                mt="1.5"
+                ml="8"
+                textStyle="microLabel"
                 color="bronze"
               >
                 {album.recordType}
@@ -124,12 +126,12 @@ export default function AlbumShelf({ albums = [] }) {
   if (!albums.length) return null;
 
   return (
-    <Box as="section" id="albums" maxW="shell" mx="auto" pt="96px">
+    <Box as="section" id="albums" maxW="shell" mx="auto" pt="24">
       <Flex
         px="gutter"
         align="flex-end"
         justify="space-between"
-        gap="32px"
+        gap="8"
         wrap="wrap"
       >
         <Box>
@@ -139,11 +141,10 @@ export default function AlbumShelf({ albums = [] }) {
           </SectionHeading>
         </Box>
         <Box
-          fontSize="13px"
+          textStyle="eyebrow"
           letterSpacing="0.1em"
-          textTransform="uppercase"
           color="rgba(247,239,221,0.5)"
-          pb="8px"
+          pb="2"
         >
           Scroll →
         </Box>
@@ -151,11 +152,11 @@ export default function AlbumShelf({ albums = [] }) {
 
       <Flex
         data-shelf="true"
-        mt={{ base: "28px", md: "44px" }}
-        gap={{ base: "16px", md: "22px", lg: "28px" }}
+        mt={{ base: "7", md: "11" }}
+        gap={{ base: "4", md: "6", lg: "7" }}
         overflowX="auto"
         px="gutter"
-        pb="26px"
+        pb="7"
         css={{ scrollSnapType: "x mandatory" }}
       >
         {albums.map((album) => (

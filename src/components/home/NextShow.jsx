@@ -49,29 +49,28 @@ export default function NextShow({ shows = [] }) {
       id="shows"
       maxW="shell"
       mx="auto"
-      pt="clamp(52px,7vw,88px)"
+      pt="clamp(3.25rem,7vw,5.5rem)"
       px="gutter"
     >
-      <Flex align="flex-end" justify="space-between" gap="24px" wrap="wrap">
+      <Flex align="flex-end" justify="space-between" gap="6" wrap="wrap">
         <Box>
           <Eyebrow>04 — Upcoming shows</Eyebrow>
           <SectionHeading>On the road</SectionHeading>
         </Box>
         <Link
           asChild
-          fontSize="13px"
+          textStyle="eyebrow"
           letterSpacing="0.12em"
-          textTransform="uppercase"
           fontWeight="600"
           color="amber"
-          pb="8px"
+          pb="2"
           _hover={{ color: "amberBright" }}
         >
           <NextLink href="/shows">All dates →</NextLink>
         </Link>
       </Flex>
 
-      <Box mt="36px" borderTop="1px solid" borderColor="rgba(139,90,43,0.45)">
+      <Box mt="9" borderTop="1px solid" borderColor="rgba(139,90,43,0.45)">
         {show ? <ShowRow show={show} /> : <EmptyRow />}
       </Box>
     </Box>
@@ -90,47 +89,46 @@ function ShowRow({ show }) {
     <Flex
       wrap="wrap"
       align="center"
-      gap="24px clamp(28px,4vw,56px)"
-      py="28px"
-      px="4px"
+      gap="1.5rem clamp(1.75rem,4vw,3.5rem)"
+      py="7"
+      px="1"
       borderBottom="1px solid"
       borderColor="rgba(139,90,43,0.3)"
     >
-      <Flex flex="0 0 auto" align="baseline" gap="14px">
+      <Flex flex="0 0 auto" align="baseline" gap="3.5">
         <Box
           fontFamily="display"
-          fontSize="13px"
+          textStyle="eyebrow"
           letterSpacing="0.22em"
-          textTransform="uppercase"
           color="amber"
         >
           {MONTHS[date.getMonth()]}
         </Box>
         <Box
           fontFamily="display"
-          fontSize="clamp(48px,6vw,72px)"
+          fontSize="5xl"
           lineHeight="0.85"
           fontWeight="600"
           color="cream"
         >
           {String(date.getDate()).padStart(2, "0")}
         </Box>
-        <Box fontFamily="display" fontSize="15px" color="bronze">
+        <Box fontFamily="display" textStyle="body" color="bronze">
           {date.getFullYear()}
         </Box>
       </Flex>
 
-      <Box flex="1 1 300px" minW="0">
+      <Box flex="1 1 18.75rem" minW="0">
         <Box
           fontFamily="display"
-          fontSize="clamp(24px,2.6vw,32px)"
+          fontSize="2xl"
           fontWeight="500"
           color="cream"
         >
           {show.showTitle}
         </Box>
         {place && (
-          <Box mt="8px" fontSize="15px" color="rgba(247,239,221,0.62)">
+          <Box mt="2" textStyle="body" color="rgba(247,239,221,0.62)">
             {place}
           </Box>
         )}
@@ -139,7 +137,7 @@ function ShowRow({ show }) {
       <Box
         flex="0 0 auto"
         fontFamily="mono"
-        fontSize="13px"
+        textStyle="meta"
         letterSpacing="0.06em"
         color="rgba(247,239,221,0.7)"
       >
@@ -154,15 +152,14 @@ function ShowRow({ show }) {
           flex="0 0 auto"
           display="inline-flex"
           alignItems="center"
-          fontSize="12px"
+          textStyle="microLabel"
           letterSpacing="0.14em"
-          textTransform="uppercase"
           fontWeight="600"
           color="ink"
           bgColor="amber"
-          px="20px"
-          py="13px"
-          minH="46px"
+          px="5"
+          py="3.5"
+          minH="12"
           textDecoration="none"
           // Chakra's Link recipe underlines on hover, which reads wrong on a
           // solid button, so it is turned off explicitly here.
@@ -173,16 +170,15 @@ function ShowRow({ show }) {
       ) : (
         <Box
           flex="0 0 auto"
-          fontSize="12px"
+          textStyle="microLabel"
           letterSpacing="0.14em"
-          textTransform="uppercase"
           fontWeight="600"
           color="bronze"
           border="1px solid"
           borderColor="rgba(139,90,43,0.6)"
-          px="20px"
-          py="13px"
-          minH="46px"
+          px="5"
+          py="3.5"
+          minH="12"
           display="inline-flex"
           alignItems="center"
         >
@@ -195,7 +191,7 @@ function ShowRow({ show }) {
 
 function EmptyRow() {
   return (
-    <Box py="28px" px="4px" fontSize="16px" color="rgba(247,239,221,0.62)">
+    <Box py="7" px="1" textStyle="body" color="rgba(247,239,221,0.62)">
       New dates are being confirmed — check back soon.
     </Box>
   );

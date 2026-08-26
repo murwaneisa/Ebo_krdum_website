@@ -12,12 +12,12 @@ export default function ListenSection() {
       id="listen"
       maxW="shell"
       mx="auto"
-      pt="clamp(52px,7vw,88px)"
+      pt="clamp(3.25rem,7vw,5.5rem)"
       px="gutter"
     >
       <Grid
-        templateColumns="repeat(auto-fit,minmax(320px,1fr))"
-        gap="clamp(32px,4vw,56px)"
+        templateColumns="repeat(auto-fit,minmax(20rem,1fr))"
+        gap="clamp(2rem,4vw,3.5rem)"
         alignItems="start"
       >
         <Box>
@@ -33,8 +33,8 @@ export default function ListenSection() {
             markup was always the embed — so the wording is corrected here.
           */}
           <Text
-            mt="22px"
-            fontSize="16px"
+            mt="6"
+            textStyle="body"
             lineHeight="1.7"
             color="rgba(247,239,221,0.66)"
             maxW="38ch"
@@ -44,20 +44,15 @@ export default function ListenSection() {
           </Text>
 
           <Box
-            mt="clamp(28px,3.4vw,40px)"
+            mt="clamp(1.75rem,3.4vw,2.5rem)"
             borderTop="1px solid"
             borderColor="rgba(139,90,43,0.45)"
-            pt="22px"
+            pt="6"
           >
-            <Box
-              fontSize="11px"
-              letterSpacing="0.24em"
-              textTransform="uppercase"
-              color="bronze"
-            >
+            <Box textStyle="microLabel" letterSpacing="0.24em" color="bronze">
               Also on
             </Box>
-            <Flex wrap="wrap" gap="12px" mt="16px">
+            <Flex wrap="wrap" gap="3" mt="4">
               {STREAMING.map((s) => (
                 <SocialIconLink key={s.label} {...s} box={52} />
               ))}

@@ -18,51 +18,50 @@ function NextShowCard({ show }) {
       borderColor="rgba(232,169,58,0.55)"
       bg="surface"
       color="cream"
-      minH="clamp(280px,38vw,460px)"
+      minH="clamp(17.5rem,38vw,28.75rem)"
       display="flex"
       flexDirection="column"
       justifyContent="space-between"
-      p="clamp(22px,3vw,40px)"
+      p="clamp(1.375rem,3vw,2.5rem)"
       transition="border-color 0.15s ease"
       _hover={{ borderColor: "amberBright" }}
     >
-      <Flex wrap="wrap" gap="12px 16px" align="center">
+      <Flex wrap="wrap" gap="0.75rem 1rem" align="center">
         <Box
-          fontSize="11px"
+          textStyle="microLabel"
           letterSpacing="0.24em"
-          textTransform="uppercase"
           fontWeight="600"
           color="ink"
           bg="amber"
-          px="12px"
-          py="7px"
+          px="3"
+          py="2"
         >
           Next show
         </Box>
-        <Box fontFamily="mono" fontSize="13px" color="rgba(247,239,221,0.85)">
+        <Box fontFamily="mono" textStyle="meta" color="rgba(247,239,221,0.85)">
           {show.when}
         </Box>
       </Flex>
 
-      <Flex wrap="wrap" align="flex-end" gap="20px clamp(28px,4vw,64px)">
-        <Flex flex="0 0 auto" align="baseline" gap="14px">
-          <Box fontFamily="display" fontSize="14px" letterSpacing="0.22em" textTransform="uppercase" color="amber">
+      <Flex wrap="wrap" align="flex-end" gap="1.25rem clamp(1.75rem,4vw,4rem)">
+        <Flex flex="0 0 auto" align="baseline" gap="3.5">
+          <Box fontFamily="display" textStyle="eyebrow" letterSpacing="0.22em" color="amber">
             {show.month}
           </Box>
-          <Box fontFamily="display" fontSize="clamp(60px,8vw,104px)" lineHeight="0.82" fontWeight="600">
+          <Box fontFamily="display" fontSize="6xl" lineHeight="0.82" fontWeight="600">
             {show.day}
           </Box>
-          <Box fontFamily="display" fontSize="16px" color="amber">
+          <Box fontFamily="display" textStyle="body" color="amber">
             {show.year}
           </Box>
         </Flex>
 
-        <Box flex="1 1 300px" minW="0">
-          <Box fontFamily="display" fontSize="clamp(26px,3vw,40px)" fontWeight="500" lineHeight="1.05">
+        <Box flex="1 1 18.75rem" minW="0">
+          <Box fontFamily="display" fontSize="3xl" fontWeight="500" lineHeight="1.05">
             {show.title}
           </Box>
           {show.place && (
-            <Box mt="10px" fontSize="16px" color="rgba(247,239,221,0.78)">
+            <Box mt="2.5" textStyle="body" color="rgba(247,239,221,0.78)">
               {show.place}
             </Box>
           )}
@@ -71,14 +70,13 @@ function NextShowCard({ show }) {
         {show.url && (
           <Box
             flex="0 0 auto"
-            fontSize="12px"
+            textStyle="microLabel"
             letterSpacing="0.14em"
-            textTransform="uppercase"
             fontWeight="600"
             color="ink"
             bg="amber"
-            px="20px"
-            py="13px"
+            px="5"
+            py="3.5"
           >
             Tickets →
           </Box>
@@ -100,14 +98,14 @@ export default function Shows({ upcoming, years, total, firstYear }) {
 
   return (
     <>
-      <Box as="section" maxW="shell" mx="auto" pt="clamp(40px,6vw,64px)" px="gutter">
+      <Box as="section" maxW="shell" mx="auto" pt="clamp(2.5rem,6vw,4rem)" px="gutter">
         <Eyebrow tone="amber">Upcoming</Eyebrow>
 
         {next ? (
           <>
             <NextShowCard show={next} />
             {rest.length > 0 && (
-              <Box mt="28px" borderTop="1px solid" borderColor="rgba(139,90,43,0.45)">
+              <Box mt="7" borderTop="1px solid" borderColor="rgba(139,90,43,0.45)">
                 {rest.map((s) => (
                   <ShowRow key={s.id} show={s} />
                 ))}
@@ -119,8 +117,8 @@ export default function Shows({ upcoming, years, total, firstYear }) {
             border="1px solid"
             borderColor="rgba(139,90,43,0.45)"
             bg="surface"
-            p="clamp(24px,3vw,40px)"
-            fontSize="17px"
+            p="clamp(1.5rem,3vw,2.5rem)"
+            textStyle="lead"
             color="rgba(247,239,221,0.72)"
           >
             New dates are being confirmed — check back soon, or get in touch about booking.
@@ -128,32 +126,32 @@ export default function Shows({ upcoming, years, total, firstYear }) {
         )}
       </Box>
 
-      <Box as="section" maxW="shell" mx="auto" pt="clamp(56px,7vw,88px)" px="gutter">
-        <Flex wrap="wrap" align="flex-end" justify="space-between" gap="20px 32px">
+      <Box as="section" maxW="shell" mx="auto" pt="clamp(3.5rem,7vw,5.5rem)" px="gutter">
+        <Flex wrap="wrap" align="flex-end" justify="space-between" gap="1.25rem 2rem">
           <Box>
             <Eyebrow>Archive</Eyebrow>
             <SectionHeading size="sm">Former shows</SectionHeading>
           </Box>
           {total > 0 && (
-            <Box fontSize="13px" letterSpacing="0.1em" textTransform="uppercase" color="rgba(247,239,221,0.5)" pb="6px">
+            <Box textStyle="eyebrow" letterSpacing="0.1em" color="rgba(247,239,221,0.5)" pb="1.5">
               {total} date{total === 1 ? "" : "s"}{firstYear ? ` since ${firstYear}` : ""}
             </Box>
           )}
         </Flex>
 
-        <Box mt="36px">
+        <Box mt="9">
           {years.map((group) => (
-            <Box key={group.year} mb="56px">
-              <Flex align="center" gap="20px">
-                <Box fontFamily="display" fontSize="clamp(34px,4.4vw,60px)" fontWeight="600" color="bronze" lineHeight="1">
+            <Box key={group.year} mb="14">
+              <Flex align="center" gap="5">
+                <Box fontFamily="display" fontSize="4xl" fontWeight="600" color="bronze" lineHeight="1">
                   {group.year}
                 </Box>
                 <FilmStrip size={12} flex="1 1 auto" />
-                <Box fontFamily="mono" fontSize="12px" color="rgba(247,239,221,0.45)">
+                <Box fontFamily="mono" fontSize="xs" color="rgba(247,239,221,0.45)">
                   {group.count}
                 </Box>
               </Flex>
-              <Box mt="20px" borderTop="1px solid" borderColor="rgba(139,90,43,0.35)">
+              <Box mt="5" borderTop="1px solid" borderColor="rgba(139,90,43,0.35)">
                 {group.shows.map((s) => (
                   <ShowRow key={s.id} show={s} compact />
                 ))}

@@ -35,8 +35,8 @@ export default function ReviewLogo({ logo, alt, height = 26, ...rest }) {
         display="inline-flex"
         alignItems="center"
         bgColor="cream"
-        px="8px"
-        py="5px"
+        px="2"
+        py="1.5"
         borderRadius="2px"
         {...rest}
       >
@@ -47,7 +47,7 @@ export default function ReviewLogo({ logo, alt, height = 26, ...rest }) {
             display: "block",
             height: `${height}px`,
             width: "auto",
-            maxWidth: "150px",
+            maxWidth: "9.375rem",
             objectFit: "contain",
           }}
         />
@@ -63,7 +63,7 @@ export default function ReviewLogo({ logo, alt, height = 26, ...rest }) {
         display: "block",
         height: `${height}px`,
         width: "auto",
-        maxWidth: "160px",
+        maxWidth: "10rem",
         objectFit: "contain",
         objectPosition: "left center",
         filter: "brightness(0) invert(1)",

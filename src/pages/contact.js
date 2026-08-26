@@ -29,16 +29,16 @@ const CARDS = [
 function ContactCard({ label, value, href, note }) {
   const valueStyle = {
     display: "block",
-    mt: "16px",
+    mt: "4",
     fontFamily: "display",
-    fontSize: "clamp(17px,1.6vw,21px)",
+    fontSize: "lg",
     lineHeight: "1.35",
     css: { wordBreak: "break-word" },
   };
 
   return (
-    <Box bg="surface" p="clamp(22px,2.6vw,34px)" boxShadow="0 0 0 1px rgba(139,90,43,0.45)">
-      <Box fontSize="11px" letterSpacing="0.24em" textTransform="uppercase" color="bronze">
+    <Box bg="surface" p="clamp(1.375rem,2.6vw,2.125rem)" boxShadow="0 0 0 1px rgba(139,90,43,0.45)">
+      <Box textStyle="microLabel" letterSpacing="0.24em" color="bronze">
         {label}
       </Box>
       {href ? (
@@ -50,7 +50,7 @@ function ContactCard({ label, value, href, note }) {
           {value}
         </Box>
       )}
-      <Text mt="14px" fontSize="14px" lineHeight="1.65" color="rgba(247,239,221,0.55)">
+      <Text mt="3.5" textStyle="meta" lineHeight="1.65" color="rgba(247,239,221,0.55)">
         {note}
       </Text>
     </Box>
@@ -60,17 +60,14 @@ function ContactCard({ label, value, href, note }) {
 export default function Contact() {
   return (
     <>
-      <Box as="section" maxW="shell" mx="auto" pt="clamp(40px,6vw,64px)" px="gutter">
-        <Flex wrap="wrap" align="flex-end" gap="24px clamp(24px,3vw,48px)">
+      <Box as="section" maxW="shell" mx="auto" pt="clamp(2.5rem,6vw,4rem)" px="gutter">
+        <Flex wrap="wrap" align="flex-end" gap="1.5rem clamp(1.5rem,3vw,3rem)">
           <Heading
             as="h1"
-            flex="1 1 380px"
+            flex="1 1 23.75rem"
             minW="0"
-            fontFamily="display"
-            fontWeight="600"
-            fontSize="clamp(44px,7vw,104px)"
+            textStyle="pageTitle"
             lineHeight="0.9"
-            letterSpacing="-0.02em"
             m="0"
             color="cream"
           >
@@ -81,11 +78,11 @@ export default function Contact() {
             </Box>
           </Heading>
           <Text
-            flex="1 1 280px"
+            flex="1 1 17.5rem"
             minW="0"
             maxW="44ch"
-            mb="10px"
-            fontSize="16px"
+            mb="2.5"
+            textStyle="body"
             lineHeight="1.7"
             color="rgba(247,239,221,0.68)"
             css={{ textWrap: "pretty" }}
@@ -95,12 +92,12 @@ export default function Contact() {
             team.
           </Text>
         </Flex>
-        <FilmStrip mt="clamp(32px,4.5vw,52px)" />
+        <FilmStrip mt="clamp(2rem,4.5vw,3.25rem)" />
       </Box>
 
-      <Box as="section" maxW="shell" mx="auto" pt="clamp(36px,5vw,64px)" px="gutter">
+      <Box as="section" maxW="shell" mx="auto" pt="clamp(2.25rem,5vw,4rem)" px="gutter">
         <Grid
-          templateColumns="repeat(auto-fit,minmax(320px,1fr))"
+          templateColumns="repeat(auto-fit,minmax(20rem,1fr))"
           gap="1px"
           bg="surface"
           border="1px solid"
@@ -112,23 +109,20 @@ export default function Contact() {
         </Grid>
       </Box>
 
-      <Box as="section" maxW="shell" mx="auto" pt="clamp(44px,6vw,80px)" px="gutter">
-        <Flex wrap="wrap" gap="clamp(28px,4vw,56px)" align="stretch">
-          <Box flex="1 1 420px" minW="0">
+      <Box as="section" maxW="shell" mx="auto" pt="clamp(2.75rem,6vw,5rem)" px="gutter">
+        <Flex wrap="wrap" gap="clamp(1.75rem,4vw,3.5rem)" align="stretch">
+          <Box flex="1 1 26.25rem" minW="0">
             <Heading
               as="h2"
-              fontFamily="display"
-              fontSize="clamp(28px,3.4vw,44px)"
-              lineHeight="1.05"
-              fontWeight="500"
+              textStyle="sectionSm"
               m="0"
               color="cream"
             >
               Booking enquiry
             </Heading>
             <Text
-              mt="14px"
-              fontSize="15px"
+              mt="3.5"
+              textStyle="body"
               lineHeight="1.7"
               color="rgba(247,239,221,0.6)"
               maxW="52ch"
@@ -139,20 +133,19 @@ export default function Contact() {
               few working days.
             </Text>
 
-            <Flex mt="28px" wrap="wrap" gap="14px 18px">
+            <Flex mt="7" wrap="wrap" gap="0.875rem 1.125rem">
               <Link
                 href={`mailto:${CONTACT.booking}?subject=${encodeURIComponent("Booking enquiry — Ebo Krdum")}`}
                 display="inline-flex"
                 alignItems="center"
-                fontSize="12px"
+                textStyle="microLabel"
                 letterSpacing="0.14em"
-                textTransform="uppercase"
                 fontWeight="600"
                 color="ink"
                 bg="amber"
-                px="30px"
-                py="17px"
-                minH="52px"
+                px="8"
+                py="4.5"
+                minH="14"
                 _hover={{ bg: "amberBright", color: "ink" }}
               >
                 Email management →
@@ -161,16 +154,15 @@ export default function Contact() {
                 href={CONTACT.phoneHref}
                 display="inline-flex"
                 alignItems="center"
-                fontSize="12px"
+                textStyle="microLabel"
                 letterSpacing="0.14em"
-                textTransform="uppercase"
                 fontWeight="600"
                 color="amber"
                 border="1px solid"
                 borderColor="rgba(232,169,58,0.6)"
-                px="26px"
-                py="17px"
-                minH="52px"
+                px="7"
+                py="4.5"
+                minH="14"
                 _hover={{ color: "ink", bg: "amber" }}
               >
                 Call {CONTACT.phone}
@@ -178,42 +170,41 @@ export default function Contact() {
             </Flex>
 
             <Box
-              mt="clamp(28px,3.5vw,44px)"
+              mt="clamp(1.75rem,3.5vw,2.75rem)"
               borderTop="1px solid"
               borderColor="rgba(139,90,43,0.45)"
-              pt="22px"
+              pt="6"
               maxW="52ch"
             >
-              <Box fontSize="11px" letterSpacing="0.24em" textTransform="uppercase" color="bronze">
+              <Box textStyle="microLabel" letterSpacing="0.24em" color="bronze">
                 Useful to include
               </Box>
-              <Text mt="12px" fontSize="15px" lineHeight="1.75" color="rgba(247,239,221,0.62)">
+              <Text mt="3" textStyle="body" color="rgba(247,239,221,0.62)">
                 Date and city · venue name and capacity · solo, trio or full band ·
                 budget range · whether backline and sound are provided.
               </Text>
             </Box>
           </Box>
 
-          <Box as="figure" flex="1 1 clamp(280px,30vw,440px)" maxW="520px" m="0">
+          <Box as="figure" flex="1 1 clamp(17.5rem,30vw,27.5rem)" maxW="32.5rem" m="0">
             <PortraitFrame
               src={null}
               alt="Ebo Krdum performing with his band at a festival"
               ratio="4/3"
-              minH="clamp(280px,42vw,520px)"
+              minH="clamp(17.5rem,42vw,32.5rem)"
             />
             <Box
               as="figcaption"
-              mt="14px"
-              fontSize="13px"
+              mt="3.5"
+              textStyle="eyebrow"
               letterSpacing="0.14em"
-              textTransform="uppercase"
               color="rgba(247,239,221,0.6)"
             >
               Live at Världsmusikfestivalen
             </Box>
           </Box>
         </Flex>
-        <FilmStrip mt="clamp(48px,6vw,80px)" />
+        <FilmStrip mt="clamp(3rem,6vw,5rem)" />
       </Box>
     </>
   );

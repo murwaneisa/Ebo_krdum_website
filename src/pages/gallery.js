@@ -14,12 +14,11 @@ function FilterButton({ active, children, onClick }) {
       onClick={onClick}
       aria-pressed={active}
       fontFamily="body"
-      fontSize="12px"
+      textStyle="microLabel"
       letterSpacing="0.14em"
-      textTransform="uppercase"
       fontWeight="600"
-      px="22px"
-      py="12px"
+      px="6"
+      py="3"
       cursor="pointer"
       borderRadius="2px"
       border="1px solid"
@@ -50,28 +49,23 @@ export default function Gallery() {
 
   return (
     <>
-      <Box as="section" maxW="shell" mx="auto" pt="clamp(52px,7vw,88px)" px="gutter">
-        <Flex wrap="wrap" align="flex-end" gap="28px clamp(24px,3vw,48px)">
+      <Box as="section" maxW="shell" mx="auto" pt="clamp(3.25rem,7vw,5.5rem)" px="gutter">
+        <Flex wrap="wrap" align="flex-end" gap="1.75rem clamp(1.5rem,3vw,3rem)">
           <Box
             flex="0 0 auto"
-            fontSize="11px"
+            textStyle="microLabel"
             letterSpacing="0.42em"
-            textTransform="uppercase"
             color="rgba(247,239,221,0.45)"
-            pb="8px"
+            pb="2"
             css={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
           >
             Photography
           </Box>
           <Heading
             as="h1"
-            flex="1 1 380px"
+            flex="1 1 23.75rem"
             minW="0"
-            fontFamily="display"
-            fontWeight="600"
-            fontSize="clamp(44px,8vw,124px)"
-            lineHeight="0.88"
-            letterSpacing="-0.02em"
+            textStyle="pageTitle"
             m="0"
             color="cream"
           >
@@ -82,11 +76,11 @@ export default function Gallery() {
             </Box>
           </Heading>
           <Text
-            flex="1 1 260px"
+            flex="1 1 16.25rem"
             minW="0"
             maxW="44ch"
-            mb="12px"
-            fontSize="16px"
+            mb="3"
+            textStyle="body"
             lineHeight="1.7"
             color="rgba(247,239,221,0.68)"
           >
@@ -95,7 +89,7 @@ export default function Gallery() {
           </Text>
         </Flex>
 
-        <Flex wrap="wrap" gap="10px" mt="52px">
+        <Flex wrap="wrap" gap="2.5" mt="14">
           {GALLERY_CATEGORIES.map((c) => (
             <FilterButton key={c.key} active={cat === c.key} onClick={() => selectCat(c.key)}>
               {c.label}
@@ -103,13 +97,13 @@ export default function Gallery() {
           ))}
         </Flex>
 
-        <FilmStrip mt="44px" />
+        <FilmStrip mt="11" />
       </Box>
 
-      <Box as="section" id="gallery" maxW="shell" mx="auto" pt="clamp(36px,5vw,56px)" px="gutter" pb="40px">
-        <Box css={{ columns: "3 260px", columnGap: "clamp(14px,2vw,24px)" }}>
+      <Box as="section" id="gallery" maxW="shell" mx="auto" pt="clamp(2.25rem,5vw,3.5rem)" px="gutter" pb="10">
+        <Box css={{ columns: "3 16.25rem", columnGap: "clamp(0.875rem,2vw,1.5rem)" }}>
           {visible.map((p, i) => (
-            <Box key={p.id} mb="24px" css={{ breakInside: "avoid" }}>
+            <Box key={p.id} mb="6" css={{ breakInside: "avoid" }}>
               <Box
                 as="button"
                 type="button"
@@ -144,7 +138,7 @@ export default function Gallery() {
                   display="flex"
                   flexDirection="column"
                   justifyContent="flex-end"
-                  p="22px"
+                  p="6"
                   css={{
                     background:
                       "linear-gradient(0deg,rgba(36,26,16,0.9),rgba(36,26,16,0) 62%)",
@@ -152,23 +146,22 @@ export default function Gallery() {
                 >
                   <Box
                     fontFamily="mono"
-                    fontSize="11px"
+                    textStyle="microLabel"
                     letterSpacing="0.1em"
-                    textTransform="uppercase"
                     color="amber"
                   >
                     {p.slot}
                   </Box>
-                  <Box fontFamily="display" fontSize="20px" mt="6px" color="cream">
+                  <Box fontFamily="display" textStyle="cardTitle" mt="1.5" color="cream">
                     {p.caption}
                   </Box>
                 </Box>
                 <Box
                   position="absolute"
-                  top="16px"
-                  right="16px"
+                  top="4"
+                  right="4"
                   fontFamily="mono"
-                  fontSize="11px"
+                  fontSize="2xs"
                   color="rgba(247,239,221,0.55)"
                 >
                   {String(i + 1).padStart(2, "0")}
@@ -179,19 +172,19 @@ export default function Gallery() {
         </Box>
 
         {visible.length === 0 && (
-          <Text fontSize="16px" color="rgba(247,239,221,0.6)">
+          <Text textStyle="body" color="rgba(247,239,221,0.6)">
             No photos in this category yet.
           </Text>
         )}
       </Box>
 
-      <Box as="section" maxW="shell" mx="auto" px="gutter" pb="clamp(56px,8vw,96px)">
+      <Box as="section" maxW="shell" mx="auto" px="gutter" pb="clamp(3.5rem,8vw,6rem)">
         <FilmStrip />
-        <Flex justify="space-between" align="baseline" gap="24px" wrap="wrap" mt="32px">
-          <Box fontSize="14px" color="rgba(247,239,221,0.5)">
+        <Flex justify="space-between" align="baseline" gap="6" wrap="wrap" mt="8">
+          <Box textStyle="meta" color="rgba(247,239,221,0.5)">
             Press-use photography available on request.
           </Box>
-          <Link href={`mailto:${CONTACT.press}`} fontFamily="display" fontSize="22px">
+          <Link href={`mailto:${CONTACT.press}`} fontFamily="display" fontSize="xl">
             {CONTACT.press}
           </Link>
         </Flex>

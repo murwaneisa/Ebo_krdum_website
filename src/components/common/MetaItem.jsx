@@ -4,15 +4,10 @@ import { Box } from "@chakra-ui/react";
 export default function MetaItem({ label, value }) {
   return (
     <Box>
-      <Box
-        fontSize="11px"
-        letterSpacing="0.24em"
-        textTransform="uppercase"
-        color="bronze"
-      >
+      <Box textStyle="microLabel" color="bronze">
         {label}
       </Box>
-      <Box fontFamily="display" fontSize="20px" mt="6px" color="cream">
+      <Box textStyle="cardTitle" mt="1.5" color="cream">
         {value}
       </Box>
     </Box>

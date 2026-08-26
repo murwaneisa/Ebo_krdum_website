@@ -28,10 +28,10 @@ export default function AlbumPlayer({
       <Box
         border="1px solid"
         borderColor="rgba(139,90,43,0.5)"
-        p="24px"
+        p="6"
         bg={bg}
       >
-        <Text fontSize="15px" lineHeight="1.7" color="rgba(247,239,221,0.6)">
+        <Text textStyle="body" lineHeight="1.7" color="rgba(247,239,221,0.6)">
           This release is not streaming here yet.
         </Text>
         <Link
@@ -41,10 +41,9 @@ export default function AlbumPlayer({
           target="_blank"
           rel="noopener noreferrer"
           display="inline-block"
-          mt="14px"
-          fontSize="13px"
+          mt="3.5"
+          textStyle="eyebrow"
           letterSpacing="0.12em"
-          textTransform="uppercase"
           fontWeight="600"
         >
           Find it on Spotify →
@@ -54,7 +53,7 @@ export default function AlbumPlayer({
   }
 
   return (
-    <Box border="1px solid" borderColor="rgba(139,90,43,0.5)" p="12px" bg={bg}>
+    <Box border="1px solid" borderColor="rgba(139,90,43,0.5)" p="3" bg={bg}>
       <Box
         as="iframe"
         title={`${title} on Deezer`}

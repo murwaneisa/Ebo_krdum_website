@@ -11,13 +11,13 @@ import { Box, Dialog, Flex, Link, Portal } from "@chakra-ui/react";
 
 const navButton = {
   fontFamily: "body",
-  fontSize: "12px",
+  fontSize: "xs",
   letterSpacing: "0.12em",
   textTransform: "uppercase",
   fontWeight: "600",
-  px: "20px",
-  py: "12px",
-  minH: "46px",
+  px: "5",
+  py: "3",
+  minH: "12",
   cursor: "pointer",
   borderRadius: "2px",
   border: "1px solid",
@@ -62,11 +62,11 @@ export default function Lightbox({ items = [], index, onIndexChange, onClose, sh
           <Dialog.Content
             bg="transparent"
             boxShadow="none"
-            maxW="min(1100px,100%)"
-            p="clamp(16px,4vw,56px)"
+            maxW="min(68.75rem,100%)"
+            p="clamp(1rem,4vw,3.5rem)"
             display="flex"
             flexDirection="column"
-            gap="20px"
+            gap="5"
           >
             {item && (
               <>
@@ -89,23 +89,22 @@ export default function Lightbox({ items = [], index, onIndexChange, onClose, sh
                   }}
                 />
 
-                <Flex justify="space-between" align="baseline" gap="24px" wrap="wrap">
+                <Flex justify="space-between" align="baseline" gap="6" wrap="wrap">
                   <Box>
                     <Box
                       fontFamily="mono"
-                      fontSize="11px"
+                      textStyle="microLabel"
                       letterSpacing="0.1em"
-                      textTransform="uppercase"
                       color="amber"
                     >
                       {item.slot || `${index + 1} / ${items.length}`}
                     </Box>
-                    <Box fontFamily="display" fontSize="clamp(20px,2vw,26px)" mt="6px" color="cream">
+                    <Box textStyle="cardTitle" mt="1.5" color="cream">
                       {item.caption}
                     </Box>
                   </Box>
 
-                  <Flex wrap="wrap" gap="10px">
+                  <Flex wrap="wrap" gap="2.5">
                     {showDownload && item.full && (
                       <Link
                         href={item.full}

@@ -12,7 +12,7 @@ const ROW_BORDER = "rgba(139,90,43,0.3)";
 export default function Tracklist({ tracks = [] }) {
   if (tracks.length === 0) {
     return (
-      <Text fontSize="16px" color="rgba(247,239,221,0.6)" maxW="42ch">
+      <Text textStyle="body" color="rgba(247,239,221,0.6)" maxW="42ch">
         The tracklist is temporarily unavailable. Play the record with the
         player alongside in the meantime.
       </Text>
@@ -24,23 +24,23 @@ export default function Tracklist({ tracks = [] }) {
       {tracks.map((t) => (
         <Grid
           key={`${t.num}-${t.title}`}
-          templateColumns="36px minmax(0,1fr) auto"
-          gap="14px"
+          templateColumns="2.25rem minmax(0,1fr) auto"
+          gap="3.5"
           alignItems="baseline"
-          py="18px"
-          px="4px"
+          py="4.5"
+          px="1"
           borderBottom="1px solid"
           borderColor={ROW_BORDER}
         >
-          <Box fontFamily="display" fontSize="15px" color="bronze">
+          <Box fontFamily="display" textStyle="body" color="bronze">
             {t.num}
           </Box>
 
-          <Box fontFamily="display" fontSize="21px" fontWeight="500" color="cream">
+          <Box fontFamily="display" fontSize="xl" fontWeight="500" color="cream">
             {t.title}
           </Box>
 
-          <Box fontFamily="mono" fontSize="13px" color="rgba(247,239,221,0.5)">
+          <Box fontFamily="mono" textStyle="meta" color="rgba(247,239,221,0.5)">
             {t.time}
           </Box>
         </Grid>

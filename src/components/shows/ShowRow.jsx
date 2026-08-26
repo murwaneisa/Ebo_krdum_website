@@ -9,34 +9,34 @@ export default function ShowRow({ show, compact = false }) {
     <Flex
       wrap="wrap"
       align="baseline"
-      gap="8px 24px"
-      py="16px"
-      px="8px"
+      gap="0.5rem 1.5rem"
+      py="4"
+      px="2"
       borderBottom="1px solid"
       borderColor="rgba(139,90,43,0.28)"
       color="cream"
       transition="background 0.15s ease"
       _hover={show.url ? { bg: "surface" } : undefined}
     >
-      <Flex align="baseline" gap={compact ? "10px" : "12px"} minW={compact ? "112px" : "132px"}>
-        <Box as="span" fontFamily="display" fontSize="12px" letterSpacing="0.2em" textTransform="uppercase" color="amber">
+      <Flex align="baseline" gap={compact ? "2.5" : "3"} minW={compact ? "7rem" : "8.25rem"}>
+        <Box as="span" fontFamily="display" textStyle="microLabel" color="amber">
           {show.month}
         </Box>
-        <Box as="span" fontFamily="display" fontSize={compact ? "26px" : "30px"} fontWeight="600" color="cream">
+        <Box as="span" fontFamily="display" fontSize={compact ? "xl" : "2xl"} fontWeight="600" color="cream">
           {show.day}
         </Box>
         {!compact && (
-          <Box as="span" fontFamily="display" fontSize="14px" color="bronze">
+          <Box as="span" fontFamily="display" textStyle="meta" color="bronze">
             {show.year}
           </Box>
         )}
       </Flex>
 
-      <Box flex="1 1 240px" minW="0" fontFamily="display" fontSize={compact ? "19px" : "21px"} color="cream">
+      <Box flex="1 1 15rem" minW="0" fontFamily="display" fontSize={compact ? "lg" : "xl"} color="cream">
         {show.title}
       </Box>
 
-      <Box flex="0 1 200px" fontSize={compact ? "14px" : "15px"} color="rgba(247,239,221,0.62)">
+      <Box flex="0 1 12.5rem" textStyle={compact ? "meta" : "body"} color="rgba(247,239,221,0.62)">
         {show.place}
       </Box>
 
@@ -44,20 +44,20 @@ export default function ShowRow({ show, compact = false }) {
         <Box
           flex="0 0 auto"
           fontFamily="mono"
-          fontSize="12px"
+          fontSize="xs"
           color="rgba(247,239,221,0.38)"
-          minW="88px"
+          minW="5.5rem"
           textAlign="right"
         >
           {show.weekday}
         </Box>
       ) : (
-        <Box flex="0 0 auto" minW="132px" textAlign="right">
-          <Box fontFamily="mono" fontSize="12px" color="rgba(247,239,221,0.55)">
+        <Box flex="0 0 auto" minW="8.25rem" textAlign="right">
+          <Box fontFamily="mono" fontSize="xs" color="rgba(247,239,221,0.55)">
             {show.when}
           </Box>
           {show.url && (
-            <Box mt="8px" fontSize="11px" letterSpacing="0.14em" textTransform="uppercase" fontWeight="600" color="amber">
+            <Box mt="2" textStyle="microLabel" letterSpacing="0.14em" fontWeight="600" color="amber">
               Tickets →
             </Box>
           )}

@@ -18,12 +18,12 @@ import {
 
 const triggerStyle = (selected) => ({
   fontFamily: "body",
-  fontSize: "12px",
+  fontSize: "xs",
   letterSpacing: "0.14em",
   textTransform: "uppercase",
   fontWeight: "600",
-  px: "22px",
-  py: "13px",
+  px: "6",
+  py: "3.5",
   cursor: "pointer",
   borderRadius: "2px",
   border: "1px solid",
@@ -36,28 +36,24 @@ export default function Biography({ portrait }) {
   return (
     <>
       {/* Title */}
-      <Box as="section" maxW="shell" mx="auto" pt="clamp(40px,6vw,72px)" px="gutter">
-        <Flex wrap="wrap" align="flex-end" gap="28px clamp(24px,3vw,48px)">
+      <Box as="section" maxW="shell" mx="auto" pt="clamp(2.5rem,6vw,4.5rem)" px="gutter">
+        <Flex wrap="wrap" align="flex-end" gap="1.75rem clamp(1.5rem,3vw,3rem)">
           <Box
             flex="0 0 auto"
-            fontSize="11px"
+            textStyle="microLabel"
             letterSpacing="0.42em"
-            textTransform="uppercase"
             color="rgba(247,239,221,0.45)"
-            pb="8px"
+            pb="2"
             css={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
           >
             Biography
           </Box>
           <Heading
             as="h1"
-            flex="1 1 420px"
+            flex="1 1 26.25rem"
             minW="0"
-            fontFamily="display"
-            fontWeight="600"
-            fontSize="clamp(40px,6.4vw,104px)"
+            textStyle="pageTitle"
             lineHeight="0.92"
-            letterSpacing="-0.02em"
             m="0"
             color="cream"
             css={{ textWrap: "balance" }}
@@ -68,31 +64,30 @@ export default function Biography({ portrait }) {
             </Box>
           </Heading>
         </Flex>
-        <FilmStrip mt="clamp(36px,5vw,56px)" />
+        <FilmStrip mt="clamp(2.25rem,5vw,3.5rem)" />
       </Box>
 
       {/* Portrait, lead paragraph, facts and long-form prose */}
-      <Box as="section" maxW="shell" mx="auto" pt="clamp(44px,6vw,72px)" px="gutter">
-        <Flex wrap="wrap" gap="clamp(28px,4vw,64px)" align="flex-start">
-          <Box as="figure" m="0" flex="1 1 clamp(280px,28vw,400px)" maxW="400px">
+      <Box as="section" maxW="shell" mx="auto" pt="clamp(2.75rem,6vw,4.5rem)" px="gutter">
+        <Flex wrap="wrap" gap="clamp(1.75rem,4vw,4rem)" align="flex-start">
+          <Box as="figure" m="0" flex="1 1 clamp(17.5rem,28vw,25rem)" maxW="25rem">
             <PortraitFrame src={portrait} alt="Ebo Krdum with an acoustic guitar" ratio="4/5" />
             <Box
               as="figcaption"
-              mt="14px"
-              fontSize="12px"
+              mt="3.5"
+              textStyle="eyebrow"
               letterSpacing="0.14em"
-              textTransform="uppercase"
               color="rgba(247,239,221,0.45)"
             >
               {PORTRAIT_CAPTION}
             </Box>
           </Box>
 
-          <Box flex="1 1 420px" minW="0">
+          <Box flex="1 1 26.25rem" minW="0">
             <Text
               m="0"
               fontFamily="display"
-              fontSize="clamp(21px,2.2vw,27px)"
+              fontSize="xl"
               lineHeight="1.45"
               color="cream"
               css={{ textWrap: "pretty" }}
@@ -101,9 +96,9 @@ export default function Biography({ portrait }) {
             </Text>
             <Flex
               wrap="wrap"
-              gap="28px 44px"
-              mt="36px"
-              pt="28px"
+              gap="1.75rem 2.75rem"
+              mt="9"
+              pt="7"
               borderTop="1px solid"
               borderColor="rgba(139,90,43,0.45)"
             >
@@ -116,14 +111,14 @@ export default function Biography({ portrait }) {
           <Box
             flex="1 1 100%"
             minW="0"
-            css={{ columns: "2 340px", columnGap: "clamp(32px,4vw,64px)" }}
+            css={{ columns: "2 21.25rem", columnGap: "clamp(2rem,4vw,4rem)" }}
           >
             {PROSE.map((p, i) => (
               <Text
                 key={p.slice(0, 24)}
                 m="0"
-                mt={i === 0 ? "0" : "24px"}
-                fontSize="17px"
+                mt={i === 0 ? "0" : "6"}
+                fontSize="lg"
                 lineHeight="1.8"
                 color="rgba(247,239,221,0.78)"
                 css={{ textWrap: "pretty" }}
@@ -133,13 +128,13 @@ export default function Biography({ portrait }) {
             ))}
           </Box>
         </Flex>
-        <FilmStrip mt="clamp(56px,7vw,88px)" />
+        <FilmStrip mt="clamp(3.5rem,7vw,5.5rem)" />
       </Box>
 
       {/* Tabbed chapters */}
-      <Box as="section" maxW="shell" mx="auto" pt="clamp(44px,6vw,64px)" px="gutter">
+      <Box as="section" maxW="shell" mx="auto" pt="clamp(2.75rem,6vw,4rem)" px="gutter">
         <Tabs.Root defaultValue={SECTIONS[0].key} lazyMount unmountOnExit={false}>
-          <Tabs.List display="flex" flexWrap="wrap" gap="12px" border="none">
+          <Tabs.List display="flex" flexWrap="wrap" gap="3" border="none">
             {SECTIONS.map((s) => (
               <Tabs.Trigger key={s.key} value={s.key} asChild>
                 <Box as="button" type="button" {...triggerStyle(false)} _selected={triggerStyle(true)}>
@@ -150,18 +145,15 @@ export default function Biography({ portrait }) {
           </Tabs.List>
 
           {SECTIONS.map((s) => (
-            <Tabs.Content key={s.key} value={s.key} mt="clamp(36px,5vw,56px)" p="0">
-              <Grid templateColumns="repeat(auto-fit,minmax(300px,1fr))" gap="clamp(32px,4vw,64px)" alignItems="start">
+            <Tabs.Content key={s.key} value={s.key} mt="clamp(2.25rem,5vw,3.5rem)" p="0">
+              <Grid templateColumns="repeat(auto-fit,minmax(18.75rem,1fr))" gap="clamp(2rem,4vw,4rem)" alignItems="start">
                 <Box>
-                  <Eyebrow tone="amber" mb="20px">
+                  <Eyebrow tone="amber" mb="5">
                     {s.kicker}
                   </Eyebrow>
                   <Heading
                     as="h2"
-                    fontFamily="display"
-                    fontSize="clamp(32px,4.4vw,60px)"
-                    lineHeight="1"
-                    fontWeight="500"
+                    textStyle="section"
                     m="0"
                     color="cream"
                     css={{ textWrap: "balance" }}
@@ -169,22 +161,22 @@ export default function Biography({ portrait }) {
                     {s.title}
                   </Heading>
                   {s.quote && (
-                    <Box as="blockquote" mt="36px" pt="28px" borderTop="1px solid" borderColor="rgba(139,90,43,0.5)">
-                      <Box fontFamily="display" fontSize="44px" lineHeight="0.6" color="bronze">
+                    <Box as="blockquote" mt="9" pt="7" borderTop="1px solid" borderColor="rgba(139,90,43,0.5)">
+                      <Box fontFamily="display" fontSize="5xl" lineHeight="0.6" color="bronze">
                         &ldquo;
                       </Box>
                       <Text
-                        mt="12px"
+                        mt="3"
                         fontFamily="display"
                         fontStyle="italic"
-                        fontSize="clamp(18px,1.7vw,21px)"
+                        fontSize="lg"
                         lineHeight="1.6"
                         color="rgba(247,239,221,0.9)"
                         css={{ textWrap: "pretty" }}
                       >
                         {s.quote}
                       </Text>
-                      <Box mt="16px" fontSize="11px" letterSpacing="0.24em" textTransform="uppercase" color="bronze">
+                      <Box mt="4" textStyle="microLabel" letterSpacing="0.24em" color="bronze">
                         Ebo Krdum
                       </Box>
                     </Box>
@@ -196,8 +188,8 @@ export default function Biography({ portrait }) {
                     <Text
                       key={p.slice(0, 24)}
                       m="0"
-                      mt={i === 0 ? "0" : "24px"}
-                      fontSize="17px"
+                      mt={i === 0 ? "0" : "6"}
+                      fontSize="lg"
                       lineHeight="1.8"
                       color="rgba(247,239,221,0.78)"
                       css={{ textWrap: "pretty" }}
@@ -216,21 +208,21 @@ export default function Biography({ portrait }) {
       <Box
         as="section"
         bg="surface"
-        mt="clamp(56px,7vw,88px)"
+        mt="clamp(3.5rem,7vw,5.5rem)"
         borderTop="1px solid"
         borderBottom="1px solid"
         borderColor="rgba(139,90,43,0.4)"
       >
-        <Box maxW="shell" mx="auto" py="clamp(52px,7vw,88px)" px="gutter">
-          <Grid templateColumns="repeat(auto-fit,minmax(300px,1fr))" gap="clamp(32px,4vw,64px)" alignItems="start">
+        <Box maxW="shell" mx="auto" py="clamp(3.25rem,7vw,5.5rem)" px="gutter">
+          <Grid templateColumns="repeat(auto-fit,minmax(18.75rem,1fr))" gap="clamp(2rem,4vw,4rem)" alignItems="start">
             <Box>
-              <Eyebrow tone="amber" mb="20px">
+              <Eyebrow tone="amber" mb="5">
                 Musical ideology
               </Eyebrow>
               <Text
                 m="0"
                 fontFamily="display"
-                fontSize="clamp(22px,2.4vw,30px)"
+                fontSize="2xl"
                 lineHeight="1.42"
                 color="cream"
                 css={{ textWrap: "pretty" }}
@@ -239,16 +231,16 @@ export default function Biography({ portrait }) {
               </Text>
             </Box>
             <Box>
-              <Eyebrow mb="20px">Inspirational words</Eyebrow>
-              <Text m="0" fontSize="17px" lineHeight="1.8" color="rgba(247,239,221,0.78)" css={{ textWrap: "pretty" }}>
+              <Eyebrow mb="5">Inspirational words</Eyebrow>
+              <Text m="0" fontSize="lg" lineHeight="1.8" color="rgba(247,239,221,0.78)" css={{ textWrap: "pretty" }}>
                 {IDEOLOGY.inspiration}
               </Text>
-              <Box as="blockquote" mt="32px" pt="24px" borderTop="1px solid" borderColor="rgba(139,90,43,0.5)">
+              <Box as="blockquote" mt="8" pt="6" borderTop="1px solid" borderColor="rgba(139,90,43,0.5)">
                 <Text
                   m="0"
                   fontFamily="display"
                   fontStyle="italic"
-                  fontSize="18px"
+                  fontSize="lg"
                   lineHeight="1.6"
                   color="rgba(247,239,221,0.88)"
                   css={{ textWrap: "pretty" }}
@@ -262,40 +254,37 @@ export default function Biography({ portrait }) {
       </Box>
 
       {/* Influences */}
-      <Box as="section" maxW="shell" mx="auto" pt="clamp(52px,7vw,88px)" px="gutter">
-        <Flex wrap="wrap" align="flex-end" justify="space-between" gap="20px 32px">
+      <Box as="section" maxW="shell" mx="auto" pt="clamp(3.25rem,7vw,5.5rem)" px="gutter">
+        <Flex wrap="wrap" align="flex-end" justify="space-between" gap="1.25rem 2rem">
           <Heading
             as="h2"
-            fontFamily="display"
-            fontSize="clamp(28px,3.4vw,44px)"
-            lineHeight="1"
-            fontWeight="500"
+            textStyle="sectionSm"
             m="0"
             color="cream"
           >
             Influences
           </Heading>
-          <Box fontSize="13px" color="rgba(247,239,221,0.5)" maxW="40ch">
+          <Box textStyle="meta" color="rgba(247,239,221,0.5)" maxW="40ch">
             Artists who left an impression on Ebo the kid, and the artist today.
           </Box>
         </Flex>
-        <Flex mt="32px" wrap="wrap" gap="10px">
+        <Flex mt="8" wrap="wrap" gap="2.5">
           {INFLUENCES.map((name) => (
             <Box
               key={name}
               border="1px solid"
               borderColor="rgba(139,90,43,0.55)"
-              px="18px"
-              py="11px"
+              px="4.5"
+              py="3"
               fontFamily="display"
-              fontSize="17px"
+              fontSize="lg"
               color="rgba(247,239,221,0.86)"
             >
               {name}
             </Box>
           ))}
         </Flex>
-        <FilmStrip mt="clamp(52px,7vw,80px)" />
+        <FilmStrip mt="clamp(3.25rem,7vw,5rem)" />
       </Box>
     </>
   );

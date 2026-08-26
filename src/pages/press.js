@@ -16,13 +16,12 @@ function LangButton({ active, children, onClick }) {
       onClick={onClick}
       aria-pressed={active}
       fontFamily="body"
-      fontSize="12px"
+      textStyle="microLabel"
       letterSpacing="0.14em"
-      textTransform="uppercase"
       fontWeight="600"
-      px="22px"
-      py="13px"
-      minH="46px"
+      px="6"
+      py="3.5"
+      minH="12"
       border="none"
       cursor="pointer"
       bg={active ? "amber" : "transparent"}
@@ -40,32 +39,32 @@ function DownloadCard({ kind, title, note, href, external = true }) {
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
       display="flex"
-      gap="16px"
+      gap="4"
       alignItems="flex-start"
       border="1px solid"
       borderColor="rgba(139,90,43,0.6)"
       bg="ink"
-      px="24px"
-      py="22px"
+      px="6"
+      py="6"
       _hover={{ borderColor: "amber" }}
     >
       <Box
         flex="0 0 auto"
         fontFamily="mono"
-        fontSize="11px"
+        fontSize="2xs"
         letterSpacing="0.1em"
         color="ink"
         bg="amber"
-        px="9px"
-        py="6px"
+        px="2.5"
+        py="1.5"
       >
         {kind}
       </Box>
       <Box>
-        <Box fontFamily="display" fontSize="19px" color="cream">
+        <Box fontFamily="display" fontSize="lg" color="cream">
           {title}
         </Box>
-        <Box mt="6px" fontSize="13px" lineHeight="1.6" color="rgba(247,239,221,0.55)">
+        <Box mt="1.5" textStyle="meta" color="rgba(247,239,221,0.55)">
           {note}
         </Box>
       </Box>
@@ -80,25 +79,23 @@ export default function Press({ reviews = [] }) {
 
   return (
     <>
-      <Box as="section" maxW="shell" mx="auto" pt="clamp(36px,5vw,60px)" px="gutter">
-        <Box border="1px solid" borderColor="rgba(232,169,58,0.55)" bg="surface" p="clamp(26px,3.4vw,48px)">
-          <Flex wrap="wrap" gap="24px clamp(28px,4vw,56px)" align="center">
-            <Box flex="1 1 340px" minW="0">
-              <Box fontSize="11px" letterSpacing="0.24em" textTransform="uppercase" color="bronze">
+      <Box as="section" maxW="shell" mx="auto" pt="clamp(2.25rem,5vw,3.75rem)" px="gutter">
+        <Box border="1px solid" borderColor="rgba(232,169,58,0.55)" bg="surface" p="clamp(1.625rem,3.4vw,3rem)">
+          <Flex wrap="wrap" gap="1.5rem clamp(1.75rem,4vw,3.5rem)" align="center">
+            <Box flex="1 1 21.25rem" minW="0">
+              <Box textStyle="microLabel" letterSpacing="0.24em" color="bronze">
                 Press kit
               </Box>
               <Heading
                 as="h1"
-                mt="14px"
-                fontFamily="display"
-                fontSize="clamp(26px,3vw,38px)"
+                mt="3.5"
+                textStyle="sectionSm"
                 lineHeight="1.1"
-                fontWeight="500"
                 color="cream"
               >
                 Photos, bio and stage plots
               </Heading>
-              <Text mt="14px" fontSize="15px" lineHeight="1.7" color="rgba(247,239,221,0.62)" maxW="52ch">
+              <Text mt="3.5" textStyle="body" lineHeight="1.7" color="rgba(247,239,221,0.62)" maxW="52ch">
                 High-resolution press images with photographer credits, plus the
                 stage plot and technical rider as PDF.
               </Text>
@@ -109,16 +106,15 @@ export default function Press({ reviews = [] }) {
               onClick={() => setPhoto(0)}
               flex="0 0 auto"
               fontFamily="body"
-              fontSize="12px"
+              textStyle="microLabel"
               letterSpacing="0.14em"
-              textTransform="uppercase"
               fontWeight="600"
               color="ink"
               bg="amber"
               border="0"
-              px="28px"
-              py="17px"
-              minH="52px"
+              px="7"
+              py="4.5"
+              minH="14"
               cursor="pointer"
               _hover={{ bg: "amberBright" }}
             >
@@ -127,18 +123,18 @@ export default function Press({ reviews = [] }) {
           </Flex>
 
           <Box
-            mt="clamp(28px,3.4vw,44px)"
+            mt="clamp(1.75rem,3.4vw,2.75rem)"
             borderTop="1px solid"
             borderColor="rgba(139,90,43,0.5)"
-            pt="clamp(26px,3vw,38px)"
+            pt="clamp(1.625rem,3vw,2.375rem)"
             display="grid"
-            gap="clamp(24px,3vw,36px)"
+            gap="clamp(1.5rem,3vw,2.25rem)"
           >
             <Box>
-              <Box fontSize="11px" letterSpacing="0.24em" textTransform="uppercase" color="bronze" mb="18px">
+              <Box textStyle="microLabel" letterSpacing="0.24em" color="bronze" mb="4.5">
                 Press photos — click to enlarge and download
               </Box>
-              <Grid templateColumns="repeat(auto-fill,minmax(180px,1fr))" gap="clamp(12px,1.6vw,18px)">
+              <Grid templateColumns="repeat(auto-fill,minmax(11.25rem,1fr))" gap="clamp(0.75rem,1.6vw,1.125rem)">
                 {PRESS_PHOTOS.map((p, i) => (
                   <Box
                     key={p.id}
@@ -166,11 +162,10 @@ export default function Press({ reviews = [] }) {
                       left="0"
                       right="0"
                       bottom="0"
-                      px="12px"
-                      py="10px"
-                      fontSize="11px"
+                      px="3"
+                      py="2.5"
+                      textStyle="microLabel"
                       letterSpacing="0.12em"
-                      textTransform="uppercase"
                       color="cream"
                       textAlign="left"
                       css={{
@@ -185,7 +180,7 @@ export default function Press({ reviews = [] }) {
               </Grid>
             </Box>
 
-            <Grid templateColumns="repeat(auto-fit,minmax(260px,1fr))" gap="clamp(14px,1.8vw,20px)">
+            <Grid templateColumns="repeat(auto-fit,minmax(16.25rem,1fr))" gap="clamp(0.875rem,1.8vw,1.25rem)">
               {PRESS_DOWNLOADS.map((d) => (
                 <DownloadCard key={d.title} {...d} />
               ))}
@@ -202,8 +197,8 @@ export default function Press({ reviews = [] }) {
       </Box>
 
       {/* Reviews */}
-      <Box as="section" maxW="shell" mx="auto" pt="clamp(36px,5vw,64px)" px="gutter">
-        <Flex justify="flex-end" mb="24px">
+      <Box as="section" maxW="shell" mx="auto" pt="clamp(2.25rem,5vw,4rem)" px="gutter">
+        <Flex justify="flex-end" mb="6">
           <Flex border="1px solid" borderColor="bronze" borderRadius="2px" overflow="hidden">
             <LangButton active={en} onClick={() => setLang("en")}>
               English
@@ -214,7 +209,7 @@ export default function Press({ reviews = [] }) {
           </Flex>
         </Flex>
 
-        <Grid templateColumns="repeat(auto-fit,minmax(330px,1fr))" gap="clamp(20px,2.4vw,32px)">
+        <Grid templateColumns="repeat(auto-fit,minmax(20.625rem,1fr))" gap="clamp(1.25rem,2.4vw,2rem)">
           {reviews.map((r) => (
             <Link
               key={r.id}
@@ -223,23 +218,23 @@ export default function Press({ reviews = [] }) {
               rel="noopener noreferrer"
               display="flex"
               flexDirection="column"
-              gap="20px"
+              gap="5"
               bg="surface"
               border="1px solid"
               borderColor="rgba(139,90,43,0.45)"
-              p="clamp(24px,2.8vw,38px)"
+              p="clamp(1.5rem,2.8vw,2.375rem)"
               color="cream"
               _hover={{ borderColor: "amber", color: "cream" }}
             >
-              <Flex wrap="wrap" align="center" gap="12px 16px">
+              <Flex wrap="wrap" align="center" gap="0.75rem 1rem">
                 {r.logo ? (
                   <ReviewLogo logo={r.logo} alt={r.outlet} height={28} />
                 ) : (
-                  <Box fontFamily="display" fontSize="clamp(20px,2vw,26px)" color="amber">
+                  <Box fontFamily="display" fontSize="xl" color="amber">
                     {r.outlet}
                   </Box>
                 )}
-                <Box fontSize="11px" letterSpacing="0.2em" textTransform="uppercase" color="bronze">
+                <Box textStyle="microLabel" color="bronze">
                   {isFallback(r, en ? "en" : "sv")
                     ? en
                       ? "Swedish original"
@@ -253,7 +248,7 @@ export default function Press({ reviews = [] }) {
                 as="blockquote"
                 m="0"
                 fontFamily="display"
-                fontSize="clamp(17px,1.5vw,21px)"
+                fontSize="lg"
                 lineHeight="1.55"
                 color="rgba(247,239,221,0.9)"
                 css={{ textWrap: "pretty" }}
@@ -262,9 +257,8 @@ export default function Press({ reviews = [] }) {
               </Text>
               <Box
                 mt="auto"
-                fontSize="12px"
+                textStyle="microLabel"
                 letterSpacing="0.14em"
-                textTransform="uppercase"
                 fontWeight="600"
                 color="amber"
               >
@@ -273,7 +267,7 @@ export default function Press({ reviews = [] }) {
             </Link>
           ))}
         </Grid>
-        <FilmStrip mt="clamp(48px,6vw,80px)" />
+        <FilmStrip mt="clamp(3rem,6vw,5rem)" />
       </Box>
 
       <Lightbox

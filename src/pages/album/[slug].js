@@ -15,22 +15,16 @@ export default function AlbumPage({ album, tracks, others }) {
   const isAlbum = album?.recordType === "album";
   if (!album) {
     return (
-      <Box maxW="shell" mx="auto" py="clamp(80px,14vw,180px)" px="gutter">
-        <Heading
-          fontFamily="display"
-          fontSize="clamp(32px,4vw,56px)"
-          fontWeight="500"
-          color="cream"
-        >
+      <Box maxW="shell" mx="auto" py="clamp(5rem,14vw,11.25rem)" px="gutter">
+        <Heading textStyle="section" color="cream">
           Album not found
         </Heading>
         <Link
           asChild
-          mt="24px"
+          mt="6"
           display="inline-block"
-          fontSize="14px"
+          textStyle="eyebrow"
           letterSpacing="0.12em"
-          textTransform="uppercase"
         >
           <NextLink href="/#albums">Back to the discography →</NextLink>
         </Link>
@@ -46,16 +40,15 @@ export default function AlbumPage({ album, tracks, others }) {
         as="section"
         maxW="shell"
         mx="auto"
-        pt="clamp(28px,4vw,44px)"
+        pt="clamp(1.75rem,4vw,2.75rem)"
         px="gutter"
       >
         {/* Breadcrumb */}
         <Flex
           align="center"
-          gap="12px"
-          fontSize="12px"
+          gap="3"
+          textStyle="eyebrow"
           letterSpacing="0.18em"
-          textTransform="uppercase"
           color="rgba(247,239,221,0.45)"
         >
           <Link
@@ -72,9 +65,9 @@ export default function AlbumPage({ album, tracks, others }) {
         </Flex>
 
         <Grid
-          mt="56px"
-          templateColumns="repeat(auto-fit,minmax(320px,1fr))"
-          gap="clamp(32px,4vw,64px)"
+          mt="14"
+          templateColumns="repeat(auto-fit,minmax(20rem,1fr))"
+          gap="clamp(2rem,4vw,4rem)"
           alignItems="end"
         >
           <Box
@@ -97,7 +90,7 @@ export default function AlbumPage({ album, tracks, others }) {
           </Box>
 
           <Box>
-            <Eyebrow tone="amber" mb="24px">
+            <Eyebrow tone="amber" mb="6">
               {isAlbum
                 ? "Album — full length"
                 : album.recordType === "ep"
@@ -106,11 +99,8 @@ export default function AlbumPage({ album, tracks, others }) {
             </Eyebrow>
             <Heading
               as="h1"
-              fontFamily="display"
-              fontWeight="600"
-              fontSize="clamp(46px,7.4vw,116px)"
+              textStyle="pageTitle"
               lineHeight="0.86"
-              letterSpacing="-0.02em"
               m="0"
               color="cream"
               css={{ textWrap: "balance" }}
@@ -118,7 +108,7 @@ export default function AlbumPage({ album, tracks, others }) {
               {album.title}
             </Heading>
 
-            <Flex wrap="wrap" gap="14px" mt="36px">
+            <Flex wrap="wrap" gap="3.5" mt="9">
               <Link
                 href={
                   album.spotifyAlbumId
@@ -134,11 +124,10 @@ export default function AlbumPage({ album, tracks, others }) {
                 bg="amber"
                 color="ink"
                 fontWeight="600"
-                fontSize="14px"
+                textStyle="eyebrow"
                 letterSpacing="0.08em"
-                textTransform="uppercase"
-                px="28px"
-                py="16px"
+                px="7"
+                py="4"
                 borderRadius="2px"
                 _hover={{ bg: "amberBright", color: "ink" }}
               >
@@ -155,11 +144,10 @@ export default function AlbumPage({ album, tracks, others }) {
                   border="1px solid"
                   borderColor="rgba(232,169,58,0.6)"
                   fontWeight="600"
-                  fontSize="14px"
+                  textStyle="eyebrow"
                   letterSpacing="0.08em"
-                  textTransform="uppercase"
-                  px="26px"
-                  py="16px"
+                  px="7"
+                  py="4"
                   borderRadius="2px"
                   _hover={{ bg: "amber", color: "ink" }}
                 >
@@ -168,7 +156,7 @@ export default function AlbumPage({ album, tracks, others }) {
               )}
             </Flex>
 
-            <Flex gap="44px" mt="44px" wrap="wrap">
+            <Flex gap="11" mt="11" wrap="wrap">
               <MetaItem label="Released" value={album.year} />
               <MetaItem label="Genre" value={album.genre || "Desert blues"} />
               {album.trackCount ? (
@@ -181,7 +169,7 @@ export default function AlbumPage({ album, tracks, others }) {
           </Box>
         </Grid>
 
-        <FilmStrip mt="80px" />
+        <FilmStrip mt="20" />
       </Box>
 
       {/* Tracklist + player */}
@@ -190,20 +178,20 @@ export default function AlbumPage({ album, tracks, others }) {
         id="player"
         maxW="shell"
         mx="auto"
-        pt="clamp(52px,7vw,80px)"
+        pt="clamp(3.25rem,7vw,5rem)"
         px="gutter"
       >
         <Grid
-          templateColumns="repeat(auto-fit,minmax(330px,1fr))"
-          gap="clamp(32px,4vw,56px)"
+          templateColumns="repeat(auto-fit,minmax(20.625rem,1fr))"
+          gap="clamp(2rem,4vw,3.5rem)"
           alignItems="start"
         >
           <Box>
-            <Eyebrow mb="22px">Tracklist</Eyebrow>
+            <Eyebrow mb="6">Tracklist</Eyebrow>
             <Tracklist tracks={tracks} deezerAlbumId={album.deezerAlbumId} />
           </Box>
 
-          <Box position="sticky" top="96px">
+          <Box position="sticky" top="24">
             <AlbumPlayer
               deezerAlbumId={album.deezerAlbumId}
               title={album.title}
@@ -216,20 +204,17 @@ export default function AlbumPage({ album, tracks, others }) {
 
       {/* Other releases */}
       {others.length > 0 && (
-        <Box as="section" maxW="shell" mx="auto" pt="88px">
+        <Box as="section" maxW="shell" mx="auto" pt="24">
           <Flex
             px="gutter"
             align="flex-end"
             justify="space-between"
-            gap="32px"
+            gap="8"
             wrap="wrap"
           >
             <Heading
               as="h2"
-              fontFamily="display"
-              fontSize="clamp(30px,3.4vw,46px)"
-              lineHeight="1"
-              fontWeight="500"
+              textStyle="sectionSm"
               m="0"
               color="cream"
             >
@@ -237,9 +222,8 @@ export default function AlbumPage({ album, tracks, others }) {
             </Heading>
             <Link
               asChild
-              fontSize="13px"
+              textStyle="eyebrow"
               letterSpacing="0.12em"
-              textTransform="uppercase"
               fontWeight="600"
             >
               <NextLink href="/#albums">All releases →</NextLink>
@@ -247,10 +231,10 @@ export default function AlbumPage({ album, tracks, others }) {
           </Flex>
 
           <Grid
-            mt="36px"
+            mt="9"
             px="gutter"
-            templateColumns="repeat(auto-fit,minmax(220px,1fr))"
-            gap="24px"
+            templateColumns="repeat(auto-fit,minmax(13.75rem,1fr))"
+            gap="6"
           >
             {others.map((a) => {
               const src = coverUrl(a, 600);
@@ -281,18 +265,18 @@ export default function AlbumPage({ album, tracks, others }) {
                           />
                         )}
                       </Box>
-                      <Flex align="baseline" gap="10px" mt="14px">
+                      <Flex align="baseline" gap="2.5" mt="3.5">
                         <Box
                           as="span"
                           fontFamily="display"
-                          fontSize="20px"
+                          fontSize="xl"
                           fontWeight="500"
                         >
                           {a.title}
                         </Box>
                         <Box
                           as="span"
-                          fontSize="13px"
+                          fontSize="sm"
                           color="rgba(247,239,221,0.45)"
                         >
                           {a.year}
@@ -305,7 +289,7 @@ export default function AlbumPage({ album, tracks, others }) {
             })}
           </Grid>
 
-          <Box px="gutter" mt="80px">
+          <Box px="gutter" mt="20">
             <FilmStrip />
           </Box>
         </Box>

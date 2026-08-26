@@ -8,7 +8,7 @@ import { Box } from "@chakra-ui/react";
 export default function SpotifyEmbed({ type = "album", id, title, height = 440, bg = "ink" }) {
   if (!id) return null;
   return (
-    <Box border="1px solid" borderColor="rgba(139,90,43,0.5)" p="12px" bg={bg}>
+    <Box border="1px solid" borderColor="rgba(139,90,43,0.5)" p="3" bg={bg}>
       <Box
         as="iframe"
         title={title}

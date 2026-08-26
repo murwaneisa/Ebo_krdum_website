@@ -14,12 +14,11 @@ function LangButton({ active, children, onClick }) {
       onClick={onClick}
       aria-pressed={active}
       fontFamily="body"
-      fontSize="12px"
+      textStyle="microLabel"
       letterSpacing="0.14em"
-      textTransform="uppercase"
       fontWeight="600"
-      px="20px"
-      py="12px"
+      px="5"
+      py="3"
       border="none"
       cursor="pointer"
       bg={active ? "amber" : "transparent"}
@@ -36,13 +35,25 @@ export default function PressStrip({ reviews = [] }) {
   if (!reviews.length) return null;
 
   return (
-    <Box as="section" id="press" maxW="shell" mx="auto" pt="clamp(56px,8vw,96px)" px="gutter">
-      <Flex align="flex-end" justify="space-between" gap="32px" wrap="wrap">
+    <Box
+      as="section"
+      id="press"
+      maxW="shell"
+      mx="auto"
+      pt="clamp(3.5rem,8vw,6rem)"
+      px="gutter"
+    >
+      <Flex align="flex-end" justify="space-between" gap="8" wrap="wrap">
         <Box>
           <Eyebrow>05 — Press</Eyebrow>
           <SectionHeading>What the critics wrote</SectionHeading>
         </Box>
-        <Flex border="1px solid" borderColor="bronze" borderRadius="2px" overflow="hidden">
+        <Flex
+          border="1px solid"
+          borderColor="bronze"
+          borderRadius="2px"
+          overflow="hidden"
+        >
           <LangButton active={lang === "en"} onClick={() => setLang("en")}>
             English
           </LangButton>
@@ -54,8 +65,8 @@ export default function PressStrip({ reviews = [] }) {
 
       {/* 1px gap over a bronze background paints the hairline grid rules */}
       <Grid
-        mt="44px"
-        templateColumns="repeat(auto-fit,minmax(300px,1fr))"
+        mt="11"
+        templateColumns="repeat(auto-fit,minmax(18.75rem,1fr))"
         gap="1px"
         bg="rgba(139,90,43,0.45)"
         border="1px solid"
@@ -68,23 +79,23 @@ export default function PressStrip({ reviews = [] }) {
             target="_blank"
             rel="noopener noreferrer"
             bg="ink"
-            pt="36px"
-            px="32px"
-            pb="30px"
+            pt="9"
+            px="8"
+            pb="8"
             display="flex"
             flexDirection="column"
-            gap="20px"
+            gap="5"
             color="cream"
             _hover={{ bg: "surface", color: "cream" }}
           >
             {r.logo ? (
               <ReviewLogo logo={r.logo} alt={r.outlet} height={24} />
             ) : (
-              <FilmStrip size={12} w="72px" />
+              <FilmStrip size={12} w="4.5rem" />
             )}
             <Text
               fontFamily="display"
-              fontSize="19px"
+              fontSize="md"
               lineHeight="1.5"
               m="0"
               color="rgba(247,239,221,0.92)"
@@ -92,16 +103,16 @@ export default function PressStrip({ reviews = [] }) {
             >
               {textFor(r, lang)}
             </Text>
-            <Box
-              mt="auto"
-              fontSize="12px"
-              letterSpacing="0.2em"
-              textTransform="uppercase"
-              color="amber"
-            >
+            <Box mt="auto" textStyle="microLabel" color="amber">
               {r.outlet}
               {isFallback(r, lang) && (
-                <Box as="span" color="bronze" textTransform="none" letterSpacing="0" ml="8px">
+                <Box
+                  as="span"
+                  color="bronze"
+                  textTransform="none"
+                  letterSpacing="0"
+                  ml="2"
+                >
                   (in {lang === "sv" ? "English" : "Swedish"})
                 </Box>
               )}
@@ -110,7 +121,7 @@ export default function PressStrip({ reviews = [] }) {
         ))}
       </Grid>
 
-      <FilmStrip mt="88px" />
+      <FilmStrip mt="24" />
     </Box>
   );
 }
