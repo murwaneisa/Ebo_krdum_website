@@ -50,14 +50,14 @@ export default function SiteFooter() {
 
         <Box>
           <ColumnLabel>Booking &amp; management</ColumnLabel>
-          <Link href={`mailto:${CONTACT.booking}`} textStyle="body" display="block" css={{ overflowWrap: "anywhere" }}>
+          <Link href={`mailto:${CONTACT.booking}`} textStyle="body" display="block" color="rgba(247,239,221,0.72)" css={{ overflowWrap: "anywhere" }}>
             {CONTACT.booking}
           </Link>
         </Box>
 
         <Box>
           <ColumnLabel>Interviews &amp; shows</ColumnLabel>
-          <Link href={`mailto:${CONTACT.press}`} textStyle="body" display="block" css={{ overflowWrap: "anywhere" }}>
+          <Link href={`mailto:${CONTACT.press}`} textStyle="body" display="block" color="rgba(247,239,221,0.72)" css={{ overflowWrap: "anywhere" }}>
             {CONTACT.press}
           </Link>
           <Link

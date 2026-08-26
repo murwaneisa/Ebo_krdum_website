@@ -27,12 +27,18 @@ const CARDS = [
 ];
 
 function ContactCard({ label, value, href, note }) {
+  /*
+   * colour lives here, not on the branches below: without it the linked cards
+   * inherit the global amber `a` rule while the one card with no href stays
+   * cream, so the same slot rendered two different colours.
+   */
   const valueStyle = {
     display: "block",
     mt: "4",
     fontFamily: "display",
     fontSize: "lg",
     lineHeight: "1.35",
+    color: "cream",
     css: { wordBreak: "break-word" },
   };
 
@@ -46,9 +52,7 @@ function ContactCard({ label, value, href, note }) {
           {value}
         </Link>
       ) : (
-        <Box {...valueStyle} color="cream">
-          {value}
-        </Box>
+        <Box {...valueStyle}>{value}</Box>
       )}
       <Text mt="3.5" textStyle="meta" lineHeight="1.65" color="rgba(247,239,221,0.55)">
         {note}

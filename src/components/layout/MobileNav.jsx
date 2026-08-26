@@ -188,6 +188,7 @@ export default function MobileNav() {
                   textStyle="body"
                   display="block"
                   mt="2"
+                  color="rgba(247,239,221,0.72)"
                   css={{ overflowWrap: "anywhere" }}
                 >
                   {CONTACT.booking}
