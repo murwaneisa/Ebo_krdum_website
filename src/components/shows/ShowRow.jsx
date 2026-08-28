@@ -18,19 +18,38 @@ export default function ShowRow({ show, compact = false }) {
       transition="background 0.15s ease"
       _hover={show.url ? { bg: "surface" } : undefined}
     >
-      <Flex align="baseline" gap={compact ? "2.5" : "3"} minW={compact ? "7rem" : "8.25rem"}>
-        <Box as="span" fontFamily="display" textStyle="microLabel" color="amber">
-          {show.month}
-        </Box>
-        <Box as="span" fontFamily="display" fontSize={compact ? "xl" : "2xl"} fontWeight="600" color="cream">
-          {show.day}
-        </Box>
-        {!compact && (
-          <Box as="span" fontFamily="display" textStyle="meta" color="bronze">
-            {show.year}
+      <Box flex="0 0 auto" minW={compact ? "7rem" : "8.25rem"}>
+        <Flex align="baseline" gap={compact ? "2.5" : "3"}>
+          <Box as="span" fontFamily="display" textStyle="microLabel" color="amber">
+            {show.month}
           </Box>
+          <Box as="span" fontFamily="display" fontSize={compact ? "xl" : "2xl"} fontWeight="600" color="cream">
+            {show.day}
+          </Box>
+          {!compact && (
+            <Box as="span" fontFamily="display" textStyle="meta" color="bronze">
+              {show.year}
+            </Box>
+          )}
+        </Flex>
+
+        {/* Weekday and time on one line under the date, matching NextShowCard.
+            The archive keeps its single weekday in the trailing column. */}
+        {!compact && (
+          <Flex
+            align="baseline"
+            wrap="wrap"
+            gap="0.25rem 0.75rem"
+            mt="1"
+            fontFamily="mono"
+            fontSize="xs"
+            color="rgba(247,239,221,0.55)"
+          >
+            <Box as="span">{show.weekday}</Box>
+            {show.time && <Box as="span">{show.time}</Box>}
+          </Flex>
         )}
-      </Flex>
+      </Box>
 
       <Box flex="1 1 15rem" minW="0" fontFamily="display" fontSize={compact ? "lg" : "xl"} color="cream">
         {show.title}
@@ -52,16 +71,25 @@ export default function ShowRow({ show, compact = false }) {
           {show.weekday}
         </Box>
       ) : (
-        <Box flex="0 0 auto" minW="8.25rem" textAlign="right">
-          <Box fontFamily="mono" fontSize="xs" color="rgba(247,239,221,0.55)">
-            {show.when}
+        show.url && (
+          <Box
+            flex="0 0 auto"
+            /*
+             * `ml="auto"` eats the free space before the button, so it stays
+             * hard right on whichever wrapped line it lands on — including the
+             * single-column stack on a phone, where a plain `textAlign` would
+             * leave it sitting under the place name.
+             */
+            ml="auto"
+            textAlign="right"
+            textStyle="microLabel"
+            letterSpacing="0.14em"
+            fontWeight="600"
+            color="amber"
+          >
+            Tickets →
           </Box>
-          {show.url && (
-            <Box mt="2" textStyle="microLabel" letterSpacing="0.14em" fontWeight="600" color="amber">
-              Tickets →
-            </Box>
-          )}
-        </Box>
+        )
       )}
     </Flex>
   );

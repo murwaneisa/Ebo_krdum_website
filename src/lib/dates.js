@@ -19,6 +19,10 @@ function toShow(raw) {
     day: String(date.getDate()).padStart(2, "0"),
     year: String(date.getFullYear()),
     weekday: WEEKDAYS[date.getDay()],
+    // `when` bundles weekday and time for listings that show one line. `time`
+    // is the bare clock value, for layouts that already show the weekday
+    // elsewhere. Null when the entry carries a date but no time.
+    time: hasTime ? time : null,
     when: hasTime ? `${WEEKDAYS[date.getDay()]} at ${time}` : WEEKDAYS[date.getDay()],
     title: raw.showTitle || "Untitled show",
     place: [raw.showCity, raw.showCountry].filter(Boolean).join(", "),

@@ -77,6 +77,6 @@ export async function getStaticProps() {
       shows: shows || [],
       reviews,
     },
-    revalidate: 60 * 60, // refresh the discography hourly
+    revalidate: 60,
   };
 }
