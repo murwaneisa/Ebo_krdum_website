@@ -5,6 +5,7 @@ import FilmStrip from "@/components/common/FilmStrip";
 import Lightbox from "@/components/common/Lightbox";
 import { CONTACT } from "@/data/site";
 import { GALLERY_CATEGORIES, GALLERY_PHOTOS } from "@/data/photos";
+import { cmsFetch, imageMeta, youtubeId } from "@/lib/cms";
 
 function FilterButton({ active, children, onClick }) {
   return (
@@ -31,15 +32,18 @@ function FilterButton({ active, children, onClick }) {
   );
 }
 
-export default function Gallery() {
+export default function Gallery({ photos = [], videos = [] }) {
   const [cat, setCat] = useState("All");
   const [active, setActive] = useState(null);
+
+  const isVideo = cat === "Video";
 
   // The lightbox steps through the *filtered* set, so Next/Prev never jumps to a
   // photo that is hidden behind the current filter.
   const visible = useMemo(
-    () => GALLERY_PHOTOS.filter((p) => cat === "All" || p.cat === cat),
-    [cat]
+    () =>
+      isVideo ? videos : photos.filter((p) => cat === "All" || p.cat === cat),
+    [cat, isVideo, photos, videos],
   );
 
   const selectCat = (key) => {
@@ -49,18 +53,14 @@ export default function Gallery() {
 
   return (
     <>
-      <Box as="section" maxW="shell" mx="auto" pt="clamp(3.25rem,7vw,5.5rem)" px="gutter">
+      <Box
+        as="section"
+        maxW="shell"
+        mx="auto"
+        pt="clamp(3.25rem,7vw,5.5rem)"
+        px="gutter"
+      >
         <Flex wrap="wrap" align="flex-end" gap="1.75rem clamp(1.5rem,3vw,3rem)">
-          <Box
-            flex="0 0 auto"
-            textStyle="microLabel"
-            letterSpacing="0.42em"
-            color="rgba(247,239,221,0.45)"
-            pb="2"
-            css={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
-          >
-            Photography
-          </Box>
           <Heading
             as="h1"
             flex="1 1 23.75rem"
@@ -91,7 +91,11 @@ export default function Gallery() {
 
         <Flex wrap="wrap" gap="2.5" mt="14">
           {GALLERY_CATEGORIES.map((c) => (
-            <FilterButton key={c.key} active={cat === c.key} onClick={() => selectCat(c.key)}>
+            <FilterButton
+              key={c.key}
+              active={cat === c.key}
+              onClick={() => selectCat(c.key)}
+            >
               {c.label}
             </FilterButton>
           ))}
@@ -100,8 +104,21 @@ export default function Gallery() {
         <FilmStrip mt="11" />
       </Box>
 
-      <Box as="section" id="gallery" maxW="shell" mx="auto" pt="clamp(2.25rem,5vw,3.5rem)" px="gutter" pb="10">
-        <Box css={{ columns: "3 16.25rem", columnGap: "clamp(0.875rem,2vw,1.5rem)" }}>
+      <Box
+        as="section"
+        id="gallery"
+        maxW="shell"
+        mx="auto"
+        pt="clamp(2.25rem,5vw,3.5rem)"
+        px="gutter"
+        pb="10"
+      >
+        <Box
+          css={{
+            columns: "3 16.25rem",
+            columnGap: "clamp(0.875rem,2vw,1.5rem)",
+          }}
+        >
           {visible.map((p, i) => (
             <Box key={p.id} mb="6" css={{ breakInside: "avoid" }}>
               <Box
@@ -121,7 +138,7 @@ export default function Gallery() {
               >
                 <Box
                   role="img"
-                  aria-label={p.caption}
+                  aria-label={p.alt || p.caption}
                   display="block"
                   w="100%"
                   bgColor="surface2"
@@ -132,6 +149,40 @@ export default function Gallery() {
                     backgroundPosition: "center",
                   }}
                 />
+
+                {/* Play badge marks a tile as a video without changing its shape. */}
+                {p.kind === "video" && (
+                  <Flex
+                    position="absolute"
+                    inset="0"
+                    align="center"
+                    justify="center"
+                    pointerEvents="none"
+                  >
+                    <Flex
+                      align="center"
+                      justify="center"
+                      w="14"
+                      h="14"
+                      borderRadius="full"
+                      bg="rgba(36,26,16,0.72)"
+                      border="1px solid"
+                      borderColor="amber"
+                      color="amber"
+                    >
+                      <Box
+                        as="svg"
+                        viewBox="0 0 24 24"
+                        w="20px"
+                        h="20px"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path d="M8 5v14l11-7z" />
+                      </Box>
+                    </Flex>
+                  </Flex>
+                )}
                 <Box
                   position="absolute"
                   inset="0"
@@ -152,7 +203,12 @@ export default function Gallery() {
                   >
                     {p.slot}
                   </Box>
-                  <Box fontFamily="display" textStyle="cardTitle" mt="1.5" color="cream">
+                  <Box
+                    fontFamily="display"
+                    textStyle="cardTitle"
+                    mt="1.5"
+                    color="cream"
+                  >
                     {p.caption}
                   </Box>
                 </Box>
@@ -173,21 +229,19 @@ export default function Gallery() {
 
         {visible.length === 0 && (
           <Text textStyle="body" color="rgba(247,239,221,0.6)">
-            No photos in this category yet.
+            {isVideo ? "No videos yet." : "No photos in this category yet."}
           </Text>
         )}
       </Box>
 
-      <Box as="section" maxW="shell" mx="auto" px="gutter" pb="clamp(3.5rem,8vw,6rem)">
+      <Box
+        as="section"
+        maxW="shell"
+        mx="auto"
+        px="gutter"
+        pb="clamp(3.5rem,8vw,6rem)"
+      >
         <FilmStrip />
-        <Flex justify="space-between" align="baseline" gap="6" wrap="wrap" mt="8">
-          <Box textStyle="meta" color="rgba(247,239,221,0.5)">
-            Press-use photography available on request.
-          </Box>
-          <Link href={`mailto:${CONTACT.press}`} fontFamily="display" fontSize="xl">
-            {CONTACT.press}
-          </Link>
-        </Flex>
       </Box>
 
       <Lightbox
@@ -202,5 +256,78 @@ export default function Gallery() {
 
 Gallery.getLayout = withSiteLayout({
   title: "Gallery",
-  description: "Live performances, portraits and behind the scenes with Ebo Krdum.",
+  description:
+    "Live performances, portraits and behind the scenes with Ebo Krdum.",
 });
+
+const GALLERY_QUERY = `*[_type == "gallery"] | order(order asc, _createdAt desc){
+  _id,
+  photoGalleryTitle,
+  photoGalleryImages[]{ _key, itemImage, photoCategory, photoCaption, photoTakenBy },
+  galleryVideos[]{ _key, videoUrl, videoTitle, videoCredit, videoPoster }
+}`;
+
+export async function getStaticProps() {
+  const sets = await cmsFetch(GALLERY_QUERY, {}, null);
+
+  // No CMS reachable (or nothing published yet): fall back to the bundled set
+  // so the page still renders rather than showing an empty grid.
+  if (!sets?.length) {
+    return {
+      props: { photos: GALLERY_PHOTOS, videos: [] },
+      revalidate: 60 * 60,
+    };
+  }
+
+  const photos = [];
+  const videos = [];
+
+  for (const set of sets) {
+    for (const item of set.photoGalleryImages || []) {
+      // A photo with no usable asset ref would render as an empty frame, so it
+      // is dropped rather than left as a hole in the grid.
+      const meta = imageMeta(item.itemImage, 1200);
+      if (!meta) continue;
+      // Photos added before the category field existed have none; defaulting
+      // keeps them in the grid instead of stranding them outside every tab.
+      const cat = item.photoCategory || "Live";
+      const full = imageMeta(item.itemImage, 2000);
+      photos.push({
+        id: `${set._id}-${item._key}`,
+        kind: "photo",
+        cat,
+        ratio: meta.ratio,
+        src: meta.url,
+        full: full?.url || meta.url,
+        // There is no dedicated alt field, so the caption carries the
+        // accessible name, falling back to the set title.
+        alt: item.photoCaption || set.photoGalleryTitle || "",
+        caption: item.photoCaption || "",
+        // `slot` is the small amber label over the tile — the photographer when
+        // known, otherwise the set it came from.
+        slot: item.photoTakenBy
+          ? `${cat.toLowerCase()} — ${item.photoTakenBy}`
+          : set.photoGalleryTitle || cat.toLowerCase(),
+      });
+    }
+
+    for (const item of set.galleryVideos || []) {
+      const id = youtubeId(item.videoUrl);
+      if (!id) continue;
+      const poster = imageMeta(item.videoPoster, 1200);
+      videos.push({
+        id: `${set._id}-${item._key}`,
+        kind: "video",
+        cat: "Video",
+        youtubeId: id,
+        ratio: 16 / 9,
+        src: poster?.url || `https://img.youtube.com/vi/${id}/hqdefault.jpg`,
+        alt: item.videoTitle || "",
+        caption: item.videoTitle || "",
+        slot: item.videoCredit || "video",
+      });
+    }
+  }
+
+  return { props: { photos, videos }, revalidate: 60 * 60 };
+}

@@ -34,7 +34,7 @@ export default function ShowRow({ show, compact = false }) {
         </Flex>
 
         {/* Weekday and time on one line under the date, matching NextShowCard.
-            The archive keeps its single weekday in the trailing column. */}
+            Upcoming rows only — the archive shows the date alone. */}
         {!compact && (
           <Flex
             align="baseline"
@@ -59,37 +59,26 @@ export default function ShowRow({ show, compact = false }) {
         {show.place}
       </Box>
 
-      {compact ? (
+      {/* The archive carries no weekday and no ticket link — a past date needs
+          neither. Only upcoming rows get the button. */}
+      {!compact && show.url && (
         <Box
           flex="0 0 auto"
-          fontFamily="mono"
-          fontSize="xs"
-          color="rgba(247,239,221,0.38)"
-          minW="5.5rem"
+          /*
+           * `ml="auto"` eats the free space before the button, so it stays
+           * hard right on whichever wrapped line it lands on — including the
+           * single-column stack on a phone, where a plain `textAlign` would
+           * leave it sitting under the place name.
+           */
+          ml="auto"
           textAlign="right"
+          textStyle="microLabel"
+          letterSpacing="0.14em"
+          fontWeight="600"
+          color="amber"
         >
-          {show.weekday}
+          Tickets →
         </Box>
-      ) : (
-        show.url && (
-          <Box
-            flex="0 0 auto"
-            /*
-             * `ml="auto"` eats the free space before the button, so it stays
-             * hard right on whichever wrapped line it lands on — including the
-             * single-column stack on a phone, where a plain `textAlign` would
-             * leave it sitting under the place name.
-             */
-            ml="auto"
-            textAlign="right"
-            textStyle="microLabel"
-            letterSpacing="0.14em"
-            fontWeight="600"
-            color="amber"
-          >
-            Tickets →
-          </Box>
-        )
       )}
     </Flex>
   );

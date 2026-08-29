@@ -19,11 +19,16 @@ export const PRESS_DOWNLOADS = [
   { kind: "PDF", title: "Bio & quotes", note: "Press release in English. Opens in a new tab.", href: "/files/release_En.pdf" },
 ];
 
+/*
+ * `Video` is last on purpose: it swaps the grid to 16:9 embeds, so it reads as
+ * a mode change rather than another slice of the photo set.
+ */
 export const GALLERY_CATEGORIES = [
   { key: "All", label: "All photos" },
   { key: "Live", label: "Live" },
   { key: "Portrait", label: "Portraits" },
   { key: "Behind", label: "Behind the scenes" },
+  { key: "Video", label: "Video" },
 ];
 
 export const GALLERY_PHOTOS = [

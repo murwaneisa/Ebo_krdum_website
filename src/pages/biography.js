@@ -32,22 +32,18 @@ const triggerStyle = (selected) => ({
   color: selected ? "ink" : "rgba(247,239,221,0.72)",
 });
 
-export default function Biography({ portrait }) {
+export default function Biography({ portrait, portraitAlt }) {
   return (
     <>
       {/* Title */}
-      <Box as="section" maxW="shell" mx="auto" pt="clamp(2.5rem,6vw,4.5rem)" px="gutter">
+      <Box
+        as="section"
+        maxW="shell"
+        mx="auto"
+        pt="clamp(2.5rem,6vw,4.5rem)"
+        px="gutter"
+      >
         <Flex wrap="wrap" align="flex-end" gap="1.75rem clamp(1.5rem,3vw,3rem)">
-          <Box
-            flex="0 0 auto"
-            textStyle="microLabel"
-            letterSpacing="0.42em"
-            color="rgba(247,239,221,0.45)"
-            pb="2"
-            css={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
-          >
-            Biography
-          </Box>
           <Heading
             as="h1"
             flex="1 1 26.25rem"
@@ -68,10 +64,28 @@ export default function Biography({ portrait }) {
       </Box>
 
       {/* Portrait, lead paragraph, facts and long-form prose */}
-      <Box as="section" maxW="shell" mx="auto" pt="clamp(2.75rem,6vw,4.5rem)" px="gutter">
+      <Box
+        as="section"
+        maxW="shell"
+        mx="auto"
+        pt="clamp(2.75rem,6vw,4.5rem)"
+        px="gutter"
+      >
         <Flex wrap="wrap" gap="clamp(1.75rem,4vw,4rem)" align="flex-start">
-          <Box as="figure" m="0" flex="1 1 clamp(17.5rem,28vw,25rem)" maxW="25rem">
-            <PortraitFrame src={portrait} alt="Ebo Krdum with an acoustic guitar" ratio="4/5" />
+          <Box
+            as="figure"
+            m="0"
+            flex="1 1 clamp(17.5rem,28vw,25rem)"
+            maxW="25rem"
+          >
+            {/* The portrait is the page's LCP element, so it preloads rather
+                than waiting for layout to discover it. */}
+            <PortraitFrame
+              src={portrait}
+              alt={portraitAlt}
+              ratio="4/5"
+              priority
+            />
             <Box
               as="figcaption"
               mt="3.5"
@@ -132,12 +146,27 @@ export default function Biography({ portrait }) {
       </Box>
 
       {/* Tabbed chapters */}
-      <Box as="section" maxW="shell" mx="auto" pt="clamp(2.75rem,6vw,4rem)" px="gutter">
-        <Tabs.Root defaultValue={SECTIONS[0].key} lazyMount unmountOnExit={false}>
+      <Box
+        as="section"
+        maxW="shell"
+        mx="auto"
+        pt="clamp(2.75rem,6vw,4rem)"
+        px="gutter"
+      >
+        <Tabs.Root
+          defaultValue={SECTIONS[0].key}
+          lazyMount
+          unmountOnExit={false}
+        >
           <Tabs.List display="flex" flexWrap="wrap" gap="3" border="none">
             {SECTIONS.map((s) => (
               <Tabs.Trigger key={s.key} value={s.key} asChild>
-                <Box as="button" type="button" {...triggerStyle(false)} _selected={triggerStyle(true)}>
+                <Box
+                  as="button"
+                  type="button"
+                  {...triggerStyle(false)}
+                  _selected={triggerStyle(true)}
+                >
                   {s.label}
                 </Box>
               </Tabs.Trigger>
@@ -145,8 +174,17 @@ export default function Biography({ portrait }) {
           </Tabs.List>
 
           {SECTIONS.map((s) => (
-            <Tabs.Content key={s.key} value={s.key} mt="clamp(2.25rem,5vw,3.5rem)" p="0">
-              <Grid templateColumns="repeat(auto-fit,minmax(18.75rem,1fr))" gap="clamp(2rem,4vw,4rem)" alignItems="start">
+            <Tabs.Content
+              key={s.key}
+              value={s.key}
+              mt="clamp(2.25rem,5vw,3.5rem)"
+              p="0"
+            >
+              <Grid
+                templateColumns="repeat(auto-fit,minmax(18.75rem,1fr))"
+                gap="clamp(2rem,4vw,4rem)"
+                alignItems="start"
+              >
                 <Box>
                   <Eyebrow tone="amber" mb="5">
                     {s.kicker}
@@ -161,8 +199,19 @@ export default function Biography({ portrait }) {
                     {s.title}
                   </Heading>
                   {s.quote && (
-                    <Box as="blockquote" mt="9" pt="7" borderTop="1px solid" borderColor="rgba(139,90,43,0.5)">
-                      <Box fontFamily="display" fontSize="5xl" lineHeight="0.6" color="bronze">
+                    <Box
+                      as="blockquote"
+                      mt="9"
+                      pt="7"
+                      borderTop="1px solid"
+                      borderColor="rgba(139,90,43,0.5)"
+                    >
+                      <Box
+                        fontFamily="display"
+                        fontSize="5xl"
+                        lineHeight="0.6"
+                        color="bronze"
+                      >
                         &ldquo;
                       </Box>
                       <Text
@@ -176,7 +225,12 @@ export default function Biography({ portrait }) {
                       >
                         {s.quote}
                       </Text>
-                      <Box mt="4" textStyle="microLabel" letterSpacing="0.24em" color="bronze">
+                      <Box
+                        mt="4"
+                        textStyle="microLabel"
+                        letterSpacing="0.24em"
+                        color="bronze"
+                      >
                         Ebo Krdum
                       </Box>
                     </Box>
@@ -214,7 +268,11 @@ export default function Biography({ portrait }) {
         borderColor="rgba(139,90,43,0.4)"
       >
         <Box maxW="shell" mx="auto" py="clamp(3.25rem,7vw,5.5rem)" px="gutter">
-          <Grid templateColumns="repeat(auto-fit,minmax(18.75rem,1fr))" gap="clamp(2rem,4vw,4rem)" alignItems="start">
+          <Grid
+            templateColumns="repeat(auto-fit,minmax(18.75rem,1fr))"
+            gap="clamp(2rem,4vw,4rem)"
+            alignItems="start"
+          >
             <Box>
               <Eyebrow tone="amber" mb="5">
                 Musical ideology
@@ -232,10 +290,22 @@ export default function Biography({ portrait }) {
             </Box>
             <Box>
               <Eyebrow mb="5">Inspirational words</Eyebrow>
-              <Text m="0" fontSize="lg" lineHeight="1.8" color="rgba(247,239,221,0.78)" css={{ textWrap: "pretty" }}>
+              <Text
+                m="0"
+                fontSize="lg"
+                lineHeight="1.8"
+                color="rgba(247,239,221,0.78)"
+                css={{ textWrap: "pretty" }}
+              >
                 {IDEOLOGY.inspiration}
               </Text>
-              <Box as="blockquote" mt="8" pt="6" borderTop="1px solid" borderColor="rgba(139,90,43,0.5)">
+              <Box
+                as="blockquote"
+                mt="8"
+                pt="6"
+                borderTop="1px solid"
+                borderColor="rgba(139,90,43,0.5)"
+              >
                 <Text
                   m="0"
                   fontFamily="display"
@@ -254,14 +324,20 @@ export default function Biography({ portrait }) {
       </Box>
 
       {/* Influences */}
-      <Box as="section" maxW="shell" mx="auto" pt="clamp(3.25rem,7vw,5.5rem)" px="gutter">
-        <Flex wrap="wrap" align="flex-end" justify="space-between" gap="1.25rem 2rem">
-          <Heading
-            as="h2"
-            textStyle="sectionSm"
-            m="0"
-            color="cream"
-          >
+      <Box
+        as="section"
+        maxW="shell"
+        mx="auto"
+        pt="clamp(3.25rem,7vw,5.5rem)"
+        px="gutter"
+      >
+        <Flex
+          wrap="wrap"
+          align="flex-end"
+          justify="space-between"
+          gap="1.25rem 2rem"
+        >
+          <Heading as="h2" textStyle="sectionSm" m="0" color="cream">
             Influences
           </Heading>
           <Box textStyle="meta" color="rgba(247,239,221,0.5)" maxW="40ch">
@@ -297,18 +373,27 @@ Biography.getLayout = withSiteLayout({
 });
 
 export async function getStaticProps() {
-  // The portrait is optional: if Sanity has no bio image the frame renders empty
-  // rather than the page failing.
+  /*
+   * The portrait lives on its own `biographyPage` singleton, not on the
+   * repeated `biography` section documents — see the schema for why. It is
+   * optional, so the frame renders as an empty panel rather than the page
+   * failing when nothing has been uploaded yet.
+   */
   const bio = await cmsFetch(
-    `*[_type == "biography" && defined(bioImage)][0]{ bioImage }`,
+    `*[_type == "biographyPage"][0]{ portrait, alt }`,
     {},
-    null
+    null,
   );
 
   return {
     props: {
-      portrait: bio?.bioImage ? imageUrl(bio.bioImage, 900, 82) : null,
+      portrait: bio?.portrait ? imageUrl(bio.portrait, 900, 82) : null,
+      // A generic but accurate default: the previous hardcoded alt described
+      // one specific photograph, which would be wrong for whatever the artist
+      // uploads. He can write something better in the CMS.
+      portraitAlt: bio?.alt || "Ebo Krdum",
     },
-    revalidate: 60 * 60 * 24,
+    /*     revalidate: 60 * 60, */
+    revalidate: 60,
   };
 }

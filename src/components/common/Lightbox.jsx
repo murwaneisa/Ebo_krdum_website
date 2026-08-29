@@ -15,9 +15,11 @@ const navButton = {
   letterSpacing: "0.12em",
   textTransform: "uppercase",
   fontWeight: "600",
-  px: "5",
-  py: "3",
-  minH: "12",
+  // Tighter on phones: every pixel the controls give up goes to the photo.
+  px: { base: "3", md: "5" },
+  py: { base: "2.5", md: "3" },
+  minH: { base: "11", md: "12" },
+  flex: "0 0 auto",
   cursor: "pointer",
   borderRadius: "2px",
   border: "1px solid",
@@ -58,39 +60,90 @@ export default function Lightbox({ items = [], index, onIndexChange, onClose, sh
     >
       <Portal>
         <Dialog.Backdrop bg="rgba(20,14,8,0.94)" />
-        <Dialog.Positioner>
+        {/*
+          size="cover" puts padding:10 (40px) on the positioner, which on a
+          360px phone cost 80px of width before the content's own padding was
+          even counted. Both are cut right back at base so the photo gets it.
+        */}
+        <Dialog.Positioner p={{ base: "2", md: "10" }}>
           <Dialog.Content
             bg="transparent"
             boxShadow="none"
             maxW="min(68.75rem,100%)"
-            p="clamp(1rem,4vw,3.5rem)"
+            h="100%"
+            p={{ base: "2", md: "clamp(1rem,4vw,3.5rem)" }}
             display="flex"
             flexDirection="column"
-            gap="5"
+            gap={{ base: "3", md: "5" }}
           >
             {item && (
               <>
                 <Dialog.Title srOnly>{item.caption}</Dialog.Title>
-                <Box
-                  role="img"
-                  aria-label={item.caption}
-                  w="100%"
-                  maxH="72vh"
-                  mx="auto"
-                  border="1px solid"
-                  borderColor="rgba(139,90,43,0.5)"
-                  bgColor="surface"
-                  css={{
-                    aspectRatio: String(item.ratio || 1),
-                    backgroundImage: item.src ? `url(${item.src})` : undefined,
-                    backgroundSize: "contain",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                  }}
-                />
+                {/*
+                  `flex: 1 1 auto` + `minH: 0` is the fix for the photo shrinking
+                  on small screens: as a default flex item this area was being
+                  squeezed below its aspect ratio by the caption and buttons
+                  below it, and background-size:contain then letterboxed the
+                  photo inside the collapsed box. Now it claims the leftover
+                  height and the chrome is pinned to its own size instead.
+                */}
+                <Flex flex="1 1 auto" minH="0" align="center" justify="center">
+                  {item.youtubeId ? (
+                    /*
+                     * Videos play in place rather than opening YouTube. autoplay
+                     * is set because the viewer already clicked the tile to get
+                     * here — a second click to start would be a wasted step.
+                     */
+                    <Box
+                      w="100%"
+                      maxH="100%"
+                      border="1px solid"
+                      borderColor="rgba(139,90,43,0.5)"
+                      bgColor="shadow"
+                      css={{ aspectRatio: "16 / 9" }}
+                    >
+                      <Box
+                        as="iframe"
+                        w="100%"
+                        h="100%"
+                        display="block"
+                        border="0"
+                        title={item.caption || "Video"}
+                        src={`https://www.youtube-nocookie.com/embed/${item.youtubeId}?autoplay=1&rel=0`}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                      />
+                    </Box>
+                  ) : (
+                    /*
+                     * A real <img> rather than a background: it grows to the
+                     * largest size that fits both constraints on its own, keeps
+                     * its ratio, and lets the border hug the photo instead of
+                     * framing empty space.
+                     */
+                    <Box
+                      as="img"
+                      src={item.src}
+                      alt={item.alt || item.caption || ""}
+                      display="block"
+                      maxW="100%"
+                      maxH="100%"
+                      border="1px solid"
+                      borderColor="rgba(139,90,43,0.5)"
+                      bgColor="surface"
+                      css={{ objectFit: "contain" }}
+                    />
+                  )}
+                </Flex>
 
-                <Flex justify="space-between" align="baseline" gap="6" wrap="wrap">
-                  <Box>
+                <Flex
+                  flex="0 0 auto"
+                  justify="space-between"
+                  align={{ base: "flex-start", md: "baseline" }}
+                  gap={{ base: "3", md: "6" }}
+                  wrap="wrap"
+                >
+                  <Box minW="0">
                     <Box
                       fontFamily="mono"
                       textStyle="microLabel"
@@ -99,12 +152,16 @@ export default function Lightbox({ items = [], index, onIndexChange, onClose, sh
                     >
                       {item.slot || `${index + 1} / ${items.length}`}
                     </Box>
-                    <Box textStyle="cardTitle" mt="1.5" color="cream">
+                    <Box
+                      textStyle={{ base: "meta", md: "cardTitle" }}
+                      mt="1.5"
+                      color="cream"
+                    >
                       {item.caption}
                     </Box>
                   </Box>
 
-                  <Flex wrap="wrap" gap="2.5">
+                  <Flex wrap="wrap" gap="2" flex="0 0 auto">
                     {showDownload && item.full && (
                       <Link
                         href={item.full}
