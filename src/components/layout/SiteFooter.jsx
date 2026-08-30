@@ -8,7 +8,7 @@ function ColumnLabel({ children }) {
       textStyle="microLabel"
       letterSpacing="0.24em"
       color="bronze"
-      mb="4.5"
+      mb={{ base: "3", md: "4.5" }}
     >
       {children}
     </Box>
@@ -25,7 +25,12 @@ export default function SiteFooter() {
       pt="clamp(3rem,6vw,4.5rem)"
       pb="14"
     >
-      <Grid templateColumns="repeat(auto-fit,minmax(14.375rem,1fr))" gap="11">
+      {/* stacked on mobile, so the gap is pure vertical space between the four
+          blocks and reads much looser there than it does across columns */}
+      <Grid
+        templateColumns="repeat(auto-fit,minmax(14.375rem,1fr))"
+        gap={{ base: "7", md: "11" }}
+      >
         <Box>
           <Box
             fontFamily="display"
@@ -82,8 +87,8 @@ export default function SiteFooter() {
       </Grid>
 
       <Flex
-        mt="14"
-        pt="6"
+        mt={{ base: "9", md: "14" }}
+        pt={{ base: "5", md: "6" }}
         borderTop="1px solid"
         borderColor="rgba(139,90,43,0.4)"
         justify="space-between"

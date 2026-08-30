@@ -264,8 +264,8 @@ export default function Press({ reviews = [], photos = [], stagePlotsUrl }) {
                 as="blockquote"
                 m="0"
                 fontFamily="display"
-                fontSize="lg"
-                lineHeight="1.55"
+                fontSize="md"
+                lineHeight="1.5"
                 color="rgba(247,239,221,0.9)"
                 css={{ textWrap: "pretty" }}
               >
