@@ -1,7 +1,7 @@
+import Image from "next/image";
 import { Box, Flex, Grid, Heading, Link, Text } from "@chakra-ui/react";
 import { withSiteLayout } from "@/components/layout/SiteLayout";
 import FilmStrip from "@/components/common/FilmStrip";
-import PortraitFrame from "@/components/common/PortraitFrame";
 import { CONTACT } from "@/data/site";
 
 const CARDS = [
@@ -23,7 +23,11 @@ const CARDS = [
     href: CONTACT.phoneHref,
     note: "Weekdays, 09–17 CET.",
   },
-  { label: "Based in", value: CONTACT.base, note: "Touring across Sweden and Europe." },
+  {
+    label: "Based in",
+    value: CONTACT.base,
+    note: "Touring across Sweden and Europe and the whole world.",
+  },
 ];
 
 function ContactCard({ label, value, href, note }) {
@@ -43,7 +47,11 @@ function ContactCard({ label, value, href, note }) {
   };
 
   return (
-    <Box bg="surface" p="clamp(1.375rem,2.6vw,2.125rem)" boxShadow="0 0 0 1px rgba(139,90,43,0.45)">
+    <Box
+      bg="surface"
+      p="clamp(1.375rem,2.6vw,2.125rem)"
+      boxShadow="0 0 0 1px rgba(139,90,43,0.45)"
+    >
       <Box textStyle="microLabel" letterSpacing="0.24em" color="bronze">
         {label}
       </Box>
@@ -54,7 +62,12 @@ function ContactCard({ label, value, href, note }) {
       ) : (
         <Box {...valueStyle}>{value}</Box>
       )}
-      <Text mt="3.5" textStyle="meta" lineHeight="1.65" color="rgba(247,239,221,0.55)">
+      <Text
+        mt="3.5"
+        textStyle="meta"
+        lineHeight="1.65"
+        color="rgba(247,239,221,0.55)"
+      >
         {note}
       </Text>
     </Box>
@@ -64,7 +77,13 @@ function ContactCard({ label, value, href, note }) {
 export default function Contact() {
   return (
     <>
-      <Box as="section" maxW="shell" mx="auto" pt="clamp(2.5rem,6vw,4rem)" px="gutter">
+      <Box
+        as="section"
+        maxW="shell"
+        mx="auto"
+        pt="clamp(2.5rem,6vw,4rem)"
+        px="gutter"
+      >
         <Flex wrap="wrap" align="flex-end" gap="1.5rem clamp(1.5rem,3vw,3rem)">
           <Heading
             as="h1"
@@ -91,50 +110,75 @@ export default function Contact() {
             color="rgba(247,239,221,0.68)"
             css={{ textWrap: "pretty" }}
           >
-            Booking for festivals, clubs and cultural houses — solo, trio or full
-            band. Press requests, interviews and stage plots handled by the same
-            team.
+            Booking for festivals, clubs and cultural houses — solo, trio or
+            full band. Press requests, interviews and stage plots handled by the
+            same team.
           </Text>
         </Flex>
         <FilmStrip mt="clamp(2rem,4.5vw,3.25rem)" />
       </Box>
 
-      <Box as="section" maxW="shell" mx="auto" pt="clamp(2.25rem,5vw,4rem)" px="gutter">
-        <Grid
-          templateColumns="repeat(auto-fit,minmax(20rem,1fr))"
-          gap="1px"
-          bg="surface"
+      <Box
+        as="section"
+        maxW="shell"
+        mx="auto"
+        pt="clamp(2.25rem,5vw,4rem)"
+        px="gutter"
+      >
+        <Box
+          position="relative"
+          overflow="hidden"
+          bg="ink"
           border="1px solid"
           borderColor="rgba(139,90,43,0.45)"
+          minH={{ base: "auto", md: "32rem" }}
+          display="flex"
+          alignItems={{ base: "stretch", md: "flex-end" }}
         >
-          {CARDS.map((c) => (
-            <ContactCard key={c.label} {...c} />
-          ))}
-        </Grid>
-      </Box>
+          <Image
+            src="/images/wax1.jpg"
+            alt=""
+            aria-hidden="true"
+            fill
+            sizes="(max-width: 48em) 100vw, 75rem"
+            style={{ objectFit: "cover", objectPosition: "40% 55%" }}
+          />
+          {/*
+           * Scrims, same idea as the home hero. Wide screens stack two so the
+           * darkening concentrates in the bottom-left corner the copy sits in
+           * and the rest of the frame stays open; narrow screens get a single
+           * vertical one, where the text runs full width instead of hugging
+           * the left.
+           */}
+          <Box
+            position="absolute"
+            inset="0"
+            background={{
+              base: "linear-gradient(180deg,rgba(36,26,16,0.72) 0%,rgba(36,26,16,0.62) 45%,rgba(36,26,16,0.8) 100%)",
+              md: "linear-gradient(90deg,rgba(36,26,16,0.62) 0%,rgba(36,26,16,0.4) 45%,rgba(36,26,16,0.08) 80%,rgba(36,26,16,0) 100%),linear-gradient(0deg,rgba(36,26,16,0.55) 0%,rgba(36,26,16,0.18) 45%,rgba(36,26,16,0) 75%)",
+            }}
+          />
 
-      <Box as="section" maxW="shell" mx="auto" pt="clamp(2.75rem,6vw,5rem)" px="gutter">
-        <Flex wrap="wrap" gap="clamp(1.75rem,4vw,3.5rem)" align="stretch">
-          <Box flex="1 1 26.25rem" minW="0">
-            <Heading
-              as="h2"
-              textStyle="sectionSm"
-              m="0"
-              color="cream"
-            >
+          <Box
+            position="relative"
+            maxW={{ base: "100%", md: "34rem" }}
+            px="clamp(1.5rem,4vw,3.5rem)"
+            py="clamp(2.5rem,6vw,4.5rem)"
+          >
+            <Heading as="h2" textStyle="sectionSm" m="0" color="cream">
               Booking enquiry
             </Heading>
             <Text
               mt="3.5"
               textStyle="body"
               lineHeight="1.7"
-              color="rgba(247,239,221,0.6)"
+              color="rgba(247,239,221,0.85)"
               maxW="52ch"
               css={{ textWrap: "pretty" }}
             >
               Write directly with the date, the city and the room — include
-              capacity, budget range and line-up if you know them. Answers within a
-              few working days.
+              capacity, budget range and line-up if you know them. Answers
+              within a few working days.
             </Text>
 
             <Flex mt="7" wrap="wrap" gap="0.875rem 1.125rem">
@@ -147,9 +191,9 @@ export default function Contact() {
                 fontWeight="600"
                 color="ink"
                 bg="amber"
-                px="8"
-                py="4.5"
-                minH="14"
+                px={{ base: "5", md: "8" }}
+                py={{ base: "3", md: "4.5" }}
+                minH={{ base: "11", md: "14" }}
                 _hover={{ bg: "amberBright", color: "ink" }}
               >
                 Email management →
@@ -164,50 +208,37 @@ export default function Contact() {
                 color="amber"
                 border="1px solid"
                 borderColor="rgba(232,169,58,0.6)"
-                px="7"
-                py="4.5"
-                minH="14"
+                px={{ base: "4.5", md: "7" }}
+                py={{ base: "3", md: "4.5" }}
+                minH={{ base: "11", md: "14" }}
                 _hover={{ color: "ink", bg: "amber" }}
               >
                 Call {CONTACT.phone}
               </Link>
             </Flex>
-
-            <Box
-              mt="clamp(1.75rem,3.5vw,2.75rem)"
-              borderTop="1px solid"
-              borderColor="rgba(139,90,43,0.45)"
-              pt="6"
-              maxW="52ch"
-            >
-              <Box textStyle="microLabel" letterSpacing="0.24em" color="bronze">
-                Useful to include
-              </Box>
-              <Text mt="3" textStyle="body" color="rgba(247,239,221,0.62)">
-                Date and city · venue name and capacity · solo, trio or full band ·
-                budget range · whether backline and sound are provided.
-              </Text>
-            </Box>
           </Box>
+        </Box>
+        <Grid
+          mt="clamp(2.5rem,5vw,4rem)"
+          templateColumns="repeat(auto-fit,minmax(20rem,1fr))"
+          gap="1px"
+          bg="surface"
+          border="1px solid"
+          borderColor="rgba(139,90,43,0.45)"
+        >
+          {CARDS.map((c) => (
+            <ContactCard key={c.label} {...c} />
+          ))}
+        </Grid>
+      </Box>
 
-          <Box as="figure" flex="1 1 clamp(17.5rem,30vw,27.5rem)" maxW="32.5rem" m="0">
-            <PortraitFrame
-              src={null}
-              alt="Ebo Krdum performing with his band at a festival"
-              ratio="4/3"
-              minH="clamp(17.5rem,42vw,32.5rem)"
-            />
-            <Box
-              as="figcaption"
-              mt="3.5"
-              textStyle="eyebrow"
-              letterSpacing="0.14em"
-              color="rgba(247,239,221,0.6)"
-            >
-              Live at Världsmusikfestivalen
-            </Box>
-          </Box>
-        </Flex>
+      <Box
+        as="section"
+        maxW="shell"
+        mx="auto"
+        pt="clamp(2.75rem,6vw,5rem)"
+        px="gutter"
+      >
         <FilmStrip mt="clamp(3rem,6vw,5rem)" />
       </Box>
     </>
