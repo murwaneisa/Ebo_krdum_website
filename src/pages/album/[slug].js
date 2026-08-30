@@ -9,7 +9,7 @@ import AlbumPlayer from "@/components/home/AlbumPlayer";
 import Tracklist from "@/components/album/Tracklist";
 import { buildDiscography, coverUrl, genreOf } from "@/lib/albums";
 import { getAlbum, getAlbumTracks, getArtistAlbums } from "@/lib/deezer";
-import { DEEZER_ARTIST_ID } from "@/data/site";
+import { DEEZER_ARTIST_ID, SPOTIFY_ARTIST_ID } from "@/data/site";
 
 export default function AlbumPage({ album, tracks, others }) {
   const isAlbum = album?.recordType === "album";
@@ -110,12 +110,16 @@ export default function AlbumPage({ album, tracks, others }) {
 
             <Flex wrap="wrap" gap="3.5" mt="9">
               <Link
+                /*
+                 * Only releases listed in SPOTIFY_ALBUM_IDS have a direct link.
+                 * Everything else — including anything released from now on —
+                 * goes to the artist profile rather than a search results page,
+                 * which was landing people on a list instead of the music.
+                 */
                 href={
                   album.spotifyAlbumId
                     ? `https://open.spotify.com/album/${album.spotifyAlbumId}`
-                    : `https://open.spotify.com/search/${encodeURIComponent(
-                        `Ebo Krdum ${album.title}`,
-                      )}`
+                    : `https://open.spotify.com/artist/${SPOTIFY_ARTIST_ID}`
                 }
                 target="_blank"
                 rel="noopener noreferrer"
@@ -233,7 +237,19 @@ export default function AlbumPage({ album, tracks, others }) {
           <Grid
             mt="9"
             px="gutter"
-            templateColumns="repeat(auto-fit,minmax(13.75rem,1fr))"
+            /*
+             * `auto-fill`, not `auto-fit`: auto-fit collapses the empty tracks,
+             * so a release with only two others to show would stretch those two
+             * across the whole row. auto-fill keeps the tracks, so a cover is
+             * the same size whatever the album count.
+             *
+             * Two fixed columns below `md`, where one auto track would fill the
+             * screen width with a single cover.
+             */
+            templateColumns={{
+              base: "repeat(2,1fr)",
+              md: "repeat(auto-fill,minmax(13.75rem,1fr))",
+            }}
             gap="6"
           >
             {others.map((a) => {
@@ -243,10 +259,24 @@ export default function AlbumPage({ album, tracks, others }) {
                   key={a.slug}
                   asChild
                   color="cream"
+                  /*
+                   * Chakra's Link centres its flex items. A two-line album
+                   * title makes that row taller, which would push the shorter
+                   * neighbours' covers down; anchoring to the start keeps every
+                   * cover on the same line.
+                   */
+                  alignItems="flex-start"
                   _hover={{ color: "amberBright" }}
                 >
                   <NextLink href={`/album/${a.slug}`}>
-                    <Box>
+                    {/*
+                      * Chakra's Link renders the anchor as a flex container, so
+                      * this box is a flex item and would otherwise size to its
+                      * own content — making each cover as wide as its album
+                      * title. `w="100%"` fills the grid cell instead, so every
+                      * cover is the same square.
+                      */}
+                    <Box w="100%" minW="0">
                       <Box
                         position="relative"
                         border="1px solid"
@@ -260,12 +290,12 @@ export default function AlbumPage({ album, tracks, others }) {
                             src={src}
                             alt={`${a.title} album cover`}
                             fill
-                            sizes="(max-width: 768px) 50vw, 220px"
+                            sizes="(max-width: 768px) 50vw, 260px"
                             style={{ objectFit: "cover" }}
                           />
                         )}
                       </Box>
-                      <Flex align="baseline" gap="2.5" mt="3.5">
+                      <Flex align="baseline" wrap="wrap" gap="0.25rem 0.625rem" mt="3.5">
                         <Box
                           as="span"
                           fontFamily="display"

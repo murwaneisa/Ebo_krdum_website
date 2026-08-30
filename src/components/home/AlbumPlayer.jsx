@@ -1,4 +1,5 @@
 import { Box, Link, Text } from "@chakra-ui/react";
+import { SPOTIFY_ARTIST_ID } from "@/data/site";
 
 /*
  * Playback for one release — the Deezer widget, everywhere.
@@ -35,9 +36,9 @@ export default function AlbumPlayer({
           This release is not streaming here yet.
         </Text>
         <Link
-          href={`https://open.spotify.com/search/${encodeURIComponent(
-            `Ebo Krdum ${title || ""}`.trim(),
-          )}`}
+          // The artist profile rather than a search for the title: a release
+          // with no Deezer id is usually too new to be found by search anyway.
+          href={`https://open.spotify.com/artist/${SPOTIFY_ARTIST_ID}`}
           target="_blank"
           rel="noopener noreferrer"
           display="inline-block"
