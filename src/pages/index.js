@@ -21,7 +21,6 @@ export default function Home({
   shows,
   reviews,
 }) {
-  console.log("Home.getStaticProps reviews", reviews);
   return (
     <>
       <Hero

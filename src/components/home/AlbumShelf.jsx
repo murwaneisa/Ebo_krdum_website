@@ -39,7 +39,6 @@ const CARD_SIZES =
 
 function AlbumCard({ album }) {
   const src = coverUrl(album, 600);
-  console.log("AlbumCard src", src, "album", album);
 
   return (
     <Box flexShrink="0" w={CARD_W} css={{ scrollSnapAlign: "start" }}>
