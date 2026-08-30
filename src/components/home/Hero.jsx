@@ -10,9 +10,24 @@ import { Box, Heading, Text } from "@chakra-ui/react";
  */
 const ink = (a) => `rgba(36,26,16,${Math.min(0.97, a).toFixed(3)})`;
 
+/*
+ * The wording the site shipped with. `tagline` and `description` are editable
+ * in Sanity but optional, so these stand in whenever the CMS has nothing —
+ * checked with `||` rather than a default parameter, which would not catch the
+ * null a missing field resolves to.
+ *
+ * The name itself is not editable: it is the artist's name, and it never
+ * changes.
+ */
+const DEFAULT_TAGLINE = "African blues and roots music";
+const DEFAULT_DESCRIPTION =
+  "Swedish Grammis award winner, Sudanese-Swedish troubadour — from Darfur to the biggest breakthrough.";
+
 export default function Hero({
   image,
   alt,
+  tagline,
+  description,
   dim = 0.38,
   topLight = 0.3,
   focus = 34,
@@ -67,7 +82,7 @@ export default function Hero({
             color="amber"
             mb="6"
           >
-            African blues and roots music
+            {tagline || DEFAULT_TAGLINE}
           </Box>
           <Heading
             as="h1"
@@ -89,8 +104,7 @@ export default function Hero({
             color="rgba(247,239,221,0.86)"
             css={{ textWrap: "pretty" }}
           >
-            Swedish Grammis award winner, Sudanese-Swedish troubadour — from
-            Darfur to the biggest breakthrough.
+            {description || DEFAULT_DESCRIPTION}
           </Text>
         </Box>
       </Box>

@@ -14,6 +14,8 @@ import { getReviews } from "@/lib/reviews";
 export default function Home({
   heroImage,
   heroAlt,
+  heroTagline,
+  heroDescription,
   albums,
   featured,
   shows,
@@ -22,7 +24,12 @@ export default function Home({
   console.log("Home.getStaticProps reviews", reviews);
   return (
     <>
-      <Hero image={heroImage} alt={heroAlt} />
+      <Hero
+        image={heroImage}
+        alt={heroAlt}
+        tagline={heroTagline}
+        description={heroDescription}
+      />
       <FeaturedAlbum album={featured} />
       <AlbumShelf albums={albums} />
       <ListenSection />
@@ -36,7 +43,7 @@ Home.getLayout = withSiteLayout();
 
 export async function getStaticProps() {
   const hero = await cmsFetch(
-    `*[_type == "hero"][0]{ _id, title, heroImage }`,
+    `*[_type == "hero"][0]{ _id, title, heroImage, tagline, description }`,
     {},
     null,
   );
@@ -66,6 +73,10 @@ export async function getStaticProps() {
     props: {
       heroImage: hero?.heroImage ? imageUrl(hero.heroImage, 1900, 82) : null,
       heroAlt: hero?.title || "Ebo Krdum",
+      // Null rather than undefined: getStaticProps cannot serialise undefined,
+      // and Hero falls back to its own copy for either.
+      heroTagline: hero?.tagline || null,
+      heroDescription: hero?.description || null,
       albums,
       featured: featured
         ? {
