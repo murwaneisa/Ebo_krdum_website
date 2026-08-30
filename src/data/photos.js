@@ -14,11 +14,6 @@ export const PRESS_PHOTOS = [
   { id: "press-04", src: "/images/press/press-04-olof-grind-030-1000.jpg", full: "/images/press/press-04-olof-grind-030.jpg", credit: "Photo: Olof Grind", caption: "Ebo Krdum lying on a brick floor with guitar and percussion", ratio: 0.7865 },
 ];
 
-export const PRESS_DOWNLOADS = [
-  { kind: "PDF", title: "Stage plots & rider", note: "Solo, trio and full band setups. Opens in a new tab.", href: "/files/stage_plots.pdf" },
-  { kind: "PDF", title: "Bio & quotes", note: "Press release in English. Opens in a new tab.", href: "/files/release_En.pdf" },
-];
-
 /*
  * `Video` is last on purpose: it swaps the grid to 16:9 embeds, so it reads as
  * a mode change rather than another slice of the photo set.
