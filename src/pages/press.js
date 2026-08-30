@@ -6,7 +6,7 @@ import Lightbox from "@/components/common/Lightbox";
 import { CONTACT } from "@/data/site";
 import ReviewLogo from "@/components/common/ReviewLogo";
 import { getReviews, isFallback, textFor } from "@/lib/reviews";
-import { PRESS_DOWNLOADS, PRESS_PHOTOS } from "@/data/photos";
+import { getPressKit } from "@/lib/press";
 
 function LangButton({ active, children, onClick }) {
   return (
@@ -72,7 +72,7 @@ function DownloadCard({ kind, title, note, href, external = true }) {
   );
 }
 
-export default function Press({ reviews = [] }) {
+export default function Press({ reviews = [], photos = [], stagePlotsUrl }) {
   const [lang, setLang] = useState("en");
   const [photo, setPhoto] = useState(null);
   const en = lang === "en";
@@ -104,6 +104,7 @@ export default function Press({ reviews = [] }) {
               as="button"
               type="button"
               onClick={() => setPhoto(0)}
+              hidden={photos.length === 0}
               flex="0 0 auto"
               fontFamily="body"
               textStyle="microLabel"
@@ -130,12 +131,14 @@ export default function Press({ reviews = [] }) {
             display="grid"
             gap="clamp(1.5rem,3vw,2.25rem)"
           >
-            <Box>
+            {/* Hidden entirely until the artist uploads photos, so the card
+                never shows an empty grid under a heading. */}
+            <Box hidden={photos.length === 0}>
               <Box textStyle="microLabel" letterSpacing="0.24em" color="bronze" mb="4.5">
                 Press photos — click to enlarge and download
               </Box>
               <Grid templateColumns="repeat(auto-fill,minmax(11.25rem,1fr))" gap="clamp(0.75rem,1.6vw,1.125rem)">
-                {PRESS_PHOTOS.map((p, i) => (
+                {photos.map((p, i) => (
                   <Box
                     key={p.id}
                     as="button"
@@ -181,9 +184,22 @@ export default function Press({ reviews = [] }) {
             </Box>
 
             <Grid templateColumns="repeat(auto-fit,minmax(16.25rem,1fr))" gap="clamp(0.875rem,1.8vw,1.25rem)">
-              {PRESS_DOWNLOADS.map((d) => (
-                <DownloadCard key={d.title} {...d} />
-              ))}
+              <DownloadCard
+                kind="PDF"
+                title="Stage plots & rider"
+                note="Solo, trio and full band setups. Opens in a new tab."
+                href={stagePlotsUrl}
+              />
+              {/*
+                * Generated from the bio and quotes in the CMS on each request,
+                * so the download can never lag behind the text on this page.
+                */}
+              <DownloadCard
+                kind="PDF"
+                title="Bio & quotes"
+                note="Built from the current press text. Opens in a new tab."
+                href="/api/press-kit.pdf"
+              />
               <DownloadCard
                 kind="@"
                 title="Ask for anything else"
@@ -271,9 +287,9 @@ export default function Press({ reviews = [] }) {
       </Box>
 
       <Lightbox
-        items={PRESS_PHOTOS.map((p, i) => ({
+        items={photos.map((p, i) => ({
           ...p,
-          slot: `Press photo ${String(i + 1).padStart(2, "0")} / ${String(PRESS_PHOTOS.length).padStart(2, "0")}`,
+          slot: `Press photo ${String(i + 1).padStart(2, "0")} / ${String(photos.length).padStart(2, "0")}`,
           caption: p.credit,
         }))}
         index={photo}
@@ -286,8 +302,17 @@ export default function Press({ reviews = [] }) {
 }
 
 export async function getStaticProps() {
+  // Independent sources, so they go out together. Reviews stay their own
+  // documents; the press kit is the `pressPage` singleton.
+  const [reviews, kit] = await Promise.all([getReviews(), getPressKit()]);
+
+  // `bio` and `quotes` are deliberately not passed through: only the generated
+  // PDF reads them, and shipping them here would serialise the whole press text
+  // into the page payload for nothing.
+  const { photos, stagePlotsUrl } = kit;
+
   return {
-    props: { reviews: await getReviews() },
+    props: { reviews, photos, stagePlotsUrl },
     revalidate: 60 * 60,
   };
 }

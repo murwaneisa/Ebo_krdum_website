@@ -6,7 +6,8 @@ import { Box, Dialog, Flex, Link, Portal } from "@chakra-ui/react";
  *
  * Built on Chakra's Dialog (Ark UI) so focus trapping, scroll locking and the
  * Escape key come for free; the left/right arrow stepping is added on top.
- * `items` are objects of { src, full, caption, slot }.
+ * `items` are objects of { src, full, caption, slot }, optionally with a
+ * `download` URL for hosts that must set Content-Disposition themselves.
  */
 
 const navButton = {
@@ -164,7 +165,15 @@ export default function Lightbox({ items = [], index, onIndexChange, onClose, sh
                   <Flex wrap="wrap" gap="2" flex="0 0 auto">
                     {showDownload && item.full && (
                       <Link
-                        href={item.full}
+                        /*
+                         * `item.download` is a URL the host already serves with
+                         * Content-Disposition: attachment — needed for
+                         * cross-origin files, where the `download` attribute
+                         * below is ignored and the browser just navigates.
+                         * Same-origin sets (the gallery) have no such URL and
+                         * rely on the attribute alone.
+                         */
+                        href={item.download || item.full}
                         download
                         {...navButton}
                         bg="amber"
