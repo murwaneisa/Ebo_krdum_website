@@ -33,7 +33,8 @@ export default async function handler(req, res) {
   );
   res.setHeader("Content-Length", pdf.length);
   // Regenerated from the CMS, so cache at the edge but let an edit surface
-  // quickly — the same window as the revalidate on /press.
+  // quickly. The edge window is deliberately longer than the 1s revalidate on
+  // /press: rebuilding the PDF is far more expensive than re-rendering a page.
   res.setHeader(
     "Cache-Control",
     "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400"
