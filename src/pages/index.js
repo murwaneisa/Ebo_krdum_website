@@ -87,6 +87,6 @@ export async function getStaticProps() {
       shows: shows || [],
       reviews,
     },
-    revalidate: 60,
+    revalidate: 1,
   };
 }

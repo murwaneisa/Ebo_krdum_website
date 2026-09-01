@@ -275,7 +275,7 @@ export async function getStaticProps() {
   if (!sets?.length) {
     return {
       props: { photos: GALLERY_PHOTOS, videos: [] },
-      revalidate: 60 * 60,
+      revalidate: 1,
     };
   }
 
@@ -329,5 +329,5 @@ export async function getStaticProps() {
     }
   }
 
-  return { props: { photos, videos }, revalidate: 60 * 60 };
+  return { props: { photos, videos }, revalidate: 1 };
 }

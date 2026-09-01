@@ -1,10 +1,19 @@
 /*
  * Biography copy, taken from the Claude Design artboard (Biography.dc.html).
- * Candidate for Sanity once the `biography` schema grows fields for the tabbed
- * sections, pull-quotes and influences.
+ *
+ * This is no longer what the page shows — it is the fallback. The Biography page
+ * reads the `biographyPage` singleton in Sanity and falls back to these constants
+ * field by field, so the site still reads correctly before the artist has filled
+ * the document in, and on a machine with no .env at all.
+ *
+ * Field by field matters: editing a constant here has no effect on the live site
+ * once the matching field has been filled in over in the CMS. If you are trying to
+ * change wording, change it in the Studio, not here.
+ *
+ * HEADLINE is not in this file any more. It is a typographic device rather than
+ * copy — its second half is set in italic amber — so it lives in the page that
+ * renders it, which also keeps this module out of the browser bundle.
  */
-
-export const HEADLINE = { lead: "A voice rising from the", accent: "ashes of war" };
 
 export const INTRO =
   "Ebo Krdum is a Sudanese-Swedish self-taught singer, guitarist, artist, actor and activist. He creates contemporary political afro-blues & afrobeat music rooted in several musical traditions around the sub-Saharan area. Ebo sings in many different languages and his lyrics mostly contain topics such as justice, peace, freedom, equality, diversity, revolution and liberty.";
@@ -12,7 +21,7 @@ export const INTRO =
 export const META = [
   { label: "Based in", value: "Stockholm" },
   { label: "Born", value: "Nyala, South Darfur" },
-  { label: "Award", value: "Grammis / Newcomer 2017" },
+  { label: "Award", value: "Grammis 2022, Newcomer of the year 2020" },
 ];
 
 export const PORTRAIT_CAPTION = "Self-taught since the age of six";

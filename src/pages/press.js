@@ -79,9 +79,24 @@ export default function Press({ reviews = [], photos = [], stagePlotsUrl }) {
 
   return (
     <>
-      <Box as="section" maxW="shell" mx="auto" pt="clamp(2.25rem,5vw,3.75rem)" px="gutter">
-        <Box border="1px solid" borderColor="rgba(232,169,58,0.55)" bg="surface" p="clamp(1.625rem,3.4vw,3rem)">
-          <Flex wrap="wrap" gap="1.5rem clamp(1.75rem,4vw,3.5rem)" align="center">
+      <Box
+        as="section"
+        maxW="shell"
+        mx="auto"
+        pt="clamp(2.25rem,5vw,3.75rem)"
+        px="gutter"
+      >
+        <Box
+          border="1px solid"
+          borderColor="rgba(232,169,58,0.55)"
+          bg="surface"
+          p="clamp(1.625rem,3.4vw,3rem)"
+        >
+          <Flex
+            wrap="wrap"
+            gap="1.5rem clamp(1.75rem,4vw,3.5rem)"
+            align="center"
+          >
             <Box flex="1 1 21.25rem" minW="0">
               <Box textStyle="microLabel" letterSpacing="0.24em" color="bronze">
                 Press kit
@@ -95,7 +110,13 @@ export default function Press({ reviews = [], photos = [], stagePlotsUrl }) {
               >
                 Photos, bio and stage plots
               </Heading>
-              <Text mt="3.5" textStyle="body" lineHeight="1.7" color="rgba(247,239,221,0.62)" maxW="52ch">
+              <Text
+                mt="3.5"
+                textStyle="body"
+                lineHeight="1.7"
+                color="rgba(247,239,221,0.62)"
+                maxW="52ch"
+              >
                 High-resolution press images with photographer credits, plus the
                 stage plot and technical rider as PDF.
               </Text>
@@ -134,10 +155,18 @@ export default function Press({ reviews = [], photos = [], stagePlotsUrl }) {
             {/* Hidden entirely until the artist uploads photos, so the card
                 never shows an empty grid under a heading. */}
             <Box hidden={photos.length === 0}>
-              <Box textStyle="microLabel" letterSpacing="0.24em" color="bronze" mb="4.5">
+              <Box
+                textStyle="microLabel"
+                letterSpacing="0.24em"
+                color="bronze"
+                mb="4.5"
+              >
                 Press photos — click to enlarge and download
               </Box>
-              <Grid templateColumns="repeat(auto-fill,minmax(11.25rem,1fr))" gap="clamp(0.75rem,1.6vw,1.125rem)">
+              <Grid
+                templateColumns="repeat(auto-fill,minmax(11.25rem,1fr))"
+                gap="clamp(0.75rem,1.6vw,1.125rem)"
+              >
                 {photos.map((p, i) => (
                   <Box
                     key={p.id}
@@ -183,7 +212,10 @@ export default function Press({ reviews = [], photos = [], stagePlotsUrl }) {
               </Grid>
             </Box>
 
-            <Grid templateColumns="repeat(auto-fit,minmax(16.25rem,1fr))" gap="clamp(0.875rem,1.8vw,1.25rem)">
+            <Grid
+              templateColumns="repeat(auto-fit,minmax(16.25rem,1fr))"
+              gap="clamp(0.875rem,1.8vw,1.25rem)"
+            >
               <DownloadCard
                 kind="PDF"
                 title="Stage plots & rider"
@@ -191,9 +223,9 @@ export default function Press({ reviews = [], photos = [], stagePlotsUrl }) {
                 href={stagePlotsUrl}
               />
               {/*
-                * Generated from the bio and quotes in the CMS on each request,
-                * so the download can never lag behind the text on this page.
-                */}
+               * Generated from the bio and quotes in the CMS on each request,
+               * so the download can never lag behind the text on this page.
+               */}
               <DownloadCard
                 kind="PDF"
                 title="Bio & quotes"
@@ -213,9 +245,20 @@ export default function Press({ reviews = [], photos = [], stagePlotsUrl }) {
       </Box>
 
       {/* Reviews */}
-      <Box as="section" maxW="shell" mx="auto" pt="clamp(2.25rem,5vw,4rem)" px="gutter">
+      <Box
+        as="section"
+        maxW="shell"
+        mx="auto"
+        pt="clamp(2.25rem,5vw,4rem)"
+        px="gutter"
+      >
         <Flex justify="flex-end" mb="6">
-          <Flex border="1px solid" borderColor="bronze" borderRadius="2px" overflow="hidden">
+          <Flex
+            border="1px solid"
+            borderColor="bronze"
+            borderRadius="2px"
+            overflow="hidden"
+          >
             <LangButton active={en} onClick={() => setLang("en")}>
               English
             </LangButton>
@@ -225,7 +268,10 @@ export default function Press({ reviews = [], photos = [], stagePlotsUrl }) {
           </Flex>
         </Flex>
 
-        <Grid templateColumns="repeat(auto-fit,minmax(20.625rem,1fr))" gap="clamp(1.25rem,2.4vw,2rem)">
+        <Grid
+          templateColumns="repeat(auto-fit,minmax(20.625rem,1fr))"
+          gap="clamp(1.25rem,2.4vw,2rem)"
+        >
           {reviews.map((r) => (
             <Link
               key={r.id}
@@ -313,7 +359,7 @@ export async function getStaticProps() {
 
   return {
     props: { reviews, photos, stagePlotsUrl },
-    revalidate: 60 * 60,
+    revalidate: 1,
   };
 }
 

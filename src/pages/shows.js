@@ -89,11 +89,11 @@ function NextShowCard({ show, image = null, imageAlt = "" }) {
       >
         <Box flex="0 0 auto" maxW="100%">
           {/*
-            * Both values need units: Chakra only resolves a spacing token when
-            * the prop is a single token ("3.5"), and passes a multi-value
-            * string through raw. A bare `3.5` would invalidate the whole
-            * shorthand. 0.875rem is Chakra's `3.5`.
-            */}
+           * Both values need units: Chakra only resolves a spacing token when
+           * the prop is a single token ("3.5"), and passes a multi-value
+           * string through raw. A bare `3.5` would invalidate the whole
+           * shorthand. 0.875rem is Chakra's `3.5`.
+           */}
           <Flex align="baseline" wrap="wrap" gap="0.5rem 0.875rem">
             <Box
               fontFamily="display"
@@ -346,6 +346,6 @@ export async function getStaticProps() {
         : null,
       nextShowImageAlt: showsSection?.alt || "",
     },
-    revalidate: 60 * 30,
+    revalidate: 1,
   };
 }

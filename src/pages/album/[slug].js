@@ -346,7 +346,7 @@ export async function getStaticProps({ params }) {
   const albums = buildDiscography(await getArtistAlbums(DEEZER_ARTIST_ID));
   const album = albums.find((a) => a.slug === params.slug) || null;
 
-  if (!album) return { notFound: true, revalidate: 60 * 60 };
+  if (!album) return { notFound: true, revalidate: 1 };
 
   // Detail and tracklist both come from Deezer, and each fails soft on its own,
   // so the page renders even if both do.
@@ -366,6 +366,6 @@ export async function getStaticProps({ params }) {
       tracks,
       others: albums.filter((a) => a.slug !== album.slug).slice(0, 5),
     },
-    revalidate: 60 * 60,
+    revalidate: 1,
   };
 }
