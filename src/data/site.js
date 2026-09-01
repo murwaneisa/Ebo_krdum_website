@@ -18,7 +18,7 @@ export const CONTACT = {
   phone: "+46 737 40 17 11",
   phoneHref: "tel:+46737401711",
   base: "Stockholm, Sweden",
-  tagline: "Newcomer of the Year 2020, Folk & World Music Gala, Sweden 2022.",
+  tagline: "Newcomer of the Year, Folk & World Music Gala 2020",
 };
 
 export const NAV = [

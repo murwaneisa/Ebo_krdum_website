@@ -20,8 +20,11 @@ const ink = (a) => `rgba(36,26,16,${Math.min(0.97, a).toFixed(3)})`;
  * changes.
  */
 const DEFAULT_TAGLINE = "African blues and roots music";
+// Written across three lines to match the three-row field in Sanity: the
+// rendered text keeps the author's line breaks, so the fallback has to break in
+// the same places or it would set differently from a CMS-supplied one.
 const DEFAULT_DESCRIPTION =
-  "Swedish Grammis award winner, Sudanese-Swedish troubadour — from Darfur to the biggest breakthrough.";
+  "Swedish Grammis award winner,\nSudanese-Swedish troubadour\nfrom Darfur to the biggest breakthrough.";
 
 export default function Hero({
   image,
@@ -102,6 +105,12 @@ export default function Hero({
             mt="8"
             textStyle="lead"
             color="rgba(247,239,221,0.86)"
+            /*
+             * The Sanity field is a three-row `text`, so the artist's own line
+             * breaks are part of the wording. `pre-line` keeps them while still
+             * collapsing stray spaces and wrapping anything past `maxW`.
+             */
+            whiteSpace="pre-line"
             css={{ textWrap: "pretty" }}
           >
             {description || DEFAULT_DESCRIPTION}
